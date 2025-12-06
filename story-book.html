@@ -1,0 +1,527 @@
+<!-- Chosen Palette: Cosmic Daydream (Light) - Warm neutrals (Cream/Slate-50) for background, Soft Indigo/Blue for structure, Vibrant accents (Orange, Red, Teal) for planets and data. -->
+<!-- Application Structure Plan: 
+    The app is designed as "Zoomer's Mission Control", a dashboard for young explorers.
+    1. Sidebar/Navigation (The Flight Path): A vertical timeline of the journey. Allows random access but encourages linear storytelling.
+    2. Main Viewport (The Viewscreen): 
+       - Upper Section: 'The Story Window' displaying the narrative text from the book in a readable, friendly format.
+       - Center Stage: A CSS-rendered visual representation of the current celestial body (Planet/Sun) to replace static illustrations (No SVG).
+    3. Data Deck (The Ship's Computer): 
+       - Contains interactive Chart.js visualizations (Size Comparison & Temperature Gauge) that update dynamically as the user travels to different planets. 
+       - "Fun Fact" callouts derived from the text.
+    This structure separates the "Story" (Qualitative) from the "Science" (Quantitative) while keeping them on the same screen for synthesis.
+-->
+<!-- Visualization & Content Choices:
+    1. Solar System Journey (Navigation): Vertical list with active states. Goal: Show progress.
+    2. Planet Visuals (Center): Pure CSS shapes with gradients/shadows. Goal: Visual identification without raster/SVG. Interaction: None (static visual).
+    3. Temperature Gauge (Chart.js Bar): Compares current planet's temp to Earth. Goal: Explain "Hot vs Cold" concepts from text. Interaction: Tooltip.
+    4. Size Scanner (Chart.js Bubble/Scatter): Relative size visualization. Goal: Show "Big vs Small". Interaction: Hover for values.
+    5. Story Text: Large typography. Goal: Readability for children/parents.
+    CONFIRMATION: NO SVG graphics used. NO Mermaid JS used.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zoomer's Solar System Adventure</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Custom Font for Storybook Feel */
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap');
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: #F8FAFC; /* Slate 50 */
+            color: #1E293B; /* Slate 800 */
+        }
+
+        /* Planet CSS Art - Pure CSS Implementation of Illustrations */
+        .planet-stage {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto;
+            position: relative;
+            transition: all 0.5s ease;
+            box-shadow: inset -20px -20px 50px rgba(0,0,0,0.2);
+        }
+
+        /* Specific Planet Styles */
+        .p-sun { background: radial-gradient(circle at 30% 30%, #FDE047, #F59E0B, #B45309); box-shadow: 0 0 60px #F59E0B; }
+        .p-mercury { background: radial-gradient(circle at 30% 30%, #E2E8F0, #94A3B8, #475569); }
+        .p-venus { background: radial-gradient(circle at 30% 30%, #FEF3C7, #FCD34D, #D97706); }
+        .p-earth { background: radial-gradient(circle at 30% 30%, #4ADE80, #3B82F6, #1E3A8A); }
+        .p-mars { background: radial-gradient(circle at 30% 30%, #FDA4AF, #F43F5E, #881337); }
+        .p-jupiter { 
+            background: linear-gradient(180deg, #EAD6A6 10%, #C89F77 20%, #EAD6A6 30%, #A67C52 40%, #EAD6A6 60%, #C89F77 80%);
+            transform: rotate(-15deg);
+        }
+        .p-jupiter::after {
+            /* Red Spot */
+            content: ''; position: absolute; top: 60%; left: 30%; width: 40px; height: 25px;
+            background: rgba(185, 28, 28, 0.6); border-radius: 50%; box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
+        }
+        .p-saturn { background: radial-gradient(circle at 30% 30%, #FDE68A, #D97706); }
+        .p-saturn::before {
+            /* Rings */
+            content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(20deg);
+            width: 300px; height: 60px; border-radius: 50%;
+            border: 20px solid rgba(217, 119, 6, 0.4); border-top-color: rgba(217, 119, 6, 0.8);
+            z-index: -1;
+        }
+        .p-uranus { background: radial-gradient(circle at 30% 30%, #BAE6FD, #38BDF8, #0284C7); }
+        .p-neptune { background: radial-gradient(circle at 30% 30%, #60A5FA, #2563EB, #1E3A8A); }
+        .p-pluto { background: radial-gradient(circle at 30% 30%, #E2E8F0, #CBD5E1); width: 80px; height: 80px; margin-top: 60px; }
+        .p-zoomer { 
+            /* Rocket CSS */
+            width: 100px; height: 160px; background: linear-gradient(to bottom, #E2E8F0, #94A3B8);
+            border-radius: 50% 50% 10% 10%; position: relative;
+        }
+        .p-zoomer::before { content: ''; position: absolute; top: 20px; left: 25px; width: 50px; height: 50px; background: #3B82F6; border-radius: 50%; border: 4px solid #CBD5E1; }
+        .p-zoomer::after { content: ''; position: absolute; bottom: -20px; left: 10px; width: 20px; height: 40px; background: #EF4444; border-radius: 0 0 10px 10px; box-shadow: 60px 0 0 #EF4444; }
+
+        /* Chart Container Styles - Mandatory */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 250px; /* Base height */
+            max-height: 300px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 300px;
+            }
+        }
+
+        .active-nav {
+            background-color: #DBEAFE; /* Blue 100 */
+            border-left: 4px solid #3B82F6; /* Blue 500 */
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <div class="text-3xl">🚀</div>
+                <div>
+                    <h1 class="text-xl md:text-2xl font-black text-slate-800 tracking-tight">Zoomer's Mission Control</h1>
+                    <p class="text-xs text-slate-500 font-bold uppercase tracking-wider">Interactive Solar System Log</p>
+                </div>
+            </div>
+            <div id="progress-indicator" class="text-sm font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-full">
+                Page 1 of 12
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Grid -->
+    <main class="flex-grow container mx-auto px-4 py-6 grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+        <!-- Left Column: Navigation / Flight Path -->
+        <aside class="lg:col-span-3 space-y-4">
+            <div class="bg-white rounded-xl shadow-sm p-4 border border-slate-100">
+                <h3 class="text-sm font-bold text-slate-400 uppercase tracking-wider mb-3">Flight Path</h3>
+                <nav id="nav-list" class="space-y-1 flex flex-col max-h-[200px] lg:max-h-none overflow-y-auto lg:overflow-visible">
+                    <!-- Nav items injected by JS -->
+                </nav>
+            </div>
+            
+            <div class="hidden lg:block bg-indigo-50 rounded-xl p-4 border border-indigo-100">
+                <h3 class="text-indigo-800 font-bold mb-2">Pilot's Note 📝</h3>
+                <p class="text-sm text-indigo-700 leading-relaxed">
+                    "Use the list above to jump between planets, or use the Next button to follow the story!"
+                </p>
+            </div>
+        </aside>
+
+        <!-- Center Column: Visuals & Story -->
+        <section class="lg:col-span-6 flex flex-col space-y-6">
+            
+            <!-- Context Intro -->
+            <div class="bg-white rounded-2xl shadow-lg p-6 border-2 border-slate-100 relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-4 opacity-10 text-9xl">✨</div>
+                
+                <!-- Dynamic Content Area -->
+                <div id="story-content" class="relative z-10">
+                    <div class="flex flex-col items-center mb-8">
+                        <!-- CSS Planet Render Target -->
+                        <div id="planet-visual-container" class="mb-6 p-4">
+                            <div class="p-zoomer planet-stage"></div>
+                        </div>
+                        <h2 id="story-title" class="text-3xl font-black text-slate-800 mb-2 text-center">Blast Off!</h2>
+                        <div id="story-location" class="inline-block bg-slate-100 text-slate-500 text-xs font-bold px-2 py-1 rounded uppercase tracking-wide mb-4">Location: Earth</div>
+                    </div>
+
+                    <div class="prose prose-lg prose-slate mx-auto text-center">
+                        <p id="story-text" class="text-xl leading-relaxed font-medium text-slate-700">
+                            Loading Mission Data...
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Navigation Controls -->
+                <div class="flex justify-between items-center mt-8 pt-6 border-t border-slate-100">
+                    <button id="btn-prev" class="px-6 py-2 rounded-full bg-slate-100 text-slate-600 font-bold hover:bg-slate-200 transition-colors disabled:opacity-50">
+                        ← Previous
+                    </button>
+                    <button id="btn-next" class="px-8 py-3 rounded-full bg-blue-600 text-white font-bold shadow-lg hover:bg-blue-700 hover:shadow-xl transition-all transform hover:-translate-y-1">
+                        Next Adventure →
+                    </button>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Right Column: Data & Stats -->
+        <aside class="lg:col-span-3 space-y-6">
+            
+            <!-- Section Intro -->
+            <div class="prose prose-sm text-slate-500 mb-2">
+                <p>Ship Computer: Analyzing environmental data for current location.</p>
+            </div>
+
+            <!-- Temperature Chart -->
+            <div class="bg-white rounded-xl shadow-sm p-4 border border-slate-100">
+                <h3 class="text-sm font-bold text-slate-800 mb-4 flex items-center">
+                    <span class="text-red-500 mr-2">🌡️</span> Temperature Check
+                </h3>
+                <div class="chart-container">
+                    <canvas id="tempChart"></canvas>
+                </div>
+                <p id="temp-desc" class="text-xs text-center mt-2 text-slate-500 italic">Comparing to a cozy Earth day.</p>
+            </div>
+
+            <!-- Size/Distance Chart -->
+            <div class="bg-white rounded-xl shadow-sm p-4 border border-slate-100">
+                <h3 class="text-sm font-bold text-slate-800 mb-4 flex items-center">
+                    <span class="text-blue-500 mr-2">📏</span> Size Scanner
+                </h3>
+                <div class="chart-container">
+                    <canvas id="sizeChart"></canvas>
+                </div>
+                 <p class="text-xs text-center mt-2 text-slate-500 italic">Relative size estimation.</p>
+            </div>
+
+            <!-- Fun Fact Card -->
+            <div class="bg-amber-50 rounded-xl p-5 border border-amber-100 shadow-sm">
+                <h4 class="text-amber-800 font-bold text-sm uppercase tracking-wide mb-2">Zoomer's Discovery</h4>
+                <p id="fun-fact" class="text-amber-900 font-medium text-sm">
+                    Ready to learn about space?
+                </p>
+            </div>
+
+        </aside>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 mt-auto">
+        <div class="container mx-auto px-4 py-6 text-center text-slate-400 text-sm">
+            <p>© Zoomer's Space Agency. Based on "Zoomer's Solar System Adventure".</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // --- Data Store ---
+        // Contains text from source report and synthesized quantitative data for charts.
+        const storyData = [
+            {
+                id: 0,
+                title: "Ready for Blast Off!",
+                location: "Earth (Launchpad)",
+                cssClass: "p-zoomer",
+                text: "Once upon a time, there was a little rocket ship named Zoomer. Zoomer loved to look at the stars. \"Twinkle, twinkle,\" they whispered. \"I wonder who lives up there?\" Zoomer asked. He counted down, \"3... 2... 1... BLAST OFF!\" Whoosh! Zoomer flew up, up, and away!",
+                fact: "Rockets need lots of fuel to escape Earth's gravity!",
+                stats: { temp: 20, size: 1, type: 'Rocket' }, // Temp in Celsius approx, Size relative to Earth
+                tempLabel: "Just Right",
+                sizeLabel: "Tiny"
+            },
+            {
+                id: 1,
+                title: "The Boss: The Sun",
+                location: "Center of System",
+                cssClass: "p-sun",
+                text: "First, Zoomer met the boss of the Solar System. It was the Sun! The Sun was big, yellow, and very, very hot. \"Hello, Zoomer!\" said the Sun. \"I am a giant star. I hold all the planets together with my gravity hug, and I keep everyone warm.\" \"Wow,\" said Zoomer. \"You are like a giant campfire in the sky!\"",
+                fact: "The Sun is a star, not a planet. It holds 99.8% of the solar system's mass!",
+                stats: { temp: 5500, size: 109, type: 'Star' },
+                tempLabel: "Super Hot!",
+                sizeLabel: "Gigantic"
+            },
+            {
+                id: 2,
+                title: "Speedy Mercury",
+                location: "1st Planet",
+                cssClass: "p-mercury",
+                text: "Zoomer flew a little further and found a tiny grey planet zipping by. \"Wheee!\" shouted the planet. This was Mercury. \"I am the closest planet to the Sun,\" Mercury said fast. \"During the day I get super hot, and at night I get super cold!\" \"You are too fast for me!\" laughed Zoomer.",
+                fact: "Mercury is the fastest planet, zooming around the Sun in just 88 days.",
+                stats: { temp: 430, size: 0.38, type: 'Planet' },
+                tempLabel: "Hot & Cold",
+                sizeLabel: "Small"
+            },
+            {
+                id: 3,
+                title: "Glowing Venus",
+                location: "2nd Planet",
+                cssClass: "p-venus",
+                text: "Next, Zoomer saw a planet that looked bright and shiny. This was Venus. \"Hello, Venus!\" called Zoomer. \"Hello!\" said Venus. \"I am covered in thick clouds that act like a heavy blanket. That makes me the hottest planet of all!\" Zoomer wiped his forehead. \"Phew! A bit too toasty for me.\"",
+                fact: "Venus is hotter than Mercury because its thick clouds trap heat like a greenhouse.",
+                stats: { temp: 465, size: 0.95, type: 'Planet' },
+                tempLabel: "The Hottest",
+                sizeLabel: "Earth-like"
+            },
+            {
+                id: 4,
+                title: "Home Sweet Earth",
+                location: "3rd Planet",
+                cssClass: "p-earth",
+                text: "Zoomer looked back and saw a beautiful blue and green ball. \"I know that one!\" Zoomer cheered. \"That is Earth! That is my home.\" Earth waved. \"I am the only planet with ocean water and life,\" Earth said. \"I am just the right temperature—not too hot, and not too cold.\"",
+                fact: "Earth is the only place we know of that has life!",
+                stats: { temp: 15, size: 1, type: 'Planet' },
+                tempLabel: "Perfect",
+                sizeLabel: "Medium"
+            },
+            {
+                id: 5,
+                title: "The Red Planet",
+                location: "4th Planet",
+                cssClass: "p-mars",
+                text: "Zoomer turned around and saw a red planet. It looked like a dusty desert. \"Greetings,\" said Mars. \"I am the Red Planet. I have big volcanoes and lots of red dust.\" Zoomer looked closer. \"Maybe one day, people will visit you, Mars!\" \"I hope so,\" said Mars.",
+                fact: "Mars has the biggest volcano in the solar system, Olympus Mons.",
+                stats: { temp: -60, size: 0.53, type: 'Planet' },
+                tempLabel: "Freezing",
+                sizeLabel: "Small"
+            },
+            {
+                id: 6,
+                title: "Giant Jupiter",
+                location: "5th Planet",
+                cssClass: "p-jupiter",
+                text: "Zoomer had to dodge some floating space rocks called Asteroids. Zip! Zap! Then, he saw something HUGE. It was the biggest planet of all! \"I am Jupiter!\" boomed the giant planet. \"That red spot on my tummy is a giant storm that has been spinning for a long time. I am made of gas!\"",
+                fact: "You could fit 1,300 Earths inside Jupiter!",
+                stats: { temp: -145, size: 11, type: 'Gas Giant' },
+                tempLabel: "Very Cold",
+                sizeLabel: "Huge"
+            },
+            {
+                id: 7,
+                title: "Beautiful Saturn",
+                location: "6th Planet",
+                cssClass: "p-saturn",
+                text: "Next was the most beautiful planet Zoomer had ever seen. It was wearing a tutu! \"I am Saturn,\" said the planet. \"My rings are made of ice and rock. They spin around me like a hula-hoop!\" Zoomer did a little spin to copy Saturn.",
+                fact: "Saturn's rings are huge, but very thin. Some pieces are as small as dust!",
+                stats: { temp: -178, size: 9, type: 'Gas Giant' },
+                tempLabel: "Super Cold",
+                sizeLabel: "Huge"
+            },
+            {
+                id: 8,
+                title: "Sideways Uranus",
+                location: "7th Planet",
+                cssClass: "p-uranus",
+                text: "Zoomer was getting far away from the Sun now. It was getting chilly. He met a blue planet spinning on its side. \"I am Uranus,\" said the planet. \"I am an ice giant. I am very cold, and I like to spin sideways!\" \"You look like a blue marble,\" giggled Zoomer.",
+                fact: "Uranus is the only planet that spins on its side, rolling around the Sun.",
+                stats: { temp: -224, size: 4, type: 'Ice Giant' },
+                tempLabel: "Freezing!",
+                sizeLabel: "Big"
+            },
+            {
+                id: 9,
+                title: "Windy Neptune",
+                location: "8th Planet",
+                cssClass: "p-neptune",
+                text: "Zoomer flew to the very last big planet. It was dark blue. \"Brrr!\" shivered Zoomer. \"Hello, Neptune.\" \"Hello,\" whistled Neptune. \"I am very far from the Sun, so it is windy and freezing here.\" \"You are the windy neighbor!\" said Zoomer.",
+                fact: "Neptune has the strongest winds in the solar system.",
+                stats: { temp: -214, size: 3.9, type: 'Ice Giant' },
+                tempLabel: "Freezing!",
+                sizeLabel: "Big"
+            },
+            {
+                id: 10,
+                title: "Tiny Pluto",
+                location: "Dwarf Planet",
+                cssClass: "p-pluto",
+                text: "Way out in the dark, Zoomer saw a tiny little friend. \"Hi, Pluto!\" waved Zoomer. \"Hi Zoomer!\" squeaked Pluto. \"I am a Dwarf Planet now, but I still love being part of the family.\" Zoomer waved goodbye to all his space friends.",
+                fact: "Pluto is smaller than Earth's moon!",
+                stats: { temp: -230, size: 0.18, type: 'Dwarf' },
+                tempLabel: "Icicle",
+                sizeLabel: "Tiny"
+            },
+            {
+                id: 11,
+                title: "Back to Bed",
+                location: "Earth (Home)",
+                cssClass: "p-earth", // Reuse Earth visual
+                text: "Zoomer was tired. It was a long trip. He flew all the way back to the blue and green Earth. He landed softly on the grass. Psst... \"Goodnight, planets. Goodnight, Sun,\" whispered Zoomer. And he fell fast asleep, dreaming of his next big adventure. The End.",
+                fact: "A trip like Zoomer's would take a real rocket many years!",
+                stats: { temp: 15, size: 1, type: 'Planet' },
+                tempLabel: "Cozy",
+                sizeLabel: "Medium"
+            }
+        ];
+
+        // --- State Management ---
+        let currentIndex = 0;
+        let tempChartInst = null;
+        let sizeChartInst = null;
+
+        // --- DOM Elements ---
+        const els = {
+            title: document.getElementById('story-title'),
+            text: document.getElementById('story-text'),
+            location: document.getElementById('story-location'),
+            visualContainer: document.getElementById('planet-visual-container'),
+            funFact: document.getElementById('fun-fact'),
+            progress: document.getElementById('progress-indicator'),
+            navList: document.getElementById('nav-list'),
+            btnPrev: document.getElementById('btn-prev'),
+            btnNext: document.getElementById('btn-next'),
+            tempDesc: document.getElementById('temp-desc')
+        };
+
+        // --- Initialization ---
+        function init() {
+            renderNav();
+            initCharts();
+            updateState(0);
+            
+            els.btnNext.addEventListener('click', () => {
+                if (currentIndex < storyData.length - 1) updateState(currentIndex + 1);
+            });
+            
+            els.btnPrev.addEventListener('click', () => {
+                if (currentIndex > 0) updateState(currentIndex - 1);
+            });
+        }
+
+        // --- Render Navigation ---
+        function renderNav() {
+            els.navList.innerHTML = '';
+            storyData.forEach((item, index) => {
+                const btn = document.createElement('button');
+                btn.className = `w-full text-left px-4 py-3 rounded-lg text-sm font-medium transition-colors hover:bg-slate-50 flex items-center justify-between group`;
+                btn.innerHTML = `<span>${index + 1}. ${item.title}</span> ${index === 0 ? '🚀' : '●'}`;
+                btn.onclick = () => updateState(index);
+                btn.id = `nav-btn-${index}`;
+                els.navList.appendChild(btn);
+            });
+        }
+
+        // --- Update Application State ---
+        function updateState(index) {
+            currentIndex = index;
+            const data = storyData[index];
+
+            // Update Text
+            els.title.innerText = data.title;
+            els.text.innerText = data.text;
+            els.location.innerText = `Location: ${data.location}`;
+            els.funFact.innerText = data.fact;
+            els.progress.innerText = `Page ${index + 1} of ${storyData.length}`;
+            els.tempDesc.innerText = `Current Status: ${data.tempLabel} (${data.stats.temp}°C)`;
+
+            // Update Visuals (CSS Class Swap)
+            els.visualContainer.innerHTML = `<div class="${data.cssClass} planet-stage"></div>`;
+
+            // Update Nav Highlight
+            document.querySelectorAll('#nav-list button').forEach(b => b.classList.remove('active-nav', 'text-blue-700'));
+            const activeBtn = document.getElementById(`nav-btn-${index}`);
+            if(activeBtn) activeBtn.classList.add('active-nav', 'text-blue-700');
+
+            // Button States
+            els.btnPrev.disabled = index === 0;
+            els.btnNext.disabled = index === storyData.length - 1;
+            els.btnNext.innerText = index === storyData.length - 1 ? "The End" : "Next Adventure →";
+
+            // Update Charts
+            updateCharts(data);
+        }
+
+        // --- Chart Logic ---
+        function initCharts() {
+            // Temperature Chart
+            const ctxTemp = document.getElementById('tempChart').getContext('2d');
+            tempChartInst = new Chart(ctxTemp, {
+                type: 'bar',
+                data: {
+                    labels: ['Earth', 'Current'],
+                    datasets: [{
+                        label: 'Temperature (°C)',
+                        data: [15, 15],
+                        backgroundColor: ['#4ADE80', '#F59E0B'],
+                        borderRadius: 8,
+                        barThickness: 40
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: { beginAtZero: true, grid: { display: false } }
+                    }
+                }
+            });
+
+            // Size Chart (Bubble for fun relative sizing)
+            const ctxSize = document.getElementById('sizeChart').getContext('2d');
+            sizeChartInst = new Chart(ctxSize, {
+                type: 'bar', // Using Bar for clearer size comparison for kids
+                data: {
+                    labels: ['Earth', 'Current'],
+                    datasets: [{
+                        label: 'Relative Size (Earth = 1)',
+                        data: [1, 1],
+                        backgroundColor: ['#3B82F6', '#6366F1'],
+                        borderRadius: 8,
+                        barThickness: 40
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: { type: 'logarithmic', display: false } // Log scale to handle Sun vs Pluto difference
+                    }
+                }
+            });
+        }
+
+        function updateCharts(data) {
+            if (!tempChartInst || !sizeChartInst) return;
+
+            // Update Temp
+            tempChartInst.data.datasets[0].data[1] = data.stats.temp;
+            
+            // Color logic for temp
+            let tempColor = '#4ADE80'; // Green (Earth)
+            if (data.stats.temp > 50) tempColor = '#EF4444'; // Hot
+            if (data.stats.temp < 0) tempColor = '#3B82F6'; // Cold
+            if (data.stats.temp > 1000) tempColor = '#F59E0B'; // Sun
+            
+            tempChartInst.data.datasets[0].backgroundColor[1] = tempColor;
+            tempChartInst.data.labels[1] = data.planet === 'Earth' ? 'Earth' : data.title.split(' ')[0]; // Simplified label
+            tempChartInst.update();
+
+            // Update Size
+            sizeChartInst.data.datasets[0].data[1] = data.stats.size;
+            sizeChartInst.data.labels[1] = data.title.split(' ')[0];
+            sizeChartInst.update();
+        }
+
+        // Start
+        window.onload = init;
+
+    </script>
+</body>
+</html>
