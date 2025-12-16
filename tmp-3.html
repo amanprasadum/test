@@ -1,0 +1,1673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Excellence Academy - Enterprise-level education platform preparing future leaders with world-class curriculum and modern facilities">
+    <meta name="keywords" content="education, academy, learning, enterprise education">
+    <title>Excellence Academy - Enterprise Education Platform</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ==================== ROOT VARIABLES ==================== */
+        :root {
+            /* Enterprise Color Palette */
+            --primary-color: #1A365D;
+            --primary-light: #2D4A7C;
+            --secondary-color: #2563EB;
+            --secondary-light: #3B82F6;
+            --accent-color: #DC2626;
+            --accent-light: #EF4444;
+            
+            /* Neutral Colors */
+            --gray-50: #F9FAFB;
+            --gray-100: #F3F4F6;
+            --gray-200: #E5E7EB;
+            --gray-300: #D1D5DB;
+            --gray-400: #9CA3AF;
+            --gray-500: #6B7280;
+            --gray-600: #4B5563;
+            --gray-700: #374151;
+            --gray-800: #1F2937;
+            --gray-900: #111827;
+            
+            --white: #FFFFFF;
+            --light-bg: #F8FAFC;
+            --dark-text: #0F172A;
+            --light-text: #64748B;
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            
+            /* Transitions */
+            --transition-base: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            
+            /* Spacing */
+            --spacing-unit: 8px;
+        }
+
+        /* ==================== GLOBAL STYLES ==================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--dark-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background: var(--white);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: var(--secondary-color);
+            color: var(--white);
+        }
+
+        /* ==================== UTILITY BAR ==================== */
+        .utility-bar {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 10px 0;
+            font-size: 0.875rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .utility-bar a {
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition-base);
+        }
+
+        .utility-bar a:hover {
+            color: var(--secondary-light);
+        }
+
+        .utility-bar-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-right: 2rem;
+        }
+
+        .utility-bar-item i {
+            font-size: 1rem;
+        }
+
+        /* ==================== NAVIGATION BAR ==================== */
+        .navbar {
+            background: var(--white);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+            padding: 1rem 0;
+            transition: var(--transition-smooth);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar.scrolled {
+            padding: 0.5rem 0;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.12);
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            letter-spacing: -0.5px;
+        }
+
+        .navbar-brand i {
+            font-size: 2rem;
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-link {
+            color: var(--gray-700);
+            font-weight: 500;
+            margin: 0 0.75rem;
+            position: relative;
+            transition: var(--transition-base);
+            font-size: 0.95rem;
+            padding: 0.5rem 0 !important;
+        }
+
+        .nav-link:hover {
+            color: var(--secondary-color);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: var(--secondary-color);
+            transition: var(--transition-base);
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .btn-apply {
+            background: linear-gradient(135deg, var(--secondary-color), var(--secondary-light));
+            color: var(--white);
+            padding: 0.625rem 1.75rem;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            transition: var(--transition-smooth);
+            box-shadow: var(--shadow-md);
+            font-size: 0.95rem;
+        }
+
+        .btn-apply:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl);
+            background: linear-gradient(135deg, var(--secondary-light), var(--secondary-color));
+        }
+
+        /* ==================== HERO SECTION ==================== */
+        .hero-section {
+            background: linear-gradient(135deg, rgba(26, 54, 93, 0.97), rgba(37, 99, 235, 0.92)),
+                        url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1600&h=900&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            color: var(--white);
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(37, 99, 235, 0.2) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            z-index: 2;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            letter-spacing: -1px;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2vw, 1.35rem);
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            line-height: 1.7;
+            max-width: 600px;
+            font-weight: 400;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-buttons .btn {
+            padding: 1rem 2.5rem;
+            font-weight: 600;
+            border-radius: 10px;
+            transition: var(--transition-smooth);
+            text-transform: none;
+            letter-spacing: 0.3px;
+            font-size: 1rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-primary-custom {
+            background: var(--white);
+            color: var(--secondary-color);
+            border: none;
+        }
+
+        .btn-primary-custom:hover {
+            background: var(--gray-100);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .btn-outline-custom {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-outline-custom:hover {
+            background: var(--white);
+            color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .hero-stats {
+            margin-top: 4rem;
+            display: flex;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .hero-stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        /* ==================== TRUST INDICATORS ==================== */
+        .trust-section {
+            padding: 3rem 0;
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .trust-title {
+            text-align: center;
+            color: var(--gray-500);
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 2rem;
+        }
+
+        .trust-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            opacity: 0.6;
+        }
+
+        .trust-badge {
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            font-weight: 600;
+            color: var(--gray-700);
+            transition: var(--transition-base);
+        }
+
+        .trust-badge:hover {
+            opacity: 1;
+            border-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        /* ==================== FEATURES SECTION ==================== */
+        .features-section {
+            padding: 6rem 0;
+            background: var(--light-bg);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(26, 54, 93, 0.1));
+            color: var(--secondary-color);
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(37, 99, 235, 0.2);
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+        }
+
+        .section-subtitle {
+            color: var(--light-text);
+            font-size: 1.15rem;
+            line-height: 1.7;
+            font-weight: 400;
+        }
+
+        .feature-card {
+            padding: 2.5rem;
+            border-radius: 16px;
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            transition: var(--transition-smooth);
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
+            transform: scaleX(0);
+            transition: var(--transition-smooth);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-12px);
+            box-shadow: var(--shadow-2xl);
+            border-color: var(--secondary-color);
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(26, 54, 93, 0.1));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            color: var(--secondary-color);
+            transition: var(--transition-smooth);
+        }
+
+        .feature-card:hover .feature-icon {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: var(--white);
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .feature-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .feature-description {
+            color: var(--light-text);
+            line-height: 1.7;
+            font-size: 0.975rem;
+        }
+
+        /* ==================== ABOUT SECTION ==================== */
+        .about-section {
+            padding: 6rem 0;
+            background: var(--white);
+        }
+
+        .about-image {
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: var(--shadow-2xl);
+            position: relative;
+            height: 100%;
+            min-height: 500px;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-smooth);
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+            padding: 2rem;
+            color: var(--white);
+        }
+
+        .about-content {
+            padding: 0 0 0 3rem;
+        }
+
+        .about-content p {
+            color: var(--gray-600);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            padding-top: 3rem;
+            border-top: 2px solid var(--gray-200);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.75rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--gray-600);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        /* ==================== PROGRAMS SECTION ==================== */
+        .programs-section {
+            padding: 6rem 0;
+            background: var(--light-bg);
+        }
+
+        .program-card {
+            border-radius: 20px;
+            overflow: hidden;
+            background: var(--white);
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition-smooth);
+            height: 100%;
+            border: 1px solid var(--gray-200);
+        }
+
+        .program-card:hover {
+            transform: translateY(-12px);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .program-image {
+            width: 100%;
+            height: 280px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .program-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-smooth);
+        }
+
+        .program-card:hover .program-image img {
+            transform: scale(1.1);
+        }
+
+        .program-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--accent-color);
+            color: var(--white);
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .program-content {
+            padding: 2.5rem;
+        }
+
+        .program-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .program-description {
+            color: var(--light-text);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            font-size: 0.975rem;
+        }
+
+        .program-meta {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            padding: 1.25rem;
+            background: var(--gray-50);
+            border-radius: 12px;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--gray-600);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .meta-item i {
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+        }
+
+        .btn-learn-more {
+            width: 100%;
+            padding: 0.875rem;
+            background: linear-gradient(135deg, var(--secondary-color), var(--secondary-light));
+            color: var(--white);
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: var(--transition-smooth);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-learn-more:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        /* ==================== TESTIMONIALS SECTION ==================== */
+        .testimonials-section {
+            padding: 6rem 0;
+            background: var(--white);
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            height: 100%;
+            position: relative;
+            transition: var(--transition-smooth);
+            border: 1px solid var(--gray-200);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-2xl);
+            border-color: var(--secondary-color);
+        }
+
+        .quote-icon {
+            font-size: 3.5rem;
+            color: var(--secondary-color);
+            opacity: 0.15;
+            position: absolute;
+            top: 25px;
+            left: 25px;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: var(--gray-700);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+            font-size: 1.05rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+        }
+
+        .author-image {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--secondary-color);
+            box-shadow: var(--shadow-md);
+        }
+
+        .author-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info h5 {
+            margin: 0;
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .author-info p {
+            margin: 0.25rem 0;
+            color: var(--light-text);
+            font-size: 0.9rem;
+        }
+
+        .rating {
+            color: #F59E0B;
+            margin-top: 0.5rem;
+        }
+
+        /* ==================== CTA SECTION ==================== */
+        .cta-section {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="white" opacity="0.1"/></svg>');
+            opacity: 0.3;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-title {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.5px;
+        }
+
+        .cta-description {
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+        }
+
+        .btn-cta {
+            padding: 1.125rem 3.5rem;
+            background: var(--white);
+            color: var(--secondary-color);
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: var(--transition-smooth);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .btn-cta:hover {
+            background: var(--gray-100);
+            transform: translateY(-4px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+        }
+
+        /* ==================== FOOTER ==================== */
+        .footer {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 5rem 0 2rem;
+            position: relative;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color), var(--secondary-color));
+        }
+
+        .footer-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+
+        .footer-description {
+            color: rgba(255,255,255,0.8);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.875rem;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: var(--transition-base);
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+            padding-left: 8px;
+        }
+
+        .footer-links a::before {
+            content: '→';
+            opacity: 0;
+            margin-right: 0;
+            transition: var(--transition-base);
+        }
+
+        .footer-links a:hover::before {
+            opacity: 1;
+            margin-right: 8px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            transition: var(--transition-smooth);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .social-link:hover {
+            background: var(--secondary-color);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+            border-color: transparent;
+        }
+
+        .footer-bottom {
+            margin-top: 4rem;
+            padding-top: 2.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .footer-bottom-links {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-bottom-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: var(--transition-base);
+        }
+
+        .footer-bottom-links a:hover {
+            color: var(--white);
+        }
+
+        /* ==================== SCROLL TO TOP BUTTON ==================== */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            box-shadow: var(--shadow-xl);
+            z-index: 999;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        /* ==================== RESPONSIVE DESIGN ==================== */
+        @media (max-width: 991px) {
+            .about-content {
+                padding: 3rem 0 0 0;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .hero-buttons .btn {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                min-height: 75vh;
+                background-attachment: scroll;
+            }
+
+            .hero-stats {
+                gap: 2rem;
+            }
+
+            .about-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .navbar-collapse {
+                background: var(--white);
+                padding: 1.5rem;
+                border-radius: 16px;
+                margin-top: 1rem;
+                box-shadow: var(--shadow-xl);
+            }
+
+            .utility-bar-item {
+                font-size: 0.8rem;
+                margin-right: 1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .utility-bar {
+                display: none;
+            }
+
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ==================== ANIMATIONS ==================== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .animate-on-scroll {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* ==================== LOADING ANIMATIONS ==================== */
+        .fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        /* ==================== ACCESSIBILITY ==================== */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--secondary-color);
+            color: var(--white);
+            padding: 8px;
+            text-decoration: none;
+            z-index: 9999;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        *:focus-visible {
+            outline: 3px solid var(--secondary-color);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip to main content link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- ==================== UTILITY BAR ==================== -->
+    <div class="utility-bar">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center flex-wrap">
+                <div class="d-flex">
+                    <div class="utility-bar-item">
+                        <i class="bi bi-telephone-fill"></i>
+                        <a href="tel:+1234567890">+1 (234) 567-890</a>
+                    </div>
+                    <div class="utility-bar-item">
+                        <i class="bi bi-envelope-fill"></i>
+                        <a href="mailto:info@excellence-academy.edu">info@excellence-academy.edu</a>
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <div class="utility-bar-item">
+                        <i class="bi bi-clock-fill"></i>
+                        <span>Mon-Fri: 8:00 AM - 5:00 PM</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== NAVIGATION BAR ==================== -->
+    <nav class="navbar navbar-expand-lg" id="navbar">
+        <div class="container">
+            <a class="navbar-brand" href="#" aria-label="Excellence Academy Home">
+                <i class="bi bi-mortarboard-fill"></i>
+                Excellence Academy
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#programs">Programs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#testimonials">Testimonials</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-apply" aria-label="Apply to Excellence Academy">Apply Now</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <section class="hero-section" id="home">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 hero-content">
+                    <div class="hero-badge">
+                        <i class="bi bi-award-fill"></i>
+                        Accredited Excellence Since 1990
+                    </div>
+                    <h1 class="hero-title">Empowering Minds, Building Futures</h1>
+                    <p class="hero-subtitle">
+                        Join a community of lifelong learners where innovation meets tradition. 
+                        We nurture critical thinking, creativity, and character development to prepare 
+                        students for success in an ever-evolving world.
+                    </p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary-custom">Explore Programs</button>
+                        <button class="btn btn-outline-custom">Schedule a Tour</button>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="hero-stat">
+                            <span class="hero-stat-number">30+</span>
+                            <span class="hero-stat-label">Years of Excellence</span>
+                        </div>
+                        <div class="hero-stat">
+                            <span class="hero-stat-number">2,500+</span>
+                            <span class="hero-stat-label">Active Students</span>
+                        </div>
+                        <div class="hero-stat">
+                            <span class="hero-stat-number">98%</span>
+                            <span class="hero-stat-label">College Acceptance</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== TRUST INDICATORS ==================== -->
+    <section class="trust-section">
+        <div class="container">
+            <div class="trust-title">Trusted & Accredited By</div>
+            <div class="trust-logos">
+                <div class="trust-badge">
+                    <i class="bi bi-shield-check"></i> ISO 9001 Certified
+                </div>
+                <div class="trust-badge">
+                    <i class="bi bi-patch-check-fill"></i> NEASC Accredited
+                </div>
+                <div class="trust-badge">
+                    <i class="bi bi-star-fill"></i> IB World School
+                </div>
+                <div class="trust-badge">
+                    <i class="bi bi-award-fill"></i> STEM Certified
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FEATURES SECTION ==================== -->
+    <section class="features-section" id="features">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Our Advantages</span>
+                <h2 class="section-title">Why Choose Excellence Academy</h2>
+                <p class="section-subtitle">Delivering exceptional education through innovative methods and dedicated expertise</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="bi bi-trophy-fill"></i>
+                        </div>
+                        <h3 class="feature-title">Academic Excellence</h3>
+                        <p class="feature-description">
+                            Our rigorous curriculum combined with personalized attention ensures every student 
+                            reaches their full academic potential and achieves remarkable results.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="bi bi-people-fill"></i>
+                        </div>
+                        <h3 class="feature-title">Expert Faculty</h3>
+                        <p class="feature-description">
+                            Learn from passionate educators with advanced degrees and years of experience 
+                            who are committed to inspiring and mentoring future leaders.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="bi bi-laptop-fill"></i>
+                        </div>
+                        <h3 class="feature-title">Modern Facilities</h3>
+                        <p class="feature-description">
+                            State-of-the-art classrooms, advanced laboratories, and cutting-edge technology 
+                            provide an optimal learning environment for 21st-century education.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="bi bi-globe-americas"></i>
+                        </div>
+                        <h3 class="feature-title">Global Perspective</h3>
+                        <p class="feature-description">
+                            International exchange programs and multicultural curriculum prepare students 
+                            to thrive in our interconnected global community.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="bi bi-heart-fill"></i>
+                        </div>
+                        <h3 class="feature-title">Character Development</h3>
+                        <p class="feature-description">
+                            We emphasize ethics, leadership, and social responsibility to develop 
+                            well-rounded individuals who contribute positively to society.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="bi bi-star-fill"></i>
+                        </div>
+                        <h3 class="feature-title">Extracurricular Activities</h3>
+                        <p class="feature-description">
+                            Diverse programs in sports, arts, music, and clubs allow students to 
+                            discover passions and develop talents beyond the classroom.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== ABOUT SECTION ==================== -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&h=600&fit=crop" alt="About Excellence Academy - Modern campus facilities">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="about-content">
+                        <span class="section-badge">About Us</span>
+                        <h2 class="section-title">Building Tomorrow's Leaders Today</h2>
+                        <p>
+                            For over three decades, Excellence Academy has been at the forefront of educational 
+                            innovation. We believe that every student possesses unique talents and abilities that, 
+                            when properly nurtured, can transform not just individual lives but entire communities.
+                        </p>
+                        <p>
+                            Our holistic approach combines rigorous academics with character education, creative 
+                            expression, and physical wellness. We prepare students not just for college, but for life—
+                            instilling the critical thinking skills, emotional intelligence, and global awareness 
+                            needed to succeed in an increasingly complex world.
+                        </p>
+                        <div class="about-stats">
+                            <div class="stat-item">
+                                <span class="stat-number">30+</span>
+                                <span class="stat-label">Years Legacy</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">2,500+</span>
+                                <span class="stat-label">Students</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">98%</span>
+                                <span class="stat-label">College Acceptance</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">150+</span>
+                                <span class="stat-label">Expert Faculty</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== PROGRAMS SECTION ==================== -->
+    <section class="programs-section" id="programs">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Academic Programs</span>
+                <h2 class="section-title">Our Academic Programs</h2>
+                <p class="section-subtitle">Comprehensive education pathways designed for every stage of development</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="program-card">
+                        <div class="program-image">
+                            <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&h=600&fit=crop" alt="Elementary Program - Young students learning">
+                            <span class="program-badge">Ages 5-11</span>
+                        </div>
+                        <div class="program-content">
+                            <h3 class="program-title">Elementary Program</h3>
+                            <p class="program-description">
+                                Foundation years focusing on literacy, numeracy, and social-emotional learning 
+                                through engaging, hands-on activities that spark curiosity and love for learning.
+                            </p>
+                            <div class="program-meta">
+                                <div class="meta-item">
+                                    <i class="bi bi-clock-fill"></i>
+                                    <span>Full Day</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="bi bi-calendar-fill"></i>
+                                    <span>Year Round</span>
+                                </div>
+                            </div>
+                            <button class="btn-learn-more">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="program-card">
+                        <div class="program-image">
+                            <img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=800&h=600&fit=crop" alt="Middle School Program - Students collaborating">
+                            <span class="program-badge">Ages 11-14</span>
+                        </div>
+                        <div class="program-content">
+                            <h3 class="program-title">Middle School Program</h3>
+                            <p class="program-description">
+                                Transitional years emphasizing critical thinking, independent learning, and 
+                                exploration of diverse subjects to help students discover their passions.
+                            </p>
+                            <div class="program-meta">
+                                <div class="meta-item">
+                                    <i class="bi bi-clock-fill"></i>
+                                    <span>Full Day</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="bi bi-calendar-fill"></i>
+                                    <span>Year Round</span>
+                                </div>
+                            </div>
+                            <button class="btn-learn-more">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="program-card">
+                        <div class="program-image">
+                            <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&h=600&fit=crop" alt="High School Program - Advanced learning">
+                            <span class="program-badge">Ages 14-18</span>
+                        </div>
+                        <div class="program-content">
+                            <h3 class="program-title">High School Program</h3>
+                            <p class="program-description">
+                                Advanced curriculum with AP courses, college prep, and specialized tracks 
+                                preparing students for higher education and future careers.
+                            </p>
+                            <div class="program-meta">
+                                <div class="meta-item">
+                                    <i class="bi bi-clock-fill"></i>
+                                    <span>Full Day</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="bi bi-calendar-fill"></i>
+                                    <span>Year Round</span>
+                                </div>
+                            </div>
+                            <button class="btn-learn-more">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== TESTIMONIALS SECTION ==================== -->
+    <section class="testimonials-section" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Testimonials</span>
+                <h2 class="section-title">What Parents & Students Say</h2>
+                <p class="section-subtitle">Real experiences from our community members</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="testimonial-card">
+                        <i class="bi bi-quote quote-icon"></i>
+                        <p class="testimonial-text">
+                            "Excellence Academy transformed my daughter's approach to learning. The teachers 
+                            genuinely care about each child's progress and the facilities are outstanding. 
+                            We couldn't be happier with our decision to enroll here."
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="author-image">
+                                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop" alt="Sarah Johnson">
+                            </div>
+                            <div class="author-info">
+                                <h5>Sarah Johnson</h5>
+                                <p>Parent of Grade 5 Student</p>
+                                <div class="rating">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="testimonial-card">
+                        <i class="bi bi-quote quote-icon"></i>
+                        <p class="testimonial-text">
+                            "As a student here, I've had incredible opportunities to explore my interests 
+                            in robotics and debate. The supportive environment and amazing teachers helped 
+                            me get accepted to my dream university with a scholarship."
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="author-image">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop" alt="Michael Chen">
+                            </div>
+                            <div class="author-info">
+                                <h5>Michael Chen</h5>
+                                <p>Grade 12 Graduate</p>
+                                <div class="rating">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="testimonial-card">
+                        <i class="bi bi-quote quote-icon"></i>
+                        <p class="testimonial-text">
+                            "The holistic approach to education here is exceptional. My son not only excels 
+                            academically but has also developed strong leadership skills and confidence. 
+                            This school truly prepares children for life."
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="author-image">
+                                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop" alt="Emily Rodriguez">
+                            </div>
+                            <div class="author-info">
+                                <h5>Emily Rodriguez</h5>
+                                <p>Parent of Grade 8 Student</p>
+                                <div class="rating">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CALL TO ACTION SECTION ==================== -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Ready to Join Our Community?</h2>
+                <p class="cta-description">
+                    Take the first step towards an exceptional education. Schedule a campus tour 
+                    or speak with our admissions team today.
+                </p>
+                <button class="btn btn-cta">Schedule Your Campus Tour</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <h4 class="footer-title">
+                        <i class="bi bi-mortarboard-fill"></i> Excellence Academy
+                    </h4>
+                    <p class="footer-description">
+                        Empowering minds and building futures since 1990. We are committed to 
+                        providing world-class education that prepares students for success in 
+                        a rapidly changing world.
+                    </p>
+                    <div class="social-links mt-3">
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <i class="bi bi-facebook"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <i class="bi bi-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="LinkedIn">
+                            <i class="bi bi-linkedin"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="YouTube">
+                            <i class="bi bi-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#programs">Programs</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="footer-title">Admissions</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Apply Now</a></li>
+                        <li><a href="#">Tuition & Fees</a></li>
+                        <li><a href="#">Financial Aid</a></li>
+                        <li><a href="#">Campus Tour</a></li>
+                        <li><a href="#">Virtual Tour</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="footer-title">Contact Info</h4>
+                    <ul class="footer-links">
+                        <li>
+                            <i class="bi bi-geo-alt-fill"></i> 
+                            123 Education Street<br>City, State 12345
+                        </li>
+                        <li>
+                            <i class="bi bi-telephone-fill"></i> 
+                            <a href="tel:+1234567890">+1 (234) 567-890</a>
+                        </li>
+                        <li>
+                            <i class="bi bi-envelope-fill"></i> 
+                            <a href="mailto:info@excellence-academy.edu">info@excellence-academy.edu</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Excellence Academy. All Rights Reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Accessibility</a>
+                    <a href="#">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==================== SCROLL TO TOP BUTTON ==================== -->
+    <button class="scroll-top" id="scrollTopBtn" aria-label="Scroll to top">
+        <i class="bi bi-arrow-up"></i>
+    </button>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll to top button functionality
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                scrollTopBtn.style.display = 'flex';
+            } else {
+                scrollTopBtn.style.display = 'none';
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Active navigation link highlighting
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-on-scroll');
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.feature-card, .program-card, .testimonial-card').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+
+</body>
+</html>
