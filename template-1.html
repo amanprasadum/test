@@ -1,0 +1,1995 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bright Future Academy - Inspiring Excellence in Education</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css" rel="stylesheet">
+    
+    <style>
+        /* ==================== ROOT VARIABLES ==================== */
+        :root {
+            --primary-color: #1A237E;
+            --secondary-color: #00BCD4;
+            --accent-color: #FF6F00;
+            --light-bg: #F5F7FA;
+            --dark-text: #1A237E;
+            --light-text: #5F6368;
+            --white: #FFFFFF;
+            --success-color: #4CAF50;
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* ==================== GLOBAL STYLES ==================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--dark-text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* ==================== NAVIGATION BAR ==================== */
+        .navbar {
+            background: var(--white);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            padding: 1.2rem 0;
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled {
+            padding: 0.8rem 0;
+            box-shadow: 0 6px 25px rgba(0,0,0,0.12);
+        }
+
+        .navbar-brand {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            letter-spacing: -0.5px;
+        }
+
+        .navbar-brand i {
+            font-size: 2.2rem;
+            color: var(--secondary-color);
+        }
+
+        .nav-link {
+            color: var(--dark-text);
+            font-weight: 600;
+            margin: 0 0.7rem;
+            position: relative;
+            transition: var(--transition);
+            padding: 0.5rem 0;
+        }
+
+        .nav-link:hover {
+            color: var(--secondary-color);
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--secondary-color);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::before {
+            width: 100%;
+        }
+
+        .btn-enroll {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: var(--white);
+            padding: 0.7rem 2rem;
+            border-radius: 30px;
+            border: none;
+            font-weight: 700;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(0, 188, 212, 0.3);
+        }
+
+        .btn-enroll:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 188, 212, 0.4);
+        }
+
+        /* ==================== HERO SECTION ==================== */
+        .hero-section {
+            background: linear-gradient(135deg, rgba(26, 35, 126, 0.93), rgba(0, 188, 212, 0.88)),
+                        url('https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1600&h=900&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 95vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            color: var(--white);
+        }
+
+        .hero-content {
+            z-index: 2;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .hero-title {
+            font-size: clamp(2.8rem, 6vw, 4.5rem);
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            letter-spacing: -1px;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            max-width: 90%;
+        }
+
+        .hero-buttons .btn {
+            padding: 1rem 2.8rem;
+            margin: 0.5rem;
+            font-weight: 700;
+            border-radius: 30px;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-hero-primary {
+            background: var(--accent-color);
+            color: var(--white);
+            border: none;
+            box-shadow: 0 5px 20px rgba(255, 111, 0, 0.4);
+        }
+
+        .btn-hero-primary:hover {
+            background: #E65100;
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(255, 111, 0, 0.5);
+        }
+
+        .btn-hero-outline {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-hero-outline:hover {
+            background: var(--white);
+            color: var(--primary-color);
+            transform: translateY(-4px);
+        }
+
+        /* ==================== FEATURES SECTION ==================== */
+        .features-section {
+            padding: 6rem 0;
+            background: var(--white);
+        }
+
+        .section-title {
+            font-size: clamp(2.2rem, 4.5vw, 3rem);
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+            letter-spacing: -0.5px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 0;
+            width: 80px;
+            height: 5px;
+            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+            border-radius: 3px;
+        }
+
+        .section-subtitle {
+            color: var(--light-text);
+            font-size: 1.2rem;
+            margin-bottom: 4rem;
+        }
+
+        .feature-card {
+            padding: 3rem 2.5rem;
+            border-radius: 20px;
+            background: var(--white);
+            border: 2px solid #F0F0F0;
+            transition: var(--transition);
+            height: 100%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            transition: var(--transition);
+            z-index: 0;
+        }
+
+        .feature-card:hover::before {
+            height: 100%;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 50px rgba(0, 188, 212, 0.2);
+            border-color: var(--secondary-color);
+        }
+
+        .feature-card:hover .feature-icon,
+        .feature-card:hover .feature-title,
+        .feature-card:hover .feature-description {
+            color: var(--white);
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-icon {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.8rem;
+            font-size: 2.5rem;
+            color: var(--white);
+            position: relative;
+            z-index: 1;
+            transition: var(--transition);
+        }
+
+        .feature-card:hover .feature-icon {
+            background: var(--white);
+            color: var(--secondary-color);
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            color: var(--primary-color);
+            position: relative;
+            z-index: 1;
+            transition: var(--transition);
+        }
+
+        .feature-description {
+            color: var(--light-text);
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+            transition: var(--transition);
+        }
+
+        /* ==================== ABOUT SECTION ==================== */
+        .about-section {
+            padding: 6rem 0;
+            background: var(--light-bg);
+        }
+
+        .about-image-wrapper {
+            position: relative;
+        }
+
+        .about-image {
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 25px 70px rgba(0,0,0,0.2);
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .about-image:hover img {
+            transform: scale(1.08);
+        }
+
+        .about-badge {
+            position: absolute;
+            bottom: -30px;
+            right: 30px;
+            background: var(--accent-color);
+            color: var(--white);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(255, 111, 0, 0.3);
+            text-align: center;
+        }
+
+        .about-badge-number {
+            font-size: 3rem;
+            font-weight: 900;
+            display: block;
+            line-height: 1;
+        }
+
+        .about-badge-text {
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .about-content {
+            padding: 2rem 0;
+        }
+
+        .about-content p {
+            font-size: 1.05rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-features {
+            margin-top: 2rem;
+        }
+
+        .about-feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-feature-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .about-feature-content h5 {
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .about-feature-content p {
+            color: var(--light-text);
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* ==================== PROGRAMS SECTION ==================== */
+        .programs-section {
+            padding: 6rem 0;
+            background: var(--white);
+        }
+
+        .program-card {
+            border-radius: 20px;
+            overflow: hidden;
+            background: var(--white);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            transition: var(--transition);
+            height: 100%;
+            border: 2px solid transparent;
+        }
+
+        .program-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            border-color: var(--secondary-color);
+        }
+
+        .program-image {
+            width: 100%;
+            height: 280px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .program-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .program-card:hover .program-image img {
+            transform: scale(1.15) rotate(2deg);
+        }
+
+        .program-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(26, 35, 126, 0.7), rgba(0, 188, 212, 0.7));
+            opacity: 0;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .program-card:hover .program-overlay {
+            opacity: 1;
+        }
+
+        .program-badge {
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            background: var(--accent-color);
+            color: var(--white);
+            padding: 0.6rem 1.3rem;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            box-shadow: 0 5px 15px rgba(255, 111, 0, 0.4);
+        }
+
+        .program-content {
+            padding: 2.5rem;
+        }
+
+        .program-title {
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 1.2rem;
+        }
+
+        .program-description {
+            color: var(--light-text);
+            margin-bottom: 2rem;
+            line-height: 1.9;
+        }
+
+        .program-meta {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            color: var(--light-text);
+            font-weight: 600;
+        }
+
+        .meta-item i {
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+        }
+
+        .btn-program {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: var(--white);
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-program:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 188, 212, 0.3);
+        }
+
+        /* ==================== GALLERY SECTION ==================== */
+        .gallery-section {
+            padding: 6rem 0;
+            background: var(--light-bg);
+        }
+
+        .gallery-item {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 45px rgba(0,0,0,0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(26, 35, 126, 0.8), rgba(0, 188, 212, 0.8));
+            opacity: 0;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: var(--white);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .gallery-description {
+            font-size: 1rem;
+        }
+
+        /* ==================== TESTIMONIALS SECTION ==================== */
+        .testimonials-section {
+            padding: 6rem 0;
+            background: var(--white);
+        }
+
+        .testimonial-card {
+            background: var(--light-bg);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+            height: 100%;
+            position: relative;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 45px rgba(0,0,0,0.12);
+            border-color: var(--secondary-color);
+        }
+
+        .quote-icon {
+            font-size: 4rem;
+            color: var(--secondary-color);
+            opacity: 0.15;
+            position: absolute;
+            top: 30px;
+            right: 30px;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: var(--dark-text);
+            margin-bottom: 2.5rem;
+            line-height: 1.9;
+            position: relative;
+            z-index: 1;
+            font-size: 1.05rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1.3rem;
+        }
+
+        .author-image {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid var(--secondary-color);
+            box-shadow: 0 5px 20px rgba(0, 188, 212, 0.3);
+        }
+
+        .author-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info h5 {
+            margin: 0;
+            color: var(--primary-color);
+            font-weight: 800;
+            font-size: 1.1rem;
+        }
+
+        .author-info p {
+            margin: 0.3rem 0;
+            color: var(--light-text);
+            font-size: 0.95rem;
+        }
+
+        .rating {
+            color: var(--accent-color);
+            margin-top: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* ==================== FAQ SECTION ==================== */
+        .faq-section {
+            padding: 6rem 0;
+            background: var(--light-bg);
+        }
+
+        .accordion-item {
+            border: none;
+            margin-bottom: 1.5rem;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .accordion-button {
+            background: var(--white);
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 1.1rem;
+            padding: 1.5rem 2rem;
+            border: none;
+            box-shadow: none;
+        }
+
+        .accordion-button:not(.collapsed) {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: var(--white);
+            box-shadow: 0 5px 20px rgba(0, 188, 212, 0.3);
+        }
+
+        .accordion-button:focus {
+            box-shadow: none;
+            border: none;
+        }
+
+        .accordion-button::after {
+            background-image: none;
+            content: '\f282';
+            font-family: 'bootstrap-icons';
+            font-size: 1.3rem;
+        }
+
+        .accordion-button:not(.collapsed)::after {
+            content: '\f286';
+        }
+
+        .accordion-body {
+            padding: 2rem;
+            background: var(--white);
+            color: var(--light-text);
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        /* ==================== CONTACT SECTION ==================== */
+        .contact-section {
+            padding: 6rem 0;
+            background: var(--white);
+        }
+
+        .contact-info-card {
+            background: var(--light-bg);
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: var(--transition);
+            height: 100%;
+            border: 2px solid transparent;
+        }
+
+        .contact-info-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--secondary-color);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        .contact-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: var(--white);
+        }
+
+        .contact-info-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .contact-info-text {
+            color: var(--light-text);
+            font-size: 1.05rem;
+        }
+
+        .contact-form {
+            background: var(--light-bg);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+
+        .form-label {
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.7rem;
+        }
+
+        .form-control, .form-select {
+            border: 2px solid #E0E0E0;
+            border-radius: 12px;
+            padding: 0.9rem 1.2rem;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 0.2rem rgba(0, 188, 212, 0.15);
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 1.2rem;
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: var(--white);
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            margin-top: 1rem;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 188, 212, 0.4);
+        }
+
+        /* ==================== CTA SECTION ==================== */
+        .cta-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            bottom: -50%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-title {
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.5px;
+        }
+
+        .cta-description {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            opacity: 0.95;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-cta {
+            padding: 1.2rem 3.5rem;
+            background: var(--accent-color);
+            color: var(--white);
+            border: none;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 1.15rem;
+            transition: var(--transition);
+            box-shadow: 0 10px 30px rgba(255, 111, 0, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-cta:hover {
+            background: #E65100;
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px rgba(255, 111, 0, 0.5);
+        }
+
+        /* ==================== FOOTER ==================== */
+        .footer {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 5rem 0 2rem;
+        }
+
+        .footer-brand {
+            font-size: 1.8rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .footer-brand i {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+        }
+
+        .footer-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 1.8rem;
+            color: var(--white);
+        }
+
+        .footer-text {
+            color: rgba(255,255,255,0.8);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary-color);
+            padding-left: 8px;
+        }
+
+        .footer-links a i {
+            color: var(--secondary-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            transition: var(--transition);
+            font-size: 1.3rem;
+        }
+
+        .social-link:hover {
+            background: var(--secondary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 188, 212, 0.4);
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 0.9rem 1.3rem;
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 30px;
+            background: rgba(255,255,255,0.1);
+            color: var(--white);
+            font-size: 1rem;
+        }
+
+        .newsletter-input::placeholder {
+            color: rgba(255,255,255,0.6);
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            background: rgba(255,255,255,0.15);
+        }
+
+        .btn-newsletter {
+            padding: 0.9rem 2rem;
+            background: var(--accent-color);
+            color: var(--white);
+            border: none;
+            border-radius: 30px;
+            font-weight: 700;
+            transition: var(--transition);
+        }
+
+        .btn-newsletter:hover {
+            background: #E65100;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 4rem;
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* ==================== STATS COUNTER SECTION ==================== */
+        .stats-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: var(--white);
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .stat-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-color);
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 900;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ==================== SCROLL TO TOP BUTTON ==================== */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: var(--white);
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(0, 188, 212, 0.4);
+            transition: var(--transition);
+            z-index: 1000;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0, 188, 212, 0.5);
+        }
+
+        .scroll-top.show {
+            display: flex;
+        }
+
+        /* ==================== RESPONSIVE STYLES ==================== */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .about-badge {
+                bottom: 10px;
+                right: 10px;
+                padding: 1.5rem;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .btn-newsletter {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== NAVIGATION ==================== -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-mortarboard-fill"></i>
+                Bright Future Academy
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#programs">Programs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+                <button class="btn btn-enroll ms-3">Enroll Now</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <section class="hero-section" id="home">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <div class="hero-content">
+                        <div class="hero-badge">
+                            <i class="bi bi-award-fill me-2"></i>Award-Winning Education Since 1985
+                        </div>
+                        <h1 class="hero-title">Empowering Tomorrow's Leaders Today</h1>
+                        <p class="hero-subtitle">
+                            Join our community of excellence where innovation meets tradition. 
+                            Discover personalized learning experiences designed to unlock your child's full potential.
+                        </p>
+                        <div class="hero-buttons">
+                            <button class="btn btn-hero-primary">Start Your Journey</button>
+                            <button class="btn btn-hero-outline">Take a Virtual Tour</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FEATURES SECTION ==================== -->
+    <section class="features-section" id="features">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Why Choose Us</h2>
+                <p class="section-subtitle">Experience excellence through our distinctive approach to education</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="bi bi-lightbulb-fill"></i>
+                        </div>
+                        <h3 class="feature-title">Innovative Learning</h3>
+                        <p class="feature-description">
+                            Cutting-edge curriculum combining traditional values with modern technology 
+                            to prepare students for the future.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="bi bi-people-fill"></i>
+                        </div>
+                        <h3 class="feature-title">Expert Faculty</h3>
+                        <p class="feature-description">
+                            Highly qualified and passionate educators dedicated to nurturing 
+                            each student's unique talents and abilities.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="bi bi-trophy-fill"></i>
+                        </div>
+                        <h3 class="feature-title">Proven Excellence</h3>
+                        <p class="feature-description">
+                            Track record of academic achievements and student success in national 
+                            and international competitions.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="bi bi-globe"></i>
+                        </div>
+                        <h3 class="feature-title">Global Perspective</h3>
+                        <p class="feature-description">
+                            International partnerships and exchange programs providing students 
+                            with a worldclass educational experience.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="bi bi-heart-fill"></i>
+                        </div>
+                        <h3 class="feature-title">Holistic Development</h3>
+                        <p class="feature-description">
+                            Focus on emotional intelligence, character building, and life skills 
+                            alongside academic excellence.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="bi bi-stars"></i>
+                        </div>
+                        <h3 class="feature-title">Modern Facilities</h3>
+                        <p class="feature-description">
+                            State-of-the-art infrastructure including smart classrooms, labs, 
+                            sports facilities, and creative spaces.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== STATS SECTION ==================== -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="bi bi-book-fill"></i>
+                        </div>
+                        <span class="stat-number">5000+</span>
+                        <span class="stat-label">Students Enrolled</span>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="bi bi-person-badge-fill"></i>
+                        </div>
+                        <span class="stat-number">250+</span>
+                        <span class="stat-label">Expert Teachers</span>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="bi bi-award-fill"></i>
+                        </div>
+                        <span class="stat-number">98%</span>
+                        <span class="stat-label">Success Rate</span>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="bi bi-emoji-smile-fill"></i>
+                        </div>
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Parent Satisfaction</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== ABOUT SECTION ==================== -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <div class="about-image-wrapper">
+                        <div class="about-image">
+                            <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&h=600&fit=crop" alt="About Us">
+                        </div>
+                        <div class="about-badge">
+                            <span class="about-badge-number">40+</span>
+                            <span class="about-badge-text">Years Excellence</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="about-content">
+                        <h2 class="section-title">About Our Academy</h2>
+                        <p class="section-subtitle">Building Futures Through Quality Education</p>
+                        <p>
+                            For over four decades, Bright Future Academy has been a beacon of educational 
+                            excellence, shaping young minds and preparing them for success in an ever-changing world. 
+                            Our commitment to holistic development ensures every student reaches their full potential.
+                        </p>
+                        <p>
+                            We blend time-tested teaching methodologies with innovative approaches, creating 
+                            a dynamic learning environment where curiosity thrives and excellence is the standard.
+                        </p>
+                        <div class="about-features">
+                            <div class="about-feature-item">
+                                <div class="about-feature-icon">
+                                    <i class="bi bi-check2-circle"></i>
+                                </div>
+                                <div class="about-feature-content">
+                                    <h5>Personalized Attention</h5>
+                                    <p>Small class sizes ensuring individual focus on each student's growth</p>
+                                </div>
+                            </div>
+                            <div class="about-feature-item">
+                                <div class="about-feature-icon">
+                                    <i class="bi bi-check2-circle"></i>
+                                </div>
+                                <div class="about-feature-content">
+                                    <h5>Advanced Technology</h5>
+                                    <p>Smart classrooms and digital learning resources for enhanced education</p>
+                                </div>
+                            </div>
+                            <div class="about-feature-item">
+                                <div class="about-feature-icon">
+                                    <i class="bi bi-check2-circle"></i>
+                                </div>
+                                <div class="about-feature-content">
+                                    <h5>Character Development</h5>
+                                    <p>Values-based education fostering integrity, empathy, and leadership</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== PROGRAMS SECTION ==================== -->
+    <section class="programs-section" id="programs">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Our Programs</h2>
+                <p class="section-subtitle">Comprehensive educational pathways for every stage of learning</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="program-card">
+                        <div class="program-image">
+                            <img src="https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=600&h=400&fit=crop" alt="Primary Education">
+                            <div class="program-badge">Ages 5-10</div>
+                            <div class="program-overlay">
+                                <i class="bi bi-arrow-right-circle" style="font-size: 3rem;"></i>
+                            </div>
+                        </div>
+                        <div class="program-content">
+                            <h3 class="program-title">Primary Education</h3>
+                            <p class="program-description">
+                                Building strong foundations through interactive learning, creative exploration, 
+                                and nurturing natural curiosity in a safe environment.
+                            </p>
+                            <div class="program-meta">
+                                <div class="meta-item">
+                                    <i class="bi bi-clock-fill"></i>
+                                    <span>Full Day</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="bi bi-calendar-check-fill"></i>
+                                    <span>5 Days/Week</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-program">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="program-card">
+                        <div class="program-image">
+                            <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?w=600&h=400&fit=crop" alt="Middle School">
+                            <div class="program-badge">Ages 11-14</div>
+                            <div class="program-overlay">
+                                <i class="bi bi-arrow-right-circle" style="font-size: 3rem;"></i>
+                            </div>
+                        </div>
+                        <div class="program-content">
+                            <h3 class="program-title">Middle School</h3>
+                            <p class="program-description">
+                                Developing critical thinking, independence, and academic skills while 
+                                supporting students through their transformative years.
+                            </p>
+                            <div class="program-meta">
+                                <div class="meta-item">
+                                    <i class="bi bi-clock-fill"></i>
+                                    <span>Full Day</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="bi bi-calendar-check-fill"></i>
+                                    <span>5 Days/Week</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-program">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="program-card">
+                        <div class="program-image">
+                            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=600&h=400&fit=crop" alt="High School">
+                            <div class="program-badge">Ages 15-18</div>
+                            <div class="program-overlay">
+                                <i class="bi bi-arrow-right-circle" style="font-size: 3rem;"></i>
+                            </div>
+                        </div>
+                        <div class="program-content">
+                            <h3 class="program-title">High School</h3>
+                            <p class="program-description">
+                                Preparing for college and career success with advanced academics, leadership 
+                                opportunities, and comprehensive guidance.
+                            </p>
+                            <div class="program-meta">
+                                <div class="meta-item">
+                                    <i class="bi bi-clock-fill"></i>
+                                    <span>Full Day</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="bi bi-calendar-check-fill"></i>
+                                    <span>5 Days/Week</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-program">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== GALLERY SECTION ==================== -->
+    <section class="gallery-section" id="gallery">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Campus Life</h2>
+                <p class="section-subtitle">Explore our vibrant campus and student activities</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=600&h=400&fit=crop" alt="Science Lab">
+                        <div class="gallery-overlay">
+                            <h3 class="gallery-title">Science Laboratory</h3>
+                            <p class="gallery-description">State-of-the-art facilities for hands-on learning</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&h=400&fit=crop" alt="Library">
+                        <div class="gallery-overlay">
+                            <h3 class="gallery-title">Modern Library</h3>
+                            <p class="gallery-description">Extensive collection and quiet study spaces</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&h=400&fit=crop" alt="Computer Lab">
+                        <div class="gallery-overlay">
+                            <h3 class="gallery-title">Computer Lab</h3>
+                            <p class="gallery-description">Latest technology for digital literacy</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=600&h=400&fit=crop" alt="Sports">
+                        <div class="gallery-overlay">
+                            <h3 class="gallery-title">Sports Complex</h3>
+                            <p class="gallery-description">Professional facilities for all sports</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=600&h=400&fit=crop" alt="Music Room">
+                        <div class="gallery-overlay">
+                            <h3 class="gallery-title">Music & Arts</h3>
+                            <p class="gallery-description">Creative spaces for artistic expression</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?w=600&h=400&fit=crop" alt="Classroom">
+                        <div class="gallery-overlay">
+                            <h3 class="gallery-title">Smart Classrooms</h3>
+                            <p class="gallery-description">Interactive digital learning environment</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== TESTIMONIALS SECTION ==================== -->
+    <section class="testimonials-section" id="testimonials">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">What Parents Say</h2>
+                <p class="section-subtitle">Hear from our satisfied parent community</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="testimonial-card">
+                        <i class="bi bi-quote quote-icon"></i>
+                        <p class="testimonial-text">
+                            "Bright Future Academy transformed my daughter's learning experience. The teachers 
+                            are exceptional, and the holistic approach to education has helped her thrive both 
+                            academically and personally."
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="author-image">
+                                <img src="https://i.pravatar.cc/150?img=1" alt="Sarah Johnson">
+                            </div>
+                            <div class="author-info">
+                                <h5>Sarah Johnson</h5>
+                                <p>Parent of Grade 8 Student</p>
+                                <div class="rating">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="testimonial-card">
+                        <i class="bi bi-quote quote-icon"></i>
+                        <p class="testimonial-text">
+                            "The faculty's dedication and the school's focus on character development alongside 
+                            academics is truly remarkable. My son has grown into a confident, compassionate young man."
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="author-image">
+                                <img src="https://i.pravatar.cc/150?img=33" alt="Michael Chen">
+                            </div>
+                            <div class="author-info">
+                                <h5>Michael Chen</h5>
+                                <p>Parent of Grade 11 Student</p>
+                                <div class="rating">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="testimonial-card">
+                        <i class="bi bi-quote quote-icon"></i>
+                        <p class="testimonial-text">
+                            "Best decision we ever made! The innovative teaching methods, modern facilities, and 
+                            caring environment have exceeded our expectations. Highly recommend to any parent."
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="author-image">
+                                <img src="https://i.pravatar.cc/150?img=5" alt="Emily Rodriguez">
+                            </div>
+                            <div class="author-info">
+                                <h5>Emily Rodriguez</h5>
+                                <p>Parent of Grade 5 Student</p>
+                                <div class="rating">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FAQ SECTION ==================== -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-subtitle">Find answers to common questions about our academy</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                    What is the admission process?
+                                </button>
+                            </h2>
+                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Our admission process begins with an online application form, followed by an entrance 
+                                    assessment and parent-student interview. We evaluate academic records, extracurricular 
+                                    activities, and overall fit with our school community. Applications are reviewed on a 
+                                    rolling basis, and we encourage early submission.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                    What is the student-teacher ratio?
+                                </button>
+                            </h2>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    We maintain a low student-teacher ratio of 15:1 to ensure personalized attention for 
+                                    each student. This allows our teachers to understand individual learning styles, provide 
+                                    targeted support, and foster meaningful relationships with students and families.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                    Are there extracurricular activities?
+                                </button>
+                            </h2>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Yes! We offer over 50 extracurricular activities including sports teams, music ensembles, 
+                                    debate club, robotics, drama, art classes, and community service programs. Students are 
+                                    encouraged to explore their interests and develop well-rounded skills beyond academics.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                    What are the school timings?
+                                </button>
+                            </h2>
+                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    School hours are from 8:00 AM to 3:30 PM, Monday through Friday. We also offer extended 
+                                    care programs from 7:00 AM to 6:00 PM for working parents. After-school enrichment 
+                                    programs and sports activities are available until 5:30 PM.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                                    Do you offer financial aid or scholarships?
+                                </button>
+                            </h2>
+                            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Yes, we offer need-based financial aid and merit scholarships to qualifying families. 
+                                    Approximately 30% of our students receive some form of financial assistance. We believe 
+                                    that financial constraints should not prevent deserving students from accessing quality education.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CONTACT SECTION ==================== -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-subtitle">We'd love to hear from you! Reach out for inquiries or to schedule a visit</p>
+            </div>
+            <div class="row g-4 mb-5">
+                <div class="col-lg-4 col-md-6">
+                    <div class="contact-info-card">
+                        <div class="contact-icon">
+                            <i class="bi bi-geo-alt-fill"></i>
+                        </div>
+                        <h4 class="contact-info-title">Visit Us</h4>
+                        <p class="contact-info-text">
+                            123 Education Street<br>
+                            Knowledge City, ST 12345
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="contact-info-card">
+                        <div class="contact-icon">
+                            <i class="bi bi-telephone-fill"></i>
+                        </div>
+                        <h4 class="contact-info-title">Call Us</h4>
+                        <p class="contact-info-text">
+                            +1 (555) 123-4567<br>
+                            +1 (555) 987-6543
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="contact-info-card">
+                        <div class="contact-icon">
+                            <i class="bi bi-envelope-fill"></i>
+                        </div>
+                        <h4 class="contact-info-title">Email Us</h4>
+                        <p class="contact-info-text">
+                            info@brightfuture.edu<br>
+                            admissions@brightfuture.edu
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="contact-form">
+                        <form>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Full Name</label>
+                                    <input type="text" class="form-control" placeholder="Your Name" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" placeholder="your@email.com" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Phone Number</label>
+                                    <input type="tel" class="form-control" placeholder="+1 (555) 000-0000" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Inquiry Type</label>
+                                    <select class="form-select" required>
+                                        <option value="">Select Type</option>
+                                        <option>Admission Inquiry</option>
+                                        <option>General Information</option>
+                                        <option>Schedule a Visit</option>
+                                        <option>Other</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Message</label>
+                                    <textarea class="form-control" rows="5" placeholder="Tell us how we can help you..." required></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-submit">Send Message</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CTA SECTION ==================== -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Ready to Join Our Community?</h2>
+                <p class="cta-description">
+                    Take the first step towards an exceptional education. Schedule a campus tour 
+                    and discover why families choose Bright Future Academy.
+                </p>
+                <button class="btn btn-cta">Schedule a Tour Today</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-brand">
+                        <i class="bi bi-mortarboard-fill"></i>
+                        Bright Future Academy
+                    </div>
+                    <p class="footer-text">
+                        Empowering students to reach their full potential through excellence in education, 
+                        character development, and community engagement since 1985.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" class="social-link"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home"><i class="bi bi-chevron-right"></i> Home</a></li>
+                        <li><a href="#about"><i class="bi bi-chevron-right"></i> About Us</a></li>
+                        <li><a href="#programs"><i class="bi bi-chevron-right"></i> Programs</a></li>
+                        <li><a href="#gallery"><i class="bi bi-chevron-right"></i> Gallery</a></li>
+                        <li><a href="#contact"><i class="bi bi-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="footer-title">Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="bi bi-chevron-right"></i> Admissions</a></li>
+                        <li><a href="#"><i class="bi bi-chevron-right"></i> Academic Calendar</a></li>
+                        <li><a href="#"><i class="bi bi-chevron-right"></i> Parent Portal</a></li>
+                        <li><a href="#"><i class="bi bi-chevron-right"></i> Career Opportunities</a></li>
+                        <li><a href="#"><i class="bi bi-chevron-right"></i> Blog</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="footer-title">Newsletter</h4>
+                    <p class="footer-text">Subscribe to receive updates and news from our academy.</p>
+                    <form class="newsletter-form">
+                        <input type="email" class="newsletter-input" placeholder="Your email address" required>
+                        <button type="submit" class="btn btn-newsletter">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Bright Future Academy. All Rights Reserved. | <a href="#" style="color: var(--secondary-color); text-decoration: none;">Privacy Policy</a> | <a href="#" style="color: var(--secondary-color); text-decoration: none;">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==================== SCROLL TO TOP BUTTON ==================== -->
+    <div class="scroll-top" id="scrollTop">
+        <i class="bi bi-arrow-up"></i>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll to top button
+        const scrollTopBtn = document.getElementById('scrollTop');
+        
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                scrollTopBtn.classList.add('show');
+            } else {
+                scrollTopBtn.classList.remove('show');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Smooth scrolling for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Form submission handler
+        document.querySelector('.contact-form form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
+
+        // Newsletter form handler
+        document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for subscribing to our newsletter!');
+            this.reset();
+        });
+
+        // Animate stats on scroll (simple version)
+        const animateStats = () => {
+            const stats = document.querySelectorAll('.stat-number');
+            stats.forEach(stat => {
+                const target = stat.textContent;
+                const isPercentage = target.includes('%');
+                const numericValue = parseInt(target.replace(/[^0-9]/g, ''));
+                
+                let current = 0;
+                const increment = numericValue / 50;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= numericValue) {
+                        stat.textContent = target;
+                        clearInterval(timer);
+                    } else {
+                        stat.textContent = Math.floor(current) + (isPercentage ? '%' : '+');
+                    }
+                }, 30);
+            });
+        };
+
+        // Trigger stats animation when section is visible
+        const statsSection = document.querySelector('.stats-section');
+        let statsAnimated = false;
+
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !statsAnimated) {
+                    animateStats();
+                    statsAnimated = true;
+                }
+            });
+        });
+
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+    </script>
+</body>
+</html>
