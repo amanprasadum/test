@@ -1,0 +1,1748 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise Product Slider - CodeXaman</title>
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ========== ENTERPRISE COLOR VARIABLES ========== */
+        :root {
+            --primary-enterprise: #1a5f7a;
+            --secondary-enterprise: #159895;
+            --accent-gold: #d4af37;
+            --accent-blue: #0066cc;
+            --neutral-100: #f8f9fa;
+            --neutral-200: #e9ecef;
+            --neutral-300: #dee2e6;
+            --neutral-700: #495057;
+            --neutral-800: #343a40;
+            --neutral-900: #212529;
+            --white: #ffffff;
+            --success: #28a745;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+            --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.15);
+            --transition-smooth: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            --border-radius: 16px;
+        }
+
+        /* ========== GLOBAL RESET ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #ffffff 100%);
+            color: var(--neutral-800);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* ========== MAIN SECTION ========== */
+        .slider-section {
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slider-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 500px;
+            background: linear-gradient(135deg, rgba(26, 95, 122, 0.04) 0%, rgba(21, 152, 149, 0.02) 100%);
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ========== SECTION HEADER ========== */
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .header-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            background: linear-gradient(135deg, var(--primary-enterprise), var(--secondary-enterprise));
+            color: var(--white);
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-radius: 50px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--neutral-900);
+            margin-bottom: 24px;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: var(--neutral-700);
+            max-width: 750px;
+            margin: 0 auto 32px;
+            line-height: 1.8;
+        }
+
+        .title-divider {
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+            margin: 0 auto;
+            border-radius: 10px;
+        }
+
+        /* ========== STATS BAR ========== */
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 32px;
+            margin-bottom: 80px;
+            padding: 40px;
+            background: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--neutral-200);
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        .stat-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1px;
+            height: 60%;
+            background: var(--neutral-300);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-enterprise);
+            line-height: 1;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--neutral-700);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ========== SWIPER CONTAINER ========== */
+        .product-slider-container {
+            position: relative;
+            padding: 60px 0;
+        }
+
+        .swiper {
+            width: 100%;
+            padding: 40px 0 80px;
+        }
+
+        .swiper-slide {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--neutral-200);
+            transition: var(--transition-smooth);
+        }
+
+        .swiper-slide-active {
+            box-shadow: var(--shadow-xl);
+        }
+
+        /* ========== PRODUCT CARD ========== */
+        .product-card-slider {
+            display: grid;
+            grid-template-columns: 45% 55%;
+            min-height: 500px;
+            position: relative;
+        }
+
+        .card-image {
+            position: relative;
+            overflow: hidden;
+            background: var(--neutral-100);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-smooth);
+        }
+
+        .swiper-slide:hover .product-image {
+            transform: scale(1.1);
+        }
+
+        .image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.3) 100%);
+            opacity: 0;
+            transition: var(--transition-smooth);
+        }
+
+        .swiper-slide:hover .image-overlay {
+            opacity: 1;
+        }
+
+        /* ========== BADGES ========== */
+        .product-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-radius: 8px;
+            z-index: 10;
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .badge-certified {
+            background: rgba(40, 167, 69, 0.95);
+            color: var(--white);
+        }
+
+        .badge-premium {
+            background: rgba(212, 175, 55, 0.95);
+            color: var(--neutral-900);
+        }
+
+        .badge-enterprise {
+            background: rgba(26, 95, 122, 0.95);
+            color: var(--white);
+        }
+
+        .cert-badges {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .cert-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--primary-enterprise);
+            box-shadow: var(--shadow-md);
+            backdrop-filter: blur(10px);
+        }
+
+        /* ========== CARD CONTENT ========== */
+        .card-content {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-category {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--primary-enterprise);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+            padding: 6px 16px;
+            background: rgba(26, 95, 122, 0.08);
+            border-radius: 6px;
+            width: fit-content;
+        }
+
+        .product-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--neutral-900);
+            margin-bottom: 16px;
+            line-height: 1.3;
+        }
+
+        .product-description {
+            font-size: 1rem;
+            color: var(--neutral-700);
+            line-height: 1.8;
+            margin-bottom: 28px;
+        }
+
+        /* ========== INFO GRID ========== */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-bottom: 28px;
+            padding: 24px;
+            background: var(--neutral-100);
+            border-radius: 12px;
+            border: 1px solid var(--neutral-200);
+        }
+
+        .info-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .info-label {
+            font-size: 0.75rem;
+            color: var(--neutral-700);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .info-value {
+            font-size: 1.125rem;
+            color: var(--neutral-900);
+            font-weight: 700;
+        }
+
+        /* ========== SPECS LIST ========== */
+        .spec-list {
+            list-style: none;
+            margin-bottom: 28px;
+            max-height: 200px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        .spec-list::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .spec-list::-webkit-scrollbar-thumb {
+            background: var(--primary-enterprise);
+            border-radius: 10px;
+        }
+
+        .spec-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 12px;
+            padding: 10px;
+            background: var(--white);
+            border-radius: 8px;
+            border: 1px solid var(--neutral-200);
+            transition: var(--transition-smooth);
+        }
+
+        .spec-item:hover {
+            background: var(--neutral-100);
+            border-color: var(--primary-enterprise);
+        }
+
+        .spec-icon {
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, var(--primary-enterprise), var(--secondary-enterprise));
+            color: var(--white);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 0.75rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .spec-text {
+            flex: 1;
+            font-size: 0.875rem;
+            color: var(--neutral-800);
+            line-height: 1.6;
+        }
+
+        /* ========== QUALITY BAR ========== */
+        .quality-bar {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .quality-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: var(--white);
+            border: 1px solid var(--neutral-200);
+            border-radius: 8px;
+            font-size: 0.75rem;
+            color: var(--neutral-700);
+            font-weight: 600;
+        }
+
+        .quality-badge i {
+            color: var(--success);
+            font-size: 1rem;
+        }
+
+        /* ========== CTA BUTTONS ========== */
+        .card-footer {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            margin-top: auto;
+            padding-top: 20px;
+            border-top: 1px solid var(--neutral-200);
+        }
+
+        .btn-primary-enterprise {
+            flex: 1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 16px 32px;
+            background: linear-gradient(135deg, var(--primary-enterprise), var(--secondary-enterprise));
+            color: var(--white);
+            font-size: 0.875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-primary-enterprise:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+            color: var(--white);
+        }
+
+        .btn-secondary-enterprise {
+            padding: 16px 24px;
+            background: var(--white);
+            color: var(--primary-enterprise);
+            font-size: 0.875rem;
+            font-weight: 700;
+            border: 2px solid var(--primary-enterprise);
+            border-radius: 10px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-secondary-enterprise:hover {
+            background: var(--primary-enterprise);
+            color: var(--white);
+        }
+
+        /* ========== SWIPER NAVIGATION ========== */
+        .swiper-button-next,
+        .swiper-button-prev {
+            width: 60px;
+            height: 60px;
+            background: var(--white);
+            border-radius: 50%;
+            box-shadow: var(--shadow-lg);
+            border: 2px solid var(--neutral-200);
+            transition: var(--transition-smooth);
+        }
+
+        .swiper-button-next:hover,
+        .swiper-button-prev:hover {
+            background: var(--primary-enterprise);
+            border-color: var(--primary-enterprise);
+            transform: scale(1.1);
+        }
+
+        .swiper-button-next::after,
+        .swiper-button-prev::after {
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--primary-enterprise);
+            transition: var(--transition-smooth);
+        }
+
+        .swiper-button-next:hover::after,
+        .swiper-button-prev:hover::after {
+            color: var(--white);
+        }
+
+        /* ========== SWIPER PAGINATION ========== */
+        .swiper-pagination {
+            bottom: 20px !important;
+        }
+
+        .swiper-pagination-bullet {
+            width: 12px;
+            height: 12px;
+            background: var(--neutral-300);
+            opacity: 1;
+            transition: var(--transition-smooth);
+        }
+
+        .swiper-pagination-bullet-active {
+            width: 40px;
+            border-radius: 6px;
+            background: linear-gradient(135deg, var(--primary-enterprise), var(--secondary-enterprise));
+        }
+
+        /* ========== SECTION DIVIDER ========== */
+        .section-divider {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, var(--neutral-300) 50%, transparent 100%);
+            margin: 100px 0;
+        }
+
+        /* ========== THUMBNAIL SLIDER ========== */
+        .thumbnail-slider-container {
+            margin-top: 60px;
+        }
+
+        .thumbnail-swiper {
+            padding: 20px 0;
+        }
+
+        .thumbnail-swiper .swiper-slide {
+            width: 200px;
+            height: 150px;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: var(--transition-smooth);
+            border: 3px solid transparent;
+        }
+
+        .thumbnail-swiper .swiper-slide-thumb-active {
+            opacity: 1;
+            border-color: var(--primary-enterprise);
+        }
+
+        .thumbnail-swiper .swiper-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 1200px) {
+            .section-title {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .stats-bar {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stat-item:nth-child(2n)::after {
+                display: none;
+            }
+
+            .product-card-slider {
+                grid-template-columns: 1fr;
+            }
+
+            .card-image {
+                height: 350px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .slider-section {
+                padding: 80px 0 60px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .card-content {
+                padding: 28px;
+            }
+
+            .product-title {
+                font-size: 1.6rem;
+            }
+
+            .stats-bar {
+                grid-template-columns: 1fr;
+                padding: 28px;
+            }
+
+            .stat-item::after {
+                display: none;
+            }
+
+            .card-footer {
+                flex-direction: column;
+            }
+
+            .btn-primary-enterprise,
+            .btn-secondary-enterprise {
+                width: 100%;
+            }
+
+            .swiper-button-next,
+            .swiper-button-prev {
+                width: 45px;
+                height: 45px;
+            }
+
+            .swiper-button-next::after,
+            .swiper-button-prev::after {
+                font-size: 18px;
+            }
+        }
+
+        /* ========== LOADING ANIMATION ========== */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .swiper-slide {
+            animation: slideIn 0.6s ease-out;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ========== RICE SLIDER SECTION ========== -->
+    <section class="slider-section">
+        <div class="container">
+            <!-- Section Header -->
+            <div class="section-header">
+                <span class="header-badge">
+                    <i class="fas fa-shield-alt"></i>
+                    ISO 9001:2015 CERTIFIED PRODUCTS
+                </span>
+                <h1 class="section-title">Premium Indian Rice Collection</h1>
+                <div class="title-divider"></div>
+                <p class="section-subtitle">
+                    Discover our handpicked selection of enterprise-grade rice varieties. Each product
+                    meets stringent international standards and is backed by comprehensive quality certifications.
+                </p>
+            </div>
+
+            <!-- Stats Bar -->
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <span class="stat-number">25+</span>
+                    <span class="stat-label">Years Experience</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">50K+</span>
+                    <span class="stat-label">Enterprise Clients</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">99.9%</span>
+                    <span class="stat-label">Quality Assurance</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">40+</span>
+                    <span class="stat-label">Countries Served</span>
+                </div>
+            </div>
+
+            <!-- Main Product Slider -->
+            <div class="product-slider-container">
+                <div class="swiper mainSwiper">
+                    <div class="swiper-wrapper">
+                        <!-- Slide 1: Basmati Rice -->
+                        <div class="swiper-slide">
+                            <article class="product-card-slider">
+                                <div class="card-image">
+                                    <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?w=1200&q=85"
+                                        alt="Himalayan Basmati Rice" class="product-image">
+                                    <div class="image-overlay"></div>
+                                    <span class="product-badge badge-certified">
+                                        <i class="fas fa-certificate"></i> ISO CERTIFIED
+                                    </span>
+                                    <div class="cert-badges">
+                                        <div class="cert-icon" title="Organic Certified">
+                                            <i class="fas fa-leaf"></i>
+                                        </div>
+                                        <div class="cert-icon" title="Quality Tested">
+                                            <i class="fas fa-flask"></i>
+                                        </div>
+                                        <div class="cert-icon" title="Export Standard">
+                                            <i class="fas fa-globe"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-content">
+                                    <span class="product-category">
+                                        <i class="fas fa-star"></i> PREMIUM SELECTION
+                                    </span>
+                                    <h2 class="product-title">Himalayan Basmati Rice</h2>
+                                    <p class="product-description">
+                                        Enterprise-grade aged Basmati rice cultivated in pristine Himalayan foothills.
+                                        Exceptional aroma, elongation, and consistent quality for demanding clients.
+                                    </p>
+
+                                    <div class="info-grid">
+                                        <div class="info-item">
+                                            <span class="info-label">Grain Length</span>
+                                            <span class="info-value">8.3mm+</span>
+                                        </div>
+                                        <div class="info-item">
+                                            <span class="info-label">Aging Period</span>
+                                            <span class="info-value">18-24 Months</span>
+                                        </div>
+                                        <div class="info-item">
+                                            <span class="info-label">Purity</span>
+                                            <span class="info-value">99.9%</span>
+                                        </div>
+                                        <div class="info-item">
+                                            <span class="info-label">Glycemic Index</span>
+                                            <span class="info-value">Low (58)</span>
+                                        </div>
+                                    </div>
+
+                                    <ul class="spec-list">
+                                        <li class="spec-item">
+                                            <span class="spec-icon"><i class="fas fa-check"></i></span>
+                                            <span class="spec-text"><strong>Extra Long Grain:</strong> Elongates to
+                                                8.3mm+ with <2% breakage</span>
+                                        </li>
+                                        <li class="spec-item">
+                                            <span class="spec-icon"><i class="fas fa-check"></i></span>
+                                            <span class="spec-text"><strong>Traditional Aging:</strong> 18-24 months for
+                                                enhanced aroma</span>
+                                        </li>
+                                        <li class="spec-item">
+                                            <span class="spec-icon"><i class="fas fa-check"></i></span>
+                                            <span class="spec-text"><strong>100% Organic:</strong> Zero chemicals,
+                                                certified organic</span>
+                                        </li>
+                                        <li class="spec-item">
+                                            <span class="spec-icon"><i class="fas fa-check"></i></span>
+                                            <span class="spec-text"><strong>Diabetic Friendly:</strong> Low glycemic
+                                                index (58)</span>
+                                        </li>
+                                    </ul>
+
+                                    <div class="quality-bar">
+                                        <span class="quality-badge">
+                                            <i class="fas fa-certificate"></i> USDA Organic
+                                        </span>
+                                        <span class="quality-badge">
+                                            <i class="fas fa-check-circle"></i> Non-GMO
+                                        </span>
+                                        <span class="quality-badge">
+                                            <i class="fas fa-shield-alt"></i> FSSAI
+                                        </span>
+                                    </div>
+
+                                    <div class="card-footer">
+                                        <a href="#" class="btn-primary-enterprise">
+                                            Request Quote <i class="fas fa-arrow-right"></i>
+                                        </a>
+                                        <a href="#" class="btn-secondary-enterprise">
+                                            <i class="fas fa-file-pdf"></i> Spec Sheet
+                                        </a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+
+                        <!-- Slide 2: Sona Masoori Rice -->
+                        <div class="swiper-slide">
+                            <article class="product-card-slider">
+                                <div class="card-image">
+                                    <img src="https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?w=1200&q=85"
+                                        alt="Sona Masoori Rice" class="product-image">
+                                    <div class="image-overlay"></div>
+                                    <span class="product-badge badge-premium">
+                                        <i class="fas fa-star"></i> POPULAR CHOICE
+                                    </span>
+                                    <div class="cert-badges">
+                                        <div class="cert-icon" title="Quality Tested">
+                                            <i class="fas fa-check-double"></i>
+                                        </div>
+                                        <div class="cert-icon" title="Bulk Available">
+                                            <i class="fas fa-boxes"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-content">
+                                    <span class="product-category">
+                                        <i class="fas fa-utensils"></i> DAILY ESSENTIAL
+                                    </span>
+                                    <h2 class="product-title">Sona Masoori Rice</h2>
+                                    <p class="product-description">
+                                        Lightweight aromatic rice variety perfect for commercial kitchens and food
+                                        service
+                                        operations. Exceptional consistency, easy digestibility, and rapid cooking time.
+                                    </p>
+
+                                    <div class="info-grid">
+                                        <div class="info-item">
+                                            <span class="info-label">Processing</span>
+                                            <span class="info-value">Minimally Polished</span>
+                                        </div>
+                                        <div class="info-item">
+                                            <span class="info-label">Starch Content</span>
+                                            <span class="info-value">Low</span>
+                                        </div>
+                                        <div class="info-item">
+                                            <span class="info-label">Cook Time</span>
+                                            <span class="info-value">15 Minutes</span>
+                                        </div>
+                                        <div class="info-item">
+                                            <span class="info-label">Texture</span>
+                                            <span class="info-value">Fluffy</span>
+                                        </div>
+                                    </div>
+
+                                    <ul class="spec-list">
+                                        <li class="spec-item">
+                                            <span class="spec-icon"><i class="fas fa-check"></i></span>
+                                            <span class="spec-text"><strong>Unpolished:</strong> Retains natural
+                                                nutrients and vitamins</span>
+                                        </li>
+                                        <li class="spec-item">
+                                            <span class="spec-icon"><i class="fas fa-check"></i></span>
+                                            <span class="spec-text"><strong>Low Starch:</strong> Fluffy, non-sticky
+                                                texture</span>
+                                        </li>
+                                        <li class="spec-item">
+                                            <span class="spec-icon"><i class="fas fa-check"></i></span>
+                                            <span class="spec-text"><strong>Quick Cooking:</strong> Ready in 15
+                                                minutes</span>
+                                        </li>
+                                        <li class="spec-item">
+                                            <span class="spec-icon"><i class="fas fa-check"></i></span>
+                                            <span class="spec-text"><strong>High Volume:</strong> Perfect for commercial
+                                                operations</span>
+                                        </li>
+                                    </ul>
+
+                                    <div class="quality-bar">
+                                        <span class="quality-badge">
+                                            <i class="fas fa-certificate"></i> FSSAI Approved
+                                        </span>
+                                        <span class="quality-badge">
+                                            <i class="fas fa-leaf"></i> Natural
+                                        </span>
+                                    </div>
+
+                                    <div class="card-footer">
+                                        <a href="#" class="btn-primary-enterprise">
+                                            Get Details <i class="fas fa-arrow-right"></i>
+                                        </a>
+                                        <a href="#" class="btn-secondary-enterprise">
+                                            <i class="fas fa-download"></i> Brochure
+                                        </a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+
+                        <!-- Slide 3: Brown Rice -->
+                        <div class="swiper-slide">
+                            <article class="product-card-slider">
+                                <div class="card-image">
+                                    <img src="https://images.unsplash.com/photo-1588165171080-c89acfa5ee83?w=1200&q=85"
+                                        alt="Organic Brown Rice" class="product-image">
+                                    <div class="image-overlay"></div>
+                                    <span class="product-badge badge-enterprise">
+                                        <i class="fas fa-heart"></i> HEALTH FOCUS
+                                    </span>
+                                    <div class="cert-badges">
+                                        <div class="cert-icon" title="Whole Grain">
+                                            <i class="fas fa-seedling"></i>
+                                        </div>
+                                        <div class="cert-icon" title="Organic">
+                                            <i class="fas fa-leaf"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-content">
+                                    <span class="product-category">
+                                        <i class="fas fa-seedling"></i> NUTRITION PLUS
+                                    </span>
+                                    <h2 class="product-title">Organic Brown Rice</h2>
+                                    <p class="product-description">
+                                        Whole grain nutrition with intact bran layer. Rich in dietary fiber, vitamins B
+                                        & E,
+                                        minerals, and antioxidants. Ideal for health-conscious product lines.
+                                    </p>
+
+                                    <div class="info-grid">
+                                        <div class="info-item">
+                                            <span class="info-label">Dietary Fiber</span>
+                                            <span class="info-value">3.5g/serving</span>
+                                        </div>
+                                        <div class="info-item">
+                                            <span class="info-label">Protein</span>
+                                            <span class="info-value">7.9g/100g</span>
+                                        </div>
+                                        <div class="info-item">
+                                            <span class="info-label">Antioxidants</span>
+                                            <span class="info-value">High</span>
+                                        </div>
+                                        <div class="info-item">
+                                            <span class="info-label">Processing</span>
+                                            <span class="info-value">Whole Grain</span>
+                                        </div>
+                                    </div>
+
+                                    <ul class="spec-list">
+                                        <li class="spec-item">
+                                            <span class="spec-icon"><i class="fas fa-check"></i></span>
+                                            <span class="spec-text"><strong>High Fiber:</strong> 3.5g dietary fiber per
+                                                serving</span>
+                                        </li>
+                                        <li class="spec-item">
+                                            <span class="spec-icon"><i class="fas fa-check"></i></span>
+                                            <span class="spec-text"><strong>Rich in Minerals:</strong> Magnesium,
+                                                phosphorus, selenium</span>
+                                        </li>
+                                        <li class="spec-item">
+                                            <span class="spec-icon"><i class="fas fa-check"></i></span>
+                                            <span class="spec-text"><strong>Weight Management:</strong> Supports healthy
+                                                metabolism</span>
+                                        </li>
+                                        <li class="spec-item">
+                                            <span class="spec-icon"><i class="fas fa-check"></i></span>
+                                            <span class="spec-text"><strong>Certified Organic:</strong> USDA organic
+                                                certification</span>
+                                        </li>
+                                    </ul>
+
+                                    <div class="quality-bar">
+                                        <span class="quality-badge">
+                                            <i class="fas fa-certificate"></i> USDA Organic
+                                        </span>
+                                        <span class="quality-badge">
+                                            <i class="fas fa-heart"></i> Heart Healthy
+                                        </span>
+                                    </div>
+
+                                    <div class="card-footer">
+                                        <a href="#" class="btn-primary-enterprise">
+                                            Learn More <i class="fas fa-arrow-right"></i>
+                                        </a>
+                                        <a href="#" class="btn-secondary-enterprise">
+                                            <i class="fas fa-chart-line"></i> Nutrition
+                                        </a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+
+                        <!-- Slide 4: Jasmine Rice -->
+                        <div class="swiper-slide">
+                            <article class="product-card-slider">
+                                <div class="card-image">
+                                    <img src="https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=1200&q=85"
+                                        alt="Jasmine Rice" class="product-image">
+                                    <div class="image-overlay"></div>
+                                    <span class="product-badge badge-certified">
+                                        <i class="fas fa-badge-check"></i> VERIFIED
+                                    </span>
+                                    <div class="cert-badges">
+                                        <div class="cert-icon" title="Aromatic">
+                                            <i class="fas fa-spa"></i>
+                                        </div>
+                                        <div class="cert-icon" title="Premium Quality">
+                                            <i class="fas fa-award"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-content">
+                                    <span class="product-category">
+                                        <i class="fas fa-spa"></i> AROMATIC CHOICE
+                                    </span>
+                                    <h2 class="product-title">Premium Jasmine Rice</h2>
+                                    <p class="product-description">
+                                        Fragrant long-grain rice with subtle floral notes. Perfect for Asian cuisine,
+                                        hospitality sector, and food service applications requiring authentic flavors.
+                                    </p>
+
+                                    <div class="info-grid">
+                                        <div class="info-item">
+                                            <span class="info-label">Aroma Profile</span>
+                                            <span class="info-value">Floral Notes</span>
+                                        </div>
+                                        <div class="info-item">
+                                            <span class="info-label">Texture</span>
+                                            <span class="info-value">Soft & Sticky</span>
+                                        </div>
+                                        <div class="info-item">
+                                            <span class="info-label">Origin</span>
+                                            <span class="info-value">Premium Grade</span>
+                                        </div>
+                                        <div class="info-item">
+                                            <span class="info-label">Cook Time</span>
+                                            <span class="info-value">18-20 min</span>
+                                        </div>
+                                    </div>
+
+                                    <ul class="spec-list">
+                                        <li class="spec-item">
+                                            <span class="spec-icon"><i class="fas fa-check"></i></span>
+                                            <span class="spec-text"><strong>Natural Aroma:</strong> Authentic jasmine
+                                                fragrance</span>
+                                        </li>
+                                        <li class="spec-item">
+                                            <span class="spec-icon"><i class="fas fa-check"></i></span>
+                                            <span class="spec-text"><strong>Perfect Texture:</strong> Soft and slightly
+                                                sticky when cooked</span>
+                                        </li>
+                                        <li class="spec-item">
+                                            <span class="spec-icon"><i class="fas fa-check"></i></span>
+                                            <span class="spec-text"><strong>Versatile Pairing:</strong> Complements
+                                                Asian cuisine perfectly</span>
+                                        </li>
+                                        <li class="spec-item">
+                                            <span class="spec-icon"><i class="fas fa-check"></i></span>
+                                            <span class="spec-text"><strong>Restaurant Grade:</strong> Consistent
+                                                quality batch after batch</span>
+                                        </li>
+                                    </ul>
+
+                                    <div class="quality-bar">
+                                        <span class="quality-badge">
+                                            <i class="fas fa-certificate"></i> Quality Tested
+                                        </span>
+                                        <span class="quality-badge">
+                                            <i class="fas fa-star"></i> Premium
+                                        </span>
+                                    </div>
+
+                                    <div class="card-footer">
+                                        <a href="#" class="btn-primary-enterprise">
+                                            Explore Now <i class="fas fa-arrow-right"></i>
+                                        </a>
+                                        <a href="#" class="btn-secondary-enterprise">
+                                            <i class="fas fa-info-circle"></i> Details
+                                        </a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+
+                    <!-- Navigation Buttons -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+
+                    <!-- Pagination -->
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+
+            <!-- Thumbnail Slider -->
+            <div class="thumbnail-slider-container">
+                <div class="swiper thumbnailSwiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400&q=80"
+                                alt="Basmati Rice">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?w=400&q=80"
+                                alt="Sona Masoori">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="https://images.unsplash.com/photo-1588165171080-c89acfa5ee83?w=400&q=80"
+                                alt="Brown Rice">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=400&q=80"
+                                alt="Jasmine Rice">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Divider -->
+    <div class="section-divider"></div>
+
+    <!-- ========== YARN SLIDER SECTION ========== -->
+    <section class="slider-section">
+        <div class="container">
+            <!-- Section Header -->
+            <div class="section-header">
+                <span class="header-badge">
+                    <i class="fas fa-industry"></i>
+                    INDUSTRIAL TEXTILE SOLUTIONS
+                </span>
+                <h1 class="section-title">Premium Yarn Collection</h1>
+                <div class="title-divider"></div>
+                <p class="section-subtitle">
+                    Engineered for excellence in textile manufacturing. Our yarn products combine traditional
+                    craftsmanship with modern quality control standards.
+                </p>
+            </div>
+
+            <!-- Stats Bar -->
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <span class="stat-number">5M+</span>
+                    <span class="stat-label">KG Monthly Production</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">98%</span>
+                    <span class="stat-label">Client Retention</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">15+</span>
+                    <span class="stat-label">Certifications</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">24/7</span>
+                    <span class="stat-label">Support</span>
+                </div>
+            </div>
+
+            <!-- Yarn Product Slider -->
+            <div class="product-slider-container">
+                <div class="swiper yarnSwiper">
+                    <div class="swiper-wrapper">
+                        <!-- Slide 1: Cotton Yarn -->
+                        <div class="swiper-slide">
+                            <article class="product-card-slider">
+                                <div class="card-image">
+                                    <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?w=1200&q=85"
+                                        alt="Pure Cotton Yarn" class="product-image">
+                                    <div class="image-overlay"></div>
+                                    <span class="product-badge badge-certified">
+                                        <i class="fas fa-certificate"></i> OEKO-TEX®
+                                    </span>
+                                    <div class="cert-badges">
+                                        <div class="cert-icon" title="100% Cotton">
+                                            <i class="fas fa-leaf"></i>
+                                        </div>
+                                        <div class="cert-icon" title="Ring Spun">
+                                            <i class="fas fa-cog"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-content">
+                                    <span class="product-category">
+                                        <i class="fas fa-industry"></i> NATURAL FIBER
+                                    </span>
+                                    <h2 class="product-title">Pure Cotton Yarn</h2>
+                                    <p class="product-description">
+                                        Premium combed cotton with exceptional strength and uniformity. Ring-spun to
+                                        perfection for superior quality in textile manufacturing operations.
+                                    </p>
+
+                                    <div class="info-grid">
+                                        <div class="info-item">
+                                            <span class="info-label">Count Range</span>
+                                            <span class="info-value">20s - 80s</span>
+                                        </div>
+                                        <div class="info-item">
+                                            <span class="info-label">Tensile Strength</span>
+                                            <span class="info-value">High</span>
+                                        </div>
+                                        <div class="info-item">
+                                            <span class="info-label">Finish</span>
+                                            <span class="info-value">Ring Spun</span>
+                                        </div>
+                                        <div class="info-item">
+                                            <span class="info-label">MOQ</span>
+                                            <span class="info-value">500 kg</span>
+                                        </div>
+                                    </div>
+
+                                    <ul class="spec-list">
+                                        <li class="spec-item">
+                                            <span class="spec-icon"><i class="fas fa-check"></i></span>
+                                            <span class="spec-text"><strong>100% Combed Cotton:</strong> High uniformity
+                                                and consistency</span>
+                                        </li>
+                                        <li class="spec-item">
+                                            <span class="spec-icon"><i class="fas fa-check"></i></span>
+                                            <span class="spec-text"><strong>Breathable:</strong> Hypoallergenic
+                                                properties for sensitive skin</span>
+                                        </li>
+                                        <li class="spec-item">
+                                            <span class="spec-icon"><i class="fas fa-check"></i></span>
+                                            <span class="spec-text"><strong>Color-Fast Dyes:</strong> 500+ shades with
+                                                excellent retention</span>
+                                        </li>
+                                        <li class="spec-item">
+                                            <span class="spec-icon"><i class="fas fa-check"></i></span>
+                                            <span class="spec-text"><strong>Quality Control:</strong> Every batch tested
+                                                for standards</span>
+                                        </li>
+                                    </ul>
+
+                                    <div class="quality-bar">
+                                        <span class="quality-badge">
+                                            <i class="fas fa-certificate"></i> OEKO-TEX®
+                                        </span>
+                                        <span class="quality-badge">
+                                            <i class="fas fa-leaf"></i> Eco-Friendly
+                                        </span>
+                                    </div>
+
+                                    <div class="card-footer">
+                                        <a href="#" class="btn-primary-enterprise">
+                                            Request Sample <i class="fas fa-arrow-right"></i>
+                                        </a>
+                                        <a href="#" class="btn-secondary-enterprise">
+                                            <i class="fas fa-file-alt"></i> Specs
+                                        </a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+
+                        <!-- Slide 2: Wool Yarn -->
+                        <div class="swiper-slide">
+                            <article class="product-card-slider">
+                                <div class="card-image">
+                                    <img src="https://images.unsplash.com/photo-1603048588665-791ca8eff504?w=1200&q=85"
+                                        alt="Merino Wool Yarn" class="product-image">
+                                    <div class="image-overlay"></div>
+                                    <span class="product-badge badge-premium">
+                                        <i class="fas fa-crown"></i> PREMIUM GRADE
+                                    </span>
+                                    <div class="cert-badges">
+                                        <div class="cert-icon" title="Merino Wool">
+                                            <i class="fas fa-award"></i>
+                                        </div>
+                                        <div class="cert-icon" title="Temperature Control">
+                                            <i class="fas fa-thermometer-half"></i>
+                                        </div>
+                                        <div class="cert-icon" title="Sustainable">
+                                            <i class="fas fa-recycle"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-content">
+                                    <span class="product-category">
+                                        <i class="fas fa-snowflake"></i> WINTER COLLECTION
+                                    </span>
+                                    <h2 class="product-title">Merino Wool Blend</h2>
+                                    <p class="product-description">
+                                        Luxurious merino wool blend delivering exceptional warmth without bulk.
+                                        Engineered
+                                        for premium winter apparel and high-end knitting applications.
+                                    </p>
+
+                                    <div class="info-grid">
+                                        <div class="info-item">
+                                            <span class="info-label">Fiber Micron</span>
+                                            <span class="info-value">18.5-19.5μ</span>
+                                        </div>
+                                        <div class="info-item">
+                                            <span class="info-label">Blend Ratio</span>
+                                            <span class="info-value">70:30</span>
+                                        </div>
+                                        <div class="info-item">
+                                            <span class="info-label">Twist Factor</span>
+                                            <span class="info-value">4.2 TM</span>
+                                        </div>
+                                        <div class="info-item">
+                                            <span class="info-label">Pilling Grade</span>
+                                            <span class="info-value">4-5</span>
+                                        </div>
+                                    </div>
+
+                                    <ul class="spec-list">
+                                        <li class="spec-item">
+                                            <span class="spec-icon"><i class="fas fa-check"></i></span>
+                                            <span class="spec-text"><strong>Ultra-Fine:</strong> 18.5-19.5 micron for
+                                                superior softness</span>
+                                        </li>
+                                        <li class="spec-item">
+                                            <span class="spec-icon"><i class="fas fa-check"></i></span>
+                                            <span class="spec-text"><strong>Temperature Control:</strong> Natural
+                                                thermoregulation</span>
+                                        </li>
+                                        <li class="spec-item">
+                                            <span class="spec-icon"><i class="fas fa-check"></i></span>
+                                            <span class="spec-text"><strong>Moisture Wicking:</strong> Odor resistant
+                                                technology</span>
+                                        </li>
+                                        <li class="spec-item">
+                                            <span class="spec-icon"><i class="fas fa-check"></i></span>
+                                            <span class="spec-text"><strong>Durability:</strong> 50,000+ cycle abrasion
+                                                resistance</span>
+                                        </li>
+                                    </ul>
+
+                                    <div class="quality-bar">
+                                        <span class="quality-badge">
+                                            <i class="fas fa-certificate"></i> Woolmark
+                                        </span>
+                                        <span class="quality-badge">
+                                            <i class="fas fa-leaf"></i> RWS
+                                        </span>
+                                        <span class="quality-badge">
+                                            <i class="fas fa-shield-alt"></i> ZQ
+                                        </span>
+                                    </div>
+
+                                    <div class="card-footer">
+                                        <a href="#" class="btn-primary-enterprise">
+                                            Enterprise Inquiry <i class="fas fa-arrow-right"></i>
+                                        </a>
+                                        <a href="#" class="btn-secondary-enterprise">
+                                            <i class="fas fa-file-contract"></i> Tech Data
+                                        </a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+
+                        <!-- Slide 3: Silk Yarn -->
+                        <div class="swiper-slide">
+                            <article class="product-card-slider">
+                                <div class="card-image">
+                                    <img src="https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=1200&q=85"
+                                        alt="Pure Silk Yarn" class="product-image">
+                                    <div class="image-overlay"></div>
+                                    <span class="product-badge badge-premium">
+                                        <i class="fas fa-gem"></i> LUXURY
+                                    </span>
+                                    <div class="cert-badges">
+                                        <div class="cert-icon" title="Pure Silk">
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <div class="cert-icon" title="Premium Grade">
+                                            <i class="fas fa-award"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-content">
+                                    <span class="product-category">
+                                        <i class="fas fa-star"></i> HERITAGE LINE
+                                    </span>
+                                    <h2 class="product-title">Pure Mulberry Silk</h2>
+                                    <p class="product-description">
+                                        Exquisite pure silk with natural sheen and lustrous finish. Premium quality for
+                                        luxury garments and traditional wear manufacturing applications.
+                                    </p>
+
+                                    <div class="info-grid">
+                                        <div class="info-item">
+                                            <span class="info-label">Denier</span>
+                                            <span class="info-value">20/22D</span>
+                                        </div>
+                                        <div class="info-item">
+                                            <span class="info-label">Grade</span>
+                                            <span class="info-value">6A</span>
+                                        </div>
+                                        <div class="info-item">
+                                            <span class="info-label">Luster</span>
+                                            <span class="info-value">High</span>
+                                        </div>
+                                        <div class="info-item">
+                                            <span class="info-label">Origin</span>
+                                            <span class="info-value">Premium</span>
+                                        </div>
+                                    </div>
+
+                                    <ul class="spec-list">
+                                        <li class="spec-item">
+                                            <span class="spec-icon"><i class="fas fa-check"></i></span>
+                                            <span class="spec-text"><strong>Natural Protein:</strong> Skin-friendly
+                                                fiber composition</span>
+                                        </li>
+                                        <li class="spec-item">
+                                            <span class="spec-icon"><i class="fas fa-check"></i></span>
+                                            <span class="spec-text"><strong>Lustrous Finish:</strong> Premium drape and
+                                                appearance</span>
+                                        </li>
+                                        <li class="spec-item">
+                                            <span class="spec-icon"><i class="fas fa-check"></i></span>
+                                            <span class="spec-text"><strong>Eco-Friendly:</strong> Sustainable
+                                                sericulture process</span>
+                                        </li>
+                                        <li class="spec-item">
+                                            <span class="spec-icon"><i class="fas fa-check"></i></span>
+                                            <span class="spec-text"><strong>Grade 6A:</strong> Highest quality
+                                                classification</span>
+                                        </li>
+                                    </ul>
+
+                                    <div class="quality-bar">
+                                        <span class="quality-badge">
+                                            <i class="fas fa-gem"></i> Premium Silk
+                                        </span>
+                                        <span class="quality-badge">
+                                            <i class="fas fa-leaf"></i> Natural
+                                        </span>
+                                    </div>
+
+                                    <div class="card-footer">
+                                        <a href="#" class="btn-primary-enterprise">
+                                            View Details <i class="fas fa-arrow-right"></i>
+                                        </a>
+                                        <a href="#" class="btn-secondary-enterprise">
+                                            <i class="fas fa-envelope"></i> Contact
+                                        </a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+
+                        <!-- Slide 4: Acrylic Yarn -->
+                        <div class="swiper-slide">
+                            <article class="product-card-slider">
+                                <div class="card-image">
+                                    <img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=1200&q=85"
+                                        alt="Acrylic Yarn" class="product-image">
+                                    <div class="image-overlay"></div>
+                                    <span class="product-badge badge-enterprise">
+                                        <i class="fas fa-chart-line"></i> VALUE
+                                    </span>
+                                    <div class="cert-badges">
+                                        <div class="cert-icon" title="Durable">
+                                            <i class="fas fa-shield-alt"></i>
+                                        </div>
+                                        <div class="cert-icon" title="Washable">
+                                            <i class="fas fa-soap"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-content">
+                                    <span class="product-category">
+                                        <i class="fas fa-dollar-sign"></i> COST EFFECTIVE
+                                    </span>
+                                    <h2 class="product-title">Premium Acrylic Yarn</h2>
+                                    <p class="product-description">
+                                        Versatile acrylic yarn with excellent durability and color retention. Engineered
+                                        for high-volume production and everyday applications.
+                                    </p>
+
+                                    <div class="info-grid">
+                                        <div class="info-item">
+                                            <span class="info-label">Count</span>
+                                            <span class="info-value">2/28 - 2/60</span>
+                                        </div>
+                                        <div class="info-item">
+                                            <span class="info-label">Color Range</span>
+                                            <span class="info-value">800+</span>
+                                        </div>
+                                        <div class="info-item">
+                                            <span class="info-label">Care</span>
+                                            <span class="info-value">Machine Wash</span>
+                                        </div>
+                                        <div class="info-item">
+                                            <span class="info-label">Bulk</span>
+                                            <span class="info-value">Available</span>
+                                        </div>
+                                    </div>
+
+                                    <ul class="spec-list">
+                                        <li class="spec-item">
+                                            <span class="spec-icon"><i class="fas fa-check"></i></span>
+                                            <span class="spec-text"><strong>Machine Washable:</strong> Dryer safe for
+                                                easy care</span>
+                                        </li>
+                                        <li class="spec-item">
+                                            <span class="spec-icon"><i class="fas fa-check"></i></span>
+                                            <span class="spec-text"><strong>800+ Colors:</strong> Vibrant color options
+                                                available</span>
+                                        </li>
+                                        <li class="spec-item">
+                                            <span class="spec-icon"><i class="fas fa-check"></i></span>
+                                            <span class="spec-text"><strong>Bulk Pricing:</strong> Volume discounts for
+                                                large orders</span>
+                                        </li>
+                                        <li class="spec-item">
+                                            <span class="spec-icon"><i class="fas fa-check"></i></span>
+                                            <span class="spec-text"><strong>Consistent Quality:</strong> Batch-to-batch
+                                                uniformity</span>
+                                        </li>
+                                    </ul>
+
+                                    <div class="quality-bar">
+                                        <span class="quality-badge">
+                                            <i class="fas fa-dollar-sign"></i> Cost Effective
+                                        </span>
+                                        <span class="quality-badge">
+                                            <i class="fas fa-box"></i> Bulk Available
+                                        </span>
+                                    </div>
+
+                                    <div class="card-footer">
+                                        <a href="#" class="btn-primary-enterprise">
+                                            Get Quote <i class="fas fa-arrow-right"></i>
+                                        </a>
+                                        <a href="#" class="btn-secondary-enterprise">
+                                            <i class="fas fa-calculator"></i> Pricing
+                                        </a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+
+                    <!-- Navigation Buttons -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+
+                    <!-- Pagination -->
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+
+            <!-- Yarn Thumbnail Slider -->
+            <div class="thumbnail-slider-container">
+                <div class="swiper yarnThumbnailSwiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?w=400&q=80"
+                                alt="Cotton Yarn">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="https://images.unsplash.com/photo-1603048588665-791ca8eff504?w=400&q=80"
+                                alt="Wool Yarn">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=400&q=80"
+                                alt="Silk Yarn">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=400&q=80"
+                                alt="Acrylic Yarn">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap 5.3 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script>
+        // Rice Product Slider with Thumbnails
+        const thumbnailSwiper = new Swiper('.thumbnailSwiper', {
+            spaceBetween: 10,
+            slidesPerView: 4,
+            freeMode: true,
+            watchSlidesProgress: true,
+            breakpoints: {
+                320: {
+                    slidesPerView: 2,
+                    spaceBetween: 10
+                },
+                640: {
+                    slidesPerView: 3,
+                    spaceBetween: 10
+                },
+                1024: {
+                    slidesPerView: 4,
+                    spaceBetween: 10
+                }
+            }
+        });
+
+        const mainSwiper = new Swiper('.mainSwiper', {
+            spaceBetween: 30,
+            effect: 'coverflow',
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: 'auto',
+            coverflowEffect: {
+                rotate: 0,
+                stretch: 0,
+                depth: 100,
+                modifier: 2,
+                slideShadows: false,
+            },
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+                dynamicBullets: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            thumbs: {
+                swiper: thumbnailSwiper,
+            },
+            breakpoints: {
+                320: {
+                    effect: 'slide',
+                    centeredSlides: false,
+                },
+                768: {
+                    effect: 'slide',
+                },
+                1024: {
+                    effect: 'coverflow',
+                }
+            }
+        });
+
+        // Yarn Product Slider with Thumbnails
+        const yarnThumbnailSwiper = new Swiper('.yarnThumbnailSwiper', {
+            spaceBetween: 10,
+            slidesPerView: 4,
+            freeMode: true,
+            watchSlidesProgress: true,
+            breakpoints: {
+                320: {
+                    slidesPerView: 2,
+                    spaceBetween: 10
+                },
+                640: {
+                    slidesPerView: 3,
+                    spaceBetween: 10
+                },
+                1024: {
+                    slidesPerView: 4,
+                    spaceBetween: 10
+                }
+            }
+        });
+
+        const yarnSwiper = new Swiper('.yarnSwiper', {
+            spaceBetween: 30,
+            effect: 'coverflow',
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: 'auto',
+            coverflowEffect: {
+                rotate: 0,
+                stretch: 0,
+                depth: 100,
+                modifier: 2,
+                slideShadows: false,
+            },
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+            },
+            pagination: {
+                el: '.yarnSwiper .swiper-pagination',
+                clickable: true,
+                dynamicBullets: true,
+            },
+            navigation: {
+                nextEl: '.yarnSwiper .swiper-button-next',
+                prevEl: '.yarnSwiper .swiper-button-prev',
+            },
+            thumbs: {
+                swiper: yarnThumbnailSwiper,
+            },
+            breakpoints: {
+                320: {
+                    effect: 'slide',
+                    centeredSlides: false,
+                },
+                768: {
+                    effect: 'slide',
+                },
+                1024: {
+                    effect: 'coverflow',
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>
