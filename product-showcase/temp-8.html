@@ -1271,7 +1271,7 @@
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-    <script>
+    <!-- <script>
         // Initialize Rice Products Swiper
         const riceSwiper = new Swiper('.codexaman-rice-swiper', {
             slidesPerView: 1,
@@ -1334,6 +1334,66 @@
                 },
             },
         });
+    </script> -->
+    <script>
+        // Initialize Rice Products Swiper - WITHOUT ARROW BUTTONS
+        const riceSwiper = new Swiper('.codexaman-rice-swiper', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            autoplay: {
+                delay: 3500,
+                disableOnInteraction: false,
+            },
+            watchOverflow: true,
+            watchSlidesProgress: true,
+            navigation: false, // Bas yeh kar do - arrows hide ho jayenge
+            pagination: {
+                el: '.codexaman-rice-swiper .swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 1,
+                },
+                768: {
+                    slidesPerView: 2,
+                },
+                1024: {
+                    slidesPerView: 3,
+                },
+            },
+        });
+
+        // Initialize Yarn Products Swiper - WITHOUT ARROW BUTTONS
+        const yarnSwiper = new Swiper('.codexaman-yarn-swiper', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+            },
+            watchOverflow: true,
+            watchSlidesProgress: true,
+            navigation: false, // Yahan bhi
+            pagination: {
+                el: '.codexaman-yarn-swiper .swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 1,
+                },
+                768: {
+                    slidesPerView: 2,
+                },
+                1024: {
+                    slidesPerView: 3,
+                },
+            },
+        });
+
     </script>
 </body>
 
