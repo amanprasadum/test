@@ -1,44 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Premium Product Showcase - CodeXaman</title>
-    
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
     <style>
         /* ===== CODEXAMAN PROFESSIONAL PRODUCT SECTION ===== */
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             color: #1a202c;
             line-height: 1.6;
         }
-        
+
         /* Main section styling */
         .codexaman-product-section {
             padding: 100px 0;
             position: relative;
             overflow: hidden;
         }
-        
+
         /* Animated background particles */
         .codexaman-product-section::before {
             content: '';
@@ -52,7 +54,7 @@
             pointer-events: none;
             opacity: 0.5;
         }
-        
+
         /* Category wrapper with glassmorphism */
         .codexaman-category-wrapper {
             background: rgba(255, 255, 255, 0.95);
@@ -60,28 +62,28 @@
             border-radius: 24px;
             padding: 70px 50px;
             margin-bottom: 80px;
-            box-shadow: 
+            box-shadow:
                 0 8px 32px 0 rgba(31, 38, 135, 0.08),
                 0 2px 8px 0 rgba(0, 0, 0, 0.04);
             border: 1px solid rgba(255, 255, 255, 0.8);
             position: relative;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        
+
         .codexaman-category-wrapper:hover {
             transform: translateY(-5px);
-            box-shadow: 
+            box-shadow:
                 0 20px 60px 0 rgba(31, 38, 135, 0.12),
                 0 4px 16px 0 rgba(0, 0, 0, 0.06);
         }
-        
+
         /* Section header with modern typography */
         .codexaman-section-header {
             text-align: center;
             margin-bottom: 60px;
             position: relative;
         }
-        
+
         .codexaman-category-badge {
             display: inline-flex;
             align-items: center;
@@ -98,12 +100,19 @@
             box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
             animation: float 3s ease-in-out infinite;
         }
-        
+
         @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
         }
-        
+
         .codexaman-section-header h2 {
             font-size: 3rem;
             font-weight: 800;
@@ -115,7 +124,7 @@
             letter-spacing: -1px;
             line-height: 1.2;
         }
-        
+
         .codexaman-section-header p {
             color: #4a5568;
             font-size: 1.1rem;
@@ -124,7 +133,7 @@
             font-weight: 400;
             line-height: 1.8;
         }
-        
+
         /* Enhanced stats row with counters */
         .codexaman-stats-row {
             display: grid;
@@ -136,21 +145,21 @@
             border-radius: 20px;
             border: 1px solid rgba(102, 126, 234, 0.1);
         }
-        
+
         .codexaman-stat-item {
             text-align: center;
             padding: 20px;
             background: #fff;
             border-radius: 16px;
             transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
         }
-        
+
         .codexaman-stat-item:hover {
             transform: translateY(-5px) scale(1.02);
             box-shadow: 0 8px 24px rgba(102, 126, 234, 0.15);
         }
-        
+
         .codexaman-stat-number {
             font-size: 3rem;
             font-weight: 900;
@@ -162,7 +171,7 @@
             display: block;
             font-family: 'Inter', sans-serif;
         }
-        
+
         .codexaman-stat-label {
             color: #718096;
             font-size: 0.85rem;
@@ -170,39 +179,39 @@
             letter-spacing: 1px;
             font-weight: 600;
         }
-        
+
         /* Featured product with premium layout */
         .codexaman-featured-product {
             background: #fff;
             border-radius: 24px;
             overflow: hidden;
-            box-shadow: 
-                0 10px 40px rgba(0,0,0,0.06),
-                0 2px 8px rgba(0,0,0,0.02);
+            box-shadow:
+                0 10px 40px rgba(0, 0, 0, 0.06),
+                0 2px 8px rgba(0, 0, 0, 0.02);
             margin-bottom: 80px;
             display: flex;
             flex-direction: row;
             position: relative;
             transition: all 0.4s ease;
         }
-        
+
         .codexaman-featured-product:hover {
-            box-shadow: 
-                0 20px 60px rgba(0,0,0,0.1),
-                0 4px 16px rgba(0,0,0,0.04);
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.1),
+                0 4px 16px rgba(0, 0, 0, 0.04);
         }
-        
+
         .codexaman-featured-product.codexaman-reverse {
             flex-direction: row-reverse;
         }
-        
+
         .codexaman-featured-image {
             width: 45%;
             position: relative;
             overflow: hidden;
             min-height: 550px;
         }
-        
+
         .codexaman-featured-image::before {
             content: '';
             position: absolute;
@@ -215,22 +224,22 @@
             opacity: 0;
             transition: opacity 0.4s ease;
         }
-        
+
         .codexaman-featured-product:hover .codexaman-featured-image::before {
             opacity: 1;
         }
-        
+
         .codexaman-featured-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        
+
         .codexaman-featured-product:hover .codexaman-featured-image img {
             transform: scale(1.08);
         }
-        
+
         .codexaman-featured-badge {
             position: absolute;
             top: 30px;
@@ -246,12 +255,19 @@
             box-shadow: 0 4px 15px rgba(245, 87, 108, 0.4);
             animation: pulse 2s ease-in-out infinite;
         }
-        
+
         @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
         }
-        
+
         .codexaman-featured-content {
             width: 55%;
             padding: 60px;
@@ -259,7 +275,7 @@
             flex-direction: column;
             justify-content: center;
         }
-        
+
         .codexaman-product-label {
             display: inline-flex;
             align-items: center;
@@ -274,7 +290,7 @@
             width: fit-content;
             box-shadow: 0 2px 8px rgba(252, 182, 159, 0.3);
         }
-        
+
         .codexaman-featured-content h3 {
             font-size: 2.5rem;
             font-weight: 800;
@@ -283,14 +299,14 @@
             letter-spacing: -0.5px;
             line-height: 1.2;
         }
-        
-        .codexaman-featured-content > p {
+
+        .codexaman-featured-content>p {
             color: #4a5568;
             line-height: 1.9;
             margin-bottom: 35px;
             font-size: 1.05rem;
         }
-        
+
         /* Modern specs grid */
         .codexaman-specs-grid {
             display: grid;
@@ -301,13 +317,13 @@
             background: linear-gradient(135deg, #f5f7fa 0%, #e3e7ed 100%);
             border-radius: 16px;
         }
-        
+
         .codexaman-spec-item {
             display: flex;
             flex-direction: column;
             gap: 8px;
         }
-        
+
         .codexaman-spec-label {
             font-size: 0.8rem;
             color: #718096;
@@ -315,20 +331,20 @@
             letter-spacing: 1px;
             font-weight: 600;
         }
-        
+
         .codexaman-spec-value {
             font-size: 1.2rem;
             font-weight: 700;
             color: #1a202c;
         }
-        
+
         /* Enhanced feature list */
         .codexaman-features {
             list-style: none;
             padding: 0;
             margin-bottom: 35px;
         }
-        
+
         .codexaman-features li {
             padding: 12px 0;
             color: #4a5568;
@@ -338,12 +354,12 @@
             font-size: 0.95rem;
             transition: all 0.3s ease;
         }
-        
+
         .codexaman-features li:hover {
             color: #667eea;
             transform: translateX(5px);
         }
-        
+
         .codexaman-features li::before {
             content: '✓';
             color: #48bb78;
@@ -358,13 +374,13 @@
             border-radius: 50%;
             flex-shrink: 0;
         }
-        
+
         /* Premium buttons */
         .codexaman-buttons {
             display: flex;
             gap: 16px;
         }
-        
+
         .codexaman-btn-primary {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: #fff;
@@ -381,7 +397,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .codexaman-btn-primary::before {
             content: '';
             position: absolute;
@@ -389,19 +405,19 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
             transition: left 0.5s ease;
         }
-        
+
         .codexaman-btn-primary:hover::before {
             left: 100%;
         }
-        
+
         .codexaman-btn-primary:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
         }
-        
+
         .codexaman-btn-secondary {
             background: transparent;
             color: #667eea;
@@ -415,19 +431,20 @@
             letter-spacing: 0.5px;
             text-transform: uppercase;
         }
-        
+
         .codexaman-btn-secondary:hover {
             background: #667eea;
             color: #fff;
             transform: translateY(-3px);
             box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
         }
-        
+
         /* More Products Section */
         .codexaman-more-section {
             margin-top: 80px;
+            position: relative;
         }
-        
+
         .codexaman-more-section h3 {
             font-size: 2.2rem;
             font-weight: 800;
@@ -436,37 +453,45 @@
             margin-bottom: 16px;
             letter-spacing: -0.5px;
         }
-        
-        .codexaman-more-section > p {
+
+        .codexaman-more-section>p {
             text-align: center;
             color: #4a5568;
             margin-bottom: 50px;
             font-size: 1.05rem;
         }
-        
+
+        /* Swiper wrapper with proper spacing for arrows */
+        .codexaman-rice-swiper,
+        .codexaman-yarn-swiper {
+            padding: 20px 70px 80px;
+            /* Extra padding for arrows and pagination */
+            position: relative;
+        }
+
         /* Premium product cards */
         .codexaman-product-card {
             background: #fff;
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             height: 100%;
-            border: 1px solid rgba(0,0,0,0.04);
+            border: 1px solid rgba(0, 0, 0, 0.04);
         }
-        
+
         .codexaman-product-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
             border-color: rgba(102, 126, 234, 0.2);
         }
-        
+
         .codexaman-product-img {
             position: relative;
             height: 240px;
             overflow: hidden;
         }
-        
+
         .codexaman-product-img::before {
             content: '';
             position: absolute;
@@ -474,27 +499,27 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.3) 100%);
+            background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.3) 100%);
             z-index: 1;
             opacity: 0;
             transition: opacity 0.3s ease;
         }
-        
+
         .codexaman-product-card:hover .codexaman-product-img::before {
             opacity: 1;
         }
-        
+
         .codexaman-product-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.6s ease;
         }
-        
+
         .codexaman-product-card:hover .codexaman-product-img img {
             transform: scale(1.1);
         }
-        
+
         .codexaman-product-tag {
             position: absolute;
             top: 20px;
@@ -509,11 +534,11 @@
             z-index: 2;
             box-shadow: 0 4px 12px rgba(72, 187, 120, 0.4);
         }
-        
+
         .codexaman-product-body {
             padding: 30px;
         }
-        
+
         .codexaman-product-body h5 {
             font-size: 1.3rem;
             font-weight: 700;
@@ -521,18 +546,18 @@
             margin-bottom: 14px;
             transition: color 0.3s ease;
         }
-        
+
         .codexaman-product-card:hover .codexaman-product-body h5 {
             color: #667eea;
         }
-        
-        .codexaman-product-body > p {
+
+        .codexaman-product-body>p {
             color: #718096;
             font-size: 0.9rem;
             line-height: 1.7;
             margin-bottom: 24px;
         }
-        
+
         .codexaman-product-info {
             display: flex;
             justify-content: space-between;
@@ -540,7 +565,7 @@
             padding-bottom: 20px;
             border-bottom: 2px solid #e2e8f0;
         }
-        
+
         .codexaman-info-col span:first-child {
             display: block;
             font-size: 0.75rem;
@@ -550,20 +575,20 @@
             letter-spacing: 0.5px;
             font-weight: 600;
         }
-        
+
         .codexaman-info-col span:last-child {
             display: block;
             font-weight: 700;
             color: #1a202c;
             font-size: 1.05rem;
         }
-        
+
         .codexaman-product-features {
             list-style: none;
             padding: 0;
             margin-bottom: 24px;
         }
-        
+
         .codexaman-product-features li {
             font-size: 0.85rem;
             color: #4a5568;
@@ -573,19 +598,19 @@
             gap: 10px;
             transition: all 0.3s ease;
         }
-        
+
         .codexaman-product-features li:hover {
             color: #667eea;
             transform: translateX(3px);
         }
-        
+
         .codexaman-product-features li::before {
             content: '→';
             color: #667eea;
             font-weight: 900;
             font-size: 1.1rem;
         }
-        
+
         .codexaman-product-btn {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: #fff;
@@ -601,133 +626,191 @@
             letter-spacing: 0.5px;
             box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
         }
-        
+
         .codexaman-product-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
         }
-        
-        /* Enhanced Swiper navigation */
+
+        /* Enhanced Swiper navigation - POSITIONED OUTSIDE CARDS */
         .codexaman-swiper-button-next,
         .codexaman-swiper-button-prev {
-            width: 50px;
-            height: 50px;
+            width: 55px;
+            height: 55px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             border-radius: 50%;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
             transition: all 0.3s ease;
+            top: 35%;
+            /* Position at card center */
+            z-index: 10;
         }
-        
+
+        .codexaman-swiper-button-next {
+            right: 0;
+            /* Outside right */
+        }
+
+        .codexaman-swiper-button-prev {
+            left: 0;
+            /* Outside left */
+        }
+
         .codexaman-swiper-button-next:hover,
         .codexaman-swiper-button-prev:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+            transform: scale(1.15);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
         }
-        
+
         .codexaman-swiper-button-next::after,
         .codexaman-swiper-button-prev::after {
-            font-size: 20px;
+            font-size: 22px;
             color: #fff;
             font-weight: 900;
         }
-        
+
+        /* Pagination positioned below with proper spacing */
+        .swiper-pagination {
+            bottom: 15px !important;
+            position: relative;
+            margin-top: 30px;
+        }
+
         .swiper-pagination-bullet {
             width: 12px;
             height: 12px;
             background: #cbd5e0;
             opacity: 1;
             transition: all 0.3s ease;
+            margin: 0 6px !important;
         }
-        
+
         .swiper-pagination-bullet-active {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             width: 40px;
             border-radius: 6px;
         }
-        
+
         /* Responsive Design */
         @media (max-width: 992px) {
+
             .codexaman-featured-product,
             .codexaman-featured-product.codexaman-reverse {
                 flex-direction: column;
             }
-            
+
             .codexaman-featured-image {
                 width: 100%;
                 min-height: 400px;
             }
-            
+
             .codexaman-featured-content {
                 width: 100%;
                 padding: 40px 30px;
             }
-            
+
             .codexaman-section-header h2 {
                 font-size: 2.2rem;
             }
+
+            .codexaman-rice-swiper,
+            .codexaman-yarn-swiper {
+                padding: 20px 60px 70px;
+            }
+
+            .codexaman-swiper-button-next,
+            .codexaman-swiper-button-prev {
+                width: 48px;
+                height: 48px;
+            }
+
+            .codexaman-swiper-button-next::after,
+            .codexaman-swiper-button-prev::after {
+                font-size: 18px;
+            }
         }
-        
+
         @media (max-width: 768px) {
             .codexaman-product-section {
                 padding: 60px 0;
             }
-            
+
             .codexaman-category-wrapper {
                 padding: 40px 25px;
             }
-            
+
             .codexaman-section-header h2 {
                 font-size: 1.8rem;
             }
-            
+
             .codexaman-featured-content h3 {
                 font-size: 1.8rem;
             }
-            
+
             .codexaman-specs-grid {
                 grid-template-columns: 1fr;
                 padding: 20px;
             }
-            
+
             .codexaman-buttons {
                 flex-direction: column;
             }
-            
+
             .codexaman-btn-primary,
             .codexaman-btn-secondary {
                 width: 100%;
             }
-            
+
             .codexaman-stats-row {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 20px;
                 padding: 20px;
             }
-            
+
             .codexaman-stat-number {
                 font-size: 2.2rem;
+            }
+
+            .codexaman-rice-swiper,
+            .codexaman-yarn-swiper {
+                padding: 20px 50px 60px;
+            }
+
+            .codexaman-swiper-button-next,
+            .codexaman-swiper-button-prev {
+                width: 42px;
+                height: 42px;
+                top: 32%;
+            }
+
+            .codexaman-swiper-button-next::after,
+            .codexaman-swiper-button-prev::after {
+                font-size: 16px;
             }
         }
     </style>
 </head>
+
 <body>
 
     <!-- ===== CODEXAMAN PROFESSIONAL PRODUCT SECTION ===== -->
     <section class="codexaman-product-section">
-        
+
         <!-- ========== RICE CATEGORY ========== -->
         <div class="container">
             <div class="codexaman-category-wrapper">
-                
+
                 <!-- Section Header -->
                 <div class="codexaman-section-header">
                     <span class="codexaman-category-badge">
                         <span>🌾</span> OUR SIGNATURE OFFERINGS WORLDWIDE
                     </span>
                     <h2>Premium Indian Rice Collection</h2>
-                    <p>Discover our meticulously curated collection of premium-quality Indian rice that embodies tradition, purity, and taste. Each grain is carefully selected and processed to ensure superior quality for discerning customers worldwide.</p>
+                    <p>Discover our meticulously curated collection of premium-quality Indian rice that embodies
+                        tradition, purity, and taste. Each grain is carefully selected and processed to ensure superior
+                        quality for discerning customers worldwide.</p>
                 </div>
-                
+
                 <!-- Stats Row -->
                 <div class="codexaman-stats-row">
                     <div class="codexaman-stat-item">
@@ -747,20 +830,22 @@
                         <span class="codexaman-stat-label">Countries Served</span>
                     </div>
                 </div>
-                
+
                 <!-- Featured Product -->
                 <div class="codexaman-featured-product">
                     <div class="codexaman-featured-image">
                         <span class="codexaman-featured-badge">FEATURED ITEM</span>
-                        <img src="https://images.unsplash.com/photo-1536304829831-aac0d889b577?w=800&h=600&fit=crop" alt="Sona Masoori Rice">
+                        <img src="https://images.unsplash.com/photo-1536304829831-aac0d889b577?w=800&h=600&fit=crop"
+                            alt="Sona Masoori Rice">
                     </div>
                     <div class="codexaman-featured-content">
                         <span class="codexaman-product-label">
                             <span>🌟</span> BEST SELLER
                         </span>
                         <h3>Sona Masoori Rice</h3>
-                        <p>Lightweight and aromatic premium-quality rice, low in starch and rich in taste. Perfect for everyday meals, known for its delicate texture and nutritional benefits.</p>
-                        
+                        <p>Lightweight and aromatic premium-quality rice, low in starch and rich in taste. Perfect for
+                            everyday meals, known for its delicate texture and nutritional benefits.</p>
+
                         <div class="codexaman-specs-grid">
                             <div class="codexaman-spec-item">
                                 <span class="codexaman-spec-label">Packaging</span>
@@ -779,38 +864,41 @@
                                 <span class="codexaman-spec-value">6-8</span>
                             </div>
                         </div>
-                        
+
                         <ul class="codexaman-features">
                             <li>Hygienically Packed Using Cutting-edge Equipment</li>
                             <li>Free Samples Available on Request</li>
                             <li>Direct Sourcing: Factory to Customers</li>
                         </ul>
-                        
+
                         <div class="codexaman-buttons">
                             <button class="codexaman-btn-primary">GET ENQUIRY →</button>
                             <button class="codexaman-btn-secondary">BROCHURE</button>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- More Rice Products Slider -->
                 <div class="codexaman-more-section">
                     <h3>More Rice Varieties</h3>
-                    <p>Explore our extensive range of superior rice offerings designed to elevate your culinary creations</p>
-                    
+                    <p>Explore our extensive range of superior rice offerings designed to elevate your culinary
+                        creations</p>
+
                     <div class="swiper codexaman-rice-swiper">
                         <div class="swiper-wrapper">
-                            
+
                             <!-- Rice Product 1 -->
                             <div class="swiper-slide">
                                 <div class="codexaman-product-card">
                                     <div class="codexaman-product-img">
                                         <span class="codexaman-product-tag">PREMIUM</span>
-                                        <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600&h=400&fit=crop" alt="Organic Brown Rice">
+                                        <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600&h=400&fit=crop"
+                                            alt="Organic Brown Rice">
                                     </div>
                                     <div class="codexaman-product-body">
                                         <h5>Organic Brown Rice</h5>
-                                        <p>Whole grain rice with natural fiber and nutrients, perfect for health-conscious families.</p>
+                                        <p>Whole grain rice with natural fiber and nutrients, perfect for
+                                            health-conscious families.</p>
                                         <div class="codexaman-product-info">
                                             <div class="codexaman-info-col">
                                                 <span>Packing</span>
@@ -831,17 +919,19 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <!-- Rice Product 2 -->
                             <div class="swiper-slide">
                                 <div class="codexaman-product-card">
                                     <div class="codexaman-product-img">
                                         <span class="codexaman-product-tag">POPULAR</span>
-                                        <img src="https://images.unsplash.com/photo-1596797038530-2c107229654b?w=600&h=400&fit=crop" alt="Premium Jasmine Rice">
+                                        <img src="https://images.unsplash.com/photo-1596797038530-2c107229654b?w=600&h=400&fit=crop"
+                                            alt="Premium Jasmine Rice">
                                     </div>
                                     <div class="codexaman-product-body">
                                         <h5>Premium Jasmine Rice</h5>
-                                        <p>Aromatic long-grain rice with subtle floral fragrance, ideal for Asian cuisines.</p>
+                                        <p>Aromatic long-grain rice with subtle floral fragrance, ideal for Asian
+                                            cuisines.</p>
                                         <div class="codexaman-product-info">
                                             <div class="codexaman-info-col">
                                                 <span>Packing</span>
@@ -862,17 +952,19 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <!-- Rice Product 3 -->
                             <div class="swiper-slide">
                                 <div class="codexaman-product-card">
                                     <div class="codexaman-product-img">
                                         <span class="codexaman-product-tag">NEW</span>
-                                        <img src="https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=600&h=400&fit=crop" alt="Wild Rice Blend">
+                                        <img src="https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=600&h=400&fit=crop"
+                                            alt="Wild Rice Blend">
                                     </div>
                                     <div class="codexaman-product-body">
                                         <h5>Wild Rice Blend</h5>
-                                        <p>Exotic blend of wild and cultivated rice varieties for unique flavors and nutrition.</p>
+                                        <p>Exotic blend of wild and cultivated rice varieties for unique flavors and
+                                            nutrition.</p>
                                         <div class="codexaman-product-info">
                                             <div class="codexaman-info-col">
                                                 <span>Packing</span>
@@ -893,17 +985,19 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <!-- Rice Product 4 -->
                             <div class="swiper-slide">
                                 <div class="codexaman-product-card">
                                     <div class="codexaman-product-img">
                                         <span class="codexaman-product-tag">FEATURED</span>
-                                        <img src="https://images.unsplash.com/photo-1516684669134-de6f7c473a2a?w=600&h=400&fit=crop" alt="1121 Basmati Rice">
+                                        <img src="https://images.unsplash.com/photo-1516684669134-de6f7c473a2a?w=600&h=400&fit=crop"
+                                            alt="1121 Basmati Rice">
                                     </div>
                                     <div class="codexaman-product-body">
                                         <h5>1121 Basmati Rice</h5>
-                                        <p>Premium extra-long basmati grains with exceptional aroma for special occasions.</p>
+                                        <p>Premium extra-long basmati grains with exceptional aroma for special
+                                            occasions.</p>
                                         <div class="codexaman-product-info">
                                             <div class="codexaman-info-col">
                                                 <span>Packing</span>
@@ -924,31 +1018,32 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                         </div>
-                        
+
                         <div class="swiper-button-next codexaman-swiper-button-next"></div>
                         <div class="swiper-button-prev codexaman-swiper-button-prev"></div>
                         <div class="swiper-pagination"></div>
                     </div>
                 </div>
-                
+
             </div>
         </div>
-        
+
         <!-- ========== YARN CATEGORY ========== -->
         <div class="container">
             <div class="codexaman-category-wrapper">
-                
+
                 <!-- Section Header -->
                 <div class="codexaman-section-header">
                     <span class="codexaman-category-badge">
                         <span>🧶</span> WORLDWIDE LEADER IN QUALITY TEXTILES
                     </span>
                     <h2>Premium Yarn Collection</h2>
-                    <p>Experience excellence in textile manufacturing with our superior-quality yarns representing innovation and durability for industrial and creative applications worldwide.</p>
+                    <p>Experience excellence in textile manufacturing with our superior-quality yarns representing
+                        innovation and durability for industrial and creative applications worldwide.</p>
                 </div>
-                
+
                 <!-- Stats Row -->
                 <div class="codexaman-stats-row">
                     <div class="codexaman-stat-item">
@@ -968,20 +1063,22 @@
                         <span class="codexaman-stat-label">Support</span>
                     </div>
                 </div>
-                
+
                 <!-- Featured Product (REVERSE LAYOUT) -->
                 <div class="codexaman-featured-product codexaman-reverse">
                     <div class="codexaman-featured-image">
                         <span class="codexaman-featured-badge">FEATURED ITEM</span>
-                        <img src="https://images.unsplash.com/photo-1525982104553-cc36bb7a0f59?w=800&h=600&fit=crop" alt="Merino Wool">
+                        <img src="https://images.unsplash.com/photo-1525982104553-cc36bb7a0f59?w=800&h=600&fit=crop"
+                            alt="Merino Wool">
                     </div>
                     <div class="codexaman-featured-content">
                         <span class="codexaman-product-label">
                             <span>⭐</span> TOP RATED
                         </span>
                         <h3>Merino Wool Blend</h3>
-                        <p>Luxuriously soft merino wool combining incredible softness with ultimate durability for premium applications in fashion and home textiles.</p>
-                        
+                        <p>Luxuriously soft merino wool combining incredible softness with ultimate durability for
+                            premium applications in fashion and home textiles.</p>
+
                         <div class="codexaman-specs-grid">
                             <div class="codexaman-spec-item">
                                 <span class="codexaman-spec-label">Loose Price</span>
@@ -1000,38 +1097,40 @@
                                 <span class="codexaman-spec-value">6-8</span>
                             </div>
                         </div>
-                        
+
                         <ul class="codexaman-features">
                             <li>Merino Wool: 98% Of Finer Softness</li>
                             <li>Natural Breathability & Comfort</li>
                             <li>Moisture Wicking: 100% Moisture Control</li>
                         </ul>
-                        
+
                         <div class="codexaman-buttons">
                             <button class="codexaman-btn-primary">GET INSTANT QUOTE →</button>
                             <button class="codexaman-btn-secondary">BROCHURE</button>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- More Yarn Products Slider -->
                 <div class="codexaman-more-section">
                     <h3>More Yarn Products</h3>
                     <p>Discover a diverse range of premium yarns to meet your industrial and creative needs</p>
-                    
+
                     <div class="swiper codexaman-yarn-swiper">
                         <div class="swiper-wrapper">
-                            
+
                             <!-- Yarn Product 1 -->
                             <div class="swiper-slide">
                                 <div class="codexaman-product-card">
                                     <div class="codexaman-product-img">
                                         <span class="codexaman-product-tag">NEW STOCK</span>
-                                        <img src="https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=600&h=400&fit=crop" alt="Pure Mulberry Silk">
+                                        <img src="https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=600&h=400&fit=crop"
+                                            alt="Pure Mulberry Silk">
                                     </div>
                                     <div class="codexaman-product-body">
                                         <h5>Pure Mulberry Silk</h5>
-                                        <p>Luxurious 100% mulberry silk yarn for premium fabric production and designer wear.</p>
+                                        <p>Luxurious 100% mulberry silk yarn for premium fabric production and designer
+                                            wear.</p>
                                         <div class="codexaman-product-info">
                                             <div class="codexaman-info-col">
                                                 <span>Material</span>
@@ -1052,17 +1151,19 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <!-- Yarn Product 2 -->
                             <div class="swiper-slide">
                                 <div class="codexaman-product-card">
                                     <div class="codexaman-product-img">
                                         <span class="codexaman-product-tag">HOT SELLER</span>
-                                        <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=600&h=400&fit=crop" alt="Premium Acrylic Yarn">
+                                        <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=600&h=400&fit=crop"
+                                            alt="Premium Acrylic Yarn">
                                     </div>
                                     <div class="codexaman-product-body">
                                         <h5>Premium Acrylic Yarn</h5>
-                                        <p>Soft, lightweight acrylic yarn ideal for knitwear, sweaters, and home textiles.</p>
+                                        <p>Soft, lightweight acrylic yarn ideal for knitwear, sweaters, and home
+                                            textiles.</p>
                                         <div class="codexaman-product-info">
                                             <div class="codexaman-info-col">
                                                 <span>Count</span>
@@ -1083,17 +1184,19 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <!-- Yarn Product 3 -->
                             <div class="swiper-slide">
                                 <div class="codexaman-product-card">
                                     <div class="codexaman-product-img">
                                         <span class="codexaman-product-tag">PREMIUM</span>
-                                        <img src="https://images.unsplash.com/photo-1564584217132-2271feaeb3c5?w=600&h=400&fit=crop" alt="Rainbow Fiber Yarn">
+                                        <img src="https://images.unsplash.com/photo-1564584217132-2271feaeb3c5?w=600&h=400&fit=crop"
+                                            alt="Rainbow Fiber Yarn">
                                     </div>
                                     <div class="codexaman-product-body">
                                         <h5>Rainbow Fiber Yarn</h5>
-                                        <p>Vibrant multicolor blended yarn perfect for artistic creations and craft projects.</p>
+                                        <p>Vibrant multicolor blended yarn perfect for artistic creations and craft
+                                            projects.</p>
                                         <div class="codexaman-product-info">
                                             <div class="codexaman-info-col">
                                                 <span>Blend</span>
@@ -1114,17 +1217,19 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <!-- Yarn Product 4 -->
                             <div class="swiper-slide">
                                 <div class="codexaman-product-card">
                                     <div class="codexaman-product-img">
                                         <span class="codexaman-product-tag">FEATURED</span>
-                                        <img src="https://images.unsplash.com/photo-1618220179428-22790b461013?w=600&h=400&fit=crop" alt="Polyester Thread">
+                                        <img src="https://images.unsplash.com/photo-1618220179428-22790b461013?w=600&h=400&fit=crop"
+                                            alt="Polyester Thread">
                                     </div>
                                     <div class="codexaman-product-body">
                                         <h5>Spun Polyester Thread</h5>
-                                        <p>Industrial-grade sewing thread with excellent tensile strength for heavy-duty use.</p>
+                                        <p>Industrial-grade sewing thread with excellent tensile strength for heavy-duty
+                                            use.</p>
                                         <div class="codexaman-product-info">
                                             <div class="codexaman-info-col">
                                                 <span>Size</span>
@@ -1145,26 +1250,26 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                         </div>
-                        
+
                         <div class="swiper-button-next codexaman-swiper-button-next"></div>
                         <div class="swiper-button-prev codexaman-swiper-button-prev"></div>
                         <div class="swiper-pagination"></div>
                     </div>
                 </div>
-                
+
             </div>
         </div>
-        
+
     </section>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
+
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    
+
     <script>
         // Initialize Rice Products Swiper
         const riceSwiper = new Swiper('.codexaman-rice-swiper', {
@@ -1227,4 +1332,5 @@
         });
     </script>
 </body>
+
 </html>
