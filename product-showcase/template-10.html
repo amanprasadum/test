@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Products - Modern Showcase</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <style>
+        /* ========================================
+           MODERN PREMIUM PRODUCT SHOWCASE 2025
+           Design by CodeXaman
+        ======================================== */
+        
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --accent-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gold-gradient: linear-gradient(135deg, #f4c75c 0%, #d4a017 100%);
+            --dark-bg: #0a0e27;
+            --light-glass: rgba(255, 255, 255, 0.1);
+            --shadow-elevation: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            background: var(--dark-bg);
+        }
+
+        /* ========== ANIMATED BACKGROUND ========== */
+        .animated-bg-wrapper {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .gradient-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.6;
+            animation: float-orb 20s infinite ease-in-out;
+        }
+
+        .orb-1 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, #667eea, transparent);
+            top: -200px;
+            left: -200px;
+            animation-delay: 0s;
+        }
+
+        .orb-2 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, #f5576c, transparent);
+            bottom: -150px;
+            right: -150px;
+            animation-delay: 5s;
+        }
+
+        .orb-3 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, #f4c75c, transparent);
+            top: 50%;
+            left: 50%;
+            animation-delay: 10s;
+        }
+
+        @keyframes float-orb {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(100px, -100px) scale(1.1); }
+            50% { transform: translate(-50px, 100px) scale(0.9); }
+            75% { transform: translate(150px, 50px) scale(1.05); }
+        }
+
+        /* ========== SECTION STYLES ========== */
+        .product-showcase-section {
+            padding: 120px 0;
+            position: relative;
+        }
+
+        /* ========== HEADER DESIGN ========== */
+        .section-header-modern {
+            text-align: center;
+            margin-bottom: 80px;
+            position: relative;
+        }
+
+        .header-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--light-glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 12px 30px;
+            border-radius: 50px;
+            color: #fff;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-badge i {
+            font-size: 1.2rem;
+            color: #f4c75c;
+        }
+
+        .section-title-modern {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #fff 0%, #f4c75c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 25px;
+            line-height: 1.1;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-subtitle-modern {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        /* ========== BENTO GRID LAYOUT ========== */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 25px;
+            margin-bottom: 100px;
+        }
+
+        .bento-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 30px;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Featured Large Card */
+        .bento-item-large {
+            grid-column: span 6;
+            grid-row: span 2;
+        }
+
+        /* Medium Cards */
+        .bento-item-medium {
+            grid-column: span 6;
+        }
+
+        /* Small Cards */
+        .bento-item-small {
+            grid-column: span 3;
+        }
+
+        /* ========== GLASSMORPHISM CARD ========== */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            overflow: hidden;
+            position: relative;
+            height: 100%;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gold-gradient);
+            transform: scaleX(0);
+            transition: transform 0.6s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(244, 199, 92, 0.5);
+            box-shadow: 0 30px 60px rgba(244, 199, 92, 0.2);
+        }
+
+        .glass-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        /* ========== PRODUCT IMAGE CONTAINER ========== */
+        .product-visual-zone {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+        }
+
+        .bento-item-large .product-visual-zone {
+            height: 100%;
+            min-height: 500px;
+        }
+
+        .product-image-3d {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            filter: brightness(0.9) contrast(1.1);
+        }
+
+        .glass-card:hover .product-image-3d {
+            transform: scale(1.15) rotate(3deg);
+            filter: brightness(1) contrast(1.2);
+        }
+
+        /* Floating Badge */
+        .floating-badge {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            background: var(--gold-gradient);
+            color: #0a0e27;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            box-shadow: 0 10px 30px rgba(244, 199, 92, 0.4);
+            animation: pulse-badge 2s infinite;
+            z-index: 2;
+        }
+
+        @keyframes pulse-badge {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Gradient Overlay */
+        .gradient-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60%;
+            background: linear-gradient(to top, rgba(10, 14, 39, 0.95) 0%, transparent 100%);
+            z-index: 1;
+        }
+
+        /* ========== CARD CONTENT ========== */
+        .card-content-modern {
+            padding: 35px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .bento-item-large .card-content-modern {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 45px;
+        }
+
+        .product-category {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.8rem;
+            color: #f4c75c;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .product-category i {
+            font-size: 1rem;
+        }
+
+        .product-title-modern {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .bento-item-large .product-title-modern {
+            font-size: 3rem;
+        }
+
+        .product-description-modern {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 25px;
+            font-weight: 300;
+        }
+
+        /* ========== SPECS PILLS ========== */
+        .specs-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .spec-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.9);
+            transition: all 0.3s ease;
+        }
+
+        .spec-pill:hover {
+            background: rgba(244, 199, 92, 0.2);
+            border-color: #f4c75c;
+            transform: translateY(-2px);
+        }
+
+        .spec-pill i {
+            color: #f4c75c;
+            font-size: 1rem;
+        }
+
+        /* ========== ACTION BUTTON ========== */
+        .btn-explore-modern {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--gold-gradient);
+            color: #0a0e27;
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(244, 199, 92, 0.3);
+        }
+
+        .btn-explore-modern::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .btn-explore-modern:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(244, 199, 92, 0.5);
+            color: #0a0e27;
+        }
+
+        .btn-explore-modern:hover::before {
+            left: 100%;
+        }
+
+        .btn-explore-modern i {
+            transition: transform 0.3s ease;
+        }
+
+        .btn-explore-modern:hover i {
+            transform: translateX(5px);
+        }
+
+        /* ========== PARALLAX ELEMENTS ========== */
+        .floating-element {
+            position: absolute;
+            pointer-events: none;
+            opacity: 0.1;
+            animation: float-element 15s infinite ease-in-out;
+        }
+
+        .float-icon-1 {
+            top: 10%;
+            left: 5%;
+            font-size: 4rem;
+            color: #f4c75c;
+            animation-delay: 0s;
+        }
+
+        .float-icon-2 {
+            bottom: 15%;
+            right: 8%;
+            font-size: 5rem;
+            color: #667eea;
+            animation-delay: 5s;
+        }
+
+        @keyframes float-element {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-50px) rotate(10deg); }
+        }
+
+        /* ========== RESPONSIVE DESIGN ========== */
+        @media (max-width: 1199px) {
+            .section-title-modern {
+                font-size: 3.5rem;
+            }
+            
+            .bento-item-large .product-title-modern {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 991px) {
+            .bento-item-large,
+            .bento-item-medium,
+            .bento-item-small {
+                grid-column: span 12;
+            }
+            
+            .section-title-modern {
+                font-size: 2.8rem;
+            }
+            
+            .product-visual-zone {
+                height: 350px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .product-showcase-section {
+                padding: 80px 0;
+            }
+            
+            .section-title-modern {
+                font-size: 2.2rem;
+            }
+            
+            .section-subtitle-modern {
+                font-size: 1rem;
+            }
+            
+            .card-content-modern {
+                padding: 25px;
+            }
+            
+            .product-title-modern {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 575px) {
+            .section-title-modern {
+                font-size: 1.8rem;
+            }
+            
+            .bento-item-large .product-title-modern {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* ========== SCROLL ANIMATIONS ========== */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .bento-item:nth-child(1) { animation-delay: 0.1s; }
+        .bento-item:nth-child(2) { animation-delay: 0.2s; }
+        .bento-item:nth-child(3) { animation-delay: 0.3s; }
+        .bento-item:nth-child(4) { animation-delay: 0.4s; }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg-wrapper">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+    </div>
+
+    <!-- ========================================
+         RICE PRODUCTS SECTION
+    ======================================== -->
+    <section class="product-showcase-section">
+        <div class="container">
+            <!-- Floating Icons -->
+            <i class="bi bi-stars floating-element float-icon-1"></i>
+            
+            <!-- Section Header -->
+            <div class="section-header-modern fade-in-up">
+                <div class="header-badge">
+                    <i class="bi bi-award-fill"></i>
+                    <span>Premium Food Grains</span>
+                </div>
+                <h2 class="section-title-modern">Finest Indian Rice</h2>
+                <p class="section-subtitle-modern">
+                    Experience the authentic taste of India's finest rice varieties, carefully sourced from premium paddy fields
+                </p>
+            </div>
+
+            <!-- Bento Grid -->
+            <div class="bento-grid">
+                <!-- Featured Product - Basmati Rice -->
+                <div class="bento-item bento-item-large fade-in-up">
+                    <div class="glass-card">
+                        <div class="product-visual-zone">
+                            <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?w=800&q=80" 
+                                 alt="Premium Basmati Rice" 
+                                 class="product-image-3d">
+                            <div class="floating-badge">★ Premium</div>
+                            <div class="gradient-overlay"></div>
+                        </div>
+                        <div class="card-content-modern">
+                            <div class="product-category">
+                                <i class="bi bi-gem"></i>
+                                <span>Signature Collection</span>
+                            </div>
+                            <h3 class="product-title-modern">Premium Basmati Rice</h3>
+                            <p class="product-description-modern">
+                                Aromatic long-grain Basmati from the Himalayan foothills. Aged 2 years for exceptional flavor and fluffy texture.
+                            </p>
+                            <div class="specs-container">
+                                <span class="spec-pill">
+                                    <i class="bi bi-award"></i> 1121 Variety
+                                </span>
+                                <span class="spec-pill">
+                                    <i class="bi bi-hourglass"></i> 2 Years Aged
+                                </span>
+                                <span class="spec-pill">
+                                    <i class="bi bi-rulers"></i> Extra Long
+                                </span>
+                                <span class="spec-pill">
+                                    <i class="bi bi-shield-check"></i> Quality Certified
+                                </span>
+                            </div>
+                            <a href="#" class="btn-explore-modern">
+                                Explore Details <i class="bi bi-arrow-right-circle-fill"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sona Masoori Rice -->
+                <div class="bento-item bento-item-medium fade-in-up">
+                    <div class="glass-card">
+                        <div class="product-visual-zone">
+                            <img src="https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?w=600&q=80" 
+                                 alt="Sona Masoori Rice" 
+                                 class="product-image-3d">
+                            <div class="floating-badge">Popular</div>
+                            <div class="gradient-overlay"></div>
+                        </div>
+                        <div class="card-content-modern">
+                            <div class="product-category">
+                                <i class="bi bi-heart-fill"></i>
+                                <span>Daily Choice</span>
+                            </div>
+                            <h3 class="product-title-modern">Sona Masoori Rice</h3>
+                            <p class="product-description-modern">
+                                Lightweight medium-grain rice from Andhra Pradesh with low starch content.
+                            </p>
+                            <div class="specs-container">
+                                <span class="spec-pill">
+                                    <i class="bi bi-droplet"></i> Low Starch
+                                </span>
+                                <span class="spec-pill">
+                                    <i class="bi bi-lightning-fill"></i> Quick Cook
+                                </span>
+                            </div>
+                            <a href="#" class="btn-explore-modern">
+                                View Details <i class="bi bi-arrow-right-circle-fill"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Brown Rice -->
+                <div class="bento-item bento-item-small fade-in-up">
+                    <div class="glass-card">
+                        <div class="product-visual-zone">
+                            <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400&q=80" 
+                                 alt="Organic Brown Rice" 
+                                 class="product-image-3d">
+                            <div class="floating-badge">Organic</div>
+                        </div>
+                        <div class="card-content-modern">
+                            <div class="product-category">
+                                <i class="bi bi-leaf"></i>
+                                <span>Health</span>
+                            </div>
+                            <h3 class="product-title-modern">Organic Brown Rice</h3>
+                            <p class="product-description-modern">
+                                Whole grain packed with nutrients and fiber.
+                            </p>
+                            <a href="#" class="btn-explore-modern">
+                                Details <i class="bi bi-arrow-right-circle-fill"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kolam Rice -->
+                <div class="bento-item bento-item-small fade-in-up">
+                    <div class="glass-card">
+                        <div class="product-visual-zone">
+                            <img src="https://images.unsplash.com/photo-1556910110-a655420623cf?w=400&q=80" 
+                                 alt="Kolam Rice" 
+                                 class="product-image-3d">
+                            <div class="floating-badge">Traditional</div>
+                        </div>
+                        <div class="card-content-modern">
+                            <div class="product-category">
+                                <i class="bi bi-star-fill"></i>
+                                <span>Classic</span>
+                            </div>
+                            <h3 class="product-title-modern">Kolam Rice</h3>
+                            <p class="product-description-modern">
+                                Traditional South Indian variety with soft texture.
+                            </p>
+                            <a href="#" class="btn-explore-modern">
+                                Details <i class="bi bi-arrow-right-circle-fill"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         YARN PRODUCTS SECTION
+    ======================================== -->
+    <section class="product-showcase-section">
+        <div class="container">
+            <!-- Floating Icons -->
+            <i class="bi bi-palette-fill floating-element float-icon-2"></i>
+            
+            <!-- Section Header -->
+            <div class="section-header-modern fade-in-up">
+                <div class="header-badge">
+                    <i class="bi bi-stars"></i>
+                    <span>Premium Textiles</span>
+                </div>
+                <h2 class="section-title-modern">Quality Yarn Collection</h2>
+                <p class="section-subtitle-modern">
+                    Crafted with precision, our yarn collection represents excellence in Indian textile manufacturing
+                </p>
+            </div>
+
+            <!-- Bento Grid -->
+            <div class="bento-grid">
+                <!-- Featured Product - Cotton Yarn -->
+                <div class="bento-item bento-item-medium fade-in-up">
+                    <div class="glass-card">
+                        <div class="product-visual-zone">
+                            <img src="https://images.unsplash.com/photo-1569156041876-d1b5ad5a8f87?w=600&q=80" 
+                                 alt="Cotton Yarn" 
+                                 class="product-image-3d">
+                            <div class="floating-badge">Bestseller</div>
+                            <div class="gradient-overlay"></div>
+                        </div>
+                        <div class="card-content-modern">
+                            <div class="product-category">
+                                <i class="bi bi-flower1"></i>
+                                <span>Natural Fiber</span>
+                            </div>
+                            <h3 class="product-title-modern">100% Cotton Yarn</h3>
+                            <p class="product-description-modern">
+                                Pure cotton yarn spun from premium Indian cotton. Breathable and perfect for quality textiles.
+                            </p>
+                            <div class="specs-container">
+                                <span class="spec-pill">
+                                    <i class="bi bi-flower1"></i> 100% Cotton
+                                </span>
+                                <span class="spec-pill">
+                                    <i class="bi bi-aspect-ratio"></i> 20s-60s Count
+                                </span>
+                                <span class="spec-pill">
+                                    <i class="bi bi-wind"></i> Breathable
+                                </span>
+                            </div>
+                            <a href="#" class="btn-explore-modern">
+                                View Details <i class="bi bi-arrow-right-circle-fill"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Polyester Yarn -->
+                <div class="bento-item bento-item-small fade-in-up">
+                    <div class="glass-card">
+                        <div class="product-visual-zone">
+                            <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=400&q=80" 
+                                 alt="Polyester Yarn" 
+                                 class="product-image-3d">
+                            <div class="floating-badge">Durable</div>
+                        </div>
+                        <div class="card-content-modern">
+                            <div class="product-category">
+                                <i class="bi bi-lightning-fill"></i>
+                                <span>Synthetic</span>
+                            </div>
+                            <h3 class="product-title-modern">Polyester Yarn</h3>
+                            <p class="product-description-modern">
+                                High-tenacity with excellent strength and wrinkle resistance.
+                            </p>
+                            <a href="#" class="btn-explore-modern">
+                                Details <i class="bi bi-arrow-right-circle-fill"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Blended Yarn -->
+                <div class="bento-item bento-item-small fade-in-up">
+                    <div class="glass-card">
+                        <div class="product-visual-zone">
+                            <img src="https://images.unsplash.com/photo-1618126365582-96ff4c3f6c8f?w=400&q=80" 
+                                 alt="Blended Yarn" 
+                                 class="product-image-3d">
+                            <div class="floating-badge">Hybrid</div>
+                        </div>
+                        <div class="card-content-modern">
+                            <div class="product-category">
+                                <i class="bi bi-diagram-3"></i>
+                                <span>Blended</span>
+                            </div>
+                            <h3 class="product-title-modern">Cotton-Poly Blend</h3>
+                            <p class="product-description-modern">
+                                Perfect balance of comfort and durability.
+                            </p>
+                            <a href="#" class="btn-explore-modern">
+                                Details <i class="bi bi-arrow-right-circle-fill"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Specialty Yarn -->
+                <div class="bento-item bento-item-large fade-in-up">
+                    <div class="glass-card">
+                        <div class="product-visual-zone">
+                            <img src="https://images.unsplash.com/photo-1601924357840-3f9c4e98d4f7?w=800&q=80" 
+                                 alt="Specialty Yarn" 
+                                 class="product-image-3d">
+                            <div class="floating-badge">★ Premium</div>
+                            <div class="gradient-overlay"></div>
+                        </div>
+                        <div class="card-content-modern">
+                            <div class="product-category">
+                                <i class="bi bi-magic"></i>
+                                <span>Exclusive Range</span>
+                            </div>
+                            <h3 class="product-title-modern">Specialty Yarn</h3>
+                            <p class="product-description-modern">
+                                Innovative specialty yarn with unique properties for premium fabrics and specialized applications.
+                            </p>
+                            <div class="specs-container">
+                                <span class="spec-pill">
+                                    <i class="bi bi-magic"></i> Custom Made
+                                </span>
+                                <span class="spec-pill">
+                                    <i class="bi bi-graph-up"></i> High Quality
+                                </span>
+                                <span class="spec-pill">
+                                    <i class="bi bi-award-fill"></i> Premium Grade
+                                </span>
+                            </div>
+                            <a href="#" class="btn-explore-modern">
+                                Explore Details <i class="bi bi-arrow-right-circle-fill"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Parallax effect for floating icons
+        document.addEventListener('mousemove', (e) => {
+            const icons = document.querySelectorAll('.floating-element');
+            icons.forEach((icon, index) => {
+                const speed = (index + 1) * 0.02;
+                const x = (window.innerWidth - e.pageX * speed) / 100;
+                const y = (window.innerHeight - e.pageY * speed) / 100;
+                icon.style.transform = `translate(${x}px, ${y}px)`;
+            });
+        });
+
+        // Intersection Observer for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
