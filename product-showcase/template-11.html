@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Products - Clean Light Design</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <style>
+        /* ========================================
+           CLEAN LIGHT DESIGN - PREMIUM PRODUCTS
+           Design by CodeXaman
+        ======================================== */
+        
+        :root {
+            --primary-color: #f4c75c;
+            --primary-dark: #d4a017;
+            --accent-color: #667eea;
+            --text-dark: #1a1a1a;
+            --text-light: #666666;
+            --bg-light: #ffffff;
+            --bg-section: #fafafa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-section);
+            color: var(--text-dark);
+        }
+
+        /* ========== SECTION STYLES ========== */
+        .product-showcase-section {
+            padding: 100px 0;
+            position: relative;
+            background: var(--bg-section);
+        }
+
+        /* ========== HEADER DESIGN ========== */
+        .section-header-modern {
+            text-align: center;
+            margin-bottom: 70px;
+            position: relative;
+        }
+
+        .header-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #fff;
+            border: 2px solid #f0f0f0;
+            padding: 10px 25px;
+            border-radius: 50px;
+            color: var(--text-dark);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+        }
+
+        .header-badge i {
+            font-size: 1rem;
+            color: var(--primary-color);
+        }
+
+        .section-title-modern {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .section-subtitle-modern {
+            font-size: 1.15rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+            font-weight: 400;
+        }
+
+        /* ========== UNIFORM PRODUCT GRID ========== */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        /* ========== CLEAN PRODUCT CARD ========== */
+        .product-card-modern {
+            background: #ffffff;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+        }
+
+        .product-card-modern:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        /* ========== IMAGE CONTAINER ========== */
+        .product-image-zone {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+            background: #f8f9fa;
+        }
+
+        .product-image-3d {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .product-card-modern:hover .product-image-3d {
+            transform: scale(1.08);
+        }
+
+        /* Clean Floating Badge */
+        .floating-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--primary-color);
+            color: var(--text-dark);
+            padding: 6px 15px;
+            border-radius: 50px;
+            font-size: 0.65rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 12px rgba(244, 199, 92, 0.3);
+            z-index: 2;
+        }
+
+        /* ========== CARD CONTENT ========== */
+        .card-content-modern {
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .product-category {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.7rem;
+            color: var(--primary-dark);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+        }
+
+        .product-category i {
+            font-size: 0.85rem;
+        }
+
+        .product-title-modern {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+            line-height: 1.3;
+            min-height: 40px;
+        }
+
+        .product-description-modern {
+            color: var(--text-light);
+            font-size: 0.88rem;
+            line-height: 1.6;
+            margin-bottom: 18px;
+            font-weight: 400;
+            flex-grow: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            min-height: 68px;
+        }
+
+        /* ========== SPECS PILLS ========== */
+        .specs-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .spec-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: #f8f9fa;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.7rem;
+            color: var(--text-dark);
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .spec-pill:hover {
+            background: #fff3e0;
+            transform: translateY(-2px);
+        }
+
+        .spec-pill i {
+            color: var(--primary-color);
+            font-size: 0.85rem;
+        }
+
+        /* ========== CLEAN ACTION BUTTON ========== */
+        .btn-explore-modern {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: var(--text-dark);
+            color: #ffffff;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            margin-top: auto;
+        }
+
+        .btn-explore-modern:hover {
+            background: var(--primary-color);
+            color: var(--text-dark);
+            transform: translateX(5px);
+        }
+
+        .btn-explore-modern i {
+            transition: transform 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .btn-explore-modern:hover i {
+            transform: translateX(3px);
+        }
+
+        /* ========== RESPONSIVE DESIGN ========== */
+        @media (max-width: 1399px) {
+            .products-grid {
+                grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            }
+        }
+
+        @media (max-width: 1199px) {
+            .section-title-modern {
+                font-size: 3rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            }
+        }
+
+        @media (max-width: 991px) {
+            .section-title-modern {
+                font-size: 2.5rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .product-image-zone {
+                height: 200px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .product-showcase-section {
+                padding: 70px 0;
+            }
+            
+            .section-title-modern {
+                font-size: 2rem;
+            }
+            
+            .section-subtitle-modern {
+                font-size: 1rem;
+            }
+            
+            .products-grid {
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 575px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title-modern {
+                font-size: 1.8rem;
+            }
+            
+            .card-content-modern {
+                padding: 24px;
+            }
+            
+            .product-image-zone {
+                height: 220px;
+            }
+        }
+
+        /* ========== SMOOTH SCROLL ANIMATIONS ========== */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .product-card-modern:nth-child(1) { animation-delay: 0.1s; }
+        .product-card-modern:nth-child(2) { animation-delay: 0.2s; }
+        .product-card-modern:nth-child(3) { animation-delay: 0.3s; }
+        .product-card-modern:nth-child(4) { animation-delay: 0.4s; }
+    </style>
+</head>
+<body>
+    <!-- ========================================
+         RICE PRODUCTS SECTION
+    ======================================== -->
+    <section class="product-showcase-section">
+        <div class="container">
+            <!-- Section Header -->
+            <div class="section-header-modern fade-in-up">
+                <div class="header-badge">
+                    <i class="bi bi-award-fill"></i>
+                    <span>Premium Food Grains</span>
+                </div>
+                <h2 class="section-title-modern">Finest Indian Rice</h2>
+                <p class="section-subtitle-modern">
+                    Experience the authentic taste of India's finest rice varieties, carefully sourced from premium paddy fields
+                </p>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="products-grid">
+                <!-- Product 1: Basmati Rice -->
+                <div class="product-card-modern fade-in-up">
+                    <div class="product-image-zone">
+                        <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600&q=80" 
+                             alt="Premium Basmati Rice" 
+                             class="product-image-3d">
+                        <div class="floating-badge">Premium</div>
+                    </div>
+                    <div class="card-content-modern">
+                        <div class="product-category">
+                            <i class="bi bi-gem"></i>
+                            <span>Signature</span>
+                        </div>
+                        <h3 class="product-title-modern">Premium Basmati Rice</h3>
+                        <p class="product-description-modern">
+                            Aromatic long-grain Basmati rice from the Himalayan foothills. Known for its delicate flavor, exceptional aroma, and fluffy texture when cooked.
+                        </p>
+                        <div class="specs-container">
+                            <span class="spec-pill">
+                                <i class="bi bi-award"></i> 1121 Variety
+                            </span>
+                            <span class="spec-pill">
+                                <i class="bi bi-hourglass"></i> Aged 2 Years
+                            </span>
+                            <span class="spec-pill">
+                                <i class="bi bi-rulers"></i> Extra Long
+                            </span>
+                        </div>
+                        <a href="#" class="btn-explore-modern">
+                            View Details <i class="bi bi-arrow-right-circle-fill"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Product 2: Sona Masoori Rice -->
+                <div class="product-card-modern fade-in-up">
+                    <div class="product-image-zone">
+                        <img src="https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?w=600&q=80" 
+                             alt="Sona Masoori Rice" 
+                             class="product-image-3d">
+                        <div class="floating-badge">Popular</div>
+                    </div>
+                    <div class="card-content-modern">
+                        <div class="product-category">
+                            <i class="bi bi-heart-fill"></i>
+                            <span>Daily Choice</span>
+                        </div>
+                        <h3 class="product-title-modern">Sona Masoori Rice</h3>
+                        <p class="product-description-modern">
+                            Lightweight and aromatic medium-grain rice from Andhra Pradesh. Perfect for daily meals with its low starch content and soft texture.
+                        </p>
+                        <div class="specs-container">
+                            <span class="spec-pill">
+                                <i class="bi bi-droplet"></i> Low Starch
+                            </span>
+                            <span class="spec-pill">
+                                <i class="bi bi-lightning-fill"></i> Quick Cook
+                            </span>
+                            <span class="spec-pill">
+                                <i class="bi bi-heart"></i> Light
+                            </span>
+                        </div>
+                        <a href="#" class="btn-explore-modern">
+                            View Details <i class="bi bi-arrow-right-circle-fill"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Product 3: Brown Rice -->
+                <div class="product-card-modern fade-in-up">
+                    <div class="product-image-zone">
+                        <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600&q=80" 
+                             alt="Organic Brown Rice" 
+                             class="product-image-3d">
+                        <div class="floating-badge">Organic</div>
+                    </div>
+                    <div class="card-content-modern">
+                        <div class="product-category">
+                            <i class="bi bi-leaf"></i>
+                            <span>Health</span>
+                        </div>
+                        <h3 class="product-title-modern">Organic Brown Rice</h3>
+                        <p class="product-description-modern">
+                            Whole grain brown rice packed with essential nutrients, fiber, and antioxidants. Ideal for health-conscious individuals and fitness enthusiasts.
+                        </p>
+                        <div class="specs-container">
+                            <span class="spec-pill">
+                                <i class="bi bi-leaf"></i> 100% Organic
+                            </span>
+                            <span class="spec-pill">
+                                <i class="bi bi-heart-pulse"></i> High Fiber
+                            </span>
+                            <span class="spec-pill">
+                                <i class="bi bi-shield-check"></i> No Polish
+                            </span>
+                        </div>
+                        <a href="#" class="btn-explore-modern">
+                            View Details <i class="bi bi-arrow-right-circle-fill"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Product 4: Kolam Rice -->
+                <div class="product-card-modern fade-in-up">
+                    <div class="product-image-zone">
+                        <img src="https://images.unsplash.com/photo-1556910110-a655420623cf?w=600&q=80" 
+                             alt="Kolam Rice" 
+                             class="product-image-3d">
+                        <div class="floating-badge">Traditional</div>
+                    </div>
+                    <div class="card-content-modern">
+                        <div class="product-category">
+                            <i class="bi bi-star-fill"></i>
+                            <span>Classic</span>
+                        </div>
+                        <h3 class="product-title-modern">Kolam Rice</h3>
+                        <p class="product-description-modern">
+                            Traditional South Indian rice variety with soft texture and mild flavor. Perfect for making idli, dosa, and everyday South Indian cooking.
+                        </p>
+                        <div class="specs-container">
+                            <span class="spec-pill">
+                                <i class="bi bi-star"></i> Authentic
+                            </span>
+                            <span class="spec-pill">
+                                <i class="bi bi-moisture"></i> Soft Texture
+                            </span>
+                            <span class="spec-pill">
+                                <i class="bi bi-egg-fried"></i> Multi-Use
+                            </span>
+                        </div>
+                        <a href="#" class="btn-explore-modern">
+                            View Details <i class="bi bi-arrow-right-circle-fill"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         YARN PRODUCTS SECTION
+    ======================================== -->
+    <section class="product-showcase-section">
+        <div class="container">
+            <!-- Section Header -->
+            <div class="section-header-modern fade-in-up">
+                <div class="header-badge">
+                    <i class="bi bi-stars"></i>
+                    <span>Premium Textiles</span>
+                </div>
+                <h2 class="section-title-modern">Quality Yarn Collection</h2>
+                <p class="section-subtitle-modern">
+                    Crafted with precision, our yarn collection represents excellence in Indian textile manufacturing
+                </p>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="products-grid">
+                <!-- Product 1: Cotton Yarn -->
+                <div class="product-card-modern fade-in-up">
+                    <div class="product-image-zone">
+                        <img src="https://images.unsplash.com/photo-1569156041876-d1b5ad5a8f87?w=600&q=80" 
+                             alt="100% Cotton Yarn" 
+                             class="product-image-3d">
+                        <div class="floating-badge">Bestseller</div>
+                    </div>
+                    <div class="card-content-modern">
+                        <div class="product-category">
+                            <i class="bi bi-flower1"></i>
+                            <span>Natural</span>
+                        </div>
+                        <h3 class="product-title-modern">100% Cotton Yarn</h3>
+                        <p class="product-description-modern">
+                            Pure cotton yarn spun from premium Indian cotton. Breathable, soft, and perfect for high-quality textile production and garment manufacturing.
+                        </p>
+                        <div class="specs-container">
+                            <span class="spec-pill">
+                                <i class="bi bi-flower1"></i> Pure Cotton
+                            </span>
+                            <span class="spec-pill">
+                                <i class="bi bi-aspect-ratio"></i> 20s-60s
+                            </span>
+                            <span class="spec-pill">
+                                <i class="bi bi-wind"></i> Breathable
+                            </span>
+                        </div>
+                        <a href="#" class="btn-explore-modern">
+                            View Details <i class="bi bi-arrow-right-circle-fill"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Product 2: Polyester Yarn -->
+                <div class="product-card-modern fade-in-up">
+                    <div class="product-image-zone">
+                        <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=600&q=80" 
+                             alt="Polyester Yarn" 
+                             class="product-image-3d">
+                        <div class="floating-badge">Durable</div>
+                    </div>
+                    <div class="card-content-modern">
+                        <div class="product-category">
+                            <i class="bi bi-lightning-fill"></i>
+                            <span>Synthetic</span>
+                        </div>
+                        <h3 class="product-title-modern">Polyester Yarn</h3>
+                        <p class="product-description-modern">
+                            High-tenacity polyester yarn with excellent strength and wrinkle resistance. Ideal for industrial textiles and modern fashion applications.
+                        </p>
+                        <div class="specs-container">
+                            <span class="spec-pill">
+                                <i class="bi bi-lightning-charge"></i> Strong
+                            </span>
+                            <span class="spec-pill">
+                                <i class="bi bi-palette"></i> Colorfast
+                            </span>
+                            <span class="spec-pill">
+                                <i class="bi bi-shield"></i> Wrinkle Free
+                            </span>
+                        </div>
+                        <a href="#" class="btn-explore-modern">
+                            View Details <i class="bi bi-arrow-right-circle-fill"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Product 3: Blended Yarn -->
+                <div class="product-card-modern fade-in-up">
+                    <div class="product-image-zone">
+                        <img src="https://images.unsplash.com/photo-1618126365582-96ff4c3f6c8f?w=600&q=80" 
+                             alt="Cotton Polyester Blend Yarn" 
+                             class="product-image-3d">
+                        <div class="floating-badge">Hybrid</div>
+                    </div>
+                    <div class="card-content-modern">
+                        <div class="product-category">
+                            <i class="bi bi-diagram-3"></i>
+                            <span>Blended</span>
+                        </div>
+                        <h3 class="product-title-modern">Cotton-Poly Blend</h3>
+                        <p class="product-description-modern">
+                            Perfect blend of cotton comfort and polyester durability. Offers the best of both worlds for versatile textile applications and cost efficiency.
+                        </p>
+                        <div class="specs-container">
+                            <span class="spec-pill">
+                                <i class="bi bi-diagram-3"></i> 65/35 Blend
+                            </span>
+                            <span class="spec-pill">
+                                <i class="bi bi-stars"></i> Versatile
+                            </span>
+                            <span class="spec-pill">
+                                <i class="bi bi-cash-coin"></i> Economical
+                            </span>
+                        </div>
+                        <a href="#" class="btn-explore-modern">
+                            View Details <i class="bi bi-arrow-right-circle-fill"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Product 4: Specialty Yarn -->
+                <div class="product-card-modern fade-in-up">
+                    <div class="product-image-zone">
+                        <img src="https://images.unsplash.com/photo-1601924357840-3f9c4e98d4f7?w=600&q=80" 
+                             alt="Specialty Yarn" 
+                             class="product-image-3d">
+                        <div class="floating-badge">Premium</div>
+                    </div>
+                    <div class="card-content-modern">
+                        <div class="product-category">
+                            <i class="bi bi-magic"></i>
+                            <span>Exclusive</span>
+                        </div>
+                        <h3 class="product-title-modern">Specialty Yarn</h3>
+                        <p class="product-description-modern">
+                            Innovative specialty yarn with unique properties designed for specialized textile applications and premium fabric manufacturing requirements.
+                        </p>
+                        <div class="specs-container">
+                            <span class="spec-pill">
+                                <i class="bi bi-magic"></i> Custom
+                            </span>
+                            <span class="spec-pill">
+                                <i class="bi bi-graph-up"></i> Premium
+                            </span>
+                            <span class="spec-pill">
+                                <i class="bi bi-award-fill"></i> Quality
+                            </span>
+                        </div>
+                        <a href="#" class="btn-explore-modern">
+                            View Details <i class="bi bi-arrow-right-circle-fill"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Intersection Observer for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
