@@ -13,6 +13,7 @@
     <style>
         /* ========================================
            MODERN PREMIUM PRODUCT SHOWCASE 2025
+           Compact SEO-Optimized Design
            Design by CodeXaman
         ======================================== */
         
@@ -92,14 +93,14 @@
 
         /* ========== SECTION STYLES ========== */
         .product-showcase-section {
-            padding: 120px 0;
+            padding: 100px 0;
             position: relative;
         }
 
         /* ========== HEADER DESIGN ========== */
         .section-header-modern {
             text-align: center;
-            margin-bottom: 80px;
+            margin-bottom: 70px;
             position: relative;
         }
 
@@ -110,38 +111,36 @@
             background: var(--light-glass);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 12px 30px;
+            padding: 10px 25px;
             border-radius: 50px;
             color: #fff;
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 30px;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
         }
 
         .header-badge i {
-            font-size: 1.2rem;
+            font-size: 1rem;
             color: #f4c75c;
         }
 
         .section-title-modern {
             font-family: 'Playfair Display', serif;
-            font-size: 4.5rem;
+            font-size: 3.5rem;
             font-weight: 900;
             background: linear-gradient(135deg, #fff 0%, #f4c75c 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             line-height: 1.1;
-            position: relative;
-            display: inline-block;
         }
 
         .section-subtitle-modern {
-            font-size: 1.3rem;
+            font-size: 1.15rem;
             color: rgba(255, 255, 255, 0.7);
             max-width: 700px;
             margin: 0 auto;
@@ -149,50 +148,28 @@
             font-weight: 300;
         }
 
-        /* ========== BENTO GRID LAYOUT ========== */
-        .bento-grid {
+        /* ========== UNIFORM PRODUCT GRID ========== */
+        .products-grid {
             display: grid;
-            grid-template-columns: repeat(12, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
-            margin-bottom: 100px;
+            margin-bottom: 80px;
         }
 
-        .bento-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 30px;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        /* Featured Large Card */
-        .bento-item-large {
-            grid-column: span 6;
-            grid-row: span 2;
-        }
-
-        /* Medium Cards */
-        .bento-item-medium {
-            grid-column: span 6;
-        }
-
-        /* Small Cards */
-        .bento-item-small {
-            grid-column: span 3;
-        }
-
-        /* ========== GLASSMORPHISM CARD ========== */
-        .glass-card {
+        /* ========== COMPACT PRODUCT CARD ========== */
+        .product-card-modern {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(20px) saturate(180%);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 30px;
+            border-radius: 25px;
             overflow: hidden;
-            position: relative;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             height: 100%;
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
         }
 
-        .glass-card::before {
+        .product-card-modern::before {
             content: '';
             position: absolute;
             top: 0;
@@ -202,29 +179,25 @@
             background: var(--gold-gradient);
             transform: scaleX(0);
             transition: transform 0.6s ease;
+            z-index: 1;
         }
 
-        .glass-card:hover {
+        .product-card-modern:hover {
             transform: translateY(-10px);
             border-color: rgba(244, 199, 92, 0.5);
             box-shadow: 0 30px 60px rgba(244, 199, 92, 0.2);
         }
 
-        .glass-card:hover::before {
+        .product-card-modern:hover::before {
             transform: scaleX(1);
         }
 
-        /* ========== PRODUCT IMAGE CONTAINER ========== */
-        .product-visual-zone {
+        /* ========== COMPACT IMAGE CONTAINER ========== */
+        .product-image-zone {
             position: relative;
-            height: 400px;
+            height: 220px;
             overflow: hidden;
             background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
-        }
-
-        .bento-item-large .product-visual-zone {
-            height: 100%;
-            min-height: 500px;
         }
 
         .product-image-3d {
@@ -235,25 +208,25 @@
             filter: brightness(0.9) contrast(1.1);
         }
 
-        .glass-card:hover .product-image-3d {
+        .product-card-modern:hover .product-image-3d {
             transform: scale(1.15) rotate(3deg);
             filter: brightness(1) contrast(1.2);
         }
 
-        /* Floating Badge */
+        /* Compact Floating Badge */
         .floating-badge {
             position: absolute;
-            top: 25px;
-            right: 25px;
+            top: 15px;
+            right: 15px;
             background: var(--gold-gradient);
             color: #0a0e27;
-            padding: 10px 25px;
+            padding: 6px 15px;
             border-radius: 50px;
-            font-size: 0.75rem;
+            font-size: 0.65rem;
             font-weight: 900;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            box-shadow: 0 10px 30px rgba(244, 199, 92, 0.4);
+            letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(244, 199, 92, 0.4);
             animation: pulse-badge 2s infinite;
             z-index: 2;
         }
@@ -263,89 +236,76 @@
             50% { transform: scale(1.05); }
         }
 
-        /* Gradient Overlay */
-        .gradient-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 60%;
-            background: linear-gradient(to top, rgba(10, 14, 39, 0.95) 0%, transparent 100%);
-            z-index: 1;
-        }
-
-        /* ========== CARD CONTENT ========== */
+        /* ========== COMPACT CARD CONTENT ========== */
         .card-content-modern {
-            padding: 35px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .bento-item-large .card-content-modern {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 45px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
         }
 
         .product-category {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            font-size: 0.8rem;
+            gap: 6px;
+            font-size: 0.7rem;
             color: #f4c75c;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
         }
 
         .product-category i {
-            font-size: 1rem;
+            font-size: 0.85rem;
         }
 
         .product-title-modern {
             font-family: 'Playfair Display', serif;
-            font-size: 2rem;
+            font-size: 1.5rem;
             font-weight: 900;
             color: #fff;
-            margin-bottom: 15px;
-            line-height: 1.2;
+            margin-bottom: 12px;
+            line-height: 1.3;
+            min-height: 40px;
         }
 
-        .bento-item-large .product-title-modern {
-            font-size: 3rem;
-        }
-
+        /* SEO-Optimized Description with fixed height */
         .product-description-modern {
             color: rgba(255, 255, 255, 0.7);
-            font-size: 0.95rem;
-            line-height: 1.7;
-            margin-bottom: 25px;
+            font-size: 0.88rem;
+            line-height: 1.6;
+            margin-bottom: 18px;
             font-weight: 300;
+            flex-grow: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            min-height: 68px;
         }
 
-        /* ========== SPECS PILLS ========== */
+        /* ========== COMPACT SPECS PILLS ========== */
         .specs-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 25px;
+            gap: 8px;
+            margin-bottom: 20px;
         }
 
         .spec-pill {
             display: inline-flex;
             align-items: center;
-            gap: 6px;
+            gap: 5px;
             background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.8rem;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.7rem;
             color: rgba(255, 255, 255, 0.9);
             transition: all 0.3s ease;
+            white-space: nowrap;
         }
 
         .spec-pill:hover {
@@ -356,27 +316,29 @@
 
         .spec-pill i {
             color: #f4c75c;
-            font-size: 1rem;
+            font-size: 0.85rem;
         }
 
-        /* ========== ACTION BUTTON ========== */
+        /* ========== COMPACT ACTION BUTTON ========== */
         .btn-explore-modern {
             display: inline-flex;
             align-items: center;
-            gap: 12px;
+            justify-content: center;
+            gap: 10px;
             background: var(--gold-gradient);
             color: #0a0e27;
-            padding: 15px 35px;
+            padding: 12px 25px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 900;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(244, 199, 92, 0.3);
+            box-shadow: 0 8px 25px rgba(244, 199, 92, 0.3);
+            margin-top: auto;
         }
 
         .btn-explore-modern::before {
@@ -391,8 +353,8 @@
         }
 
         .btn-explore-modern:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 15px 40px rgba(244, 199, 92, 0.5);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(244, 199, 92, 0.5);
             color: #0a0e27;
         }
 
@@ -402,6 +364,7 @@
 
         .btn-explore-modern i {
             transition: transform 0.3s ease;
+            font-size: 0.95rem;
         }
 
         .btn-explore-modern:hover i {
@@ -412,14 +375,14 @@
         .floating-element {
             position: absolute;
             pointer-events: none;
-            opacity: 0.1;
+            opacity: 0.08;
             animation: float-element 15s infinite ease-in-out;
         }
 
         .float-icon-1 {
             top: 10%;
             left: 5%;
-            font-size: 4rem;
+            font-size: 3rem;
             color: #f4c75c;
             animation-delay: 0s;
         }
@@ -427,72 +390,80 @@
         .float-icon-2 {
             bottom: 15%;
             right: 8%;
-            font-size: 5rem;
+            font-size: 3.5rem;
             color: #667eea;
             animation-delay: 5s;
         }
 
         @keyframes float-element {
             0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-50px) rotate(10deg); }
+            50% { transform: translateY(-40px) rotate(10deg); }
         }
 
         /* ========== RESPONSIVE DESIGN ========== */
+        @media (max-width: 1399px) {
+            .products-grid {
+                grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            }
+        }
+
         @media (max-width: 1199px) {
             .section-title-modern {
-                font-size: 3.5rem;
+                font-size: 3rem;
             }
             
-            .bento-item-large .product-title-modern {
-                font-size: 2.5rem;
+            .products-grid {
+                grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             }
         }
 
         @media (max-width: 991px) {
-            .bento-item-large,
-            .bento-item-medium,
-            .bento-item-small {
-                grid-column: span 12;
-            }
-            
             .section-title-modern {
-                font-size: 2.8rem;
+                font-size: 2.5rem;
             }
             
-            .product-visual-zone {
-                height: 350px;
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .product-image-zone {
+                height: 200px;
             }
         }
 
         @media (max-width: 767px) {
             .product-showcase-section {
-                padding: 80px 0;
+                padding: 70px 0;
             }
             
             .section-title-modern {
-                font-size: 2.2rem;
+                font-size: 2rem;
             }
             
             .section-subtitle-modern {
                 font-size: 1rem;
             }
             
-            .card-content-modern {
-                padding: 25px;
-            }
-            
-            .product-title-modern {
-                font-size: 1.5rem;
+            .products-grid {
+                gap: 20px;
             }
         }
 
         @media (max-width: 575px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
             .section-title-modern {
                 font-size: 1.8rem;
             }
             
-            .bento-item-large .product-title-modern {
-                font-size: 1.8rem;
+            .card-content-modern {
+                padding: 20px;
+            }
+            
+            .product-image-zone {
+                height: 220px;
             }
         }
 
@@ -510,10 +481,12 @@
             }
         }
 
-        .bento-item:nth-child(1) { animation-delay: 0.1s; }
-        .bento-item:nth-child(2) { animation-delay: 0.2s; }
-        .bento-item:nth-child(3) { animation-delay: 0.3s; }
-        .bento-item:nth-child(4) { animation-delay: 0.4s; }
+        .product-card-modern:nth-child(1) { animation-delay: 0.1s; }
+        .product-card-modern:nth-child(2) { animation-delay: 0.2s; }
+        .product-card-modern:nth-child(3) { animation-delay: 0.3s; }
+        .product-card-modern:nth-child(4) { animation-delay: 0.4s; }
+        .product-card-modern:nth-child(5) { animation-delay: 0.5s; }
+        .product-card-modern:nth-child(6) { animation-delay: 0.6s; }
     </style>
 </head>
 <body>
@@ -544,129 +517,141 @@
                 </p>
             </div>
 
-            <!-- Bento Grid -->
-            <div class="bento-grid">
-                <!-- Featured Product - Basmati Rice -->
-                <div class="bento-item bento-item-large fade-in-up">
-                    <div class="glass-card">
-                        <div class="product-visual-zone">
-                            <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?w=800&q=80" 
-                                 alt="Premium Basmati Rice" 
-                                 class="product-image-3d">
-                            <div class="floating-badge">★ Premium</div>
-                            <div class="gradient-overlay"></div>
+            <!-- Uniform Products Grid -->
+            <div class="products-grid">
+                <!-- Product 1: Basmati Rice -->
+                <div class="product-card-modern fade-in-up">
+                    <div class="product-image-zone">
+                        <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600&q=80" 
+                             alt="Premium Basmati Rice" 
+                             class="product-image-3d">
+                        <div class="floating-badge">Premium</div>
+                    </div>
+                    <div class="card-content-modern">
+                        <div class="product-category">
+                            <i class="bi bi-gem"></i>
+                            <span>Signature</span>
                         </div>
-                        <div class="card-content-modern">
-                            <div class="product-category">
-                                <i class="bi bi-gem"></i>
-                                <span>Signature Collection</span>
-                            </div>
-                            <h3 class="product-title-modern">Premium Basmati Rice</h3>
-                            <p class="product-description-modern">
-                                Aromatic long-grain Basmati from the Himalayan foothills. Aged 2 years for exceptional flavor and fluffy texture.
-                            </p>
-                            <div class="specs-container">
-                                <span class="spec-pill">
-                                    <i class="bi bi-award"></i> 1121 Variety
-                                </span>
-                                <span class="spec-pill">
-                                    <i class="bi bi-hourglass"></i> 2 Years Aged
-                                </span>
-                                <span class="spec-pill">
-                                    <i class="bi bi-rulers"></i> Extra Long
-                                </span>
-                                <span class="spec-pill">
-                                    <i class="bi bi-shield-check"></i> Quality Certified
-                                </span>
-                            </div>
-                            <a href="#" class="btn-explore-modern">
-                                Explore Details <i class="bi bi-arrow-right-circle-fill"></i>
-                            </a>
+                        <h3 class="product-title-modern">Premium Basmati Rice</h3>
+                        <p class="product-description-modern">
+                            Aromatic long-grain Basmati rice from the Himalayan foothills. Known for its delicate flavor, exceptional aroma, and fluffy texture when cooked.
+                        </p>
+                        <div class="specs-container">
+                            <span class="spec-pill">
+                                <i class="bi bi-award"></i> 1121 Variety
+                            </span>
+                            <span class="spec-pill">
+                                <i class="bi bi-hourglass"></i> Aged 2 Years
+                            </span>
+                            <span class="spec-pill">
+                                <i class="bi bi-rulers"></i> Extra Long
+                            </span>
                         </div>
+                        <a href="#" class="btn-explore-modern">
+                            View Details <i class="bi bi-arrow-right-circle-fill"></i>
+                        </a>
                     </div>
                 </div>
 
-                <!-- Sona Masoori Rice -->
-                <div class="bento-item bento-item-medium fade-in-up">
-                    <div class="glass-card">
-                        <div class="product-visual-zone">
-                            <img src="https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?w=600&q=80" 
-                                 alt="Sona Masoori Rice" 
-                                 class="product-image-3d">
-                            <div class="floating-badge">Popular</div>
-                            <div class="gradient-overlay"></div>
+                <!-- Product 2: Sona Masoori Rice -->
+                <div class="product-card-modern fade-in-up">
+                    <div class="product-image-zone">
+                        <img src="https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?w=600&q=80" 
+                             alt="Sona Masoori Rice" 
+                             class="product-image-3d">
+                        <div class="floating-badge">Popular</div>
+                    </div>
+                    <div class="card-content-modern">
+                        <div class="product-category">
+                            <i class="bi bi-heart-fill"></i>
+                            <span>Daily Choice</span>
                         </div>
-                        <div class="card-content-modern">
-                            <div class="product-category">
-                                <i class="bi bi-heart-fill"></i>
-                                <span>Daily Choice</span>
-                            </div>
-                            <h3 class="product-title-modern">Sona Masoori Rice</h3>
-                            <p class="product-description-modern">
-                                Lightweight medium-grain rice from Andhra Pradesh with low starch content.
-                            </p>
-                            <div class="specs-container">
-                                <span class="spec-pill">
-                                    <i class="bi bi-droplet"></i> Low Starch
-                                </span>
-                                <span class="spec-pill">
-                                    <i class="bi bi-lightning-fill"></i> Quick Cook
-                                </span>
-                            </div>
-                            <a href="#" class="btn-explore-modern">
-                                View Details <i class="bi bi-arrow-right-circle-fill"></i>
-                            </a>
+                        <h3 class="product-title-modern">Sona Masoori Rice</h3>
+                        <p class="product-description-modern">
+                            Lightweight and aromatic medium-grain rice from Andhra Pradesh. Perfect for daily meals with its low starch content and soft texture.
+                        </p>
+                        <div class="specs-container">
+                            <span class="spec-pill">
+                                <i class="bi bi-droplet"></i> Low Starch
+                            </span>
+                            <span class="spec-pill">
+                                <i class="bi bi-lightning-fill"></i> Quick Cook
+                            </span>
+                            <span class="spec-pill">
+                                <i class="bi bi-heart"></i> Light
+                            </span>
                         </div>
+                        <a href="#" class="btn-explore-modern">
+                            View Details <i class="bi bi-arrow-right-circle-fill"></i>
+                        </a>
                     </div>
                 </div>
 
-                <!-- Brown Rice -->
-                <div class="bento-item bento-item-small fade-in-up">
-                    <div class="glass-card">
-                        <div class="product-visual-zone">
-                            <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400&q=80" 
-                                 alt="Organic Brown Rice" 
-                                 class="product-image-3d">
-                            <div class="floating-badge">Organic</div>
+                <!-- Product 3: Brown Rice -->
+                <div class="product-card-modern fade-in-up">
+                    <div class="product-image-zone">
+                        <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600&q=80" 
+                             alt="Organic Brown Rice" 
+                             class="product-image-3d">
+                        <div class="floating-badge">Organic</div>
+                    </div>
+                    <div class="card-content-modern">
+                        <div class="product-category">
+                            <i class="bi bi-leaf"></i>
+                            <span>Health</span>
                         </div>
-                        <div class="card-content-modern">
-                            <div class="product-category">
-                                <i class="bi bi-leaf"></i>
-                                <span>Health</span>
-                            </div>
-                            <h3 class="product-title-modern">Organic Brown Rice</h3>
-                            <p class="product-description-modern">
-                                Whole grain packed with nutrients and fiber.
-                            </p>
-                            <a href="#" class="btn-explore-modern">
-                                Details <i class="bi bi-arrow-right-circle-fill"></i>
-                            </a>
+                        <h3 class="product-title-modern">Organic Brown Rice</h3>
+                        <p class="product-description-modern">
+                            Whole grain brown rice packed with essential nutrients, fiber, and antioxidants. Ideal for health-conscious individuals and fitness enthusiasts.
+                        </p>
+                        <div class="specs-container">
+                            <span class="spec-pill">
+                                <i class="bi bi-leaf"></i> 100% Organic
+                            </span>
+                            <span class="spec-pill">
+                                <i class="bi bi-heart-pulse"></i> High Fiber
+                            </span>
+                            <span class="spec-pill">
+                                <i class="bi bi-shield-check"></i> No Polish
+                            </span>
                         </div>
+                        <a href="#" class="btn-explore-modern">
+                            View Details <i class="bi bi-arrow-right-circle-fill"></i>
+                        </a>
                     </div>
                 </div>
 
-                <!-- Kolam Rice -->
-                <div class="bento-item bento-item-small fade-in-up">
-                    <div class="glass-card">
-                        <div class="product-visual-zone">
-                            <img src="https://images.unsplash.com/photo-1556910110-a655420623cf?w=400&q=80" 
-                                 alt="Kolam Rice" 
-                                 class="product-image-3d">
-                            <div class="floating-badge">Traditional</div>
+                <!-- Product 4: Kolam Rice -->
+                <div class="product-card-modern fade-in-up">
+                    <div class="product-image-zone">
+                        <img src="https://images.unsplash.com/photo-1556910110-a655420623cf?w=600&q=80" 
+                             alt="Kolam Rice" 
+                             class="product-image-3d">
+                        <div class="floating-badge">Traditional</div>
+                    </div>
+                    <div class="card-content-modern">
+                        <div class="product-category">
+                            <i class="bi bi-star-fill"></i>
+                            <span>Classic</span>
                         </div>
-                        <div class="card-content-modern">
-                            <div class="product-category">
-                                <i class="bi bi-star-fill"></i>
-                                <span>Classic</span>
-                            </div>
-                            <h3 class="product-title-modern">Kolam Rice</h3>
-                            <p class="product-description-modern">
-                                Traditional South Indian variety with soft texture.
-                            </p>
-                            <a href="#" class="btn-explore-modern">
-                                Details <i class="bi bi-arrow-right-circle-fill"></i>
-                            </a>
+                        <h3 class="product-title-modern">Kolam Rice</h3>
+                        <p class="product-description-modern">
+                            Traditional South Indian rice variety with soft texture and mild flavor. Perfect for making idli, dosa, and everyday South Indian cooking.
+                        </p>
+                        <div class="specs-container">
+                            <span class="spec-pill">
+                                <i class="bi bi-star"></i> Authentic
+                            </span>
+                            <span class="spec-pill">
+                                <i class="bi bi-moisture"></i> Soft Texture
+                            </span>
+                            <span class="spec-pill">
+                                <i class="bi bi-egg-fried"></i> Multi-Use
+                            </span>
                         </div>
+                        <a href="#" class="btn-explore-modern">
+                            View Details <i class="bi bi-arrow-right-circle-fill"></i>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -693,129 +678,141 @@
                 </p>
             </div>
 
-            <!-- Bento Grid -->
-            <div class="bento-grid">
-                <!-- Featured Product - Cotton Yarn -->
-                <div class="bento-item bento-item-medium fade-in-up">
-                    <div class="glass-card">
-                        <div class="product-visual-zone">
-                            <img src="https://images.unsplash.com/photo-1569156041876-d1b5ad5a8f87?w=600&q=80" 
-                                 alt="Cotton Yarn" 
-                                 class="product-image-3d">
-                            <div class="floating-badge">Bestseller</div>
-                            <div class="gradient-overlay"></div>
+            <!-- Uniform Products Grid -->
+            <div class="products-grid">
+                <!-- Product 1: Cotton Yarn -->
+                <div class="product-card-modern fade-in-up">
+                    <div class="product-image-zone">
+                        <img src="https://images.unsplash.com/photo-1569156041876-d1b5ad5a8f87?w=600&q=80" 
+                             alt="100% Cotton Yarn" 
+                             class="product-image-3d">
+                        <div class="floating-badge">Bestseller</div>
+                    </div>
+                    <div class="card-content-modern">
+                        <div class="product-category">
+                            <i class="bi bi-flower1"></i>
+                            <span>Natural</span>
                         </div>
-                        <div class="card-content-modern">
-                            <div class="product-category">
-                                <i class="bi bi-flower1"></i>
-                                <span>Natural Fiber</span>
-                            </div>
-                            <h3 class="product-title-modern">100% Cotton Yarn</h3>
-                            <p class="product-description-modern">
-                                Pure cotton yarn spun from premium Indian cotton. Breathable and perfect for quality textiles.
-                            </p>
-                            <div class="specs-container">
-                                <span class="spec-pill">
-                                    <i class="bi bi-flower1"></i> 100% Cotton
-                                </span>
-                                <span class="spec-pill">
-                                    <i class="bi bi-aspect-ratio"></i> 20s-60s Count
-                                </span>
-                                <span class="spec-pill">
-                                    <i class="bi bi-wind"></i> Breathable
-                                </span>
-                            </div>
-                            <a href="#" class="btn-explore-modern">
-                                View Details <i class="bi bi-arrow-right-circle-fill"></i>
-                            </a>
+                        <h3 class="product-title-modern">100% Cotton Yarn</h3>
+                        <p class="product-description-modern">
+                            Pure cotton yarn spun from premium Indian cotton. Breathable, soft, and perfect for high-quality textile production and garment manufacturing.
+                        </p>
+                        <div class="specs-container">
+                            <span class="spec-pill">
+                                <i class="bi bi-flower1"></i> Pure Cotton
+                            </span>
+                            <span class="spec-pill">
+                                <i class="bi bi-aspect-ratio"></i> 20s-60s
+                            </span>
+                            <span class="spec-pill">
+                                <i class="bi bi-wind"></i> Breathable
+                            </span>
                         </div>
+                        <a href="#" class="btn-explore-modern">
+                            View Details <i class="bi bi-arrow-right-circle-fill"></i>
+                        </a>
                     </div>
                 </div>
 
-                <!-- Polyester Yarn -->
-                <div class="bento-item bento-item-small fade-in-up">
-                    <div class="glass-card">
-                        <div class="product-visual-zone">
-                            <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=400&q=80" 
-                                 alt="Polyester Yarn" 
-                                 class="product-image-3d">
-                            <div class="floating-badge">Durable</div>
+                <!-- Product 2: Polyester Yarn -->
+                <div class="product-card-modern fade-in-up">
+                    <div class="product-image-zone">
+                        <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=600&q=80" 
+                             alt="Polyester Yarn" 
+                             class="product-image-3d">
+                        <div class="floating-badge">Durable</div>
+                    </div>
+                    <div class="card-content-modern">
+                        <div class="product-category">
+                            <i class="bi bi-lightning-fill"></i>
+                            <span>Synthetic</span>
                         </div>
-                        <div class="card-content-modern">
-                            <div class="product-category">
-                                <i class="bi bi-lightning-fill"></i>
-                                <span>Synthetic</span>
-                            </div>
-                            <h3 class="product-title-modern">Polyester Yarn</h3>
-                            <p class="product-description-modern">
-                                High-tenacity with excellent strength and wrinkle resistance.
-                            </p>
-                            <a href="#" class="btn-explore-modern">
-                                Details <i class="bi bi-arrow-right-circle-fill"></i>
-                            </a>
+                        <h3 class="product-title-modern">Polyester Yarn</h3>
+                        <p class="product-description-modern">
+                            High-tenacity polyester yarn with excellent strength and wrinkle resistance. Ideal for industrial textiles and modern fashion applications.
+                        </p>
+                        <div class="specs-container">
+                            <span class="spec-pill">
+                                <i class="bi bi-lightning-charge"></i> Strong
+                            </span>
+                            <span class="spec-pill">
+                                <i class="bi bi-palette"></i> Colorfast
+                            </span>
+                            <span class="spec-pill">
+                                <i class="bi bi-shield"></i> Wrinkle Free
+                            </span>
                         </div>
+                        <a href="#" class="btn-explore-modern">
+                            View Details <i class="bi bi-arrow-right-circle-fill"></i>
+                        </a>
                     </div>
                 </div>
 
-                <!-- Blended Yarn -->
-                <div class="bento-item bento-item-small fade-in-up">
-                    <div class="glass-card">
-                        <div class="product-visual-zone">
-                            <img src="https://images.unsplash.com/photo-1618126365582-96ff4c3f6c8f?w=400&q=80" 
-                                 alt="Blended Yarn" 
-                                 class="product-image-3d">
-                            <div class="floating-badge">Hybrid</div>
+                <!-- Product 3: Blended Yarn -->
+                <div class="product-card-modern fade-in-up">
+                    <div class="product-image-zone">
+                        <img src="https://images.unsplash.com/photo-1618126365582-96ff4c3f6c8f?w=600&q=80" 
+                             alt="Cotton Polyester Blend Yarn" 
+                             class="product-image-3d">
+                        <div class="floating-badge">Hybrid</div>
+                    </div>
+                    <div class="card-content-modern">
+                        <div class="product-category">
+                            <i class="bi bi-diagram-3"></i>
+                            <span>Blended</span>
                         </div>
-                        <div class="card-content-modern">
-                            <div class="product-category">
-                                <i class="bi bi-diagram-3"></i>
-                                <span>Blended</span>
-                            </div>
-                            <h3 class="product-title-modern">Cotton-Poly Blend</h3>
-                            <p class="product-description-modern">
-                                Perfect balance of comfort and durability.
-                            </p>
-                            <a href="#" class="btn-explore-modern">
-                                Details <i class="bi bi-arrow-right-circle-fill"></i>
-                            </a>
+                        <h3 class="product-title-modern">Cotton-Poly Blend</h3>
+                        <p class="product-description-modern">
+                            Perfect blend of cotton comfort and polyester durability. Offers the best of both worlds for versatile textile applications and cost efficiency.
+                        </p>
+                        <div class="specs-container">
+                            <span class="spec-pill">
+                                <i class="bi bi-diagram-3"></i> 65/35 Blend
+                            </span>
+                            <span class="spec-pill">
+                                <i class="bi bi-stars"></i> Versatile
+                            </span>
+                            <span class="spec-pill">
+                                <i class="bi bi-cash-coin"></i> Economical
+                            </span>
                         </div>
+                        <a href="#" class="btn-explore-modern">
+                            View Details <i class="bi bi-arrow-right-circle-fill"></i>
+                        </a>
                     </div>
                 </div>
 
-                <!-- Specialty Yarn -->
-                <div class="bento-item bento-item-large fade-in-up">
-                    <div class="glass-card">
-                        <div class="product-visual-zone">
-                            <img src="https://images.unsplash.com/photo-1601924357840-3f9c4e98d4f7?w=800&q=80" 
-                                 alt="Specialty Yarn" 
-                                 class="product-image-3d">
-                            <div class="floating-badge">★ Premium</div>
-                            <div class="gradient-overlay"></div>
+                <!-- Product 4: Specialty Yarn -->
+                <div class="product-card-modern fade-in-up">
+                    <div class="product-image-zone">
+                        <img src="https://images.unsplash.com/photo-1601924357840-3f9c4e98d4f7?w=600&q=80" 
+                             alt="Specialty Yarn" 
+                             class="product-image-3d">
+                        <div class="floating-badge">Premium</div>
+                    </div>
+                    <div class="card-content-modern">
+                        <div class="product-category">
+                            <i class="bi bi-magic"></i>
+                            <span>Exclusive</span>
                         </div>
-                        <div class="card-content-modern">
-                            <div class="product-category">
-                                <i class="bi bi-magic"></i>
-                                <span>Exclusive Range</span>
-                            </div>
-                            <h3 class="product-title-modern">Specialty Yarn</h3>
-                            <p class="product-description-modern">
-                                Innovative specialty yarn with unique properties for premium fabrics and specialized applications.
-                            </p>
-                            <div class="specs-container">
-                                <span class="spec-pill">
-                                    <i class="bi bi-magic"></i> Custom Made
-                                </span>
-                                <span class="spec-pill">
-                                    <i class="bi bi-graph-up"></i> High Quality
-                                </span>
-                                <span class="spec-pill">
-                                    <i class="bi bi-award-fill"></i> Premium Grade
-                                </span>
-                            </div>
-                            <a href="#" class="btn-explore-modern">
-                                Explore Details <i class="bi bi-arrow-right-circle-fill"></i>
-                            </a>
+                        <h3 class="product-title-modern">Specialty Yarn</h3>
+                        <p class="product-description-modern">
+                            Innovative specialty yarn with unique properties designed for specialized textile applications and premium fabric manufacturing requirements.
+                        </p>
+                        <div class="specs-container">
+                            <span class="spec-pill">
+                                <i class="bi bi-magic"></i> Custom
+                            </span>
+                            <span class="spec-pill">
+                                <i class="bi bi-graph-up"></i> Premium
+                            </span>
+                            <span class="spec-pill">
+                                <i class="bi bi-award-fill"></i> Quality
+                            </span>
                         </div>
+                        <a href="#" class="btn-explore-modern">
+                            View Details <i class="bi bi-arrow-right-circle-fill"></i>
+                        </a>
                     </div>
                 </div>
             </div>
