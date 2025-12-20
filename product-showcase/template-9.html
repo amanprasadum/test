@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Products Section</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css" rel="stylesheet">
+    <style>
+        /* ========================================
+           PREMIUM PRODUCTS SECTION STYLES
+        ======================================== */
+        
+        :root {
+            --primary-color-home-prod-section-by-codexaman: #f4c75c;
+            --dark-color-home-prod-section-by-codexaman: #1a1a1a;
+            --accent-color-home-prod-section-by-codexaman: #ff6b35;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* ========== RICE SECTION ========== */
+        .rice-section-home-prod-section-by-codexaman {
+            padding: 100px 0;
+            background: #ffffff;
+            position: relative;
+        }
+
+        /* ========== YARN SECTION ========== */
+        .yarn-section-home-prod-section-by-codexaman {
+            padding: 100px 0;
+            background: #f8f9fa;
+            position: relative;
+        }
+
+        /* Section Header Styles */
+        .section-header-home-prod-section-by-codexaman {
+            text-align: center;
+            margin-bottom: 70px;
+            position: relative;
+        }
+
+        .section-tag-home-prod-section-by-codexaman {
+            display: inline-block;
+            background: var(--primary-color-home-prod-section-by-codexaman);
+            color: var(--dark-color-home-prod-section-by-codexaman);
+            padding: 8px 24px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 25px;
+        }
+
+        .section-main-title-home-prod-section-by-codexaman {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--dark-color-home-prod-section-by-codexaman);
+            margin-bottom: 20px;
+            line-height: 1.2;
+            position: relative;
+        }
+
+        .section-main-title-home-prod-section-by-codexaman::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary-color-home-prod-section-by-codexaman);
+            border-radius: 2px;
+        }
+
+        .section-description-home-prod-section-by-codexaman {
+            font-size: 1.2rem;
+            color: #555;
+            max-width: 700px;
+            margin: 30px auto 0;
+            line-height: 1.8;
+        }
+
+        /* Product Card Styles */
+        .product-card-wrapper-home-prod-section-by-codexaman {
+            margin-bottom: 30px;
+        }
+
+        .product-card-home-prod-section-by-codexaman {
+            background: #ffffff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            height: 100%;
+            position: relative;
+            border: 1px solid #f0f0f0;
+        }
+
+        .product-card-home-prod-section-by-codexaman:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            transform: translateY(-4px);
+        }
+
+        /* Product Image Area */
+        .product-image-container-home-prod-section-by-codexaman {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .product-img-home-prod-section-by-codexaman {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card-home-prod-section-by-codexaman:hover .product-img-home-prod-section-by-codexaman {
+            transform: scale(1.05);
+        }
+
+        .product-badge-home-prod-section-by-codexaman {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: var(--primary-color-home-prod-section-by-codexaman);
+            color: var(--dark-color-home-prod-section-by-codexaman);
+            padding: 6px 16px;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Product Content */
+        .product-body-home-prod-section-by-codexaman {
+            padding: 25px 20px;
+        }
+
+        .product-name-home-prod-section-by-codexaman {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--dark-color-home-prod-section-by-codexaman);
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .product-info-home-prod-section-by-codexaman {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 18px;
+            min-height: 65px;
+        }
+
+        /* Product Specs */
+        .product-specs-home-prod-section-by-codexaman {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .spec-item-home-prod-section-by-codexaman {
+            display: inline-flex;
+            align-items: center;
+            background: #f8f9fa;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            color: #555;
+            border: 1px solid #e9ecef;
+        }
+
+        .spec-item-home-prod-section-by-codexaman i {
+            color: var(--primary-color-home-prod-section-by-codexaman);
+            margin-right: 6px;
+            font-size: 1rem;
+        }
+
+        /* Action Button */
+        .product-action-home-prod-section-by-codexaman {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 2px solid #f0f0f0;
+        }
+
+        .btn-explore-home-prod-section-by-codexaman {
+            background: var(--primary-color-home-prod-section-by-codexaman);
+            color: var(--dark-color-home-prod-section-by-codexaman);
+            padding: 10px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: none;
+        }
+
+        .btn-explore-home-prod-section-by-codexaman:hover {
+            background: #e6b54d;
+            color: var(--dark-color-home-prod-section-by-codexaman);
+        }
+
+        .btn-explore-home-prod-section-by-codexaman i {
+            transition: none;
+        }
+
+        /* Animations */
+        @keyframes float-home-prod-section-by-codexaman {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            50% { transform: translateY(-50px) translateX(50px); }
+        }
+
+        @keyframes float-reverse-home-prod-section-by-codexaman {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            50% { transform: translateY(50px) translateX(-50px); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1199px) {
+            .section-main-title-home-prod-section-by-codexaman {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 991px) {
+            .section-main-title-home-prod-section-by-codexaman {
+                font-size: 2.5rem;
+            }
+            
+            .product-image-container-home-prod-section-by-codexaman {
+                height: 240px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .rice-section-home-prod-section-by-codexaman,
+            .yarn-section-home-prod-section-by-codexaman {
+                padding: 60px 0;
+            }
+            
+            .section-main-title-home-prod-section-by-codexaman {
+                font-size: 2rem;
+            }
+            
+            .section-description-home-prod-section-by-codexaman {
+                font-size: 1rem;
+            }
+            
+            .product-body-home-prod-section-by-codexaman {
+                padding: 25px;
+            }
+        }
+
+        @media (max-width: 575px) {
+            .product-image-container-home-prod-section-by-codexaman {
+                height: 200px;
+            }
+            
+            .section-main-title-home-prod-section-by-codexaman {
+                font-size: 1.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ========================================
+         RICE PRODUCTS SECTION
+    ======================================== -->
+    <section class="rice-section-home-prod-section-by-codexaman">
+        <div class="container">
+            <!-- Section Header -->
+            <div class="section-header-home-prod-section-by-codexaman">
+                <span class="section-tag-home-prod-section-by-codexaman">Premium Food Grains</span>
+                <h2 class="section-main-title-home-prod-section-by-codexaman">Finest Indian Rice Varieties</h2>
+                <p class="section-description-home-prod-section-by-codexaman">
+                    From the rich paddy fields of India, we bring you the finest selection of premium rice varieties. 
+                    Each grain is carefully sourced, processed, and quality-tested to ensure authentic taste and nutrition.
+                </p>
+            </div>
+
+            <!-- Rice Products Grid -->
+            <div class="row">
+                <!-- Product 1: Basmati Rice -->
+                <div class="col-xl-3 col-lg-4 col-md-6 product-card-wrapper-home-prod-section-by-codexaman">
+                    <div class="product-card-home-prod-section-by-codexaman">
+                        <div class="product-image-container-home-prod-section-by-codexaman">
+                            <img src="https://placehold.co/400x350/fff8e1/d4a017?text=Basmati+Rice" 
+                                 alt="Premium Basmati Rice" 
+                                 class="product-img-home-prod-section-by-codexaman">
+                            <span class="product-badge-home-prod-section-by-codexaman">Premium</span>
+                        </div>
+                        <div class="product-body-home-prod-section-by-codexaman">
+                            <h3 class="product-name-home-prod-section-by-codexaman">Premium Basmati Rice</h3>
+                            <p class="product-info-home-prod-section-by-codexaman">
+                                Aromatic long-grain Basmati rice from the foothills of Himalayas. Known for its delicate flavor and fluffy texture.
+                            </p>
+                            <div class="product-specs-home-prod-section-by-codexaman">
+                                <span class="spec-item-home-prod-section-by-codexaman">
+                                    <i class="bi bi-award"></i> 1121 Variety
+                                </span>
+                                <span class="spec-item-home-prod-section-by-codexaman">
+                                    <i class="bi bi-check-circle"></i> Aged 2 Years
+                                </span>
+                                <span class="spec-item-home-prod-section-by-codexaman">
+                                    <i class="bi bi-gem"></i> Extra Long
+                                </span>
+                            </div>
+                            <div class="product-action-home-prod-section-by-codexaman">
+                                <a href="#" class="btn-explore-home-prod-section-by-codexaman">
+                                    View Details <i class="bi bi-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2: Sona Masoori Rice -->
+                <div class="col-xl-3 col-lg-4 col-md-6 product-card-wrapper-home-prod-section-by-codexaman">
+                    <div class="product-card-home-prod-section-by-codexaman">
+                        <div class="product-image-container-home-prod-section-by-codexaman">
+                            <img src="https://placehold.co/400x350/e8f5e9/2e7d32?text=Sona+Masoori" 
+                                 alt="Sona Masoori Rice" 
+                                 class="product-img-home-prod-section-by-codexaman">
+                            <span class="product-badge-home-prod-section-by-codexaman">Popular</span>
+                        </div>
+                        <div class="product-body-home-prod-section-by-codexaman">
+                            <h3 class="product-name-home-prod-section-by-codexaman">Sona Masoori Rice</h3>
+                            <p class="product-info-home-prod-section-by-codexaman">
+                                Lightweight and aromatic medium-grain rice from Andhra Pradesh. Perfect for daily meals with low starch content.
+                            </p>
+                            <div class="product-specs-home-prod-section-by-codexaman">
+                                <span class="spec-item-home-prod-section-by-codexaman">
+                                    <i class="bi bi-droplet"></i> Low Starch
+                                </span>
+                                <span class="spec-item-home-prod-section-by-codexaman">
+                                    <i class="bi bi-heart"></i> Light & Fluffy
+                                </span>
+                                <span class="spec-item-home-prod-section-by-codexaman">
+                                    <i class="bi bi-lightning"></i> Quick Cook
+                                </span>
+                            </div>
+                            <div class="product-action-home-prod-section-by-codexaman">
+                                <a href="#" class="btn-explore-home-prod-section-by-codexaman">
+                                    View Details <i class="bi bi-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3: Brown Rice -->
+                <div class="col-xl-3 col-lg-4 col-md-6 product-card-wrapper-home-prod-section-by-codexaman">
+                    <div class="product-card-home-prod-section-by-codexaman">
+                        <div class="product-image-container-home-prod-section-by-codexaman">
+                            <img src="https://placehold.co/400x350/f3e5f5/7b1fa2?text=Brown+Rice" 
+                                 alt="Organic Brown Rice" 
+                                 class="product-img-home-prod-section-by-codexaman">
+                            <span class="product-badge-home-prod-section-by-codexaman">Organic</span>
+                        </div>
+                        <div class="product-body-home-prod-section-by-codexaman">
+                            <h3 class="product-name-home-prod-section-by-codexaman">Organic Brown Rice</h3>
+                            <p class="product-info-home-prod-section-by-codexaman">
+                                Whole grain brown rice packed with nutrients and fiber. Ideal for health-conscious individuals and fitness enthusiasts.
+                            </p>
+                            <div class="product-specs-home-prod-section-by-codexaman">
+                                <span class="spec-item-home-prod-section-by-codexaman">
+                                    <i class="bi bi-leaf"></i> 100% Organic
+                                </span>
+                                <span class="spec-item-home-prod-section-by-codexaman">
+                                    <i class="bi bi-heart-pulse"></i> High Fiber
+                                </span>
+                                <span class="spec-item-home-prod-section-by-codexaman">
+                                    <i class="bi bi-shield-check"></i> No Polish
+                                </span>
+                            </div>
+                            <div class="product-action-home-prod-section-by-codexaman">
+                                <a href="#" class="btn-explore-home-prod-section-by-codexaman">
+                                    View Details <i class="bi bi-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4: Kolam Rice -->
+                <div class="col-xl-3 col-lg-4 col-md-6 product-card-wrapper-home-prod-section-by-codexaman">
+                    <div class="product-card-home-prod-section-by-codexaman">
+                        <div class="product-image-container-home-prod-section-by-codexaman">
+                            <img src="https://placehold.co/400x350/fff3e0/f57c00?text=Kolam+Rice" 
+                                 alt="Kolam Rice" 
+                                 class="product-img-home-prod-section-by-codexaman">
+                            <span class="product-badge-home-prod-section-by-codexaman">Traditional</span>
+                        </div>
+                        <div class="product-body-home-prod-section-by-codexaman">
+                            <h3 class="product-name-home-prod-section-by-codexaman">Kolam Rice</h3>
+                            <p class="product-info-home-prod-section-by-codexaman">
+                                Traditional South Indian rice variety with soft texture and mild flavor. Perfect for idli, dosa, and daily cooking.
+                            </p>
+                            <div class="product-specs-home-prod-section-by-codexaman">
+                                <span class="spec-item-home-prod-section-by-codexaman">
+                                    <i class="bi bi-star"></i> Authentic
+                                </span>
+                                <span class="spec-item-home-prod-section-by-codexaman">
+                                    <i class="bi bi-moisture"></i> Soft Texture
+                                </span>
+                                <span class="spec-item-home-prod-section-by-codexaman">
+                                    <i class="bi bi-egg-fried"></i> Multi-Use
+                                </span>
+                            </div>
+                            <div class="product-action-home-prod-section-by-codexaman">
+                                <a href="#" class="btn-explore-home-prod-section-by-codexaman">
+                                    View Details <i class="bi bi-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         YARN PRODUCTS SECTION
+    ======================================== -->
+    <section class="yarn-section-home-prod-section-by-codexaman">
+        <div class="container">
+            <!-- Section Header -->
+            <div class="section-header-home-prod-section-by-codexaman">
+                <span class="section-tag-home-prod-section-by-codexaman">Premium Textile Solutions</span>
+                <h2 class="section-main-title-home-prod-section-by-codexaman">Quality Indian Yarn Collection</h2>
+                <p class="section-description-home-prod-section-by-codexaman">
+                    Crafted with precision and care, our yarn collection represents the finest in Indian textile manufacturing. 
+                    From cotton to polyester, each thread is engineered for superior strength and versatility.
+                </p>
+            </div>
+
+            <!-- Yarn Products Grid -->
+            <div class="row">
+                <!-- Product 1: Cotton Yarn -->
+                <div class="col-xl-3 col-lg-4 col-md-6 product-card-wrapper-home-prod-section-by-codexaman">
+                    <div class="product-card-home-prod-section-by-codexaman">
+                        <div class="product-image-container-home-prod-section-by-codexaman">
+                            <img src="https://placehold.co/400x350/e3f2fd/0277bd?text=Cotton+Yarn" 
+                                 alt="Premium Cotton Yarn" 
+                                 class="product-img-home-prod-section-by-codexaman">
+                            <span class="product-badge-home-prod-section-by-codexaman">Bestseller</span>
+                        </div>
+                        <div class="product-body-home-prod-section-by-codexaman">
+                            <h3 class="product-name-home-prod-section-by-codexaman">100% Cotton Yarn</h3>
+                            <p class="product-info-home-prod-section-by-codexaman">
+                                Pure cotton yarn spun from premium Indian cotton. Breathable, soft, and perfect for high-quality textile production.
+                            </p>
+                            <div class="product-specs-home-prod-section-by-codexaman">
+                                <span class="spec-item-home-prod-section-by-codexaman">
+                                    <i class="bi bi-flower1"></i> 100% Cotton
+                                </span>
+                                <span class="spec-item-home-prod-section-by-codexaman">
+                                    <i class="bi bi-aspect-ratio"></i> 20s-60s Count
+                                </span>
+                                <span class="spec-item-home-prod-section-by-codexaman">
+                                    <i class="bi bi-wind"></i> Breathable
+                                </span>
+                            </div>
+                            <div class="product-action-home-prod-section-by-codexaman">
+                                <a href="#" class="btn-explore-home-prod-section-by-codexaman">
+                                    View Details <i class="bi bi-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2: Polyester Yarn -->
+                <div class="col-xl-3 col-lg-4 col-md-6 product-card-wrapper-home-prod-section-by-codexaman">
+                    <div class="product-card-home-prod-section-by-codexaman">
+                        <div class="product-image-container-home-prod-section-by-codexaman">
+                            <img src="https://placehold.co/400x350/fce4ec/c2185b?text=Polyester+Yarn" 
+                                 alt="Polyester Yarn" 
+                                 class="product-img-home-prod-section-by-codexaman">
+                            <span class="product-badge-home-prod-section-by-codexaman">Durable</span>
+                        </div>
+                        <div class="product-body-home-prod-section-by-codexaman">
+                            <h3 class="product-name-home-prod-section-by-codexaman">Polyester Yarn</h3>
+                            <p class="product-info-home-prod-section-by-codexaman">
+                                High-tenacity polyester yarn with excellent strength and wrinkle resistance. Ideal for industrial and fashion textiles.
+                            </p>
+                            <div class="product-specs-home-prod-section-by-codexaman">
+                                <span class="spec-item-home-prod-section-by-codexaman">
+                                    <i class="bi bi-lightning-charge"></i> High Strength
+                                </span>
+                                <span class="spec-item-home-prod-section-by-codexaman">
+                                    <i class="bi bi-palette"></i> Color Fast
+                                </span>
+                                <span class="spec-item-home-prod-section-by-codexaman">
+                                    <i class="bi bi-shield"></i> Wrinkle Free
+                                </span>
+                            </div>
+                            <div class="product-action-home-prod-section-by-codexaman">
+                                <a href="#" class="btn-explore-home-prod-section-by-codexaman">
+                                    View Details <i class="bi bi-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3: Blended Yarn -->
+                <div class="col-xl-3 col-lg-4 col-md-6 product-card-wrapper-home-prod-section-by-codexaman">
+                    <div class="product-card-home-prod-section-by-codexaman">
+                        <div class="product-image-container-home-prod-section-by-codexaman">
+                            <img src="https://placehold.co/400x350/f3e5f5/8e24aa?text=Blended+Yarn" 
+                                 alt="Cotton Polyester Blend Yarn" 
+                                 class="product-img-home-prod-section-by-codexaman">
+                            <span class="product-badge-home-prod-section-by-codexaman">Hybrid</span>
+                        </div>
+                        <div class="product-body-home-prod-section-by-codexaman">
+                            <h3 class="product-name-home-prod-section-by-codexaman">Cotton-Poly Blend</h3>
+                            <p class="product-info-home-prod-section-by-codexaman">
+                                Perfect blend of cotton comfort and polyester durability. Offers the best of both worlds for versatile applications.
+                            </p>
+                            <div class="product-specs-home-prod-section-by-codexaman">
+                                <span class="spec-item-home-prod-section-by-codexaman">
+                                    <i class="bi bi-diagram-3"></i> 65/35 Blend
+                                </span>
+                                <span class="spec-item-home-prod-section-by-codexaman">
+                                    <i class="bi bi-stars"></i> Versatile
+                                </span>
+                                <span class="spec-item-home-prod-section-by-codexaman">
+                                    <i class="bi bi-cash-coin"></i> Cost Effective
+                                </span>
+                            </div>
+                            <div class="product-action-home-prod-section-by-codexaman">
+                                <a href="#" class="btn-explore-home-prod-section-by-codexaman">
+                                    View Details <i class="bi bi-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4: Specialty Yarn -->
+                <div class="col-xl-3 col-lg-4 col-md-6 product-card-wrapper-home-prod-section-by-codexaman">
+                    <div class="product-card-home-prod-section-by-codexaman">
+                        <div class="product-image-container-home-prod-section-by-codexaman">
+                            <img src="https://placehold.co/400x350/fff9c4/f9a825?text=Specialty+Yarn" 
+                                 alt="Specialty Yarn" 
+                                 class="product-img-home-prod-section-by-codexaman">
+                            <span class="product-badge-home-prod-section-by-codexaman">Premium</span>
+                        </div>
+                        <div class="product-body-home-prod-section-by-codexaman">
+                            <h3 class="product-name-home-prod-section-by-codexaman">Specialty Yarn</h3>
+                            <p class="product-info-home-prod-section-by-codexaman">
+                                Innovative specialty yarn with unique properties. Designed for specialized textile applications and premium fabrics.
+                            </p>
+                            <div class="product-specs-home-prod-section-by-codexaman">
+                                <span class="spec-item-home-prod-section-by-codexaman">
+                                    <i class="bi bi-magic"></i> Custom Made
+                                </span>
+                                <span class="spec-item-home-prod-section-by-codexaman">
+                                    <i class="bi bi-graph-up"></i> High Quality
+                                </span>
+                                <span class="spec-item-home-prod-section-by-codexaman">
+                                    <i class="bi bi-award-fill"></i> Premium
+                                </span>
+                            </div>
+                            <div class="product-action-home-prod-section-by-codexaman">
+                                <a href="#" class="btn-explore-home-prod-section-by-codexaman">
+                                    View Details <i class="bi bi-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
