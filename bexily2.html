@@ -1,0 +1,1356 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechSolutions | Enterprise Software, CRM & ERP Development</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <style>
+        /* ========================================
+           Enhanced Color Palette - Enterprise Level
+        ======================================== */
+        :root {
+            /* Primary Colors */
+            --primary-blue: #06A3DA;
+            --primary-dark: #0588b8;
+
+            /* Secondary Colors */
+            --light-blue: #EEF9FF;
+            --cream-white: #FAF9F6;
+
+            /* Accent Colors for variety */
+            --accent-orange: #FF6B35;
+            --accent-green: #4CAF50;
+            --accent-purple: #7B68EE;
+
+            /* Neutral Colors */
+            --dark-navy: #1a2332;
+            --text-dark: #2c3e50;
+            --text-medium: #5a6c7d;
+            --text-light: #8a9ba8;
+            --light-gray: #f4f6f8;
+
+            /* Status Colors */
+            --success-green: #28a745;
+            --warning-yellow: #ffc107;
+            --info-cyan: #17a2b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-dark);
+            background-color: var(--cream-white);
+            overflow-x: hidden;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* ========================================
+           Navigation & Mega Menu
+        ======================================== */
+        .navbar {
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            padding: 1rem 0;
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-blue) !important;
+        }
+
+        .navbar-nav .nav-link {
+            color: var(--text-dark);
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: var(--primary-blue);
+        }
+
+        .nav-item.has-megamenu {
+            position: static;
+        }
+
+        .megamenu {
+            position: absolute;
+            left: 0;
+            right: 0;
+            width: 100%;
+            background-color: #ffffff;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            padding: 2rem 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 1000;
+        }
+
+        .nav-item.has-megamenu:hover .megamenu {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .megamenu h6 {
+            color: var(--primary-blue);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .megamenu-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .megamenu-list li {
+            margin-bottom: 0.5rem;
+        }
+
+        .megamenu-list a {
+            color: var(--text-dark);
+            text-decoration: none;
+            display: block;
+            padding: 0.3rem 0;
+            transition: color 0.2s ease, padding-left 0.2s ease;
+        }
+
+        .megamenu-list a:hover {
+            color: var(--primary-blue);
+            padding-left: 0.5rem;
+        }
+
+        @media (max-width: 991px) {
+            .nav-item.has-megamenu {
+                position: relative;
+            }
+
+            .megamenu {
+                position: static;
+                box-shadow: none;
+                padding: 1rem;
+                opacity: 1;
+                visibility: visible;
+                display: none;
+            }
+
+            .nav-item.has-megamenu.show .megamenu {
+                display: block;
+            }
+        }
+
+        /* ========================================
+           Hero Section
+        ======================================== */
+        .hero-section {
+            position: relative;
+            margin-top: 76px;
+        }
+
+        .carousel-item {
+            height: 600px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .carousel-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(26, 35, 50, 0.5);
+            z-index: 1;
+        }
+
+        .carousel-caption {
+            z-index: 2;
+            bottom: 50%;
+            transform: translateY(50%);
+        }
+
+        .carousel-caption h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .carousel-caption p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .btn-hero {
+            padding: 0.8rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.2s ease;
+        }
+
+        .btn-hero:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-primary-custom {
+            background-color: var(--primary-blue);
+            color: #ffffff;
+            border: 2px solid var(--primary-blue);
+        }
+
+        .btn-primary-custom:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .btn-outline-custom {
+            background-color: transparent;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+        }
+
+        .btn-outline-custom:hover {
+            background-color: rgba(255,255,255,0.2);
+        }
+
+        @media (max-width: 768px) {
+            .carousel-item {
+                height: 400px;
+            }
+
+            .carousel-caption h1 {
+                font-size: 1.8rem;
+            }
+
+            .carousel-caption p {
+                font-size: 1rem;
+            }
+        }
+
+        /* ========================================
+           Services Section - NEW
+        ======================================== */
+        .services-section {
+            padding: 5rem 0;
+            background-color: var(--light-gray);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-medium);
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+        }
+
+        .service-card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 2.5rem 2rem;
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+            border-top: 4px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .service-card.card-blue {
+            border-top-color: var(--primary-blue);
+        }
+
+        .service-card.card-orange {
+            border-top-color: var(--accent-orange);
+        }
+
+        .service-card.card-green {
+            border-top-color: var(--accent-green);
+        }
+
+        .service-card.card-purple {
+            border-top-color: var(--accent-purple);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+
+        .icon-blue {
+            background-color: rgba(6, 163, 218, 0.1);
+            color: var(--primary-blue);
+        }
+
+        .icon-orange {
+            background-color: rgba(255, 107, 53, 0.1);
+            color: var(--accent-orange);
+        }
+
+        .icon-green {
+            background-color: rgba(76, 175, 80, 0.1);
+            color: var(--accent-green);
+        }
+
+        .icon-purple {
+            background-color: rgba(123, 104, 238, 0.1);
+            color: var(--accent-purple);
+        }
+
+        .service-card h4 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .service-card p {
+            color: var(--text-medium);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+
+        .service-card a:hover {
+            color: var(--primary-dark);
+        }
+
+        /* ========================================
+           About Us Section
+        ======================================== */
+        .about-section {
+            padding: 5rem 0;
+            background-color: #ffffff;
+        }
+
+        .section-title-left {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .section-title-left::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-blue);
+            margin-top: 1rem;
+        }
+
+        .about-section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-medium);
+            margin-bottom: 1.5rem;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: var(--light-blue);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+
+        .stat-label {
+            color: var(--text-medium);
+            font-size: 0.95rem;
+        }
+
+        .about-image {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .about-feature {
+            background-color: var(--light-blue);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            transition: transform 0.2s ease;
+        }
+
+        .about-feature:hover {
+            transform: translateY(-5px);
+        }
+
+        .about-feature i {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .about-feature h4 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: var(--text-dark);
+        }
+
+        .about-feature p {
+            font-size: 1rem;
+            margin-bottom: 0;
+        }
+
+        /* ========================================
+           Portfolio/Projects Section - NEW
+        ======================================== */
+        .portfolio-section {
+            padding: 5rem 0;
+            background-color: var(--light-gray);
+        }
+
+        .portfolio-card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .portfolio-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .portfolio-content {
+            padding: 1.5rem;
+        }
+
+        .portfolio-category {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background-color: var(--light-blue);
+            color: var(--primary-blue);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .portfolio-card h4 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.8rem;
+        }
+
+        .portfolio-card p {
+            color: var(--text-medium);
+            margin-bottom: 1rem;
+        }
+
+        /* ========================================
+           Testimonials Section - NEW
+        ======================================== */
+        .testimonials-section {
+            padding: 5rem 0;
+            background-color: var(--dark-navy);
+            color: #ffffff;
+        }
+
+        .testimonials-section .section-title {
+            color: #ffffff;
+        }
+
+        .testimonials-section .section-subtitle {
+            color: rgba(255,255,255,0.8);
+        }
+
+        .testimonial-card {
+            background-color: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 1rem;
+            object-fit: cover;
+        }
+
+        .author-info h5 {
+            margin-bottom: 0.3rem;
+            color: #ffffff;
+            font-size: 1.1rem;
+        }
+
+        .author-info p {
+            margin-bottom: 0;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+
+        /* ========================================
+           CTA Section - NEW
+        ======================================== */
+        .cta-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-dark) 100%);
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .btn-cta {
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            background-color: #ffffff;
+            color: var(--primary-blue);
+            font-weight: 600;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            color: var(--primary-blue);
+        }
+
+        /* ========================================
+           Stats Section - NEW
+        ======================================== */
+        .stats-section {
+            padding: 4rem 0;
+            background-color: #ffffff;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+
+        .stat-item i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .stat-item.stat-blue i {
+            color: var(--primary-blue);
+        }
+
+        .stat-item.stat-orange i {
+            color: var(--accent-orange);
+        }
+
+        .stat-item.stat-green i {
+            color: var(--accent-green);
+        }
+
+        .stat-item.stat-purple i {
+            color: var(--accent-purple);
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            color: var(--text-medium);
+            font-size: 1rem;
+        }
+
+        /* ========================================
+           Footer
+        ======================================== */
+        .footer {
+            background-color: var(--dark-navy);
+            color: #ffffff;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer h5 {
+            color: var(--primary-blue);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .footer p {
+            color: #c7cbd1;
+            line-height: 1.8;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #c7cbd1;
+            text-decoration: none;
+            transition: color 0.2s ease, padding-left 0.2s ease;
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-blue);
+            padding-left: 0.5rem;
+        }
+
+        .social-links a {
+            color: #ffffff;
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            transition: color 0.2s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            text-align: center;
+            color: #c7cbd1;
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info i {
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+            margin-right: 0.8rem;
+        }
+
+        @media (max-width: 768px) {
+            .footer {
+                text-align: center;
+            }
+
+            .contact-info {
+                justify-content: center;
+            }
+
+            .social-links {
+                justify-content: center;
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========================================
+         Navigation Bar
+    ======================================== -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">TechSolutions</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+
+                    <li class="nav-item has-megamenu">
+                        <a class="nav-link" href="#">Services</a>
+
+                        <div class="megamenu">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <h6><i class="bi bi-code-slash"></i> Software Development</h6>
+                                        <ul class="megamenu-list">
+                                            <li><a href="#">Custom Software Development</a></li>
+                                            <li><a href="#">Web Application Development</a></li>
+                                            <li><a href="#">Mobile App Development</a></li>
+                                            <li><a href="#">Cloud-Based Solutions</a></li>
+                                            <li><a href="#">API Development & Integration</a></li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <h6><i class="bi bi-people"></i> CRM Development</h6>
+                                        <ul class="megamenu-list">
+                                            <li><a href="#">Custom CRM Solutions</a></li>
+                                            <li><a href="#">Salesforce Implementation</a></li>
+                                            <li><a href="#">CRM Integration Services</a></li>
+                                            <li><a href="#">Customer Data Management</a></li>
+                                            <li><a href="#">Sales Automation</a></li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <h6><i class="bi bi-diagram-3"></i> ERP Development</h6>
+                                        <ul class="megamenu-list">
+                                            <li><a href="#">Enterprise ERP Solutions</a></li>
+                                            <li><a href="#">ERP Customization</a></li>
+                                            <li><a href="#">Supply Chain Management</a></li>
+                                            <li><a href="#">Financial Management Systems</a></li>
+                                            <li><a href="#">Inventory Management</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="nav-item has-megamenu">
+                        <a class="nav-link" href="#">Solutions</a>
+
+                        <div class="megamenu">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <h6><i class="bi bi-building"></i> Industry Solutions</h6>
+                                        <ul class="megamenu-list">
+                                            <li><a href="#">Healthcare Solutions</a></li>
+                                            <li><a href="#">Retail & E-commerce</a></li>
+                                            <li><a href="#">Manufacturing</a></li>
+                                            <li><a href="#">Finance & Banking</a></li>
+                                            <li><a href="#">Education Technology</a></li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <h6><i class="bi bi-cpu"></i> Technology Stack</h6>
+                                        <ul class="megamenu-list">
+                                            <li><a href="#">Cloud Computing</a></li>
+                                            <li><a href="#">AI & Machine Learning</a></li>
+                                            <li><a href="#">Blockchain Solutions</a></li>
+                                            <li><a href="#">IoT Development</a></li>
+                                            <li><a href="#">Big Data Analytics</a></li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <h6><i class="bi bi-lightbulb"></i> Consulting</h6>
+                                        <ul class="megamenu-list">
+                                            <li><a href="#">IT Consulting</a></li>
+                                            <li><a href="#">Digital Transformation</a></li>
+                                            <li><a href="#">Process Optimization</a></li>
+                                            <li><a href="#">Technology Audit</a></li>
+                                            <li><a href="#">Strategy Planning</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#portfolio">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#testimonials">Testimonials</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========================================
+         Hero Slider Section
+    ======================================== -->
+    <section id="home" class="hero-section">
+        <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+            </div>
+
+            <div class="carousel-inner">
+                <div class="carousel-item active" style="background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&h=600&fit=crop');">
+                    <div class="carousel-caption">
+                        <h1>Enterprise Software Development</h1>
+                        <p>Building scalable and robust software solutions for modern businesses</p>
+                        <a href="#contact" class="btn-hero btn-primary-custom me-3">Get Started</a>
+                        <a href="#about" class="btn-hero btn-outline-custom">Learn More</a>
+                    </div>
+                </div>
+
+                <div class="carousel-item" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1920&h=600&fit=crop');">
+                    <div class="carousel-caption">
+                        <h1>Custom CRM Solutions</h1>
+                        <p>Streamline your customer relationships with intelligent CRM systems</p>
+                        <a href="#contact" class="btn-hero btn-primary-custom me-3">Request Demo</a>
+                        <a href="#about" class="btn-hero btn-outline-custom">View Features</a>
+                    </div>
+                </div>
+
+                <div class="carousel-item" style="background-image: url('https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=1920&h=600&fit=crop');">
+                    <div class="carousel-caption">
+                        <h1>Powerful ERP Systems</h1>
+                        <p>Integrate and automate your business processes with advanced ERP solutions</p>
+                        <a href="#contact" class="btn-hero btn-primary-custom me-3">Consult Now</a>
+                        <a href="#about" class="btn-hero btn-outline-custom">Explore Solutions</a>
+                    </div>
+                </div>
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+    </section>
+
+    <!-- ========================================
+         Services Section - NEW
+    ======================================== -->
+    <section id="services" class="services-section">
+        <div class="container">
+            <h2 class="section-title">Our Core Services</h2>
+            <p class="section-subtitle">Comprehensive technology solutions tailored to your business needs</p>
+
+            <div class="row">
+                <!-- Service 1 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-card card-blue">
+                        <div class="service-icon icon-blue">
+                            <i class="bi bi-laptop"></i>
+                        </div>
+                        <h4>Software Development</h4>
+                        <p>Custom enterprise software built with cutting-edge technologies to drive your business forward.</p>
+                        <a href="#">Learn More <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-card card-orange">
+                        <div class="service-icon icon-orange">
+                            <i class="bi bi-people-fill"></i>
+                        </div>
+                        <h4>CRM Solutions</h4>
+                        <p>Powerful customer relationship management systems that enhance your sales and customer experience.</p>
+                        <a href="#">Learn More <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-card card-green">
+                        <div class="service-icon icon-green">
+                            <i class="bi bi-diagram-3-fill"></i>
+                        </div>
+                        <h4>ERP Development</h4>
+                        <p>Integrated ERP systems that streamline operations and improve efficiency across your organization.</p>
+                        <a href="#">Learn More <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-card card-purple">
+                        <div class="service-icon icon-purple">
+                            <i class="bi bi-cloud-arrow-up"></i>
+                        </div>
+                        <h4>Cloud Solutions</h4>
+                        <p>Scalable cloud infrastructure and migration services for modern, flexible business operations.</p>
+                        <a href="#">Learn More <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         Stats Section - NEW
+    ======================================== -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-item stat-blue">
+                        <i class="bi bi-check-circle-fill"></i>
+                        <h3>500+</h3>
+                        <p>Projects Delivered</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-item stat-orange">
+                        <i class="bi bi-emoji-smile-fill"></i>
+                        <h3>250+</h3>
+                        <p>Happy Clients</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-item stat-green">
+                        <i class="bi bi-people-fill"></i>
+                        <h3>50+</h3>
+                        <p>Expert Team Members</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-item stat-purple">
+                        <i class="bi bi-award-fill"></i>
+                        <h3>10+</h3>
+                        <p>Years of Excellence</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         About Us Section
+    ======================================== -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h2 class="section-title-left">About TechSolutions</h2>
+                    <p>
+                        We are a leading software development company specializing in creating innovative solutions 
+                        that transform businesses. With over a decade of experience in the industry, we deliver 
+                        enterprise-grade software, CRM systems, and ERP solutions that drive growth and efficiency.
+                    </p>
+                    <p>
+                        Our team of expert developers and consultants work closely with clients to understand their 
+                        unique challenges and deliver customized solutions that exceed expectations. We combine 
+                        cutting-edge technology with proven methodologies to ensure project success.
+                    </p>
+                    <p>
+                        From startups to Fortune 500 companies, we've helped businesses across industries leverage 
+                        technology to achieve their goals and stay ahead of the competition.
+                    </p>
+                </div>
+
+                <div class="col-lg-6">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop" 
+                         alt="Professional team collaboration" 
+                         class="about-image">
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-12">
+                    <h3 class="text-center mb-4" style="font-size: 2rem; font-weight: 600;">Why Choose Us</h3>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="about-feature">
+                        <i class="bi bi-award"></i>
+                        <h4>Expert Team</h4>
+                        <p>Highly skilled developers with extensive experience in modern technologies and industry best practices.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="about-feature">
+                        <i class="bi bi-gear"></i>
+                        <h4>Custom Solutions</h4>
+                        <p>Tailored software solutions designed specifically for your unique business needs and objectives.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="about-feature">
+                        <i class="bi bi-headset"></i>
+                        <h4>24/7 Support</h4>
+                        <p>Round-the-clock technical support and maintenance to keep your systems running smoothly.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         Portfolio Section - NEW
+    ======================================== -->
+    <section id="portfolio" class="portfolio-section">
+        <div class="container">
+            <h2 class="section-title">Our Recent Projects</h2>
+            <p class="section-subtitle">Delivering excellence across diverse industries and technologies</p>
+
+            <div class="row">
+                <!-- Project 1 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="portfolio-card">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop" 
+                             alt="Healthcare Management System" 
+                             class="portfolio-image">
+                        <div class="portfolio-content">
+                            <span class="portfolio-category">Healthcare</span>
+                            <h4>Hospital Management System</h4>
+                            <p>Complete ERP solution for multi-location hospital chain with patient management and billing.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="portfolio-card">
+                        <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=600&h=400&fit=crop" 
+                             alt="E-commerce Platform" 
+                             class="portfolio-image">
+                        <div class="portfolio-content">
+                            <span class="portfolio-category">E-commerce</span>
+                            <h4>Multi-Vendor Marketplace</h4>
+                            <p>Scalable e-commerce platform with advanced inventory and seller management features.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="portfolio-card">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop" 
+                             alt="Financial Analytics Dashboard" 
+                             class="portfolio-image">
+                        <div class="portfolio-content">
+                            <span class="portfolio-category">Finance</span>
+                            <h4>Financial Analytics Platform</h4>
+                            <p>Real-time data analytics and reporting system for investment management firm.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="portfolio-card">
+                        <img src="https://images.unsplash.com/photo-1557426272-fc759fdf7a8d?w=600&h=400&fit=crop" 
+                             alt="Manufacturing ERP" 
+                             class="portfolio-image">
+                        <div class="portfolio-content">
+                            <span class="portfolio-category">Manufacturing</span>
+                            <h4>Production Management ERP</h4>
+                            <p>Integrated ERP system for manufacturing operations, supply chain, and quality control.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="portfolio-card">
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=400&fit=crop" 
+                             alt="CRM System" 
+                             class="portfolio-image">
+                        <div class="portfolio-content">
+                            <span class="portfolio-category">Sales</span>
+                            <h4>Enterprise CRM Solution</h4>
+                            <p>Custom CRM with AI-powered lead scoring and automated sales pipeline management.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="portfolio-card">
+                        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&h=400&fit=crop" 
+                             alt="Educational Platform" 
+                             class="portfolio-image">
+                        <div class="portfolio-content">
+                            <span class="portfolio-category">Education</span>
+                            <h4>Learning Management System</h4>
+                            <p>Comprehensive online learning platform with video streaming and interactive assessments.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         Testimonials Section - NEW
+    ======================================== -->
+    <section id="testimonials" class="testimonials-section">
+        <div class="container">
+            <h2 class="section-title">What Our Clients Say</h2>
+            <p class="section-subtitle">Trusted by businesses worldwide for exceptional software solutions</p>
+
+            <div class="row">
+                <!-- Testimonial 1 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">
+                            "TechSolutions transformed our business operations with their custom ERP system. 
+                            The team was professional, responsive, and delivered beyond our expectations."
+                        </p>
+                        <div class="testimonial-author">
+                            <img src="https://i.pravatar.cc/150?img=12" alt="Client" class="author-image">
+                            <div class="author-info">
+                                <h5>Rajesh Kumar</h5>
+                                <p>CEO, Manufacturing Co.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">
+                            "The CRM solution they built for us has increased our sales efficiency by 40%. 
+                            Their attention to detail and understanding of our needs was impressive."
+                        </p>
+                        <div class="testimonial-author">
+                            <img src="https://i.pravatar.cc/150?img=32" alt="Client" class="author-image">
+                            <div class="author-info">
+                                <h5>Priya Sharma</h5>
+                                <p>Director, Sales Division</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">
+                            "Outstanding service from start to finish. They delivered a robust web application 
+                            that handles thousands of users daily without any performance issues."
+                        </p>
+                        <div class="testimonial-author">
+                            <img src="https://i.pravatar.cc/150?img=68" alt="Client" class="author-image">
+                            <div class="author-info">
+                                <h5>Amit Patel</h5>
+                                <p>Founder, Tech Startup</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         CTA Section - NEW
+    ======================================== -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Transform Your Business?</h2>
+            <p>Let's discuss how our enterprise solutions can help you achieve your goals</p>
+            <a href="#contact" class="btn-cta">Schedule a Consultation</a>
+        </div>
+    </section>
+
+    <!-- ========================================
+         Footer Section
+    ======================================== -->
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <h5>TechSolutions</h5>
+                    <p>
+                        We deliver cutting-edge software solutions that empower businesses to achieve their goals. 
+                        From CRM to ERP systems, we are your trusted technology partner.
+                    </p>
+                    <div class="social-links mt-3">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-twitter"></i></a>
+                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Our Services</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Software Development</a></li>
+                        <li><a href="#">CRM Solutions</a></li>
+                        <li><a href="#">ERP Development</a></li>
+                        <li><a href="#">Web Applications</a></li>
+                        <li><a href="#">Mobile Apps</a></li>
+                        <li><a href="#">Cloud Solutions</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Contact Us</h5>
+                    <div class="contact-info">
+                        <i class="bi bi-geo-alt-fill"></i>
+                        <p>123 Business Street, Kolkata, West Bengal 700001</p>
+                    </div>
+                    <div class="contact-info">
+                        <i class="bi bi-telephone-fill"></i>
+                        <p>+91 98765 43210</p>
+                    </div>
+                    <div class="contact-info">
+                        <i class="bi bi-envelope-fill"></i>
+                        <p>info@techsolutions.com</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 TechSolutions. All rights reserved. | Designed with excellence for enterprise clients</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const megaMenuItems = document.querySelectorAll('.nav-item.has-megamenu');
+
+            megaMenuItems.forEach(item => {
+                const megamenu = item.querySelector('.megamenu');
+
+                item.addEventListener('mouseenter', function() {
+                    if (window.innerWidth > 991) {
+                        megamenu.style.opacity = '1';
+                        megamenu.style.visibility = 'visible';
+                    }
+                });
+
+                item.addEventListener('mouseleave', function() {
+                    if (window.innerWidth > 991) {
+                        megamenu.style.opacity = '0';
+                        megamenu.style.visibility = 'hidden';
+                    }
+                });
+            });
+
+            const carousel = new bootstrap.Carousel(document.querySelector('#heroCarousel'), {
+                interval: 5000,
+                ride: 'carousel'
+            });
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && href !== '') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
