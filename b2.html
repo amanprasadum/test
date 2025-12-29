@@ -1,0 +1,1412 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bexily - Custom ERP Software Development Company in Kolkata</title>
+
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* ========================================
+   GLOBAL STYLES
+======================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Primary Colors - Professional Dark Blue Shades */
+    --primary-dark: #0f172a;
+    --primary-blue: #1e40af;
+    --primary-medium: #3b82f6;
+
+    /* Accent Colors - Light Professional Shades */
+    --accent-sky: #0ea5e9;
+    --accent-cyan: #06b6d4;
+    --accent-light: #38bdf8;
+
+    /* Neutral Colors */
+    --white: #ffffff;
+    --light-bg: #f8fafc;
+    --lighter-bg: #f1f5f9;
+    --text-dark: #1e293b;
+    --text-gray: #64748b;
+    --text-light: #94a3b8;
+    --border-color: #e2e8f0;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--text-dark);
+    overflow-x: hidden;
+}
+
+/* ========================================
+   NAVIGATION STYLES
+======================================== */
+.top-bar {
+    background: var(--primary-dark);
+    color: var(--white);
+    padding: 10px 0;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.top-bar a {
+    color: var(--white);
+    text-decoration: none;
+    margin: 0 15px;
+    transition: color 0.3s;
+}
+
+.top-bar a:hover {
+    color: var(--accent-light);
+}
+
+.navbar {
+    background: var(--white) !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    padding: 15px 0;
+}
+
+.navbar-brand {
+    font-weight: 800;
+    font-size: 1.75rem;
+    color: var(--primary-blue) !important;
+    letter-spacing: -0.5px;
+}
+
+.nav-link {
+    font-weight: 500;
+    font-size: 15px;
+    color: var(--text-dark) !important;
+    padding: 8px 16px !important;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--primary-blue) !important;
+}
+
+/* Desktop Mega Menu */
+.mega-menu {
+    width: 720px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 12px;
+    background: var(--white);
+    border: 1px solid var(--border-color);
+}
+
+.mega-list li {
+    margin-bottom: 8px;
+}
+
+.mega-list a {
+    text-decoration: none;
+    color: var(--text-gray);
+    font-size: 14px;
+    font-weight: 400;
+    transition: all 0.2s ease;
+}
+
+.mega-list a:hover {
+    color: var(--primary-blue);
+    padding-left: 4px;
+}
+
+@media (min-width: 992px) {
+    .navbar .dropdown-menu {
+        display: block;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.25s ease;
+    }
+
+    .navbar .dropdown:hover .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+/* Mobile Offcanvas */
+.offcanvas-custom {
+    background-color: var(--primary-dark);
+}
+
+.mobile-menu a {
+    display: block;
+    padding: 10px 0;
+    color: #e5e7eb;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.mobile-menu a:hover {
+    color: var(--white);
+    padding-left: 6px;
+    transition: 0.2s;
+}
+
+.mobile-menu .nav-link-item {
+    padding: 12px 0;
+    color: var(--white);
+    font-weight: 500;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.mobile-menu .btn-mobile {
+    margin-top: 1rem;
+    width: 100%;
+}
+
+/* Mobile Accordion */
+.mobile-accordion .accordion-item {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding: 1rem;
+}
+
+.mobile-accordion .accordion-button {
+    background-color: transparent;
+    color: var(--white);
+    font-weight: 500;
+    padding: 14px 0;
+    border: none;
+    box-shadow: none;
+    font-size: 15px;
+}
+
+.mobile-accordion .accordion-button:not(.collapsed) {
+    background-color: transparent;
+    color: var(--white);
+    box-shadow: none;
+}
+
+.mobile-accordion .accordion-button::after {
+    filter: brightness(0) invert(1);
+}
+
+.mobile-accordion .accordion-body {
+    padding: 0.5rem 0 1rem 0;
+    color: #e5e7eb;
+}
+
+.mobile-submenu-title {
+    color: #9ca3af;
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.mobile-submenu-title:first-child {
+    margin-top: 0;
+}
+
+/* ========================================
+   HERO CAROUSEL SECTION
+======================================== */
+.hero-carousel {
+    position: relative;
+}
+
+.carousel-item {
+    height: 650px;
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 100%);
+    position: relative;
+}
+
+.carousel-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 64, 175, 0.85) 100%);
+}
+
+.carousel-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.05;
+    background-image: 
+        linear-gradient(30deg, var(--accent-light) 12%, transparent 12.5%, transparent 87%, var(--accent-light) 87.5%, var(--accent-light)),
+        linear-gradient(150deg, var(--accent-light) 12%, transparent 12.5%, transparent 87%, var(--accent-light) 87.5%, var(--accent-light)),
+        linear-gradient(30deg, var(--accent-light) 12%, transparent 12.5%, transparent 87%, var(--accent-light) 87.5%, var(--accent-light)),
+        linear-gradient(150deg, var(--accent-light) 12%, transparent 12.5%, transparent 87%, var(--accent-light) 87.5%, var(--accent-light));
+    background-size: 80px 140px;
+}
+
+.carousel-content {
+    position: relative;
+    z-index: 3;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.carousel-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    letter-spacing: -1px;
+}
+
+.carousel-subtitle {
+    font-size: 1.25rem;
+    color: rgba(255,255,255,0.9);
+    font-weight: 300;
+    margin-bottom: 2.5rem;
+    line-height: 1.8;
+    max-width: 600px;
+}
+
+/* Carousel Controls */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 60px;
+    height: 60px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 1;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.carousel-control-prev {
+    left: 30px;
+}
+
+.carousel-control-next {
+    right: 30px;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    background: var(--accent-sky);
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.carousel-indicators {
+    bottom: 30px;
+}
+
+.carousel-indicators button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.5);
+    border: none;
+    margin: 0 5px;
+}
+
+.carousel-indicators .active {
+    background: var(--accent-light);
+    width: 40px;
+    border-radius: 6px;
+}
+
+/* ========================================
+   STATS SECTION
+======================================== */
+.stats-section {
+    background: var(--white);
+    padding: 60px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.stat-box {
+    text-align: center;
+    padding: 20px;
+}
+
+.stat-number {
+    font-size: 3rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-sky));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 15px;
+    color: var(--text-gray);
+    font-weight: 500;
+}
+
+/* ========================================
+   ABOUT SECTION
+======================================== */
+.about-section {
+    padding: 100px 0;
+    background: var(--lighter-bg);
+}
+
+.section-badge {
+    display: inline-block;
+    padding: 8px 20px;
+    background: linear-gradient(135deg, var(--accent-sky), var(--accent-cyan));
+    color: var(--white);
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin-bottom: 1.5rem;
+    line-height: 1.3;
+    letter-spacing: -0.5px;
+}
+
+.section-text {
+    font-size: 16px;
+    color: var(--text-gray);
+    font-weight: 400;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+.feature-list {
+    list-style: none;
+    padding: 0;
+}
+
+.feature-list li {
+    padding: 12px 0;
+    font-size: 15px;
+    color: var(--text-dark);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+}
+
+.feature-list li i {
+    color: var(--accent-sky);
+    font-size: 20px;
+    margin-right: 12px;
+}
+
+.cta-box {
+    background: linear-gradient(135deg, var(--primary-blue), var(--primary-medium));
+    padding: 30px;
+    border-radius: 12px;
+    color: var(--white);
+    margin-top: 2rem;
+}
+
+.cta-box h5 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.cta-box .phone-number {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: 10px;
+}
+
+/* ========================================
+   WHY CHOOSE SECTION
+======================================== */
+.why-choose-section {
+    padding: 100px 0;
+    background: var(--white);
+}
+
+.feature-card {
+    background: var(--light-bg);
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    padding: 40px 30px;
+    height: 100%;
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    border-color: var(--accent-sky);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(14, 165, 233, 0.15);
+}
+
+.feature-icon {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, var(--accent-sky), var(--accent-cyan));
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.feature-icon i {
+    font-size: 32px;
+    color: var(--white);
+}
+
+.feature-card h4 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin-bottom: 1rem;
+}
+
+.feature-card p {
+    font-size: 14px;
+    color: var(--text-gray);
+    font-weight: 400;
+    line-height: 1.8;
+}
+
+/* ========================================
+   SERVICES SECTION
+======================================== */
+.services-section {
+    padding: 100px 0;
+    background: var(--lighter-bg);
+}
+
+.service-card {
+    background: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 30px;
+    height: 100%;
+    transition: all 0.3s ease;
+}
+
+.service-card:hover {
+    border-color: var(--primary-blue);
+    box-shadow: 0 10px 30px rgba(30, 64, 175, 0.1);
+    transform: translateY(-3px);
+}
+
+.service-card i {
+    font-size: 2.5rem;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+}
+
+.service-card h5 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--primary-dark);
+    margin-bottom: 0.75rem;
+}
+
+.service-card p {
+    font-size: 14px;
+    color: var(--text-gray);
+    font-weight: 400;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* ========================================
+   CTA BANNER
+======================================== */
+.cta-banner {
+    background: linear-gradient(135deg, var(--primary-blue), var(--primary-medium));
+    padding: 60px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.cta-banner .content {
+    position: relative;
+    z-index: 2;
+}
+
+.cta-banner h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+}
+
+.cta-banner .phone {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--white);
+}
+
+/* ========================================
+   INDUSTRIES SECTION
+======================================== */
+.industries-section {
+    padding: 100px 0;
+    background: var(--white);
+}
+
+.industry-item {
+    background: var(--light-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 25px 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.industry-item:hover {
+    background: var(--accent-sky);
+    color: var(--white);
+    transform: translateY(-5px);
+    border-color: var(--accent-sky);
+}
+
+.industry-item i {
+    font-size: 2.5rem;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    transition: color 0.3s ease;
+}
+
+.industry-item:hover i {
+    color: var(--white);
+}
+
+.industry-item h6 {
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0;
+}
+
+/* ========================================
+   QUOTE FORM SECTION
+======================================== */
+.quote-section {
+    padding: 100px 0;
+    background: var(--lighter-bg);
+}
+
+.quote-form {
+    background: var(--white);
+    padding: 50px;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+}
+
+.form-control,
+.form-select {
+    padding: 12px 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 15px;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--accent-sky);
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+}
+
+/* ========================================
+   FOOTER
+======================================== */
+.footer {
+    background: var(--primary-dark);
+    color: var(--text-light);
+    padding: 80px 0 30px;
+}
+
+.footer-brand {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 1rem;
+}
+
+.footer-desc {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+.footer-title {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 0.75rem;
+}
+
+.footer-links a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+    transition: all 0.2s ease;
+}
+
+.footer-links a:hover {
+    color: var(--accent-light);
+    padding-left: 5px;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin-top: 3rem;
+    padding-top: 2rem;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+/* ========================================
+   BUTTONS
+======================================== */
+.btn {
+    font-weight: 600;
+    padding: 14px 32px;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--accent-sky), var(--accent-cyan));
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-sky));
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(14, 165, 233, 0.3);
+}
+
+.btn-light {
+    background: var(--white);
+    color: var(--primary-blue);
+}
+
+.btn-light:hover {
+    background: var(--light-bg);
+    transform: translateY(-2px);
+}
+
+.btn-outline-light {
+    border: 2px solid rgba(255,255,255,0.5);
+    color: var(--white);
+    background: transparent;
+}
+
+.btn-outline-light:hover {
+    background: var(--white);
+    color: var(--primary-blue);
+    border-color: var(--white);
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+@media (max-width: 991px) {
+    .carousel-item {
+        height: 550px;
+    }
+
+    .carousel-title {
+        font-size: 2.5rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+@media (max-width: 767px) {
+    .top-bar {
+        text-align: center;
+    }
+
+    .carousel-item {
+        height: 500px;
+    }
+
+    .carousel-title {
+        font-size: 2rem;
+    }
+
+    .carousel-subtitle {
+        font-size: 1rem;
+    }
+
+    .about-section,
+    .why-choose-section,
+    .services-section,
+    .industries-section,
+    .quote-section {
+        padding: 60px 0;
+    }
+
+    .quote-form {
+        padding: 30px 20px;
+    }
+
+    .carousel-control-prev {
+        left: 15px;
+    }
+
+    .carousel-control-next {
+        right: 15px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ========================================
+     TOP BAR
+======================================== -->
+<div class="top-bar d-none d-lg-block">
+    <div class="container">
+        <div class="d-flex justify-content-between">
+            <div>
+                <a href="mailto:info@example.com"><i class="bi bi-envelope me-2"></i>info@example.com</a>
+                <a href="tel:+0123456789"><i class="bi bi-telephone me-2"></i>+012 345 6789</a>
+            </div>
+            <div>
+                <a href="#"><i class="bi bi-geo-alt me-2"></i>123 Street, New York, USA</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ========================================
+     NAVIGATION
+======================================== -->
+<nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">Bexily</a>
+
+        <!-- Mobile Toggler -->
+        <button class="navbar-toggler" type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#mobileCanvas">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Desktop Navigation -->
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ms-auto align-items-lg-center">
+                <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                <li class="nav-item"><a class="nav-link" href="#blog">Blog</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                <li class="nav-item ms-lg-2">
+                    <a class="btn btn-primary rounded-pill" href="#quote">
+                        <i class="bi bi-file-earmark-text me-2"></i>Get Quote
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- ========================================
+     MOBILE OFFCANVAS MENU
+======================================== -->
+<div class="offcanvas offcanvas-start offcanvas-custom text-white" tabindex="-1" id="mobileCanvas">
+    <div class="offcanvas-header border-bottom border-secondary">
+        <h5 class="offcanvas-title fw-bold">Menu</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+    </div>
+
+    <div class="offcanvas-body mobile-menu p-0">
+        <div class="px-3">
+            <a href="#home" class="nav-link-item"><i class="bi bi-house me-2"></i>Home</a>
+            <a href="#about" class="nav-link-item"><i class="bi bi-info-circle me-2"></i>About</a>
+            <a href="#services" class="nav-link-item"><i class="bi bi-gear me-2"></i>Services</a>
+            <a href="#blog" class="nav-link-item"><i class="bi bi-journal-text me-2"></i>Blog</a>
+            <a href="#contact" class="nav-link-item"><i class="bi bi-envelope me-2"></i>Contact</a>
+
+            <a class="btn btn-primary rounded-pill px-4 btn-mobile" href="#quote">
+                <i class="bi bi-file-earmark-text me-2"></i>Get Quote
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- ========================================
+     HERO CAROUSEL SECTION
+======================================== -->
+<section id="home">
+    <div id="heroCarousel" class="carousel slide hero-carousel" data-bs-ride="carousel">
+
+        <!-- Indicators -->
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+        </div>
+
+        <!-- Slides -->
+        <div class="carousel-inner">
+
+            <!-- Slide 1 -->
+            <div class="carousel-item active">
+                <div class="carousel-overlay"></div>
+                <div class="carousel-pattern"></div>
+                <div class="carousel-content">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <h1 class="carousel-title">Custom ERP Software Development That Delivers</h1>
+                                <p class="carousel-subtitle">We're Kolkata based an ERP software development company building scalable, intelligent solutions tailored to your business needs.</p>
+                                <div class="d-flex gap-3 flex-wrap">
+                                    <a href="#quote" class="btn btn-primary btn-lg">
+                                        <i class="bi bi-rocket-takeoff me-2"></i>Get Started
+                                    </a>
+                                    <a href="#services" class="btn btn-outline-light btn-lg">
+                                        <i class="bi bi-grid-3x3-gap me-2"></i>Our Services
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="carousel-item">
+                <div class="carousel-overlay"></div>
+                <div class="carousel-pattern"></div>
+                <div class="carousel-content">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <h1 class="carousel-title">Kolkata's Leading ERP Software Development Company</h1>
+                                <p class="carousel-subtitle">Transform bright ideas into tailored ERP software that addresses your enterprise challenges and adapts seamlessly to your unique workflows.</p>
+                                <div class="d-flex gap-3 flex-wrap">
+                                    <a href="#about" class="btn btn-primary btn-lg">
+                                        <i class="bi bi-info-circle me-2"></i>Learn More
+                                    </a>
+                                    <a href="#contact" class="btn btn-outline-light btn-lg">
+                                        <i class="bi bi-telephone me-2"></i>Contact Us
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="carousel-item">
+                <div class="carousel-overlay"></div>
+                <div class="carousel-pattern"></div>
+                <div class="carousel-content">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <h1 class="carousel-title">ERP Innovation That Solves Real Problems</h1>
+                                <p class="carousel-subtitle">Over 10 years of experience delivering intelligent ERP solutions that empower businesses to operate smarter, faster, and more efficiently.</p>
+                                <div class="d-flex gap-3 flex-wrap">
+                                    <a href="#industries" class="btn btn-primary btn-lg">
+                                        <i class="bi bi-building me-2"></i>Industries We Serve
+                                    </a>
+                                    <a href="#quote" class="btn btn-outline-light btn-lg">
+                                        <i class="bi bi-file-text me-2"></i>Request Quote
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+</section>
+
+<!-- ========================================
+     STATS SECTION
+======================================== -->
+<section class="stats-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-4">
+                <div class="stat-box">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Happy Clients</div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4">
+                <div class="stat-box">
+                    <div class="stat-number">1200+</div>
+                    <div class="stat-label">Projects Done</div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4">
+                <div class="stat-box">
+                    <div class="stat-number">85+</div>
+                    <div class="stat-label">Win Awards</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========================================
+     ABOUT SECTION
+======================================== -->
+<section class="about-section" id="about">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6">
+                <span class="section-badge">About Bexily</span>
+                <h2 class="section-title">Kolkata's Leading Company for the ERP Software Development Services</h2>
+                <p class="section-text">At Bexily, our specialised development team—with over 10 years of experience—delivers intelligent ERP solutions that empower businesses to operate smarter, faster, and more efficiently.</p>
+                <p class="section-text">Our mission is to transform bright ideas into tailored ERP software that addresses your enterprise challenges and adapts seamlessly to your unique workflows.</p>
+
+                <ul class="feature-list">
+                    <li><i class="bi bi-check-circle-fill"></i> ERP Innovation That Solves Real Problems</li>
+                    <li><i class="bi bi-check-circle-fill"></i> Collaboration that builds trust</li>
+                    <li><i class="bi bi-check-circle-fill"></i> Results that speak for themselves</li>
+                    <li><i class="bi bi-check-circle-fill"></i> Transparent Pricing, No Hidden Costs</li>
+                </ul>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="cta-box">
+                    <h5>Call to ask any question</h5>
+                    <div class="phone-number">
+                        <i class="bi bi-telephone-fill me-3"></i>+91-XXXX-XXXXXX
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========================================
+     WHY CHOOSE SECTION
+======================================== -->
+<section class="why-choose-section">
+    <div class="container">
+        <div class="text-center mb-5">
+            <span class="section-badge">Why Choose Bexily?</span>
+            <h2 class="section-title">We Are Here with ERP experts team to Grow Your Business Exponentially</h2>
+        </div>
+
+        <div class="row g-4">
+
+            <!-- Feature 1 -->
+            <div class="col-lg-6">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="bi bi-sliders"></i>
+                    </div>
+                    <h4>Tailored for Your Workflow</h4>
+                    <p>We don't believe in one-size-fits-all. Our custom ERP solutions are built around your unique business processes, ensuring seamless integration, reduced manual effort, and optimized performance across departments.</p>
+                </div>
+            </div>
+
+            <!-- Feature 2 -->
+            <div class="col-lg-6">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="bi bi-shield-lock"></i>
+                    </div>
+                    <h4>Scalable, Secure & Future-Ready</h4>
+                    <p>Whether you're a startup or scaling enterprise, our ERP systems grow with you. With robust security protocols and modular architecture, your data stays protected while your operations stay agile.</p>
+                </div>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="col-lg-6">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="bi bi-graph-up-arrow"></i>
+                    </div>
+                    <h4>Real-Time Insights, Smarter Decisions</h4>
+                    <p>Empower your team with real-time dashboards, automated reports, and predictive analytics. Our ERP tools turn raw data into actionable insights — helping you make faster, smarter business decisions.</p>
+                </div>
+            </div>
+
+            <!-- Feature 4 -->
+            <div class="col-lg-6">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="bi bi-headset"></i>
+                    </div>
+                    <h4>Dedicated Support & Continuous Innovation</h4>
+                    <p>From initial consultation to post-launch upgrades, we're with you every step of the way. Our team ensures smooth implementation, ongoing support, and continuous improvements to keep you ahead of the curve.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ========================================
+     SERVICES SECTION
+======================================== -->
+<section class="services-section" id="services">
+    <div class="container">
+        <div class="text-center mb-5">
+            <span class="section-badge">Our ERP Development Services</span>
+            <h2 class="section-title">Full Suite of ERP Software Development Services</h2>
+        </div>
+
+        <div class="row g-4">
+
+            <!-- Service 1 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="service-card">
+                    <i class="bi bi-code-square"></i>
+                    <h5>Custom ERP Software Development</h5>
+                    <p>Tailored systems built from the ground up to match your business processes.</p>
+                </div>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="service-card">
+                    <i class="bi bi-diagram-3"></i>
+                    <h5>ERP System Integration</h5>
+                    <p>Seamless integration with existing tools like CRM, HRMS, and inventory systems.</p>
+                </div>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="service-card">
+                    <i class="bi bi-arrow-repeat"></i>
+                    <h5>ERP Migration & Modernization</h5>
+                    <p>Upgrade legacy systems to modern, scalable platforms.</p>
+                </div>
+            </div>
+
+            <!-- Service 4 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="service-card">
+                    <i class="bi bi-tools"></i>
+                    <h5>ERP Maintenance & Support</h5>
+                    <p>Ongoing support to ensure performance, security, and reliability.</p>
+                </div>
+            </div>
+
+            <!-- Service 5 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="service-card">
+                    <i class="bi bi-building"></i>
+                    <h5>Industry-Specific ERP Solutions</h5>
+                    <p>Specialized ERP systems for manufacturing, retail, healthcare, and more.</p>
+                </div>
+            </div>
+
+            <!-- Service 6 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="service-card">
+                    <i class="bi bi-cloud-check"></i>
+                    <h5>Cloud-Based ERP Solutions</h5>
+                    <p>Secure, scalable cloud ERP systems accessible from anywhere.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ========================================
+     CTA BANNER
+======================================== -->
+<section class="cta-banner">
+    <div class="container">
+        <div class="row align-items-center content">
+            <div class="col-lg-8">
+                <h3>Ready to transform your business with ERP?</h3>
+                <p class="mb-0 text-white-50">Call us for a free consultation</p>
+            </div>
+            <div class="col-lg-4 text-lg-end mt-3 mt-lg-0">
+                <div class="phone">
+                    <i class="bi bi-telephone-fill me-2"></i>+91-XXXX-XXXXXX
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========================================
+     INDUSTRIES SECTION
+======================================== -->
+<section class="industries-section" id="industries">
+    <div class="container">
+        <div class="text-center mb-5">
+            <span class="section-badge">Industries We Serve</span>
+            <h2 class="section-title">We build ERP solutions for a wide range of industries</h2>
+        </div>
+
+        <div class="row g-3">
+            <div class="col-lg-3 col-md-4 col-6">
+                <div class="industry-item">
+                    <i class="bi bi-scissors"></i>
+                    <h6>Textile Industry</h6>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-6">
+                <div class="industry-item">
+                    <i class="bi bi-palette"></i>
+                    <h6>Garment Manufacturing</h6>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-6">
+                <div class="industry-item">
+                    <i class="bi bi-cash-stack"></i>
+                    <h6>Finance & Accounting</h6>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-6">
+                <div class="industry-item">
+                    <i class="bi bi-box-seam"></i>
+                    <h6>Inventory Management</h6>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-6">
+                <div class="industry-item">
+                    <i class="bi bi-globe"></i>
+                    <h6>Export & Documentation</h6>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-6">
+                <div class="industry-item">
+                    <i class="bi bi-building"></i>
+                    <h6>Multi-Unit Factory</h6>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-6">
+                <div class="industry-item">
+                    <i class="bi bi-cart-check"></i>
+                    <h6>Procurement</h6>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-6">
+                <div class="industry-item">
+                    <i class="bi bi-people"></i>
+                    <h6>HR & Payroll</h6>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-6">
+                <div class="industry-item">
+                    <i class="bi bi-hospital"></i>
+                    <h6>Healthcare & Clinics</h6>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-6">
+                <div class="industry-item">
+                    <i class="bi bi-building"></i>
+                    <h6>Hospitality & Hotels</h6>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-6">
+                <div class="industry-item">
+                    <i class="bi bi-book"></i>
+                    <h6>Education</h6>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-6">
+                <div class="industry-item">
+                    <i class="bi bi-truck"></i>
+                    <h6>Logistics & Transport</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========================================
+     QUOTE SECTION
+======================================== -->
+<section class="quote-section" id="quote">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="text-center mb-5">
+                    <span class="section-badge">Request A Quote</span>
+                    <h2 class="section-title">Ready to transform your business with a custom ERP solution?</h2>
+                    <p class="section-text">Whether you're in textiles, garments, finance, healthcare, or manufacturing, our team builds scalable, user-friendly systems tailored to your workflow.</p>
+                </div>
+
+                <div class="quote-form">
+                    <form>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Your Name" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="email" class="form-control" placeholder="Your Email" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="tel" class="form-control" placeholder="Your Phone" required>
+                            </div>
+                            <div class="col-md-6">
+                                <select class="form-select" required>
+                                    <option value="">Select Industry</option>
+                                    <option>Textile Industry</option>
+                                    <option>Garment Manufacturing</option>
+                                    <option>Finance & Accounting</option>
+                                    <option>Healthcare & Clinics</option>
+                                    <option>Hospitality & Hotels</option>
+                                    <option>Manufacturing</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <textarea class="form-control" rows="5" placeholder="Tell us about your requirements" required></textarea>
+                            </div>
+                            <div class="col-12 text-center">
+                                <button type="submit" class="btn btn-primary btn-lg px-5">
+                                    <i class="bi bi-send me-2"></i>Request A Quote
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========================================
+     FOOTER
+======================================== -->
+<footer class="footer" id="contact">
+    <div class="container">
+        <div class="row g-4">
+
+            <!-- Company Info -->
+            <div class="col-lg-4">
+                <div class="footer-brand">Bexily</div>
+                <p class="footer-desc">Kolkata's leading ERP software development company delivering intelligent, scalable solutions tailored to your business needs. Over 10 years of excellence.</p>
+                <div class="mt-4">
+                    <p class="mb-2"><i class="bi bi-geo-alt me-2"></i>123 Street, New York, USA</p>
+                    <p class="mb-2"><i class="bi bi-telephone me-2"></i>+012 345 6789</p>
+                    <p class="mb-0"><i class="bi bi-envelope me-2"></i>info@example.com</p>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="col-lg-2 col-md-4">
+                <h6 class="footer-title">Quick Links</h6>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Our Services</a></li>
+                    <li><a href="#industries">Industries</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Services -->
+            <div class="col-lg-3 col-md-4">
+                <h6 class="footer-title">Our Services</h6>
+                <ul class="footer-links">
+                    <li><a href="#">Custom ERP Development</a></li>
+                    <li><a href="#">ERP Integration</a></li>
+                    <li><a href="#">ERP Migration</a></li>
+                    <li><a href="#">Maintenance & Support</a></li>
+                    <li><a href="#">Cloud ERP Solutions</a></li>
+                </ul>
+            </div>
+
+            <!-- Industries -->
+            <div class="col-lg-3 col-md-4">
+                <h6 class="footer-title">Industries</h6>
+                <ul class="footer-links">
+                    <li><a href="#">Textile Industry</a></li>
+                    <li><a href="#">Garment Manufacturing</a></li>
+                    <li><a href="#">Finance & Accounting</a></li>
+                    <li><a href="#">Healthcare</a></li>
+                    <li><a href="#">Manufacturing</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+            <p>&copy; 2025 Bexily. All Rights Reserved. | Designed with <i class="bi bi-heart-fill text-danger"></i> in Kolkata</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
