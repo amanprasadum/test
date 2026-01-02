@@ -474,6 +474,151 @@
                 justify-content: center;
             }
         }
+/* ============================================================ */
+/* ========================================
+   MODERN STATS SECTION
+======================================== */
+.stats-section-modern {
+    background: var(--white);
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.stats-section-modern::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border-color), transparent);
+}
+
+.stat-card-modern {
+    background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+    border: 2px solid var(--border-color);
+    border-radius: 20px;
+    padding: 40px 30px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    height: 100%;
+}
+
+.stat-card-modern:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary-blue);
+    box-shadow: 0 20px 50px rgba(30, 64, 175, 0.15);
+}
+
+.stat-card-modern:hover .stat-icon-modern {
+    transform: scale(1.1) rotate(5deg);
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-purple) 100%);
+}
+
+.stat-decoration-modern {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background: linear-gradient(135deg, rgba(30, 64, 175, 0.05) 0%, rgba(123, 104, 238, 0.05) 100%);
+    border-radius: 50%;
+    top: -50px;
+    right: -50px;
+    z-index: 0;
+    transition: all 0.4s ease;
+}
+
+.stat-card-modern:hover .stat-decoration-modern {
+    transform: scale(1.3);
+    opacity: 0.8;
+}
+
+.stat-icon-modern {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--accent-purple) 0%, var(--primary-blue) 100%);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 25px;
+    position: relative;
+    z-index: 1;
+    transition: all 0.4s ease;
+    box-shadow: 0 10px 30px rgba(123, 104, 238, 0.3);
+}
+
+.stat-icon-modern i {
+    font-size: 36px;
+    color: var(--white);
+}
+
+.stat-content-modern {
+    position: relative;
+    z-index: 1;
+}
+
+.stat-number-modern {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--primary-dark);
+    margin-bottom: 10px;
+    line-height: 1;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-purple) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.stat-number-modern::after {
+    content: '+';
+    margin-left: 5px;
+}
+
+.stat-label-modern {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-gray);
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+    .stats-section-modern {
+        padding: 60px 0;
+    }
+
+    .stat-number-modern {
+        font-size: 3rem;
+    }
+
+    .stat-card-modern {
+        padding: 35px 25px;
+    }
+}
+
+@media (max-width: 767px) {
+    .stats-section-modern {
+        padding: 50px 0;
+    }
+
+    .stat-number-modern {
+        font-size: 2.5rem;
+    }
+
+    .stat-icon-modern {
+        width: 70px;
+        height: 70px;
+    }
+
+    .stat-icon-modern i {
+        font-size: 30px;
+    }
+}
 
 
         /* ========================================
@@ -1372,6 +1517,70 @@
     </section>
 
 
+<!-- ========================================
+     MODERN STATS SECTION
+======================================== -->
+<section class="stats-section-modern">
+    <div class="container">
+        <div class="row g-4">
+            <!-- Stat 1 -->
+            <div class="col-lg-3 col-md-6">
+                <div class="stat-card-modern">
+                    <div class="stat-icon-modern">
+                        <i class="bi bi-people-fill"></i>
+                    </div>
+                    <div class="stat-content-modern">
+                        <h3 class="stat-number-modern" data-count="500">0</h3>
+                        <p class="stat-label-modern">Happy Clients</p>
+                    </div>
+                    <div class="stat-decoration-modern"></div>
+                </div>
+            </div>
+
+            <!-- Stat 2 -->
+            <div class="col-lg-3 col-md-6">
+                <div class="stat-card-modern">
+                    <div class="stat-icon-modern">
+                        <i class="bi bi-rocket-takeoff-fill"></i>
+                    </div>
+                    <div class="stat-content-modern">
+                        <h3 class="stat-number-modern" data-count="1200">0</h3>
+                        <p class="stat-label-modern">Projects Done</p>
+                    </div>
+                    <div class="stat-decoration-modern"></div>
+                </div>
+            </div>
+
+            <!-- Stat 3 -->
+            <div class="col-lg-3 col-md-6">
+                <div class="stat-card-modern">
+                    <div class="stat-icon-modern">
+                        <i class="bi bi-trophy-fill"></i>
+                    </div>
+                    <div class="stat-content-modern">
+                        <h3 class="stat-number-modern" data-count="85">0</h3>
+                        <p class="stat-label-modern">Win Awards</p>
+                    </div>
+                    <div class="stat-decoration-modern"></div>
+                </div>
+            </div>
+
+            <!-- Stat 4 -->
+            <div class="col-lg-3 col-md-6">
+                <div class="stat-card-modern">
+                    <div class="stat-icon-modern">
+                        <i class="bi bi-star-fill"></i>
+                    </div>
+                    <div class="stat-content-modern">
+                        <h3 class="stat-number-modern" data-count="15">0</h3>
+                        <p class="stat-label-modern">Years Experience</p>
+                    </div>
+                    <div class="stat-decoration-modern"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
     <!-- ========================================
      STATS SECTION
