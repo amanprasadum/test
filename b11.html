@@ -224,13 +224,14 @@
             margin-top: 0;
         }
         /* ========================================
-   NEW MODERN HERO SECTION - SECOND SLIDER (CORRECT)
+ /* ========================================
+   NEW MODERN HERO SECTION - SECOND SLIDER (UPDATED)
 ======================================== */
 .modern-hero-second-slider {
     background: linear-gradient(135deg, #f8fafc 0%, #fef3f0 100%);
     position: relative;
     overflow: hidden;
-    padding: 40px 0;
+    padding: 20px 0;
 }
 
 .hero-content-second-slider {
@@ -358,9 +359,9 @@
     position: relative;
     border-radius: 30px;
     overflow: hidden;
-    /* background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); */
-    /* padding: 40px; */
-    /* box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15); */
+    background: transparent;
+    padding: 0;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
 }
 
 .slider-image-wrapper-second-slider {
@@ -369,21 +370,19 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 15px;
-    padding: 20px;
+    background: #fff;
 }
 
 .slider-image-second-slider {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-    border-radius: 20px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 /* Custom Carousel Indicators */
 .carousel-indicators-custom-second-slider {
     position: absolute;
-    bottom: 15px;
+    bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -396,7 +395,7 @@
     height: 12px;
     border-radius: 50%;
     border: none;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(0, 0, 0, 0.3);
     cursor: pointer;
     transition: all 0.3s ease;
     padding: 0;
@@ -409,7 +408,7 @@
 }
 
 .carousel-indicators-custom-second-slider button:hover {
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(0, 0, 0, 0.5);
 }
 
 /* Carousel Transition */
@@ -450,12 +449,12 @@
 }
 
 @media (max-width: 767px) {
-    .hero-heading-second-slider {
-        font-size: 2rem;
+    .modern-hero-second-slider {
+        padding: 15px 0;
     }
 
-    .project-carousel-second-slider {
-        padding: 25px;
+    .hero-heading-second-slider {
+        font-size: 2rem;
     }
 
     .slider-image-wrapper-second-slider {
@@ -1253,9 +1252,12 @@
 <!-- ========================================
      NEW HERO SECTION - SECOND SLIDER (CORRECT VERSION)
 ======================================== -->
+<!-- ========================================
+     NEW HERO SECTION - SECOND SLIDER (UPDATED)
+======================================== -->
 <section id="home-second-slider" class="modern-hero-second-slider">
     <div class="container">
-        <div class="row align-items-center min-vh-100 py-5">
+        <div class="row align-items-center py-5">
             <!-- Left Content Column -->
             <div class="col-lg-6 order-2 order-lg-1">
                 <div class="hero-content-second-slider">
@@ -1269,7 +1271,7 @@
                     </h1>
                     
                     <p class="hero-description-second-slider">
-                        Ogma Conceptions offers enterprise IT solutions & services to improve 
+                        Bexily offers enterprise IT solutions & services to improve 
                         business processes and leverage technology innovation. Apart from push 
                         or pull technology
                     </p>
@@ -1324,7 +1326,7 @@
                         
                         <!-- Slides -->
                         <div class="carousel-inner">
-                            <!-- Slide 1 - Multiple Phones -->
+                            <!-- Slide 1 -->
                             <div class="carousel-item active">
                                 <div class="slider-image-wrapper-second-slider">
                                     <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=600&fit=crop" 
@@ -1345,7 +1347,7 @@
                             <!-- Slide 3 -->
                             <div class="carousel-item">
                                 <div class="slider-image-wrapper-second-slider">
-                                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=600&fit=crop" 
+                                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop" 
                                          alt="Project 3" 
                                          class="slider-image-second-slider">
                                 </div>
@@ -1364,6 +1366,7 @@
         </div>
     </div>
 </section>
+
 
 
     <!-- ========================================
