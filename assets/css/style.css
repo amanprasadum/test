@@ -1763,6 +1763,9 @@
    /* ========================================
    FAQ SECTION - PROFESSIONAL
 ======================================== */
+/* ========================================
+   FAQ SECTION - SMOOTH TRANSITION
+======================================== */
 .faq-section-pro {
     padding: 100px 0;
     background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
@@ -1813,7 +1816,7 @@
     border-radius: 12px;
     margin-bottom: 1rem;
     overflow: hidden;
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
 }
 
 .faq-item-pro:hover {
@@ -1834,7 +1837,7 @@
     display: flex;
     align-items: center;
     gap: 15px;
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
 }
 
 .faq-button-pro:not(.collapsed) {
@@ -1853,11 +1856,17 @@
     font-size: 20px;
     position: absolute;
     right: 25px;
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
+    transform: rotate(0deg);
 }
 
 .faq-button-pro.collapsed::after {
     content: '\F235';
+    transform: rotate(0deg);
+}
+
+.faq-button-pro:not(.collapsed)::after {
+    transform: rotate(180deg);
 }
 
 /* FAQ Number */
@@ -1873,7 +1882,7 @@
     border-radius: 8px;
     font-size: 16px;
     font-weight: 700;
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
 }
 
 .faq-button-pro:not(.collapsed) .faq-number {
@@ -1881,7 +1890,11 @@
     color: #ffffff;
 }
 
-/* FAQ Body */
+/* FAQ Body - Smooth Collapsing */
+.accordion-collapse {
+    transition: height 0.4s ease;
+}
+
 .faq-body-pro {
     padding: 20px 25px 25px 80px;
     font-size: 15px;
