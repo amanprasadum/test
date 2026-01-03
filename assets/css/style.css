@@ -2111,7 +2111,7 @@ textarea.form-control-pro {
         position: relative;
         /* 🔥 YE MISSING THA */
         /* background-image: url('tech-bg.jpg'); */
-        background-image: url('tech-bg-2.png');
+        background-image: url('../../tech-bg-2.png');
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
