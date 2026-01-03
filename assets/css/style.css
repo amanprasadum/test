@@ -1940,78 +1940,189 @@
     /* ========================================
    BLOG SECTION
 ======================================== */
-    .blog-section {
-        padding: 100px 0;
-        background: var(--lighter-bg);
+   .blog-section-pro {
+    padding: 100px 0;
+    background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+}
+
+/* Header */
+.badge-blog {
+    display: inline-block;
+    padding: 8px 20px;
+    background: #1e40af;
+    color: #ffffff;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+.title-blog {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+}
+
+.highlight-blog {
+    color: #1e40af;
+}
+
+.subtitle-blog {
+    font-size: 1.05rem;
+    color: #64748b;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Blog Cards */
+.blog-card-pro {
+    background: #ffffff;
+    border: 2px solid #e2e8f0;
+    border-radius: 16px;
+    overflow: hidden;
+    height: 100%;
+    transition: all 0.3s ease;
+}
+
+.blog-card-pro:hover {
+    border-color: #cbd5e1;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.blog-image-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.blog-image-pro {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    transition: all 0.4s ease;
+}
+
+.blog-card-pro:hover .blog-image-pro {
+    transform: scale(1.05);
+}
+
+.blog-category {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: rgba(30, 64, 175, 0.9);
+    color: #ffffff;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.blog-content-pro {
+    padding: 25px;
+}
+
+.blog-meta-pro {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+    font-size: 13px;
+    color: #94a3b8;
+}
+
+.blog-meta-pro span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.blog-title-pro {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+}
+
+.blog-excerpt-pro {
+    font-size: 14px;
+    color: #64748b;
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+}
+
+.blog-read-more {
+    color: #1e40af;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.3s ease;
+}
+
+.blog-read-more:hover {
+    gap: 10px;
+}
+
+.blog-read-more i {
+    transition: transform 0.3s ease;
+}
+
+.blog-read-more:hover i {
+    transform: translateX(3px);
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+    .testimonials-section-pro,
+    .blog-section-pro {
+        padding: 80px 0;
     }
 
-    .blog-card {
-        background: var(--white);
-        border-radius: 12px;
-        overflow: hidden;
-        height: 100%;
-        transition: all 0.3s ease;
-        border: 1px solid var(--border-color);
+    .title-testimonials,
+    .title-blog {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .testimonials-section-pro,
+    .blog-section-pro {
+        padding: 60px 0;
     }
 
-    .blog-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    .title-testimonials,
+    .title-blog {
+        font-size: 1.65rem;
     }
 
-    .blog-img {
-        width: 100%;
-        height: 220px;
-        object-fit: cover;
+    .subtitle-testimonials,
+    .subtitle-blog {
+        font-size: 1rem;
     }
 
-    .blog-content {
+    .testimonial-card-pro {
         padding: 25px;
     }
 
-    .blog-meta {
-        display: flex;
-        gap: 15px;
-        margin-bottom: 15px;
-        font-size: 13px;
-        color: var(--text-light);
-    }
-
-    .blog-meta span {
-        display: flex;
-        align-items: center;
-        gap: 5px;
-    }
-
-    .blog-title {
-        font-size: 1.125rem;
-        font-weight: 600;
-        color: var(--primary-dark);
-        margin-bottom: 0.75rem;
-        line-height: 1.4;
-    }
-
-    .blog-excerpt {
+    .testimonial-text-pro {
         font-size: 14px;
-        color: var(--text-gray);
-        line-height: 1.7;
-        margin-bottom: 1rem;
     }
 
-    .blog-link {
-        color: var(--primary-blue);
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 14px;
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
+    .blog-image-pro {
+        height: 200px;
     }
 
-    .blog-link:hover {
-        color: var(--accent-purple);
+    .blog-content-pro {
+        padding: 20px;
     }
-
+}
     /* ========================================
    QUOTE FORM SECTION
 ======================================== */
