@@ -93,13 +93,13 @@
 
 
     /* Desktop Mega Menu */
-    .mega-menu {
+    /* .mega-menu {
         width: 720px;
         left: 50%;
         transform: translateX(-50%);
         border-radius: 18px;
         background: var(--white);
-    }
+    } */
 
     .mega-list li {
         margin-bottom: 10px;
