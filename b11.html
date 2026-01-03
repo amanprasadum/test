@@ -1113,13 +1113,7 @@
             color: var(--text-light);
             padding: 80px 0 30px;
         }
-
-        .footer-bg {
-            background-image: url('tech-bg.jpg');
-
-        }
-
-        .footer-bg::before {
+         .footer-bg::before {
             content: "";
             position: absolute;
             inset: 0;
@@ -1127,6 +1121,13 @@
             /* darkness control */
             z-index: 1;
         }
+
+        .footer-bg {
+            background-image: url('tech-bg.jpg');
+
+        }
+
+       
 
         /* footer content above overlay */
         .footer-bg .container {
