@@ -107,10 +107,11 @@
     }
 
     .mega-list a {
-        text-decoration: none;
-        color: var(--text-gray);
-        font-size: 13px;
-        transition: all 0.2s ease;
+      text-decoration: none;
+    color: #303030;
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.2s ease;
     }
 
     .mega-list a:hover {
