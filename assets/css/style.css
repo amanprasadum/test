@@ -94,8 +94,8 @@
 
     /* Desktop Mega Menu */
     .mega-menu {
-        width: auto;
-        /* width: 720px; */
+        /* width: auto; */
+        width: 720px;
         left: 50%;
         transform: translateX(-50%);
         border-radius: 18px;
