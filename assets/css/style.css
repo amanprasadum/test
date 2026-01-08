@@ -109,6 +109,14 @@
         }
     }
 
+    @media (min-width: 992px) and (max-width: 1199px) {
+        .mega-menu {
+            width: 588px;
+            left: 56% ;
+
+        }
+    }
+
 
     .mega-list li {
         margin-bottom: 10px;
