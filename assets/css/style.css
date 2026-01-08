@@ -102,16 +102,24 @@
         background: var(--white);
     }
 
+    @media (min-width: 992px) and (max-width: 1199px) {
+        .mega-menu {
+            width: 720px;
+
+        }
+    }
+
+
     .mega-list li {
         margin-bottom: 10px;
     }
 
     .mega-list a {
-      text-decoration: none;
-    color: #303030;
-    font-size: 13px;
-    font-weight: 600;
-    transition: all 0.2s ease;
+        text-decoration: none;
+        color: #303030;
+        font-size: 13px;
+        font-weight: 600;
+        transition: all 0.2s ease;
     }
 
     .mega-list a:hover {
