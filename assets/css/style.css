@@ -120,6 +120,21 @@
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
     }
 
+    /* ---------------------- */
+    /* initial state */
+    #mainNavbar {
+        transform: translateY(0);
+        transition: transform 0.45s ease, box-shadow 0.3s ease;
+        z-index: 999;
+    }
+
+    /* animation state (on first scroll) */
+    #mainNavbar.nav-animate {
+        transform: translateY(0);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    /* ---------------------- */
 
 
     /* Desktop Mega Menu */
