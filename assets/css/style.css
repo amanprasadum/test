@@ -90,49 +90,19 @@
         color: var(--accent-yellow) !important;
     }
 
-    #mainNavbar {
-        transition: transform 0.45s ease, box-shadow 0.3s ease;
-        transform: translateY(0);
-        z-index: 999;
-    }
+   /* ===== NAVBAR SMOOTH TOP ENTRY ON SCROLL ===== */
 
-    #mainNavbar.nav-visible {
-        transform: translateY(0);
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-    }
+#mainNavbar {
+    transform: translateY(0);
+    transition: transform 0.45s ease, box-shadow 0.3s ease;
+    z-index: 999;
+}
 
-    /* ===== NAVBAR SLIDE ON SCROLL (FINAL) ===== */
-
-    #mainNavbar {
-        transition: transform 0.45s ease, box-shadow 0.3s ease;
-        transform: translateY(0);
-        z-index: 999;
-    }
-
-    /* scroll down pe hide */
-    #mainNavbar.nav-hide {
-        transform: translateY(-100%);
-    }
-
-    /* scroll up pe show with animation */
-    #mainNavbar.nav-show {
-        transform: translateY(0);
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-    }
-
-    /* ---------------------- */
-    /* initial state */
-    #mainNavbar {
-        transform: translateY(0);
-        transition: transform 0.45s ease, box-shadow 0.3s ease;
-        z-index: 999;
-    }
-
-    /* animation state (on first scroll) */
-    #mainNavbar.nav-animate {
-        transform: translateY(0);
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-    }
+/* ye class animation trigger karegi */
+#mainNavbar.enter-from-top {
+    transform: translateY(0);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
 
     /* ---------------------- */
 
