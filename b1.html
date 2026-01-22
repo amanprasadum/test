@@ -1387,6 +1387,9 @@
     <script>
         const navbar = document.getElementById("mainNavbar");
 
+        // page load pe visible rahe
+        navbar.classList.add("nav-visible");
+
         window.addEventListener("scroll", () => {
             if (window.scrollY > 120) {
                 navbar.classList.add("nav-visible");
@@ -1395,6 +1398,7 @@
             }
         });
     </script>
+
 
     <!-- Updated Script with Smooth Transition -->
     <script>
