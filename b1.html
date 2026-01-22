@@ -1387,28 +1387,38 @@
 
     <script>
         const navbar = document.getElementById("mainNavbar");
-        let done = false;
+        let lastScroll = 0;
+        let readyForAnimation = true;
 
         window.addEventListener("scroll", () => {
-            if (!done && window.scrollY > 5) {
+            const currentScroll = window.scrollY;
 
-                // force navbar upar bhejo
+            // SCROLL DOWN → animate
+            if (currentScroll > lastScroll && readyForAnimation) {
+
                 navbar.style.transition = "none";
                 navbar.style.transform = "translateY(-100%)";
 
-                // next frame me animation ke saath lao
                 requestAnimationFrame(() => {
                     requestAnimationFrame(() => {
-                        navbar.style.transition = "transform 0.5s ease, box-shadow 0.3s ease";
+                        navbar.style.transition = "transform 0.45s ease, box-shadow 0.3s ease";
                         navbar.style.transform = "translateY(0)";
-                        navbar.classList.add("scroll-entry");
+                        navbar.classList.add("animate-entry");
                     });
                 });
 
-                done = true;
+                readyForAnimation = false;
             }
+
+            // SCROLL UP → reset so next scroll-down animates again
+            if (currentScroll < lastScroll) {
+                readyForAnimation = true;
+            }
+
+            lastScroll = currentScroll;
         });
     </script>
+
 
     <!-- Updated Script with Smooth Transition -->
     <script>
