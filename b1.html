@@ -1387,15 +1387,26 @@
 
     <script>
         const navbar = document.getElementById("mainNavbar");
-        let hasScrolled = false;
+        let animated = false;
 
         window.addEventListener("scroll", () => {
-            if (!hasScrolled && window.scrollY > 20) {
-                navbar.classList.add("nav-animate");
-                hasScrolled = true;
+            if (!animated && window.scrollY > 10) {
+
+                // pehle thoda upar le jao
+                navbar.style.transform = "translateY(-100%)";
+
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        navbar.classList.add("enter-from-top");
+                        navbar.style.transform = "translateY(0)";
+                    });
+                });
+
+                animated = true;
             }
         });
     </script>
+
 
 
 
