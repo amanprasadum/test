@@ -90,18 +90,17 @@
         color: var(--accent-yellow) !important;
     }
 
-    /* Navbar slide on scroll */
     #mainNavbar {
         transition: transform 0.45s ease, box-shadow 0.3s ease;
-        transform: translateY(-100%);
+        transform: translateY(0);
         z-index: 999;
     }
 
-    /* Show navbar after scroll */
     #mainNavbar.nav-visible {
         transform: translateY(0);
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
     }
+
 
 
     /* Desktop Mega Menu */
