@@ -1387,25 +1387,29 @@
 
     <script>
         const navbar = document.getElementById("mainNavbar");
-        let animated = false;
+        let done = false;
 
         window.addEventListener("scroll", () => {
-            if (!animated && window.scrollY > 10) {
+            if (!done && window.scrollY > 5) {
 
-                // pehle thoda upar le jao
+                // force navbar upar bhejo
+                navbar.style.transition = "none";
                 navbar.style.transform = "translateY(-100%)";
 
+                // next frame me animation ke saath lao
                 requestAnimationFrame(() => {
                     requestAnimationFrame(() => {
-                        navbar.classList.add("enter-from-top");
+                        navbar.style.transition = "transform 0.5s ease, box-shadow 0.3s ease";
                         navbar.style.transform = "translateY(0)";
+                        navbar.classList.add("scroll-entry");
                     });
                 });
 
-                animated = true;
+                done = true;
             }
         });
     </script>
+
     <!-- Updated Script with Smooth Transition -->
     <script>
         // FAQ Hover Open Feature with Smooth Transition
