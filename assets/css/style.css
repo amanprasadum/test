@@ -101,6 +101,25 @@
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
     }
 
+    /* ===== NAVBAR SLIDE ON SCROLL (FINAL) ===== */
+
+    #mainNavbar {
+        transition: transform 0.45s ease, box-shadow 0.3s ease;
+        transform: translateY(0);
+        z-index: 999;
+    }
+
+    /* scroll down pe hide */
+    #mainNavbar.nav-hide {
+        transform: translateY(-100%);
+    }
+
+    /* scroll up pe show with animation */
+    #mainNavbar.nav-show {
+        transform: translateY(0);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    }
+
 
 
     /* Desktop Mega Menu */
