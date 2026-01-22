@@ -1384,31 +1384,19 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        const navbar = document.getElementById("mainNavbar");
-        let lastScroll = 0;
+ 
+ <script>
+    const navbar = document.getElementById("mainNavbar");
+    let hasScrolled = false;
 
-        window.addEventListener("scroll", () => {
-            const currentScroll = window.pageYOffset;
+    window.addEventListener("scroll", () => {
+        if (!hasScrolled && window.scrollY > 20) {
+            navbar.classList.add("nav-animate");
+            hasScrolled = true;
+        }
+    });
+</script>
 
-            if (currentScroll <= 0) {
-                navbar.classList.remove("nav-hide", "nav-show");
-                return;
-            }
-
-            if (currentScroll > lastScroll && currentScroll > 120) {
-                // scroll down
-                navbar.classList.add("nav-hide");
-                navbar.classList.remove("nav-show");
-            } else if (currentScroll < lastScroll) {
-                // scroll up
-                navbar.classList.add("nav-show");
-                navbar.classList.remove("nav-hide");
-            }
-
-            lastScroll = currentScroll;
-        });
-    </script>
 
    
 
