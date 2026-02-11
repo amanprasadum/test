@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GreenLeaf - Premium Plants in Kolkata | Online Plant Store</title>
-    
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-    
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
+
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet">
+
     <style>
         /* ==================== ROOT VARIABLES ==================== */
         :root {
@@ -30,20 +33,20 @@
             --text-dark: #2c3e50;
             --text-light: #6c757d;
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Poppins', sans-serif;
             color: var(--text-dark);
             overflow-x: hidden;
             background: var(--light-cream);
         }
-        
+
         /* ==================== NAVBAR STYLES ==================== */
         .navbar {
             background: rgba(255, 255, 255, 0.98) !important;
@@ -53,12 +56,12 @@
             transition: all 0.3s ease;
             z-index: 1000;
         }
-        
+
         .navbar.scrolled {
             padding: 0.5rem 0;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.12);
         }
-        
+
         .navbar-brand {
             font-family: 'Playfair Display', serif;
             font-size: 1.8rem;
@@ -68,12 +71,12 @@
             align-items: center;
             gap: 0.5rem;
         }
-        
+
         .navbar-brand i {
             color: var(--accent-green);
             font-size: 2rem;
         }
-        
+
         .nav-link {
             color: var(--text-dark) !important;
             font-weight: 500;
@@ -81,7 +84,7 @@
             position: relative;
             transition: color 0.3s ease;
         }
-        
+
         .nav-link::after {
             content: '';
             position: absolute;
@@ -93,19 +96,19 @@
             background: var(--accent-green);
             transition: width 0.3s ease;
         }
-        
+
         .nav-link:hover {
             color: var(--primary-green) !important;
         }
-        
+
         .nav-link:hover::after {
             width: 80%;
         }
-        
+
         .navbar-nav .nav-link.active {
             color: var(--primary-green) !important;
         }
-        
+
         /* Dropdown Menu Styles */
         .dropdown-menu {
             background: rgba(255, 255, 255, 0.98);
@@ -117,7 +120,7 @@
             margin-top: 0.5rem;
             min-width: 240px;
         }
-        
+
         .dropdown-item {
             color: var(--text-dark);
             padding: 0.7rem 1.5rem;
@@ -127,51 +130,52 @@
             gap: 0.8rem;
             font-weight: 500;
         }
-        
+
         .dropdown-item i {
             color: var(--accent-green);
             font-size: 1rem;
             width: 20px;
         }
-        
+
         .dropdown-item:hover {
             background: linear-gradient(90deg, var(--accent-green), var(--light-green));
             color: white;
             padding-left: 2rem;
         }
-        
+
         .dropdown-item:hover i {
             color: white;
         }
-        
+
         .dropdown-divider {
             border-color: rgba(0, 0, 0, 0.08);
             margin: 0.5rem 0;
         }
-        
+
         /* Dropdown Hover Functionality */
         .dropdown-hover:hover .dropdown-menu {
             display: block;
             animation: fadeInDown 0.3s ease;
         }
-        
+
         @keyframes fadeInDown {
             from {
                 opacity: 0;
                 transform: translateY(-10px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-        
+
         /* Search Bar in Navbar */
         .search-box {
             position: relative;
             margin: 0 1rem;
         }
-        
+
         .search-box input {
             border: 2px solid #e0e0e0;
             border-radius: 50px;
@@ -179,13 +183,13 @@
             width: 250px;
             transition: all 0.3s ease;
         }
-        
+
         .search-box input:focus {
             outline: none;
             border-color: var(--accent-green);
             box-shadow: 0 0 0 3px rgba(156, 204, 101, 0.1);
         }
-        
+
         .search-box button {
             position: absolute;
             right: 5px;
@@ -200,19 +204,19 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
-        
+
         .search-box button:hover {
             background: var(--primary-green);
             transform: translateY(-50%) scale(1.1);
         }
-        
+
         /* Cart & User Icons */
         .nav-icons {
             display: flex;
             align-items: center;
             gap: 1.5rem;
         }
-        
+
         .nav-icon {
             position: relative;
             color: var(--text-dark);
@@ -220,12 +224,12 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
-        
+
         .nav-icon:hover {
             color: var(--primary-green);
             transform: scale(1.1);
         }
-        
+
         .cart-badge {
             position: absolute;
             top: -8px;
@@ -241,7 +245,7 @@
             justify-content: center;
             font-weight: 600;
         }
-        
+
         /* ==================== HERO SECTION WITH SWIPER ==================== */
         .hero-section {
             height: 90vh;
@@ -250,12 +254,12 @@
             /* margin-top: 76px; */
             margin-top: 5px;
         }
-        
+
         .swiper {
             width: 100%;
             height: 100%;
         }
-        
+
         .swiper-slide {
             position: relative;
             background-size: cover;
@@ -264,29 +268,29 @@
             align-items: center;
             justify-content: center;
         }
-        
+
         /* Hero Slide Backgrounds */
         .slide-1 {
             background: linear-gradient(135deg, rgba(45, 80, 22, 0.7), rgba(74, 124, 89, 0.6)),
-                        url('https://images.unsplash.com/photo-1466781783364-36c955e42a7f?w=1920&q=80');
+                url('https://images.unsplash.com/photo-1466781783364-36c955e42a7f?w=1920&q=80');
             background-size: cover;
             background-position: center;
         }
-        
+
         .slide-2 {
             background: linear-gradient(135deg, rgba(74, 124, 89, 0.7), rgba(156, 204, 101, 0.6)),
-                        url('https://images.unsplash.com/photo-1459156212016-c812468e2115?w=1920&q=80');
+                url('https://images.unsplash.com/photo-1459156212016-c812468e2115?w=1920&q=80');
             background-size: cover;
             background-position: center;
         }
-        
+
         .slide-3 {
             background: linear-gradient(135deg, rgba(45, 80, 22, 0.75), rgba(143, 188, 143, 0.65)),
-                        url('https://images.unsplash.com/photo-1470058869958-2a77ade41c02?w=1920&q=80');
+                url('https://images.unsplash.com/photo-1470058869958-2a77ade41c02?w=1920&q=80');
             background-size: cover;
             background-position: center;
         }
-        
+
         /* Hero Content */
         .hero-content {
             text-align: center;
@@ -294,7 +298,7 @@
             z-index: 10;
             padding: 0 2rem;
         }
-        
+
         .hero-content h1 {
             font-family: 'Playfair Display', serif;
             font-size: 4rem;
@@ -303,7 +307,7 @@
             line-height: 1.2;
             text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
         }
-        
+
         .hero-content p {
             font-size: 1.3rem;
             margin-bottom: 2.5rem;
@@ -312,7 +316,7 @@
             margin-right: auto;
             text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
         }
-        
+
         .hero-btn {
             padding: 1rem 3rem;
             font-size: 1.1rem;
@@ -325,35 +329,35 @@
             display: inline-block;
             margin: 0 0.5rem;
         }
-        
+
         .btn-primary-custom {
             background: var(--accent-green);
             color: white;
         }
-        
+
         .btn-primary-custom:hover {
             background: var(--primary-green);
             transform: translateY(-3px);
             box-shadow: 0 10px 30px rgba(45, 80, 22, 0.3);
         }
-        
+
         .btn-outline-custom {
             background: transparent;
             color: white;
             border: 2px solid white;
         }
-        
+
         .btn-outline-custom:hover {
             background: white;
             color: var(--primary-green);
             transform: translateY(-3px);
         }
-        
+
         /* Swiper Pagination - Modern Design */
         .swiper-pagination {
             bottom: 30px !important;
         }
-        
+
         .swiper-pagination-bullet {
             width: 10px;
             height: 10px;
@@ -361,14 +365,14 @@
             opacity: 1;
             transition: all 0.3s ease;
         }
-        
+
         .swiper-pagination-bullet-active {
             background: white;
             width: 40px;
             border-radius: 5px;
             box-shadow: 0 2px 10px rgba(255, 255, 255, 0.5);
         }
-        
+
         /* Swiper Navigation - Modern Design */
         .swiper-button-next,
         .swiper-button-prev {
@@ -381,29 +385,29 @@
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
         }
-        
+
         .swiper-button-next:hover,
         .swiper-button-prev:hover {
             background: rgba(255, 255, 255, 0.15);
             border-color: rgba(255, 255, 255, 0.8);
             transform: scale(1.05);
         }
-        
+
         .swiper-button-next::after,
         .swiper-button-prev::after {
             font-size: 1.2rem;
             font-weight: 700;
         }
-        
+
         /* Position adjustments */
         .swiper-button-next {
             right: 30px;
         }
-        
+
         .swiper-button-prev {
             left: 30px;
         }
-        
+
         /* ==================== SPECIAL OFFER BANNER ==================== */
         .special-offer-banner {
             background: linear-gradient(135deg, var(--accent-green), var(--secondary-green));
@@ -411,7 +415,7 @@
             position: relative;
             z-index: 10;
         }
-        
+
         .offer-content {
             display: flex;
             align-items: center;
@@ -419,7 +423,7 @@
             gap: 2rem;
             flex-wrap: wrap;
         }
-        
+
         .offer-icon {
             width: 70px;
             height: 70px;
@@ -431,23 +435,23 @@
             font-size: 2rem;
             color: white;
         }
-        
+
         .offer-text {
             flex: 1;
             color: white;
         }
-        
+
         .offer-text h3 {
             font-size: 1.8rem;
             margin-bottom: 0.3rem;
             font-weight: 700;
         }
-        
+
         .offer-text p {
             margin: 0;
             font-size: 1.1rem;
         }
-        
+
         .offer-btn {
             padding: 1rem 2.5rem;
             background: white;
@@ -460,21 +464,21 @@
             align-items: center;
             gap: 0.5rem;
         }
-        
+
         .offer-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
-        
+
         /* ==================== SECTION COMMON STYLES ==================== */
         section {
             padding: 5rem 0;
         }
-        
+
         .section-header {
             margin-bottom: 3rem;
         }
-        
+
         .section-title {
             font-family: 'Playfair Display', serif;
             font-size: 2.5rem;
@@ -482,17 +486,17 @@
             margin-bottom: 0.5rem;
             font-weight: 700;
         }
-        
+
         .section-subtitle {
             font-size: 1.1rem;
             color: var(--text-light);
         }
-        
+
         /* ==================== CATEGORIES SECTION ==================== */
         .categories-section {
             background: var(--white);
         }
-        
+
         .category-card {
             border-radius: 20px;
             overflow: hidden;
@@ -500,29 +504,29 @@
             transition: all 0.4s ease;
             cursor: pointer;
         }
-        
+
         .category-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
         }
-        
+
         .category-image {
             position: relative;
             overflow: hidden;
             height: 280px;
         }
-        
+
         .category-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.4s ease;
         }
-        
+
         .category-card:hover .category-image img {
             transform: scale(1.1);
         }
-        
+
         .category-overlay {
             position: absolute;
             top: 0;
@@ -537,11 +541,11 @@
             opacity: 0;
             transition: opacity 0.4s ease;
         }
-        
+
         .category-card:hover .category-overlay {
             opacity: 1;
         }
-        
+
         .category-btn {
             padding: 0.8rem 2rem;
             background: var(--accent-green);
@@ -551,35 +555,35 @@
             font-weight: 600;
             transition: all 0.3s ease;
         }
-        
+
         .category-btn:hover {
             background: white;
             color: var(--primary-green);
         }
-        
+
         .category-info {
             padding: 1.5rem;
             text-align: center;
             background: white;
         }
-        
+
         .category-info h4 {
             font-size: 1.3rem;
             color: var(--text-dark);
             margin-bottom: 0.3rem;
             font-weight: 600;
         }
-        
+
         .category-info p {
             color: var(--text-light);
             margin: 0;
         }
-        
+
         /* ==================== FEATURED PRODUCTS ==================== */
         .featured-products {
             background: var(--light-cream);
         }
-        
+
         .product-card {
             background: white;
             border-radius: 20px;
@@ -589,12 +593,12 @@
             position: relative;
             height: 100%;
         }
-        
+
         .product-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
         }
-        
+
         .product-badge {
             position: absolute;
             top: 15px;
@@ -607,32 +611,32 @@
             font-weight: 600;
             z-index: 10;
         }
-        
+
         .product-badge.new {
             background: #2196F3;
         }
-        
+
         .product-badge.sale {
             background: #f44336;
         }
-        
+
         .product-image {
             position: relative;
             overflow: hidden;
             height: 280px;
         }
-        
+
         .product-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.4s ease;
         }
-        
+
         .product-card:hover .product-image img {
             transform: scale(1.1);
         }
-        
+
         .product-actions {
             position: absolute;
             top: 15px;
@@ -644,12 +648,12 @@
             transform: translateX(20px);
             transition: all 0.4s ease;
         }
-        
+
         .product-card:hover .product-actions {
             opacity: 1;
             transform: translateX(0);
         }
-        
+
         .action-btn {
             width: 40px;
             height: 40px;
@@ -663,48 +667,48 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
         }
-        
+
         .action-btn:hover {
             background: var(--accent-green);
             color: white;
             transform: scale(1.1);
         }
-        
+
         .product-info {
             padding: 1.5rem;
         }
-        
+
         .product-info h4 {
             font-size: 1.2rem;
             color: var(--text-dark);
             margin-bottom: 0.5rem;
             font-weight: 600;
         }
-        
+
         .product-rating {
             display: flex;
             align-items: center;
             gap: 0.2rem;
             margin-bottom: 0.8rem;
         }
-        
+
         .product-rating i {
             color: #FFC107;
             font-size: 0.9rem;
         }
-        
+
         .product-rating span {
             margin-left: 0.5rem;
             color: var(--text-light);
             font-size: 0.9rem;
         }
-        
+
         .product-description {
             color: var(--text-light);
             font-size: 0.95rem;
             margin-bottom: 1rem;
         }
-        
+
         .product-footer {
             display: flex;
             align-items: center;
@@ -712,25 +716,25 @@
             padding-top: 1rem;
             border-top: 1px solid #f0f0f0;
         }
-        
+
         .product-price {
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
-        
+
         .current-price {
             font-size: 1.5rem;
             font-weight: 700;
             color: var(--primary-green);
         }
-        
+
         .old-price {
             font-size: 1rem;
             color: var(--text-light);
             text-decoration: line-through;
         }
-        
+
         .add-to-cart-btn {
             padding: 0.7rem 1.5rem;
             background: var(--accent-green);
@@ -744,12 +748,12 @@
             align-items: center;
             gap: 0.5rem;
         }
-        
+
         .add-to-cart-btn:hover {
             background: var(--primary-green);
             transform: scale(1.05);
         }
-        
+
         .view-all-btn {
             padding: 1rem 3rem;
             background: var(--primary-green);
@@ -762,18 +766,18 @@
             gap: 0.5rem;
             transition: all 0.3s ease;
         }
-        
+
         .view-all-btn:hover {
             background: var(--accent-green);
             transform: translateY(-3px);
             box-shadow: 0 10px 30px rgba(45, 80, 22, 0.3);
         }
-        
+
         /* ==================== WHY CHOOSE US ==================== */
         .why-choose-us {
             background: white;
         }
-        
+
         .feature-box {
             text-align: center;
             padding: 2rem;
@@ -781,13 +785,13 @@
             background: var(--light-cream);
             transition: all 0.4s ease;
         }
-        
+
         .feature-box:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
             background: white;
         }
-        
+
         .feature-icon {
             width: 80px;
             height: 80px;
@@ -801,28 +805,28 @@
             color: white;
             transition: all 0.4s ease;
         }
-        
+
         .feature-box:hover .feature-icon {
             transform: rotateY(360deg);
         }
-        
+
         .feature-box h4 {
             font-size: 1.3rem;
             color: var(--text-dark);
             margin-bottom: 1rem;
             font-weight: 600;
         }
-        
+
         .feature-box p {
             color: var(--text-light);
             line-height: 1.6;
         }
-        
+
         /* ==================== TESTIMONIALS ==================== */
         .testimonials-section {
             background: var(--light-cream);
         }
-        
+
         .testimonial-card {
             background: white;
             padding: 2rem;
@@ -831,30 +835,30 @@
             transition: all 0.4s ease;
             height: 100%;
         }
-        
+
         .testimonial-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
         }
-        
+
         .testimonial-rating {
             display: flex;
             gap: 0.3rem;
             margin-bottom: 1rem;
         }
-        
+
         .testimonial-rating i {
             color: #FFC107;
             font-size: 1rem;
         }
-        
+
         .testimonial-text {
             color: var(--text-dark);
             font-style: italic;
             line-height: 1.8;
             margin-bottom: 1.5rem;
         }
-        
+
         .testimonial-author {
             display: flex;
             align-items: center;
@@ -862,31 +866,31 @@
             padding-top: 1rem;
             border-top: 1px solid #f0f0f0;
         }
-        
+
         .testimonial-author img {
             width: 50px;
             height: 50px;
             border-radius: 50%;
             object-fit: cover;
         }
-        
+
         .author-info h5 {
             font-size: 1rem;
             color: var(--text-dark);
             margin-bottom: 0.2rem;
             font-weight: 600;
         }
-        
+
         .author-info span {
             font-size: 0.9rem;
             color: var(--text-light);
         }
-        
+
         /* ==================== PLANT CARE TIPS ==================== */
         .plant-care-section {
             background: white;
         }
-        
+
         .care-tip-card {
             background: white;
             border-radius: 20px;
@@ -894,33 +898,33 @@
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
             transition: all 0.4s ease;
         }
-        
+
         .care-tip-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
         }
-        
+
         .care-tip-image {
             height: 220px;
             overflow: hidden;
         }
-        
+
         .care-tip-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.4s ease;
         }
-        
+
         .care-tip-card:hover .care-tip-image img {
             transform: scale(1.1);
         }
-        
+
         .care-tip-content {
             padding: 2rem;
             position: relative;
         }
-        
+
         .tip-icon {
             width: 60px;
             height: 60px;
@@ -937,7 +941,7 @@
             left: 2rem;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
-        
+
         .care-tip-content h4 {
             font-size: 1.3rem;
             color: var(--text-dark);
@@ -945,13 +949,13 @@
             margin-top: 2rem;
             font-weight: 600;
         }
-        
+
         .care-tip-content p {
             color: var(--text-light);
             line-height: 1.8;
             margin-bottom: 1.5rem;
         }
-        
+
         .read-more {
             color: var(--accent-green);
             text-decoration: none;
@@ -961,12 +965,12 @@
             gap: 0.5rem;
             transition: all 0.3s ease;
         }
-        
+
         .read-more:hover {
             color: var(--primary-green);
             gap: 1rem;
         }
-        
+
         /* ==================== FOOTER STYLES ==================== */
         .footer {
             background: linear-gradient(135deg, var(--dark-brown), var(--primary-green));
@@ -975,7 +979,7 @@
             position: relative;
             margin-top: 5rem;
         }
-        
+
         .footer::before {
             content: '';
             position: absolute;
@@ -986,41 +990,41 @@
             background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 100'%3E%3Cpath fill='%233e2723' d='M0,0 C300,100 900,100 1200,0 L1200,100 L0,100 Z'%3E%3C/path%3E%3C/svg%3E");
             background-size: cover;
         }
-        
+
         .footer h5 {
             font-family: 'Playfair Display', serif;
             font-size: 1.3rem;
             margin-bottom: 1.5rem;
             color: var(--accent-green);
         }
-        
+
         .footer-links {
             list-style: none;
             padding: 0;
         }
-        
+
         .footer-links li {
             margin-bottom: 0.8rem;
         }
-        
+
         .footer-links a {
             color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
             transition: all 0.3s ease;
             display: inline-block;
         }
-        
+
         .footer-links a:hover {
             color: var(--accent-green);
             transform: translateX(5px);
         }
-        
+
         .social-links {
             display: flex;
             gap: 1rem;
             margin-top: 1rem;
         }
-        
+
         .social-icon {
             width: 40px;
             height: 40px;
@@ -1033,18 +1037,18 @@
             text-decoration: none;
             transition: all 0.3s ease;
         }
-        
+
         .social-icon:hover {
             background: var(--accent-green);
             transform: translateY(-5px);
         }
-        
+
         .newsletter-form {
             display: flex;
             gap: 0.5rem;
             margin-top: 1rem;
         }
-        
+
         .newsletter-form input {
             flex: 1;
             padding: 0.8rem 1.2rem;
@@ -1054,16 +1058,16 @@
             color: white;
             backdrop-filter: blur(10px);
         }
-        
+
         .newsletter-form input::placeholder {
             color: rgba(255, 255, 255, 0.6);
         }
-        
+
         .newsletter-form input:focus {
             outline: none;
             background: rgba(255, 255, 255, 0.2);
         }
-        
+
         .newsletter-form button {
             padding: 0.8rem 2rem;
             border: none;
@@ -1074,12 +1078,12 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
-        
+
         .newsletter-form button:hover {
             background: var(--primary-green);
             transform: scale(1.05);
         }
-        
+
         .footer-bottom {
             margin-top: 3rem;
             padding: 2rem 0;
@@ -1087,7 +1091,7 @@
             text-align: center;
             color: rgba(255, 255, 255, 0.7);
         }
-        
+
         .payment-methods {
             display: flex;
             justify-content: center;
@@ -1095,48 +1099,48 @@
             margin-top: 1rem;
             flex-wrap: wrap;
         }
-        
+
         .payment-icon {
-            width: 50px;
-            height: 30px;
-            background: white;
-            border-radius: 5px;
+            width: 60px;
+            height: 60px;
+            background: #020000;
+            border-radius: 47px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.5rem;
         }
-        
+
         /* ==================== RESPONSIVE DESIGN ==================== */
         @media (max-width: 991px) {
             .search-box {
                 display: none;
             }
         }
-        
+
         @media (max-width: 768px) {
             .hero-section {
                 height: 70vh;
                 margin-top: 70px;
             }
-            
+
             .hero-content h1 {
                 font-size: 2.5rem;
             }
-            
+
             .hero-content p {
                 font-size: 1rem;
             }
-            
+
             .hero-btn {
                 padding: 0.8rem 2rem;
                 font-size: 1rem;
             }
-            
+
             .navbar-brand {
                 font-size: 1.5rem;
             }
-            
+
             /* Modern Navigation Buttons - Mobile */
             .swiper-button-next,
             .swiper-button-prev {
@@ -1144,107 +1148,107 @@
                 height: 45px;
                 border-width: 1.5px;
             }
-            
+
             .swiper-button-next::after,
             .swiper-button-prev::after {
                 font-size: 1rem;
             }
-            
+
             .swiper-button-next {
                 right: 15px;
             }
-            
+
             .swiper-button-prev {
                 left: 15px;
             }
-            
+
             .offer-content {
                 justify-content: center;
                 text-align: center;
             }
-            
+
             .offer-text h3 {
                 font-size: 1.4rem;
             }
-            
+
             .offer-text p {
                 font-size: 1rem;
             }
-            
+
             section {
                 padding: 3rem 0;
             }
-            
+
             .section-title {
                 font-size: 2rem;
             }
-            
+
             .section-subtitle {
                 font-size: 1rem;
             }
-            
+
             .category-image,
             .product-image {
                 height: 220px;
             }
-            
+
             .feature-icon {
                 width: 70px;
                 height: 70px;
                 font-size: 1.8rem;
             }
-            
+
             .tip-icon {
                 width: 50px;
                 height: 50px;
                 font-size: 1.3rem;
             }
         }
-        
+
         @media (max-width: 576px) {
             .hero-content h1 {
                 font-size: 2rem;
             }
-            
+
             .hero-btn {
                 display: block;
                 margin: 0.5rem auto;
                 width: 80%;
             }
-            
+
             .newsletter-form {
                 flex-direction: column;
             }
-            
+
             .offer-icon {
                 width: 60px;
                 height: 60px;
                 font-size: 1.5rem;
             }
-            
+
             .offer-text h3 {
                 font-size: 1.2rem;
             }
-            
+
             .offer-btn {
                 padding: 0.8rem 2rem;
                 font-size: 0.95rem;
                 width: 100%;
                 justify-content: center;
             }
-            
+
             section {
                 padding: 2.5rem 0;
             }
-            
+
             .section-title {
                 font-size: 1.8rem;
             }
-            
+
             .current-price {
                 font-size: 1.3rem;
             }
-            
+
             .add-to-cart-btn {
                 padding: 0.6rem 1.2rem;
                 font-size: 0.9rem;
@@ -1252,6 +1256,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- ==================== NAVIGATION BAR ==================== -->
     <nav class="navbar navbar-expand-lg fixed-top">
@@ -1261,50 +1266,64 @@
                 <i class="fas fa-leaf"></i>
                 GreenLeaf
             </a>
-            
+
             <!-- Mobile Toggle Button -->
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            
+
             <!-- Navigation Links -->
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
                         <a class="nav-link active" href="#home">Home</a>
                     </li>
-                    
+
                     <!-- Shop Dropdown -->
                     <li class="nav-item dropdown dropdown-hover">
                         <a class="nav-link dropdown-toggle" href="#shop">
                             Shop
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#all-plants"><i class="fas fa-seedling"></i> All Plants</a></li>
-                            <li><a class="dropdown-item" href="#new-arrivals"><i class="fas fa-star"></i> New Arrivals</a></li>
-                            <li><a class="dropdown-item" href="#best-sellers"><i class="fas fa-fire"></i> Best Sellers</a></li>
-                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#all-plants"><i class="fas fa-seedling"></i> All
+                                    Plants</a></li>
+                            <li><a class="dropdown-item" href="#new-arrivals"><i class="fas fa-star"></i> New
+                                    Arrivals</a></li>
+                            <li><a class="dropdown-item" href="#best-sellers"><i class="fas fa-fire"></i> Best
+                                    Sellers</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
                             <li><a class="dropdown-item" href="#sale"><i class="fas fa-tags"></i> Sale & Offers</a></li>
                         </ul>
                     </li>
-                    
+
                     <!-- Categories Dropdown -->
                     <li class="nav-item dropdown dropdown-hover">
                         <a class="nav-link dropdown-toggle" href="#categories">
                             Categories
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#indoor"><i class="fas fa-home"></i> Indoor Plants</a></li>
-                            <li><a class="dropdown-item" href="#outdoor"><i class="fas fa-tree"></i> Outdoor Plants</a></li>
-                            <li><a class="dropdown-item" href="#succulents"><i class="fas fa-spa"></i> Succulents & Cacti</a></li>
-                            <li><a class="dropdown-item" href="#flowering"><i class="fas fa-flower"></i> Flowering Plants</a></li>
-                            <li><a class="dropdown-item" href="#herbs"><i class="fas fa-leaf"></i> Herbs & Vegetables</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#pots"><i class="fas fa-box"></i> Pots & Planters</a></li>
-                            <li><a class="dropdown-item" href="#accessories"><i class="fas fa-tools"></i> Gardening Tools</a></li>
+                            <li><a class="dropdown-item" href="#indoor"><i class="fas fa-home"></i> Indoor Plants</a>
+                            </li>
+                            <li><a class="dropdown-item" href="#outdoor"><i class="fas fa-tree"></i> Outdoor Plants</a>
+                            </li>
+                            <li><a class="dropdown-item" href="#succulents"><i class="fas fa-spa"></i> Succulents &
+                                    Cacti</a></li>
+                            <li><a class="dropdown-item" href="#flowering"><i class="fas fa-flower"></i> Flowering
+                                    Plants</a></li>
+                            <li><a class="dropdown-item" href="#herbs"><i class="fas fa-leaf"></i> Herbs &
+                                    Vegetables</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#pots"><i class="fas fa-box"></i> Pots & Planters</a>
+                            </li>
+                            <li><a class="dropdown-item" href="#accessories"><i class="fas fa-tools"></i> Gardening
+                                    Tools</a></li>
                         </ul>
                     </li>
-                    
+
                     <li class="nav-item">
                         <a class="nav-link" href="#about">About</a>
                     </li>
@@ -1312,13 +1331,13 @@
                         <a class="nav-link" href="#contact">Contact</a>
                     </li>
                 </ul>
-                
+
                 <!-- Search Box -->
                 <div class="search-box d-none d-lg-block">
                     <input type="text" placeholder="Search plants...">
                     <button><i class="fas fa-search"></i></button>
                 </div>
-                
+
                 <!-- Icons -->
                 <div class="nav-icons ms-3">
                     <div class="nav-icon">
@@ -1345,14 +1364,15 @@
                 <div class="swiper-slide slide-1">
                     <div class="hero-content">
                         <h1>Bring Nature Home</h1>
-                        <p>Discover our premium collection of indoor & outdoor plants delivered fresh to your doorstep in Kolkata</p>
+                        <p>Discover our premium collection of indoor & outdoor plants delivered fresh to your doorstep
+                            in Kolkata</p>
                         <div>
                             <a href="#shop" class="hero-btn btn-primary-custom">Shop Now</a>
                             <a href="#about" class="hero-btn btn-outline-custom">Learn More</a>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Slide 2 -->
                 <div class="swiper-slide slide-2">
                     <div class="hero-content">
@@ -1364,7 +1384,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Slide 3 -->
                 <div class="swiper-slide slide-3">
                     <div class="hero-content">
@@ -1377,7 +1397,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Navigation & Pagination -->
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
@@ -1408,13 +1428,14 @@
                 <h2 class="section-title">Shop by Categories</h2>
                 <p class="section-subtitle">Explore our diverse collection of plants for every space</p>
             </div>
-            
+
             <div class="row g-4">
                 <!-- Category 1 -->
                 <div class="col-lg-3 col-md-6">
                     <div class="category-card">
                         <div class="category-image">
-                            <img src="https://images.unsplash.com/photo-1463320726281-696a485928c7?w=400&q=80" alt="Indoor Plants">
+                            <img src="https://images.unsplash.com/photo-1463320726281-696a485928c7?w=400&q=80"
+                                alt="Indoor Plants">
                             <div class="category-overlay">
                                 <a href="#indoor" class="category-btn">View Collection</a>
                             </div>
@@ -1425,12 +1446,13 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Category 2 -->
                 <div class="col-lg-3 col-md-6">
                     <div class="category-card">
                         <div class="category-image">
-                            <img src="https://images.unsplash.com/photo-1466781783364-36c955e42a7f?w=400&q=80" alt="Outdoor Plants">
+                            <img src="https://images.unsplash.com/photo-1466781783364-36c955e42a7f?w=400&q=80"
+                                alt="Outdoor Plants">
                             <div class="category-overlay">
                                 <a href="#outdoor" class="category-btn">View Collection</a>
                             </div>
@@ -1441,12 +1463,13 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Category 3 -->
                 <div class="col-lg-3 col-md-6">
                     <div class="category-card">
                         <div class="category-image">
-                            <img src="https://images.unsplash.com/photo-1509937528035-ad76254b0356?w=400&q=80" alt="Succulents">
+                            <img src="https://images.unsplash.com/photo-1509937528035-ad76254b0356?w=400&q=80"
+                                alt="Succulents">
                             <div class="category-overlay">
                                 <a href="#succulents" class="category-btn">View Collection</a>
                             </div>
@@ -1457,12 +1480,13 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Category 4 -->
                 <div class="col-lg-3 col-md-6">
                     <div class="category-card">
                         <div class="category-image">
-                            <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=400&q=80" alt="Flowering Plants">
+                            <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=400&q=80"
+                                alt="Flowering Plants">
                             <div class="category-overlay">
                                 <a href="#flowering" class="category-btn">View Collection</a>
                             </div>
@@ -1484,14 +1508,15 @@
                 <h2 class="section-title">Featured Products</h2>
                 <p class="section-subtitle">Handpicked plants that bring life to your home</p>
             </div>
-            
+
             <div class="row g-4">
                 <!-- Product 1 -->
                 <div class="col-lg-3 col-md-6">
                     <div class="product-card">
                         <div class="product-badge">Best Seller</div>
                         <div class="product-image">
-                            <img src="https://images.unsplash.com/photo-1545241047-6f2a0f2e2cca?w=400&q=80" alt="Monstera Deliciosa">
+                            <img src="https://images.unsplash.com/photo-1545241047-6f2a0f2e2cca?w=400&q=80"
+                                alt="Monstera Deliciosa">
                             <div class="product-actions">
                                 <button class="action-btn"><i class="fas fa-heart"></i></button>
                                 <button class="action-btn"><i class="fas fa-eye"></i></button>
@@ -1520,13 +1545,14 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Product 2 -->
                 <div class="col-lg-3 col-md-6">
                     <div class="product-card">
                         <div class="product-badge new">New</div>
                         <div class="product-image">
-                            <img src="https://images.unsplash.com/photo-1614594975525-e45190c55d0b?w=400&q=80" alt="Snake Plant">
+                            <img src="https://images.unsplash.com/photo-1614594975525-e45190c55d0b?w=400&q=80"
+                                alt="Snake Plant">
                             <div class="product-actions">
                                 <button class="action-btn"><i class="fas fa-heart"></i></button>
                                 <button class="action-btn"><i class="fas fa-eye"></i></button>
@@ -1554,13 +1580,14 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Product 3 -->
                 <div class="col-lg-3 col-md-6">
                     <div class="product-card">
                         <div class="product-badge sale">-30% OFF</div>
                         <div class="product-image">
-                            <img src="https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=400&q=80" alt="Peace Lily">
+                            <img src="https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=400&q=80"
+                                alt="Peace Lily">
                             <div class="product-actions">
                                 <button class="action-btn"><i class="fas fa-heart"></i></button>
                                 <button class="action-btn"><i class="fas fa-eye"></i></button>
@@ -1589,12 +1616,13 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Product 4 -->
                 <div class="col-lg-3 col-md-6">
                     <div class="product-card">
                         <div class="product-image">
-                            <img src="https://images.unsplash.com/photo-1509937528035-ad76254b0356?w=400&q=80" alt="Succulent Set">
+                            <img src="https://images.unsplash.com/photo-1509937528035-ad76254b0356?w=400&q=80"
+                                alt="Succulent Set">
                             <div class="product-actions">
                                 <button class="action-btn"><i class="fas fa-heart"></i></button>
                                 <button class="action-btn"><i class="fas fa-eye"></i></button>
@@ -1623,7 +1651,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="text-center mt-5">
                 <a href="#all-products" class="view-all-btn">View All Products <i class="fas fa-arrow-right"></i></a>
             </div>
@@ -1637,7 +1665,7 @@
                 <h2 class="section-title">Why Choose GreenLeaf?</h2>
                 <p class="section-subtitle">We make plant shopping easy and delightful</p>
             </div>
-            
+
             <div class="row g-4">
                 <!-- Feature 1 -->
                 <div class="col-lg-3 col-md-6">
@@ -1649,7 +1677,7 @@
                         <p>Same-day delivery across Kolkata. Your plants reach you fresh and healthy</p>
                     </div>
                 </div>
-                
+
                 <!-- Feature 2 -->
                 <div class="col-lg-3 col-md-6">
                     <div class="feature-box">
@@ -1660,7 +1688,7 @@
                         <p>100% healthy plants guaranteed or get a free replacement</p>
                     </div>
                 </div>
-                
+
                 <!-- Feature 3 -->
                 <div class="col-lg-3 col-md-6">
                     <div class="feature-box">
@@ -1671,7 +1699,7 @@
                         <p>Free plant care guidance from our experienced horticulturists</p>
                     </div>
                 </div>
-                
+
                 <!-- Feature 4 -->
                 <div class="col-lg-3 col-md-6">
                     <div class="feature-box">
@@ -1693,7 +1721,7 @@
                 <h2 class="section-title">What Our Customers Say</h2>
                 <p class="section-subtitle">Join thousands of happy plant parents in Kolkata</p>
             </div>
-            
+
             <div class="row g-4">
                 <!-- Testimonial 1 -->
                 <div class="col-lg-4 col-md-6">
@@ -1705,7 +1733,8 @@
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                         </div>
-                        <p class="testimonial-text">"Amazing quality plants! The Monstera I ordered arrived in perfect condition. The care guide was very helpful. Highly recommend GreenLeaf!"</p>
+                        <p class="testimonial-text">"Amazing quality plants! The Monstera I ordered arrived in perfect
+                            condition. The care guide was very helpful. Highly recommend GreenLeaf!"</p>
                         <div class="testimonial-author">
                             <img src="https://i.pravatar.cc/100?img=1" alt="Customer">
                             <div class="author-info">
@@ -1715,7 +1744,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Testimonial 2 -->
                 <div class="col-lg-4 col-md-6">
                     <div class="testimonial-card">
@@ -1726,7 +1755,8 @@
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                         </div>
-                        <p class="testimonial-text">"Best online plant store in Kolkata! Same-day delivery and the plants are always healthy. Customer service is excellent too!"</p>
+                        <p class="testimonial-text">"Best online plant store in Kolkata! Same-day delivery and the
+                            plants are always healthy. Customer service is excellent too!"</p>
                         <div class="testimonial-author">
                             <img src="https://i.pravatar.cc/100?img=12" alt="Customer">
                             <div class="author-info">
@@ -1736,7 +1766,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Testimonial 3 -->
                 <div class="col-lg-4 col-md-6">
                     <div class="testimonial-card">
@@ -1747,7 +1777,8 @@
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star-half-alt"></i>
                         </div>
-                        <p class="testimonial-text">"Great variety of plants and very affordable prices. The packaging was eco-friendly. Will definitely order again!"</p>
+                        <p class="testimonial-text">"Great variety of plants and very affordable prices. The packaging
+                            was eco-friendly. Will definitely order again!"</p>
                         <div class="testimonial-author">
                             <img src="https://i.pravatar.cc/100?img=5" alt="Customer">
                             <div class="author-info">
@@ -1768,54 +1799,60 @@
                 <h2 class="section-title">Plant Care Tips</h2>
                 <p class="section-subtitle">Expert advice to keep your plants thriving</p>
             </div>
-            
+
             <div class="row g-4">
                 <!-- Tip 1 -->
                 <div class="col-lg-4 col-md-6">
                     <div class="care-tip-card">
                         <div class="care-tip-image">
-                            <img src="https://images.unsplash.com/photo-1558293842-c0fd3db86157?w=600&q=80" alt="Watering Guide">
+                            <img src="https://images.unsplash.com/photo-1558293842-c0fd3db86157?w=600&q=80"
+                                alt="Watering Guide">
                         </div>
                         <div class="care-tip-content">
                             <div class="tip-icon">
                                 <i class="fas fa-tint"></i>
                             </div>
                             <h4>Watering Guide</h4>
-                            <p>Learn the perfect watering schedule for different plant types. Overwatering is the #1 cause of plant problems!</p>
+                            <p>Learn the perfect watering schedule for different plant types. Overwatering is the #1
+                                cause of plant problems!</p>
                             <a href="#watering" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Tip 2 -->
                 <div class="col-lg-4 col-md-6">
                     <div class="care-tip-card">
                         <div class="care-tip-image">
-                            <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&q=80" alt="Sunlight Tips">
+                            <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&q=80"
+                                alt="Sunlight Tips">
                         </div>
                         <div class="care-tip-content">
                             <div class="tip-icon">
                                 <i class="fas fa-sun"></i>
                             </div>
                             <h4>Sunlight Requirements</h4>
-                            <p>Discover which plants need direct sunlight and which prefer shade. Find the perfect spot for your plants!</p>
+                            <p>Discover which plants need direct sunlight and which prefer shade. Find the perfect spot
+                                for your plants!</p>
                             <a href="#sunlight" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Tip 3 -->
                 <div class="col-lg-4 col-md-6">
                     <div class="care-tip-card">
                         <div class="care-tip-image">
-                            <img src="https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=600&q=80" alt="Fertilizing">
+                            <img src="https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=600&q=80"
+                                alt="Fertilizing">
                         </div>
                         <div class="care-tip-content">
                             <div class="tip-icon">
                                 <i class="fas fa-seedling"></i>
                             </div>
                             <h4>Fertilizing Tips</h4>
-                            <p>When and how to fertilize your plants for optimal growth. Boost your plant's health naturally!</p>
+                            <p>When and how to fertilize your plants for optimal growth. Boost your plant's health
+                                naturally!</p>
                             <a href="#fertilizing" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
@@ -1832,7 +1869,8 @@
                 <div class="col-lg-3 col-md-6 mb-4">
                     <h5>GreenLeaf Kolkata</h5>
                     <p style="color: rgba(255, 255, 255, 0.8); line-height: 1.8;">
-                        Your trusted online plant store in Kolkata. We deliver fresh, healthy plants with care guides to help you grow a beautiful green space.
+                        Your trusted online plant store in Kolkata. We deliver fresh, healthy plants with care guides to
+                        help you grow a beautiful green space.
                     </p>
                     <div class="social-links">
                         <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
@@ -1841,7 +1879,7 @@
                         <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
-                
+
                 <!-- Quick Links -->
                 <div class="col-lg-3 col-md-6 mb-4">
                     <h5>Quick Links</h5>
@@ -1853,7 +1891,7 @@
                         <li><a href="#blog"><i class="fas fa-chevron-right"></i> Plant Care Blog</a></li>
                     </ul>
                 </div>
-                
+
                 <!-- Customer Service -->
                 <div class="col-lg-3 col-md-6 mb-4">
                     <h5>Customer Service</h5>
@@ -1865,7 +1903,7 @@
                         <li><a href="#"><i class="fas fa-chevron-right"></i> Plant Care Guide</a></li>
                     </ul>
                 </div>
-                
+
                 <!-- Newsletter -->
                 <!-- <div class="col-lg-3 col-md-6 mb-4">
                     <h5>Newsletter</h5>
@@ -1886,7 +1924,7 @@
                     </div>
                 </div> -->
             </div>
-            
+
             <!-- Footer Bottom -->
             <div class="footer-bottom">
                 <div class="payment-methods">
@@ -1896,23 +1934,24 @@
                     <div class="payment-icon"><i class="fas fa-mobile-alt"></i></div>
                 </div>
                 <p style="margin-top: 1.5rem; margin-bottom: 0;">
-                    &copy; 2025 GreenLeaf Kolkata. All Rights Reserved. | Designed with <i class="fas fa-heart" style="color: var(--accent-green);"></i> for Plant Lovers
+                    &copy; 2025 GreenLeaf Kolkata. All Rights Reserved. | Designed with <i class="fas fa-heart"
+                        style="color: var(--accent-green);"></i> for Plant Lovers
                 </p>
             </div>
         </div>
     </footer>
 
     <!-- ==================== SCRIPTS ==================== -->
-    
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    
+
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    
+
     <script>
         // ==================== SWIPER INITIALIZATION ====================
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const swiper = new Swiper('.heroSwiper', {
                 loop: true,
                 speed: 1000,
@@ -1934,9 +1973,9 @@
                 },
             });
         });
-        
+
         // ==================== NAVBAR SCROLL EFFECT ====================
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             const navbar = document.querySelector('.navbar');
             if (window.scrollY > 50) {
                 navbar.classList.add('scrolled');
@@ -1944,10 +1983,10 @@
                 navbar.classList.remove('scrolled');
             }
         });
-        
+
         // ==================== SMOOTH SCROLL ====================
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+            anchor.addEventListener('click', function (e) {
                 const href = this.getAttribute('href');
                 if (href !== '#' && document.querySelector(href)) {
                     e.preventDefault();
@@ -1960,32 +1999,32 @@
                 }
             });
         });
-        
+
         // ==================== ADD TO CART ANIMATION ====================
         document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
+            btn.addEventListener('click', function () {
                 const originalText = this.innerHTML;
                 this.innerHTML = '<i class="fas fa-check"></i> Added!';
                 this.style.background = '#4caf50';
-                
+
                 setTimeout(() => {
                     this.innerHTML = originalText;
                     this.style.background = '';
                 }, 2000);
             });
         });
-        
+
         // ==================== NEWSLETTER FORM ====================
         const newsletterForm = document.querySelector('.newsletter-form');
         if (newsletterForm) {
-            newsletterForm.addEventListener('submit', function(e) {
+            newsletterForm.addEventListener('submit', function (e) {
                 e.preventDefault();
                 const button = this.querySelector('button');
                 const originalText = button.innerHTML;
-                
+
                 button.innerHTML = '<i class="fas fa-check"></i> Subscribed!';
                 button.style.background = '#4caf50';
-                
+
                 setTimeout(() => {
                     button.innerHTML = originalText;
                     button.style.background = '';
@@ -1995,4 +2034,5 @@
         }
     </script>
 </body>
+
 </html>
