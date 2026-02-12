@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Built on Production-Grade Tooling</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #fafafa;
+            --text-dark: #1a1a1a;
+            --text-muted: #666;
+            --border-color: #e5e5e5;
+        }
+
+        body {
+            background: var(--bg-color);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            color: var(--text-dark);
+        }
+
+        .hero-section {
+            position: relative;
+            padding: 100px 0 120px;
+            overflow: hidden;
+            background: linear-gradient(to bottom, #ffffff 0%, #fafafa 100%);
+        }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 80px;
+            text-align: center;
+            color: var(--text-dark);
+        }
+
+        /* Animation Container */
+        .codexaman-animation-container {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 80px;
+        }
+
+        .codexaman-animation-svg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* CPU Chip Styling - Light Theme */
+        .codexaman-animation-cpu-container {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 160px;
+            height: 160px;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+            border: 2px solid #d0d0d0;
+            border-radius: 4px;
+            box-shadow: 
+                0 0 30px rgba(0, 0, 0, 0.05),
+                inset 0 0 20px rgba(255, 255, 255, 0.8);
+            animation: codexaman-animation-cpuGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes codexaman-animation-cpuGlow {
+            0%, 100% {
+                box-shadow: 
+                    0 0 30px rgba(0, 0, 0, 0.05),
+                    inset 0 0 20px rgba(255, 255, 255, 0.8);
+            }
+            50% {
+                box-shadow: 
+                    0 0 50px rgba(0, 0, 0, 0.08),
+                    inset 0 0 30px rgba(255, 255, 255, 0.9);
+            }
+        }
+
+        .codexaman-animation-cpu-shine {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            height: 60px;
+            background: linear-gradient(180deg, rgba(255,255,255,0.6) 0%, transparent 100%);
+            border-radius: 2px;
+            pointer-events: none;
+        }
+
+        .codexaman-animation-powered-by {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #999;
+            margin-bottom: 4px;
+        }
+
+        /* Connectors - Light Theme */
+        .codexaman-animation-connector {
+            position: absolute;
+            background: #bbb;
+            box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .codexaman-animation-connector-top, 
+        .codexaman-animation-connector-bottom {
+            width: 12px;
+            height: 6px;
+        }
+
+        .codexaman-animation-connector-left, 
+        .codexaman-animation-connector-right {
+            width: 6px;
+            height: 12px;
+        }
+
+        /* Top Connectors */
+        .codexaman-animation-connector-top-1 { top: -6px; left: 20px; }
+        .codexaman-animation-connector-top-2 { top: -6px; left: 40px; }
+        .codexaman-animation-connector-top-3 { top: -6px; left: 60px; }
+        .codexaman-animation-connector-top-4 { top: -6px; left: 80px; }
+        .codexaman-animation-connector-top-5 { top: -6px; left: 100px; }
+        .codexaman-animation-connector-top-6 { top: -6px; left: 120px; }
+
+        /* Bottom Connectors */
+        .codexaman-animation-connector-bottom-1 { bottom: -6px; left: 20px; }
+        .codexaman-animation-connector-bottom-2 { bottom: -6px; left: 40px; }
+        .codexaman-animation-connector-bottom-3 { bottom: -6px; left: 60px; }
+        .codexaman-animation-connector-bottom-4 { bottom: -6px; left: 80px; }
+        .codexaman-animation-connector-bottom-5 { bottom: -6px; left: 100px; }
+        .codexaman-animation-connector-bottom-6 { bottom: -6px; left: 120px; }
+
+        /* Left Connectors */
+        .codexaman-animation-connector-left-1 { left: -6px; top: 50px; }
+        .codexaman-animation-connector-left-2 { left: -6px; top: 90px; }
+
+        /* Right Connectors */
+        .codexaman-animation-connector-right-1 { right: -6px; top: 50px; }
+        .codexaman-animation-connector-right-2 { right: -6px; top: 90px; }
+
+        /* Animated path styles */
+        .codexaman-animation-path {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: codexaman-animation-drawPath 2s ease-in-out forwards;
+        }
+
+        @keyframes codexaman-animation-drawPath {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        .codexaman-animation-pulse {
+            opacity: 0;
+            animation: codexaman-animation-pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes codexaman-animation-pulse {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+
+        .codexaman-animation-pulse-1 { animation-delay: 0s; }
+        .codexaman-animation-pulse-2 { animation-delay: 0.3s; }
+        .codexaman-animation-pulse-3 { animation-delay: 0.6s; }
+        .codexaman-animation-pulse-4 { animation-delay: 0.9s; }
+        .codexaman-animation-pulse-5 { animation-delay: 1.2s; }
+        .codexaman-animation-pulse-6 { animation-delay: 1.5s; }
+
+        /* Dots */
+        .codexaman-animation-dot {
+            animation: codexaman-animation-dotPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes codexaman-animation-dotPulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        /* Tool Cards */
+        .tool-card {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 40px 30px;
+            height: 100%;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tool-card:hover {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            transform: translateY(-4px);
+        }
+
+        .tool-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #2EB9DF, #FF4A81, #FF7432);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .tool-card:hover::before {
+            opacity: 1;
+        }
+
+        .tool-icon {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tool-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .tool-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tool-card h3 svg {
+            width: 16px;
+            height: 16px;
+            opacity: 0.5;
+        }
+
+        .tool-card p {
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+            
+            .codexaman-animation-container {
+                height: 300px;
+                margin-bottom: 60px;
+            }
+            
+            .codexaman-animation-cpu-container {
+                width: 120px;
+                height: 120px;
+            }
+
+            .tool-card {
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero-section">
+        <div class="container">
+            <h1>Built on a foundation of fast, production-grade tooling</h1>
+            
+            <!-- Animated CPU Circuit -->
+            <div class="codexaman-animation-container">
+                <svg class="codexaman-animation-svg" viewBox="0 0 900 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="codexaman-blue-pulse-1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#2EB9DF" stop-opacity="0"/>
+                            <stop offset="50%" stop-color="#2EB9DF" stop-opacity="1"/>
+                            <stop offset="100%" stop-color="#2EB9DF" stop-opacity="0"/>
+                        </linearGradient>
+                        
+                        <linearGradient id="codexaman-blue-pulse-2" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#2EB9DF" stop-opacity="0"/>
+                            <stop offset="50%" stop-color="#2EB9DF" stop-opacity="1"/>
+                            <stop offset="100%" stop-color="#2EB9DF" stop-opacity="0"/>
+                        </linearGradient>
+
+                        <linearGradient id="codexaman-pink-pulse-1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#FF4A81" stop-opacity="0"/>
+                            <stop offset="30%" stop-color="#FF4A81" stop-opacity="1"/>
+                            <stop offset="70%" stop-color="#DF6CF6" stop-opacity="1"/>
+                            <stop offset="100%" stop-color="#0196FF" stop-opacity="0"/>
+                        </linearGradient>
+
+                        <linearGradient id="codexaman-pink-pulse-2" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#FF4A81" stop-opacity="0"/>
+                            <stop offset="30%" stop-color="#FF4A81" stop-opacity="1"/>
+                            <stop offset="70%" stop-color="#DF6CF6" stop-opacity="1"/>
+                            <stop offset="100%" stop-color="#0196FF" stop-opacity="0"/>
+                        </linearGradient>
+
+                        <linearGradient id="codexaman-orange-pulse-1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#FF7432" stop-opacity="0"/>
+                            <stop offset="30%" stop-color="#FF7432" stop-opacity="1"/>
+                            <stop offset="70%" stop-color="#F7CC4B" stop-opacity="1"/>
+                            <stop offset="100%" stop-color="#F7CC4B" stop-opacity="0"/>
+                        </linearGradient>
+
+                        <linearGradient id="codexaman-orange-pulse-2" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#FF7432" stop-opacity="0"/>
+                            <stop offset="30%" stop-color="#FF7432" stop-opacity="1"/>
+                            <stop offset="70%" stop-color="#F7CC4B" stop-opacity="1"/>
+                            <stop offset="100%" stop-color="#F7CC4B" stop-opacity="0"/>
+                        </linearGradient>
+                    </defs>
+
+                    <!-- Static paths - Light theme colors -->
+                    <path class="codexaman-animation-path" d="M 412 0 L 412 120" stroke="#d0d0d0" stroke-width="1.5" fill="none"/>
+                    <path class="codexaman-animation-path" d="M 436 0 L 436 120" stroke="#d0d0d0" stroke-width="1.5" fill="none"/>
+                    <path class="codexaman-animation-path" d="M 388 120 L 388 68 C 388 65 386 64 384 64 L 310 64" stroke="#d0d0d0" stroke-width="1.5" fill="none"/>
+                    <path class="codexaman-animation-path" d="M 508 120 L 508 88 C 508 85 510 84 512 84 L 886 84 C 888 84 890 86 890 88 L 890 400" stroke="#d0d0d0" stroke-width="1.5" fill="none"/>
+                    <path class="codexaman-animation-path" d="M 349 150 L 73 150 C 71 150 69 152 69 154 L 69 174" stroke="#d0d0d0" stroke-width="1.5" fill="none"/>
+                    <path class="codexaman-animation-path" d="M 349 130 L 5 130 C 3 130 1 132 1 134 L 1 400" stroke="#d0d0d0" stroke-width="1.5" fill="none"/>
+                    <path class="codexaman-animation-path" d="M 547 130 L 822 130 C 824 130 826 132 826 134 L 826 400" stroke="#d0d0d0" stroke-width="1.5" fill="none"/>
+                    <path class="codexaman-animation-path" d="M 547 150 L 633 150 C 635 150 637 152 637 154 L 637 236 C 637 238 635 240 633 240 L 488 240 C 486 240 484 242 484 244 L 484 400" stroke="#d0d0d0" stroke-width="1.5" fill="none"/>
+                    <path class="codexaman-animation-path" d="M 388 280 L 388 294 C 388 296 386 298 384 298 L 77 298 C 75 298 73 300 73 302 L 73 400" stroke="#d0d0d0" stroke-width="1.5" fill="none"/>
+                    <path class="codexaman-animation-path" d="M 412 280 L 412 400" stroke="#d0d0d0" stroke-width="1.5" fill="none"/>
+                    <path class="codexaman-animation-path" d="M 436 280 L 436 314" stroke="#d0d0d0" stroke-width="1.5" fill="none"/>
+                    <path class="codexaman-animation-path" d="M 460 280 L 460 339" stroke="#d0d0d0" stroke-width="1.5" fill="none"/>
+                    <path class="codexaman-animation-path" d="M 484 280 L 484 310 C 484 312 486 314 488 314 L 560 314" stroke="#d0d0d0" stroke-width="1.5" fill="none"/>
+                    <path class="codexaman-animation-path" d="M 508 280 L 508 293 C 508 295 510 297 512 297 L 560 297" stroke="#d0d0d0" stroke-width="1.5" fill="none"/>
+
+                    <!-- Animated pulses -->
+                    <path class="codexaman-animation-pulse codexaman-animation-pulse-1" d="M 349 130 L 5 130 C 3 130 1 132 1 134 L 1 400" stroke="url(#codexaman-blue-pulse-1)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                    <path class="codexaman-animation-pulse codexaman-animation-pulse-2" d="M 388 280 L 388 294 C 388 296 386 298 384 298 L 77 298 C 75 298 73 300 73 302 L 73 400" stroke="url(#codexaman-blue-pulse-2)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                    <path class="codexaman-animation-pulse codexaman-animation-pulse-3" d="M 412 280 L 412 400" stroke="url(#codexaman-pink-pulse-1)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                    <path class="codexaman-animation-pulse codexaman-animation-pulse-4" d="M 547 150 L 633 150 C 635 150 637 152 637 154 L 637 236 C 637 238 635 240 633 240 L 488 240 C 486 240 484 242 484 244 L 484 400" stroke="url(#codexaman-pink-pulse-2)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                    <path class="codexaman-animation-pulse codexaman-animation-pulse-5" d="M 547 130 L 822 130 C 824 130 826 132 826 134 L 826 400" stroke="url(#codexaman-orange-pulse-1)" stroke-width="2.5" fill="none"/>
+                    <path class="codexaman-animation-pulse codexaman-animation-pulse-6" d="M 508 120 L 508 88 C 508 85 510 84 512 84 L 886 84 C 888 84 890 86 890 88 L 890 400" stroke="url(#codexaman-orange-pulse-2)" stroke-width="2.5" fill="none"/>
+
+                    <!-- Connection dots -->
+                    <circle class="codexaman-animation-dot" cx="460" cy="64" r="4" fill="#fafafa" stroke="#aaa" stroke-width="1.5"/>
+                    <circle class="codexaman-animation-dot" cx="310" cy="64" r="4" fill="#fafafa" stroke="#aaa" stroke-width="1.5"/>
+                    <circle class="codexaman-animation-dot" cx="69" cy="174" r="4" fill="#fafafa" stroke="#aaa" stroke-width="1.5"/>
+                    <circle class="codexaman-animation-dot" cx="436" cy="314" r="4" fill="#fafafa" stroke="#aaa" stroke-width="1.5"/>
+                    <circle class="codexaman-animation-dot" cx="460" cy="340" r="4" fill="#fafafa" stroke="#aaa" stroke-width="1.5"/>
+                    <circle class="codexaman-animation-dot" cx="560" cy="314" r="4" fill="#fafafa" stroke="#aaa" stroke-width="1.5"/>
+                    <circle class="codexaman-animation-dot" cx="560" cy="297" r="4" fill="#fafafa" stroke="#aaa" stroke-width="1.5"/>
+                </svg>
+
+                <!-- CPU Chip -->
+                <div class="codexaman-animation-cpu-container">
+                    <div class="codexaman-animation-cpu-shine"></div>
+                    
+                    <!-- Top Connectors -->
+                    <div class="codexaman-animation-connector codexaman-animation-connector-top codexaman-animation-connector-top-1"></div>
+                    <div class="codexaman-animation-connector codexaman-animation-connector-top codexaman-animation-connector-top-2"></div>
+                    <div class="codexaman-animation-connector codexaman-animation-connector-top codexaman-animation-connector-top-3"></div>
+                    <div class="codexaman-animation-connector codexaman-animation-connector-top codexaman-animation-connector-top-4"></div>
+                    <div class="codexaman-animation-connector codexaman-animation-connector-top codexaman-animation-connector-top-5"></div>
+                    <div class="codexaman-animation-connector codexaman-animation-connector-top codexaman-animation-connector-top-6"></div>
+                    
+                    <!-- Bottom Connectors -->
+                    <div class="codexaman-animation-connector codexaman-animation-connector-bottom codexaman-animation-connector-bottom-1"></div>
+                    <div class="codexaman-animation-connector codexaman-animation-connector-bottom codexaman-animation-connector-bottom-2"></div>
+                    <div class="codexaman-animation-connector codexaman-animation-connector-bottom codexaman-animation-connector-bottom-3"></div>
+                    <div class="codexaman-animation-connector codexaman-animation-connector-bottom codexaman-animation-connector-bottom-4"></div>
+                    <div class="codexaman-animation-connector codexaman-animation-connector-bottom codexaman-animation-connector-bottom-5"></div>
+                    <div class="codexaman-animation-connector codexaman-animation-connector-bottom codexaman-animation-connector-bottom-6"></div>
+                    
+                    <!-- Left Connectors -->
+                    <div class="codexaman-animation-connector codexaman-animation-connector-left codexaman-animation-connector-left-1"></div>
+                    <div class="codexaman-animation-connector codexaman-animation-connector-left codexaman-animation-connector-left-2"></div>
+                    
+                    <!-- Right Connectors -->
+                    <div class="codexaman-animation-connector codexaman-animation-connector-right codexaman-animation-connector-right-1"></div>
+                    <div class="codexaman-animation-connector codexaman-animation-connector-right codexaman-animation-connector-right-2"></div>
+                    
+                    <span class="codexaman-animation-powered-by"> codexaman </span>
+                </div>
+            </div>
+
+            <!-- Tool Cards -->
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="tool-card">
+                        <div class="tool-icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="10" stroke="#1a1a1a" stroke-width="1.5"/>
+                                <path d="M12 8V12L14.5 14.5" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <h3>
+                            React
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </h3>
+                        <p>The library for web and native user interfaces. Next.js is built on the latest React features, including Server Components and Actions.</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="tool-card">
+                        <div class="tool-icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="4" y="4" width="16" height="16" rx="2" stroke="#1a1a1a" stroke-width="1.5"/>
+                                <rect x="8" y="8" width="8" height="8" rx="1" stroke="#1a1a1a" stroke-width="1.5"/>
+                            </svg>
+                        </div>
+                        <h3>
+                            Turbopack
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </h3>
+                        <p>An incremental bundler optimized for JavaScript and TypeScript, written in Rust, and built into Next.js.</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="tool-card">
+                        <div class="tool-icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3 7L12 3L21 7M3 7L12 11M3 7V17L12 21M21 7L12 11M21 7V17L12 21M12 11V21" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <h3>
+                            Speedy Web Compiler
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </h3>
+                        <p>An extensible Rust-based platform for the next generation of fast developer tools, and can be used for both compilation and minification.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
