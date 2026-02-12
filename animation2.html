@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated CPU Circuit</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        svg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* CPU Chip Styling */
+        .cpu-container {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 160px;
+            height: 160px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+            border: 2px solid #333;
+            border-radius: 4px;
+            box-shadow: 
+                0 0 30px rgba(0, 255, 255, 0.1),
+                inset 0 0 20px rgba(0, 0, 0, 0.5);
+            animation: cpuGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes cpuGlow {
+            0%, 100% {
+                box-shadow: 
+                    0 0 30px rgba(0, 255, 255, 0.1),
+                    inset 0 0 20px rgba(0, 0, 0, 0.5);
+            }
+            50% {
+                box-shadow: 
+                    0 0 50px rgba(0, 255, 255, 0.3),
+                    inset 0 0 30px rgba(0, 0, 0, 0.6);
+            }
+        }
+
+        .cpu-shine {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            height: 60px;
+            background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, transparent 100%);
+            border-radius: 2px;
+            pointer-events: none;
+        }
+
+        .powered-by {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #666;
+            margin-bottom: 4px;
+        }
+
+        /* Connectors */
+        .connector {
+            position: absolute;
+            background: #444;
+            box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .connector-top, .connector-bottom {
+            width: 12px;
+            height: 6px;
+        }
+
+        .connector-left, .connector-right {
+            width: 6px;
+            height: 12px;
+        }
+
+        /* Top Connectors */
+        .connector-top-1 { top: -6px; left: 20px; }
+        .connector-top-2 { top: -6px; left: 40px; }
+        .connector-top-3 { top: -6px; left: 60px; }
+        .connector-top-4 { top: -6px; left: 80px; }
+        .connector-top-5 { top: -6px; left: 100px; }
+        .connector-top-6 { top: -6px; left: 120px; }
+
+        /* Bottom Connectors */
+        .connector-bottom-1 { bottom: -6px; left: 20px; }
+        .connector-bottom-2 { bottom: -6px; left: 40px; }
+        .connector-bottom-3 { bottom: -6px; left: 60px; }
+        .connector-bottom-4 { bottom: -6px; left: 80px; }
+        .connector-bottom-5 { bottom: -6px; left: 100px; }
+        .connector-bottom-6 { bottom: -6px; left: 120px; }
+
+        /* Left Connectors */
+        .connector-left-1 { left: -6px; top: 50px; }
+        .connector-left-2 { left: -6px; top: 90px; }
+
+        /* Right Connectors */
+        .connector-right-1 { right: -6px; top: 50px; }
+        .connector-right-2 { right: -6px; top: 90px; }
+
+        /* Animated path styles */
+        .path {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: drawPath 2s ease-in-out forwards;
+        }
+
+        @keyframes drawPath {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        .pulse {
+            opacity: 0;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+
+        .pulse-1 { animation-delay: 0s; }
+        .pulse-2 { animation-delay: 0.3s; }
+        .pulse-3 { animation-delay: 0.6s; }
+        .pulse-4 { animation-delay: 0.9s; }
+        .pulse-5 { animation-delay: 1.2s; }
+        .pulse-6 { animation-delay: 1.5s; }
+        .pulse-7 { animation-delay: 1.8s; }
+        .pulse-8 { animation-delay: 2.1s; }
+
+        /* Dots */
+        .dot {
+            animation: dotPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes dotPulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- SVG with circuit lines -->
+        <svg viewBox="0 0 900 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <!-- Gradients for animated pulses -->
+                <linearGradient id="blue-pulse-1" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#2EB9DF" stop-opacity="0"/>
+                    <stop offset="50%" stop-color="#2EB9DF" stop-opacity="1"/>
+                    <stop offset="100%" stop-color="#2EB9DF" stop-opacity="0"/>
+                </linearGradient>
+                
+                <linearGradient id="blue-pulse-2" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#2EB9DF" stop-opacity="0"/>
+                    <stop offset="50%" stop-color="#2EB9DF" stop-opacity="1"/>
+                    <stop offset="100%" stop-color="#2EB9DF" stop-opacity="0"/>
+                </linearGradient>
+
+                <linearGradient id="pink-pulse-1" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#FF4A81" stop-opacity="0"/>
+                    <stop offset="30%" stop-color="#FF4A81" stop-opacity="1"/>
+                    <stop offset="70%" stop-color="#DF6CF6" stop-opacity="1"/>
+                    <stop offset="100%" stop-color="#0196FF" stop-opacity="0"/>
+                </linearGradient>
+
+                <linearGradient id="pink-pulse-2" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#FF4A81" stop-opacity="0"/>
+                    <stop offset="30%" stop-color="#FF4A81" stop-opacity="1"/>
+                    <stop offset="70%" stop-color="#DF6CF6" stop-opacity="1"/>
+                    <stop offset="100%" stop-color="#0196FF" stop-opacity="0"/>
+                </linearGradient>
+
+                <linearGradient id="orange-pulse-1" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#FF7432" stop-opacity="0"/>
+                    <stop offset="30%" stop-color="#FF7432" stop-opacity="1"/>
+                    <stop offset="70%" stop-color="#F7CC4B" stop-opacity="1"/>
+                    <stop offset="100%" stop-color="#F7CC4B" stop-opacity="0"/>
+                </linearGradient>
+
+                <linearGradient id="orange-pulse-2" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#FF7432" stop-opacity="0"/>
+                    <stop offset="30%" stop-color="#FF7432" stop-opacity="1"/>
+                    <stop offset="70%" stop-color="#F7CC4B" stop-opacity="1"/>
+                    <stop offset="100%" stop-color="#F7CC4B" stop-opacity="0"/>
+                </linearGradient>
+            </defs>
+
+            <!-- Static paths (background) -->
+            <!-- Top paths coming down -->
+            <path class="path" d="M 412 0 L 412 120" stroke="#333" stroke-width="1.5" fill="none"/>
+            <path class="path" d="M 436 0 L 436 120" stroke="#333" stroke-width="1.5" fill="none"/>
+            
+            <!-- Top-left path -->
+            <path class="path" d="M 388 120 L 388 68 C 388 65 386 64 384 64 L 310 64" stroke="#333" stroke-width="1.5" fill="none"/>
+            
+            <!-- Top-right curved path -->
+            <path class="path" d="M 508 120 L 508 88 C 508 85 510 84 512 84 L 886 84 C 888 84 890 86 890 88 L 890 400" stroke="#333" stroke-width="1.5" fill="none"/>
+            
+            <!-- Middle-left path -->
+            <path class="path" d="M 349 150 L 73 150 C 71 150 69 152 69 154 L 69 174" stroke="#333" stroke-width="1.5" fill="none"/>
+            
+            <!-- Far-left path -->
+            <path class="path" d="M 349 130 L 5 130 C 3 130 1 132 1 134 L 1 400" stroke="#333" stroke-width="1.5" fill="none"/>
+            
+            <!-- Right path -->
+            <path class="path" d="M 547 130 L 822 130 C 824 130 826 132 826 134 L 826 400" stroke="#333" stroke-width="1.5" fill="none"/>
+            
+            <!-- Complex right-bottom path -->
+            <path class="path" d="M 547 150 L 633 150 C 635 150 637 152 637 154 L 637 236 C 637 238 635 240 633 240 L 488 240 C 486 240 484 242 484 244 L 484 400" stroke="#333" stroke-width="1.5" fill="none"/>
+            
+            <!-- Bottom-left path -->
+            <path class="path" d="M 388 280 L 388 294 C 388 296 386 298 384 298 L 77 298 C 75 298 73 300 73 302 L 73 400" stroke="#333" stroke-width="1.5" fill="none"/>
+            
+            <!-- Bottom-center paths -->
+            <path class="path" d="M 412 280 L 412 400" stroke="#333" stroke-width="1.5" fill="none"/>
+            <path class="path" d="M 436 280 L 436 314" stroke="#333" stroke-width="1.5" fill="none"/>
+            <path class="path" d="M 460 280 L 460 339" stroke="#333" stroke-width="1.5" fill="none"/>
+            
+            <!-- Bottom-right paths -->
+            <path class="path" d="M 484 280 L 484 310 C 484 312 486 314 488 314 L 560 314" stroke="#333" stroke-width="1.5" fill="none"/>
+            <path class="path" d="M 508 280 L 508 293 C 508 295 510 297 512 297 L 560 297" stroke="#333" stroke-width="1.5" fill="none"/>
+
+            <!-- Animated pulses (same paths as above but with gradients) -->
+            <path class="pulse pulse-1" d="M 349 130 L 5 130 C 3 130 1 132 1 134 L 1 400" stroke="url(#blue-pulse-1)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            
+            <path class="pulse pulse-2" d="M 388 280 L 388 294 C 388 296 386 298 384 298 L 77 298 C 75 298 73 300 73 302 L 73 400" stroke="url(#blue-pulse-2)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            
+            <path class="pulse pulse-3" d="M 412 280 L 412 400" stroke="url(#pink-pulse-1)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            
+            <path class="pulse pulse-4" d="M 547 150 L 633 150 C 635 150 637 152 637 154 L 637 236 C 637 238 635 240 633 240 L 488 240 C 486 240 484 242 484 244 L 484 400" stroke="url(#pink-pulse-2)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            
+            <path class="pulse pulse-5" d="M 547 130 L 822 130 C 824 130 826 132 826 134 L 826 400" stroke="url(#orange-pulse-1)" stroke-width="2.5" fill="none"/>
+            
+            <path class="pulse pulse-6" d="M 508 120 L 508 88 C 508 85 510 84 512 84 L 886 84 C 888 84 890 86 890 88 L 890 400" stroke="url(#orange-pulse-2)" stroke-width="2.5" fill="none"/>
+
+            <!-- Connection dots -->
+            <circle class="dot" cx="460" cy="64" r="4" fill="#0f0f0f" stroke="#555" stroke-width="1.5"/>
+            <circle class="dot" cx="310" cy="64" r="4" fill="#0f0f0f" stroke="#555" stroke-width="1.5"/>
+            <circle class="dot" cx="69" cy="174" r="4" fill="#0f0f0f" stroke="#555" stroke-width="1.5"/>
+            <circle class="dot" cx="436" cy="314" r="4" fill="#0f0f0f" stroke="#555" stroke-width="1.5"/>
+            <circle class="dot" cx="460" cy="340" r="4" fill="#0f0f0f" stroke="#555" stroke-width="1.5"/>
+            <circle class="dot" cx="560" cy="314" r="4" fill="#0f0f0f" stroke="#555" stroke-width="1.5"/>
+            <circle class="dot" cx="560" cy="297" r="4" fill="#0f0f0f" stroke="#555" stroke-width="1.5"/>
+        </svg>
+
+        <!-- CPU Chip -->
+        <div class="cpu-container">
+            <div class="cpu-shine"></div>
+            
+            <!-- Top Connectors -->
+            <div class="connector connector-top connector-top-1"></div>
+            <div class="connector connector-top connector-top-2"></div>
+            <div class="connector connector-top connector-top-3"></div>
+            <div class="connector connector-top connector-top-4"></div>
+            <div class="connector connector-top connector-top-5"></div>
+            <div class="connector connector-top connector-top-6"></div>
+            
+            <!-- Bottom Connectors -->
+            <div class="connector connector-bottom connector-bottom-1"></div>
+            <div class="connector connector-bottom connector-bottom-2"></div>
+            <div class="connector connector-bottom connector-bottom-3"></div>
+            <div class="connector connector-bottom connector-bottom-4"></div>
+            <div class="connector connector-bottom connector-bottom-5"></div>
+            <div class="connector connector-bottom connector-bottom-6"></div>
+            
+            <!-- Left Connectors -->
+            <div class="connector connector-left connector-left-1"></div>
+            <div class="connector connector-left connector-left-2"></div>
+            
+            <!-- Right Connectors -->
+            <div class="connector connector-right connector-right-1"></div>
+            <div class="connector connector-right connector-right-2"></div>
+            
+            <span class="powered-by">Powered By</span>
+        </div>
+    </div>
+</body>
+</html>
