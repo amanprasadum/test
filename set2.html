@@ -1,0 +1,1480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NexaCore IT Solutions</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet"/>
+  <!-- Google Fonts: Plus Jakarta Sans + Instrument Serif -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root {
+      --brand:     #4f6ef7;
+      --brand-dk:  #3a57d9;
+      --brand-lt:  #eef1fe;
+      --accent:    #06b6d4;
+      --success:   #10b981;
+      --text-h:    #0f172a;
+      --text-b:    #334155;
+      --text-m:    #64748b;
+      --text-lt:   #94a3b8;
+      --border:    #e2e8f0;
+      --border-lt: #f1f5f9;
+      --bg:        #ffffff;
+      --bg-soft:   #f8fafc;
+      --shadow-sm: 0 1px 3px rgba(15,23,42,.06), 0 1px 2px rgba(15,23,42,.04);
+      --shadow-md: 0 4px 24px rgba(15,23,42,.08), 0 1px 4px rgba(15,23,42,.04);
+      --shadow-lg: 0 20px 60px rgba(15,23,42,.12), 0 4px 12px rgba(15,23,42,.06);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text-b);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── ANNOUNCEMENT BAR ─── */
+    .announce-bar {
+      background: linear-gradient(90deg, var(--brand), var(--accent));
+      color: #fff;
+      text-align: center;
+      font-size: .8rem;
+      font-weight: 500;
+      padding: 9px 1rem;
+      letter-spacing: .2px;
+    }
+    .announce-bar a { color: #fff; font-weight: 700; text-decoration: underline; text-underline-offset: 2px; }
+
+    /* ─── HEADER ─── */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1040;
+      background: rgba(255,255,255,.9);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow .3s;
+    }
+    .site-header.scrolled { box-shadow: var(--shadow-md); }
+
+    .navbar { padding: .9rem 0; }
+
+    /* Logo */
+    .navbar-brand {
+      display: flex; align-items: center; gap: 10px; text-decoration: none;
+    }
+    .logo-mark {
+      width: 38px; height: 38px;
+      background: linear-gradient(135deg, var(--brand), var(--accent));
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 1.1rem; flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(79,110,247,.3);
+    }
+    .logo-wordmark {
+      font-size: 1.22rem; font-weight: 800; color: var(--text-h);
+      letter-spacing: -.5px; line-height: 1;
+    }
+    .logo-wordmark span { color: var(--brand); }
+    .logo-sub {
+      display: block; font-size: .6rem; font-weight: 500;
+      color: var(--text-lt); letter-spacing: 1.5px;
+      text-transform: uppercase; margin-top: 1px;
+    }
+
+    /* Nav Links */
+    .navbar-nav .nav-link {
+      color: var(--text-b) !important;
+      font-size: .875rem; font-weight: 500;
+      padding: .42rem .9rem !important;
+      border-radius: 8px;
+      transition: background .18s, color .18s;
+    }
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link.show,
+    .navbar-nav .nav-link[aria-expanded="true"] {
+      color: var(--brand) !important;
+      background: var(--brand-lt);
+    }
+    /* Custom chevron replacing BS caret */
+    .navbar-nav .nav-link.dropdown-toggle::after {
+      display: inline-block;
+      vertical-align: middle;
+      border: none;
+      font-family: 'bootstrap-icons';
+      content: "\F282";
+      font-size: .6rem;
+      margin-left: 3px;
+      transition: transform .22s;
+    }
+    .navbar-nav .nav-link.dropdown-toggle[aria-expanded="true"]::after {
+      transform: rotate(180deg);
+    }
+
+    /* ── Dropdown ── */
+    .dropdown-menu {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: var(--shadow-lg);
+      padding: .6rem;
+      min-width: 240px;
+      background: #fff;
+      margin-top: 8px !important;
+    }
+    .dropdown-header {
+      font-size: .67rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 1.2px; color: var(--text-lt);
+      padding: .45rem .75rem .3rem; margin-top: .15rem;
+    }
+    .dropdown-item {
+      display: flex; align-items: center; gap: 10px;
+      padding: .6rem .75rem;
+      border-radius: 9px;
+      font-size: .855rem; font-weight: 500; color: var(--text-b);
+      transition: background .15s, color .15s;
+      white-space: normal;
+    }
+    .dropdown-item:hover { background: var(--brand-lt); color: var(--brand); }
+    .dd-icon {
+      width: 32px; height: 32px; border-radius: 8px;
+      background: var(--bg-soft);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .9rem; color: var(--brand); flex-shrink: 0;
+      transition: background .15s;
+    }
+    .dropdown-item:hover .dd-icon { background: rgba(79,110,247,.13); }
+    .dd-info { flex: 1; }
+    .dd-title { display: block; font-weight: 600; color: var(--text-h); font-size: .84rem; }
+    .dd-desc  { display: block; font-size: .74rem; color: var(--text-m); margin-top: 1px; }
+    .dropdown-item:hover .dd-title { color: var(--brand); }
+
+    .dropdown-divider { border-color: var(--border-lt); margin: .35rem .2rem; }
+
+    .badge-pill {
+      font-size: .62rem; padding: 2px 7px;
+      border-radius: 20px; font-weight: 700; margin-left: auto; flex-shrink: 0;
+    }
+    .badge-new { background: #ede9fe; color: #7c3aed; }
+    .badge-hot { background: #fef3c7; color: #b45309; }
+
+    .dd-cta {
+      display: flex; align-items: center; gap: 9px;
+      margin: .4rem .15rem 0;
+      padding: .75rem .9rem;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--brand-lt), #e0f9ff);
+      border: 1px solid rgba(79,110,247,.15);
+      font-size: .83rem; font-weight: 600; color: var(--brand);
+      text-decoration: none;
+      transition: all .2s;
+    }
+    .dd-cta:hover { background: var(--brand); color: #fff; }
+    .dd-cta i { font-size: .95rem; }
+
+    /* CTA Buttons */
+    .btn-nav-outline {
+      border: 1.5px solid var(--border); color: var(--text-b);
+      background: transparent; border-radius: 8px;
+      font-size: .855rem; font-weight: 600; padding: .44rem 1.1rem;
+      transition: all .2s; cursor: pointer;
+    }
+    .btn-nav-outline:hover { border-color: var(--brand); color: var(--brand); background: var(--brand-lt); }
+
+    .btn-nav-cta {
+      background: var(--brand); color: #fff !important; border: none;
+      border-radius: 8px; font-size: .855rem; font-weight: 700;
+      padding: .46rem 1.2rem;
+      box-shadow: 0 2px 8px rgba(79,110,247,.3);
+      text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
+      transition: all .22s;
+    }
+    .btn-nav-cta:hover {
+      background: var(--brand-dk); transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(79,110,247,.35); color: #fff !important;
+    }
+
+    /* Toggler */
+    .navbar-toggler {
+      border: 1.5px solid var(--border); border-radius: 8px; padding: .38rem .62rem;
+    }
+    .navbar-toggler:focus { box-shadow: 0 0 0 3px rgba(79,110,247,.15); outline: none; }
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%230f172a' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+
+    @media (max-width:991px) {
+      .navbar-collapse {
+        background: #fff; border: 1px solid var(--border);
+        border-radius: 14px; padding: 1rem; margin-top: .6rem;
+        box-shadow: var(--shadow-md);
+      }
+      .dropdown-menu {
+        border: none; box-shadow: none;
+        background: var(--bg-soft); padding: .2rem .2rem .2rem 1rem;
+        margin-top: 0 !important; border-left: 2px solid var(--brand-lt);
+        border-radius: 0; min-width: auto;
+      }
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      padding: 6rem 0 5rem;
+      background: linear-gradient(155deg, #f8fafc 0%, #eef1fe 55%, #e0f9ff 100%);
+      position: relative; overflow: hidden;
+      min-height: calc(100vh - 112px);
+      display: flex; align-items: center;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; width: 700px; height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(79,110,247,.07) 0%, transparent 70%);
+      top: -200px; right: -150px; pointer-events: none;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: #fff; border: 1px solid var(--border); border-radius: 30px;
+      padding: 5px 14px 5px 8px; font-size: .78rem; font-weight: 600;
+      color: var(--brand); box-shadow: var(--shadow-sm); margin-bottom: 1.4rem;
+    }
+    .hero-eyebrow .pill { background: var(--brand); color: #fff; border-radius: 20px; padding: 2px 8px; font-size: .68rem; font-weight: 700; }
+    .hero-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(2.1rem, 5vw, 3.7rem); font-weight: 800;
+      line-height: 1.12; letter-spacing: -1.5px; color: var(--text-h); margin-bottom: 1.3rem;
+    }
+    .hero-title em {
+      font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400;
+      background: linear-gradient(135deg, var(--brand), var(--accent));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .hero-sub { font-size: 1.05rem; color: var(--text-m); max-width: 520px; line-height: 1.75; margin-bottom: 2rem; }
+    .hero-actions { display: flex; gap: .85rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+    .btn-hp { background: var(--brand); color: #fff; border: none; border-radius: 10px; padding: .78rem 1.7rem; font-weight: 700; font-size: .95rem; text-decoration: none; display: inline-flex; align-items: center; gap: 7px; box-shadow: 0 4px 16px rgba(79,110,247,.32); transition: all .22s; }
+    .btn-hp:hover { background: var(--brand-dk); transform: translateY(-2px); color: #fff; box-shadow: 0 8px 28px rgba(79,110,247,.38); }
+    .btn-hg { background: #fff; color: var(--text-h); border: 1.5px solid var(--border); border-radius: 10px; padding: .78rem 1.7rem; font-weight: 600; font-size: .95rem; text-decoration: none; display: inline-flex; align-items: center; gap: 7px; transition: all .22s; }
+    .btn-hg:hover { border-color: var(--brand); color: var(--brand); transform: translateY(-2px); }
+    /* ── Enhanced Social Proof ── */
+    .social-proof {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 60px;
+      padding: .55rem 1.1rem .55rem .6rem;
+      box-shadow: var(--shadow-sm);
+      width: fit-content;
+    }
+    .proof-avatars {
+      display: flex;
+      align-items: center;
+    }
+    .proof-avatars span {
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      border: 2.5px solid #fff;
+      background: linear-gradient(135deg, var(--brand), var(--accent));
+      margin-left: -10px;
+      font-size: .66rem;
+      color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800;
+      letter-spacing: -.3px;
+      box-shadow: 0 2px 6px rgba(79,110,247,.25);
+    }
+    .proof-avatars span:first-child { margin-left: 0; }
+    /* unique tints per avatar */
+    .proof-avatars span:nth-child(1) { background: linear-gradient(135deg,#4f6ef7,#818cf8); }
+    .proof-avatars span:nth-child(2) { background: linear-gradient(135deg,#06b6d4,#22d3ee); }
+    .proof-avatars span:nth-child(3) { background: linear-gradient(135deg,#8b5cf6,#a78bfa); }
+    .proof-avatars span:nth-child(4) { background: linear-gradient(135deg,#10b981,#34d399); }
+    .proof-divider {
+      width: 1px; height: 28px;
+      background: var(--border);
+      flex-shrink: 0;
+    }
+    .proof-right { display: flex; flex-direction: column; gap: 1px; }
+    .proof-stars {
+      display: flex; align-items: center; gap: 1px;
+      font-size: .72rem; color: #f59e0b; line-height: 1;
+    }
+    .proof-stars .star-count {
+      color: var(--text-m); font-size: .7rem; margin-left: 4px; font-weight: 600;
+    }
+    .proof-text {
+      font-size: .82rem;
+      color: var(--text-m);
+      font-weight: 500;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .proof-text strong { color: var(--text-h); font-weight: 700; }
+    .hero-stats { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .stat-card { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: .9rem 1.2rem; box-shadow: var(--shadow-sm); }
+    .stat-num { font-size: 1.55rem; font-weight: 800; color: var(--text-h); letter-spacing: -1px; line-height: 1; }
+    .stat-num sup { font-size: .85rem; color: var(--brand); vertical-align: top; margin-top: 2px; }
+    .stat-lbl { font-size: .73rem; color: var(--text-m); margin-top: 3px; font-weight: 500; }
+
+    /* ─── SOCIAL PROOF SECTION ─── */
+    .sp-section {
+      background: var(--bg-soft);
+      padding: 5.5rem 0 5rem;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* Header */
+    .sp-header { text-align: center; margin-bottom: 3.5rem; }
+    .sp-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: .75rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 1.5px; color: var(--brand);
+      margin-bottom: 1rem;
+    }
+    .sp-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--brand);
+      animation: spPulse 2s infinite;
+      flex-shrink: 0;
+    }
+    @keyframes spPulse {
+      0%,100% { opacity:1; transform:scale(1); }
+      50%      { opacity:.4; transform:scale(.7); }
+    }
+    .sp-heading {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(1.7rem, 3.5vw, 2.6rem);
+      font-weight: 800; letter-spacing: -1px;
+      color: var(--text-h); line-height: 1.18;
+      margin-bottom: .9rem;
+    }
+    .sp-heading em {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic; font-weight: 400;
+      background: linear-gradient(135deg, var(--brand), var(--accent));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .sp-sub { font-size: .95rem; color: var(--text-m); max-width: 480px; margin: 0 auto; line-height: 1.7; }
+
+    /* Stats row */
+    .sp-stats-row {
+      display: flex; align-items: center; justify-content: center;
+      gap: 0; flex-wrap: wrap;
+      background: #fff; border: 1px solid var(--border);
+      border-radius: 16px; padding: 1.6rem 2rem;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 2.5rem;
+    }
+    .sp-stat { text-align: center; padding: 0 2rem; flex: 1; min-width: 100px; }
+    .sp-stat-num {
+      font-size: 2rem; font-weight: 800; color: var(--text-h);
+      letter-spacing: -1.5px; line-height: 1;
+    }
+    .sp-stat-num span { color: var(--brand); font-size: 1.3rem; }
+    .sp-stat-lbl { font-size: .75rem; color: var(--text-m); font-weight: 500; margin-top: 4px; }
+    .sp-stat-divider { width: 1px; height: 40px; background: var(--border); flex-shrink: 0; }
+    @media (max-width:640px) {
+      .sp-stats-row { gap: 1.2rem; padding: 1.3rem; }
+      .sp-stat { padding: 0; min-width: 80px; }
+      .sp-stat-divider { display: none; }
+      .sp-stat-num { font-size: 1.5rem; }
+    }
+
+    /* Review cards */
+    .sp-reviews {
+      display: grid;
+      grid-template-columns: 1fr 1.08fr 1fr;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+      align-items: start;
+    }
+    @media (max-width:900px) { .sp-reviews { grid-template-columns: 1fr 1fr; } }
+    @media (max-width:580px) { .sp-reviews { grid-template-columns: 1fr; } }
+
+    .sp-review-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow .25s, transform .25s;
+    }
+    .sp-review-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+
+    .sp-review-featured {
+      background: linear-gradient(155deg, #fff 60%, var(--brand-lt));
+      border-color: rgba(79,110,247,.2);
+      box-shadow: 0 4px 24px rgba(79,110,247,.1);
+      position: relative;
+    }
+    .sp-review-featured::before {
+      content: 'Most popular';
+      position: absolute; top: -1px; left: 50%; transform: translateX(-50%);
+      background: var(--brand);
+      color: #fff; font-size: .62rem; font-weight: 700;
+      letter-spacing: .8px; text-transform: uppercase;
+      padding: 3px 12px; border-radius: 0 0 8px 8px;
+    }
+
+    .sp-review-stars { color: #f59e0b; font-size: .85rem; letter-spacing: 1px; margin-bottom: .75rem; }
+    .sp-review-text {
+      font-size: .88rem; color: var(--text-b); line-height: 1.75;
+      margin-bottom: 1.2rem; font-weight: 400;
+    }
+    .sp-review-featured .sp-review-text { font-size: .92rem; }
+
+    .sp-reviewer { display: flex; align-items: center; gap: 10px; }
+    .sp-reviewer-av {
+      width: 38px; height: 38px; border-radius: 50%;
+      color: #fff; font-size: .72rem; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; letter-spacing: -.3px;
+    }
+    .sp-reviewer-info { flex: 1; }
+    .sp-reviewer-info strong { display: block; font-size: .84rem; font-weight: 700; color: var(--text-h); }
+    .sp-reviewer-info span  { font-size: .75rem; color: var(--text-m); }
+    .sp-reviewer-logo { font-size: 1.3rem; margin-left: auto; opacity: .6; }
+
+    /* Bottom row */
+    .sp-bottom-row {
+      display: flex; align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap; gap: 1.2rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .sp-cluster { display: flex; align-items: center; gap: 12px; }
+    .sp-cluster-avatars { display: flex; }
+    .sp-cluster-avatars span {
+      width: 36px; height: 36px; border-radius: 50%;
+      border: 2.5px solid var(--bg-soft);
+      color: #fff; font-size: .68rem; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      margin-left: -10px;
+    }
+    .sp-cluster-avatars span:first-child { margin-left: 0; }
+    .sp-cluster-text { font-size: .83rem; color: var(--text-m); font-weight: 500; }
+    .sp-cluster-text strong { color: var(--text-h); }
+    .sp-cluster-stars { color: #f59e0b; font-size: .72rem; margin-bottom: 1px; }
+    .sp-cluster-stars span { color: var(--text-m); font-weight: 600; }
+
+    .sp-trust-badges { display: flex; gap: 8px; flex-wrap: wrap; }
+    .sp-badge {
+      display: inline-flex; align-items: center; gap: 5px;
+      background: #fff; border: 1px solid var(--border);
+      border-radius: 8px; padding: 6px 12px;
+      font-size: .75rem; font-weight: 600; color: var(--text-m);
+      box-shadow: var(--shadow-sm);
+    }
+    .sp-badge i { color: var(--brand); font-size: .8rem; }
+
+    @media (max-width:640px) {
+      .sp-bottom-row { flex-direction: column; align-items: flex-start; }
+      .sp-trust-badges { justify-content: flex-start; }
+    }
+
+    /* ─── FOOTER ─── */
+    .site-footer { background: #0f172a; color: #cbd5e1; padding-top: 5rem; position: relative; overflow: hidden; }
+    .site-footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--brand), var(--accent)); }
+
+    .footer-logo { font-size: 1.25rem; font-weight: 800; color: #fff; letter-spacing: -.5px; display: flex; align-items: center; gap: 9px; margin-bottom: .75rem; }
+    .footer-logo .fm { width: 34px; height: 34px; background: linear-gradient(135deg, var(--brand), var(--accent)); border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 1rem; color: #fff; }
+    .footer-logo span { color: var(--brand); }
+    .footer-tagline { font-size: .84rem; color: #94a3b8; line-height: 1.75; max-width: 285px; margin-bottom: 1.3rem; }
+    .footer-socials { display: flex; gap: 8px; margin-bottom: 1.5rem; }
+    .soc-btn { width: 36px; height: 36px; border-radius: 8px; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1); display: flex; align-items: center; justify-content: center; color: #94a3b8; font-size: .85rem; text-decoration: none; transition: all .2s; }
+    .soc-btn:hover { background: var(--brand); border-color: var(--brand); color: #fff; transform: translateY(-2px); }
+    .footer-certs { display: flex; flex-wrap: wrap; gap: 7px; }
+    .cert-tag { display: inline-flex; align-items: center; gap: 5px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.09); border-radius: 6px; padding: 4px 9px; font-size: .7rem; font-weight: 600; color: #64748b; }
+    .cert-tag i { color: var(--accent); font-size: .72rem; }
+
+    .footer-col-title { font-size: .69rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #fff; margin-bottom: 1.1rem; }
+    .footer-links { list-style: none; padding: 0; margin: 0; }
+    .footer-links li { margin-bottom: .52rem; }
+    .footer-links a { font-size: .855rem; color: #94a3b8; text-decoration: none; transition: color .18s, padding-left .18s; display: inline-flex; align-items: center; gap: 5px; }
+    .footer-links a:hover { color: #fff; padding-left: 3px; }
+    .fl-badge { font-size: .6rem; padding: 2px 6px; border-radius: 20px; font-weight: 700; }
+    .fl-new { background: #ede9fe; color: #7c3aed; }
+    .fl-hot { background: #fef3c7; color: #92400e; }
+
+    /* Newsletter */
+    .footer-newsletter { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.09); border-radius: 13px; padding: 1.3rem; margin-bottom: 1.3rem; }
+    .footer-newsletter h6 { font-size: .88rem; font-weight: 700; color: #fff; margin-bottom: .3rem; }
+    .footer-newsletter p { font-size: .79rem; color: #94a3b8; margin-bottom: 1rem; }
+    .nl-form { display: flex; gap: 6px; }
+    .nl-input { flex: 1; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.11); border-radius: 8px; padding: .52rem .85rem; color: #fff; font-size: .84rem; font-family: 'Plus Jakarta Sans', sans-serif; outline: none; transition: border-color .2s; }
+    .nl-input::placeholder { color: #475569; }
+    .nl-input:focus { border-color: var(--brand); }
+    .nl-btn { background: var(--brand); border: none; border-radius: 8px; padding: .52rem 1rem; color: #fff; font-size: .84rem; font-weight: 700; font-family: 'Plus Jakarta Sans', sans-serif; cursor: pointer; white-space: nowrap; transition: background .2s; }
+    .nl-btn:hover { background: var(--brand-dk); }
+
+    /* ── GLOBAL OFFICES ── */
+    .offices-section { border-top: 1px solid rgba(255,255,255,.07); padding: 2.5rem 0; }
+    .offices-title {
+      font-size: .7rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 1.5px; color: #475569; margin-bottom: 1.4rem;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .offices-title::after { content: ''; flex: 1; height: 1px; background: rgba(255,255,255,.06); }
+    .offices-title i { color: var(--brand); }
+
+    .offices-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: .85rem;
+    }
+    @media (max-width:1199px) { .offices-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width:767px)  { .offices-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width:479px)  { .offices-grid { grid-template-columns: 1fr; } }
+
+    .office-card {
+      background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.07);
+      border-radius: 12px; padding: 1rem 1.05rem;
+      transition: background .2s, border-color .2s;
+    }
+    .office-card:hover { background: rgba(79,110,247,.08); border-color: rgba(79,110,247,.25); }
+    .office-flag { font-size: 1.3rem; margin-bottom: .35rem; display: block; }
+    .office-country { font-size: .77rem; font-weight: 700; color: #fff; margin-bottom: .18rem; display: flex; align-items: center; gap: 6px; }
+    .office-hq { font-size: .58rem; background: rgba(79,110,247,.3); color: var(--brand); border-radius: 4px; padding: 1px 5px; font-weight: 700; }
+    .office-city { font-size: .79rem; font-weight: 600; color: #94a3b8; margin-bottom: .3rem; }
+    .office-addr { font-size: .74rem; color: #475569; line-height: 1.6; }
+    .office-contact { margin-top: .45rem; font-size: .73rem; color: #475569; }
+    .office-contact a { color: #64748b; text-decoration: none; transition: color .18s; }
+    .office-contact a:hover { color: var(--accent); }
+
+    /* Footer Bottom */
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.06); padding: 1.2rem 0; }
+    .fb-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+    .fb-copy { font-size: .79rem; color: #475569; }
+    .fb-copy strong { color: #64748b; }
+    .fb-trust { display: flex; gap: 1rem; }
+    .trust-chip { display: inline-flex; align-items: center; gap: 4px; font-size: .7rem; color: #475569; }
+    .trust-chip i { color: var(--success); }
+    .fb-links { display: flex; gap: 1.2rem; flex-wrap: wrap; }
+    .fb-links a { font-size: .79rem; color: #475569; text-decoration: none; transition: color .18s; }
+    .fb-links a:hover { color: #94a3b8; }
+
+    @media (max-width:576px) {
+      .fb-inner { flex-direction: column; text-align: center; }
+      .fb-links { justify-content: center; }
+      .fb-trust { justify-content: center; }
+      .nl-form { flex-direction: column; }
+      .hero-stats { gap: .7rem; }
+    }
+
+    /* ─── SHARED SECTION HELPERS ─── */
+    .sec-header { text-align:center; margin-bottom:3rem; }
+    .sec-eyebrow { display:inline-flex; align-items:center; gap:6px; font-size:.75rem; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; color:var(--brand); margin-bottom:.9rem; }
+    .sec-heading { font-family:'Plus Jakarta Sans',sans-serif; font-size:clamp(1.6rem,3vw,2.4rem); font-weight:800; letter-spacing:-1px; color:var(--text-h); line-height:1.2; margin-bottom:.8rem; }
+    .sec-heading em { font-family:'Instrument Serif',serif; font-style:italic; font-weight:400; background:linear-gradient(135deg,var(--brand),var(--accent)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .sec-sub { font-size:.95rem; color:var(--text-m); max-width:460px; margin:0 auto; line-height:1.7; }
+
+    /* ─── ABOUT SECTION ─── */
+    .about-section { padding:5.5rem 0; background:#fff; }
+    .about-eyebrow { display:inline-flex; align-items:center; gap:7px; font-size:.75rem; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; color:var(--brand); margin-bottom:1rem; background:var(--brand-lt); padding:5px 14px; border-radius:30px; }
+    .about-heading { font-family:'Plus Jakarta Sans',sans-serif; font-size:clamp(1.7rem,3.5vw,2.6rem); font-weight:800; letter-spacing:-1.2px; color:var(--text-h); line-height:1.18; margin-bottom:1.1rem; }
+    .about-heading em { font-family:'Instrument Serif',serif; font-style:italic; font-weight:400; background:linear-gradient(135deg,var(--brand),var(--accent)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .about-body { font-size:.92rem; color:var(--text-m); line-height:1.8; margin-bottom:.85rem; }
+    .about-pillars { display:flex; flex-direction:column; gap:.75rem; margin:1.5rem 0; }
+    .about-pillar { display:flex; align-items:flex-start; gap:12px; }
+    .ap-icon { width:36px; height:36px; border-radius:10px; background:var(--brand-lt); color:var(--brand); display:flex; align-items:center; justify-content:center; font-size:.95rem; flex-shrink:0; }
+    .about-pillar strong { display:block; font-size:.87rem; font-weight:700; color:var(--text-h); margin-bottom:2px; }
+    .about-pillar span { font-size:.82rem; color:var(--text-m); line-height:1.6; }
+    .about-actions { display:flex; gap:.85rem; flex-wrap:wrap; margin-top:1.8rem; }
+
+    /* About visual */
+    .about-visual { position:relative; padding:1.5rem 1rem 3rem; }
+    .about-card-main { background:#fff; border:1px solid var(--border); border-radius:18px; padding:1.5rem; box-shadow:var(--shadow-md); }
+    .acm-top { display:flex; align-items:center; gap:12px; margin-bottom:1.3rem; }
+    .acm-logo { width:42px; height:42px; border-radius:11px; background:linear-gradient(135deg,var(--brand),var(--accent)); display:flex; align-items:center; justify-content:center; color:#fff; font-size:1.1rem; flex-shrink:0; }
+    .acm-title { font-weight:700; font-size:.92rem; color:var(--text-h); }
+    .acm-sub { font-size:.75rem; color:var(--text-m); margin-top:2px; }
+    .acm-stats { display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:.5rem; }
+    .acm-stat { background:var(--bg-soft); border-radius:10px; padding:.7rem; text-align:center; font-size:.7rem; color:var(--text-m); font-weight:500; }
+    .acm-stat span { display:block; font-size:1.2rem; font-weight:800; color:var(--text-h); letter-spacing:-.5px; line-height:1.1; margin-bottom:2px; }
+
+    .about-card-float { position:absolute; background:#fff; border:1px solid var(--border); border-radius:12px; padding:.65rem 1rem; display:flex; align-items:center; gap:9px; box-shadow:var(--shadow-md); font-size:.8rem; }
+    .about-card-float i { font-size:1.1rem; }
+    .about-card-float strong { display:block; font-weight:700; color:var(--text-h); font-size:.82rem; line-height:1; }
+    .about-card-float span { font-size:.71rem; color:var(--text-m); }
+    .about-card-float--a { bottom:1.5rem; left:-1rem; }
+    .about-card-float--a i { color:#f59e0b; }
+    .about-card-float--b { bottom:4.5rem; right:-1rem; }
+    .about-card-float--b i { color:var(--brand); }
+    @media (max-width:991px) { .about-card-float { position:static; display:inline-flex; margin:.4rem .3rem 0 0; } .about-visual { padding:0; } }
+
+    /* ─── SERVICES SECTION ─── */
+    .services-section { padding:5.5rem 0; background:var(--bg-soft); border-top:1px solid var(--border); }
+    .srv-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; }
+    @media (max-width:900px) { .srv-grid { grid-template-columns:repeat(2,1fr); } }
+    @media (max-width:560px) { .srv-grid { grid-template-columns:1fr; } }
+    .srv-card { background:#fff; border:1px solid var(--border); border-radius:16px; padding:1.6rem; transition:all .25s; }
+    .srv-card:hover { box-shadow:var(--shadow-md); transform:translateY(-3px); border-color:rgba(79,110,247,.2); }
+    .srv-icon { width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:1.1rem; margin-bottom:1rem; }
+    .srv-card h4 { font-size:.95rem; font-weight:700; color:var(--text-h); margin-bottom:.5rem; display:flex; align-items:center; gap:7px; }
+    .srv-card p { font-size:.84rem; color:var(--text-m); line-height:1.7; margin-bottom:1rem; }
+    .srv-link { font-size:.82rem; font-weight:700; color:var(--brand); text-decoration:none; display:inline-flex; align-items:center; gap:5px; transition:gap .2s; }
+    .srv-link:hover { gap:8px; }
+    .srv-new { font-size:.6rem; background:#ede9fe; color:#7c3aed; border-radius:20px; padding:2px 7px; font-weight:700; vertical-align:middle; }
+
+    /* ─── CTA SECTION ─── */
+    .cta-section { padding:5rem 0; background:#fff; border-top:1px solid var(--border); }
+    .cta-inner { position:relative; background:linear-gradient(135deg,var(--text-h) 0%,#1e293b 100%); border-radius:24px; padding:4rem 3rem; overflow:hidden; text-align:center; }
+    .cta-glow { position:absolute; top:-100px; left:50%; transform:translateX(-50%); width:500px; height:400px; background:radial-gradient(ellipse,rgba(79,110,247,.3) 0%,transparent 70%); pointer-events:none; }
+    .cta-content { position:relative; }
+    .cta-eyebrow { font-size:.85rem; font-weight:600; color:rgba(255,255,255,.55); margin-bottom:1rem; letter-spacing:.3px; }
+    .cta-heading { font-family:'Plus Jakarta Sans',sans-serif; font-size:clamp(1.7rem,3.5vw,2.7rem); font-weight:800; letter-spacing:-1.2px; color:#fff; line-height:1.15; margin-bottom:1rem; }
+    .cta-heading em { font-family:'Instrument Serif',serif; font-style:italic; font-weight:400; background:linear-gradient(135deg,#60a5fa,var(--accent)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .cta-sub { font-size:.95rem; color:rgba(255,255,255,.55); max-width:480px; margin:0 auto 2rem; line-height:1.75; }
+    .cta-actions { display:flex; gap:.9rem; justify-content:center; flex-wrap:wrap; margin-bottom:1.3rem; }
+    .cta-btn-primary { background:linear-gradient(135deg,var(--brand),var(--accent)); color:#fff; border:none; border-radius:10px; padding:.82rem 1.9rem; font-weight:700; font-size:.95rem; text-decoration:none; display:inline-flex; align-items:center; gap:7px; box-shadow:0 4px 20px rgba(79,110,247,.4); transition:all .25s; }
+    .cta-btn-primary:hover { transform:translateY(-2px); box-shadow:0 8px 30px rgba(79,110,247,.5); color:#fff; }
+    .cta-btn-ghost { background:rgba(255,255,255,.08); color:#fff; border:1.5px solid rgba(255,255,255,.15); border-radius:10px; padding:.82rem 1.9rem; font-weight:600; font-size:.95rem; text-decoration:none; display:inline-flex; align-items:center; gap:7px; transition:all .25s; }
+    .cta-btn-ghost:hover { background:rgba(255,255,255,.14); color:#fff; transform:translateY(-2px); }
+    .cta-note { font-size:.78rem; color:rgba(255,255,255,.3); display:flex; align-items:center; justify-content:center; gap:4px; flex-wrap:wrap; }
+    .cta-note i { color:var(--success); font-size:.72rem; }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════ -->
+<!--             HEADER                  -->
+<!-- ════════════════════════════════════ -->
+
+<div class="announce-bar">
+  🎉 NexaCore is now SOC 2 Type II Certified &nbsp;—&nbsp;
+  <a href="#">Read the announcement &rarr;</a>
+</div>
+
+<header class="site-header" id="siteHeader">
+  <div class="container-xl">
+    <nav class="navbar navbar-expand-lg">
+
+      <!-- Logo -->
+      <a class="navbar-brand" href="#">
+        <div class="logo-mark"><i class="bi bi-cpu-fill"></i></div>
+        <div>
+          <div class="logo-wordmark">Nexa<span>Core</span></div>
+          <span class="logo-sub">IT Solutions</span>
+        </div>
+      </a>
+
+      <!-- Mobile Toggle -->
+      <button class="navbar-toggler ms-auto me-2" type="button"
+        data-bs-toggle="collapse" data-bs-target="#navMain"
+        aria-controls="navMain" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navMain">
+        <ul class="navbar-nav mx-auto gap-1 align-items-lg-center">
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+
+          <!-- Services -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#"
+               id="ddServices" role="button"
+               data-bs-toggle="dropdown" data-bs-auto-close="true"
+               aria-expanded="false">
+              Services
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="ddServices">
+              <li><h6 class="dropdown-header">Core Services</h6></li>
+              <li>
+                <a class="dropdown-item" href="#">
+                  <span class="dd-icon"><i class="bi bi-cloud-arrow-up-fill"></i></span>
+                  <span class="dd-info">
+                    <span class="dd-title">Cloud Solutions</span>
+                    <span class="dd-desc">Migration, DevOps & AWS/Azure</span>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">
+                  <span class="dd-icon"><i class="bi bi-shield-lock-fill"></i></span>
+                  <span class="dd-info">
+                    <span class="dd-title">Cybersecurity</span>
+                    <span class="dd-desc">SOC, Pen Testing & Compliance</span>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">
+                  <span class="dd-icon"><i class="bi bi-code-slash"></i></span>
+                  <span class="dd-info">
+                    <span class="dd-title">Software Development</span>
+                    <span class="dd-desc">Web, Mobile & Enterprise Apps</span>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">
+                  <span class="dd-icon"><i class="bi bi-graph-up-arrow"></i></span>
+                  <span class="dd-info">
+                    <span class="dd-title">Data & Analytics</span>
+                    <span class="dd-desc">BI, Pipelines & Data Lakes</span>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">
+                  <span class="dd-icon"><i class="bi bi-gear-wide-connected"></i></span>
+                  <span class="dd-info">
+                    <span class="dd-title">Managed Services</span>
+                    <span class="dd-desc">24/7 monitoring & support</span>
+                  </span>
+                </a>
+              </li>
+              <li><hr class="dropdown-divider"></li>
+              <li>
+                <a class="dropdown-item" href="#">
+                  <span class="dd-icon"><i class="bi bi-robot"></i></span>
+                  <span class="dd-info">
+                    <span class="dd-title">AI Automation</span>
+                    <span class="dd-desc">LLM, Agents & Workflows</span>
+                  </span>
+                  <span class="badge-pill badge-new">New</span>
+                </a>
+              </li>
+              <li>
+                <a class="dd-cta" href="#">
+                  <i class="bi bi-grid-3x3-gap-fill"></i> View all services &rarr;
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <!-- Industries -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#"
+               id="ddIndustries" role="button"
+               data-bs-toggle="dropdown" data-bs-auto-close="true"
+               aria-expanded="false">
+              Industries
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="ddIndustries">
+              <li><h6 class="dropdown-header">We Serve</h6></li>
+              <li>
+                <a class="dropdown-item" href="#">
+                  <span class="dd-icon"><i class="bi bi-bank2"></i></span>
+                  <span class="dd-info">
+                    <span class="dd-title">Finance & Banking</span>
+                    <span class="dd-desc">Fintech, BFSI & Payments</span>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">
+                  <span class="dd-icon"><i class="bi bi-heart-pulse-fill"></i></span>
+                  <span class="dd-info">
+                    <span class="dd-title">Healthcare</span>
+                    <span class="dd-desc">HIPAA-compliant systems</span>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">
+                  <span class="dd-icon"><i class="bi bi-cart4"></i></span>
+                  <span class="dd-info">
+                    <span class="dd-title">Retail & E-Commerce</span>
+                    <span class="dd-desc">Platforms & Logistics Tech</span>
+                  </span>
+                  <span class="badge-pill badge-hot">Hot</span>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">
+                  <span class="dd-icon"><i class="bi bi-buildings-fill"></i></span>
+                  <span class="dd-info">
+                    <span class="dd-title">Enterprise & SaaS</span>
+                    <span class="dd-desc">Scale-up architecture</span>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">
+                  <span class="dd-icon"><i class="bi bi-truck-front-fill"></i></span>
+                  <span class="dd-info">
+                    <span class="dd-title">Manufacturing & Supply</span>
+                    <span class="dd-desc">IoT & automation systems</span>
+                  </span>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <!-- Company -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#"
+               id="ddCompany" role="button"
+               data-bs-toggle="dropdown" data-bs-auto-close="true"
+               aria-expanded="false">
+              Company
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="ddCompany">
+              <li>
+                <a class="dropdown-item" href="#">
+                  <span class="dd-icon"><i class="bi bi-people-fill"></i></span>
+                  <span class="dd-info"><span class="dd-title">About Us</span><span class="dd-desc">Our story & mission</span></span>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">
+                  <span class="dd-icon"><i class="bi bi-person-badge-fill"></i></span>
+                  <span class="dd-info"><span class="dd-title">Leadership</span><span class="dd-desc">Meet the team</span></span>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">
+                  <span class="dd-icon"><i class="bi bi-briefcase-fill"></i></span>
+                  <span class="dd-info"><span class="dd-title">Careers</span><span class="dd-desc">5 open roles</span></span>
+                  <span class="badge-pill badge-new">5</span>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">
+                  <span class="dd-icon"><i class="bi bi-newspaper"></i></span>
+                  <span class="dd-info"><span class="dd-title">Press & Media</span><span class="dd-desc">News & coverage</span></span>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">
+                  <span class="dd-icon"><i class="bi bi-geo-alt-fill"></i></span>
+                  <span class="dd-info"><span class="dd-title">Global Offices</span><span class="dd-desc">US, India, UK, Canada, UAE, AU</span></span>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item"><a class="nav-link" href="#">Case Studies</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Pricing</a></li>
+
+        </ul>
+
+        <div class="d-flex align-items-center gap-2 mt-3 mt-lg-0 ms-lg-3">
+          <a href="#" class="btn-nav-outline">Sign In</a>
+          <a href="#" class="btn-nav-cta">
+            Get Started <i class="bi bi-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- ════════════════════════════════════ -->
+<!--         HERO (Placeholder)          -->
+<!-- ════════════════════════════════════ -->
+<section class="hero">
+  <div class="container-xl">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-7">
+        <div class="hero-eyebrow">
+          <span class="pill">New</span>
+          AI Automation Suite is now Live
+        </div>
+        <h1 class="hero-title">
+          We Build <em>Digital Infrastructure</em><br>
+          That Scales With You
+        </h1>
+        <p class="hero-sub">
+          From cloud migration to AI-powered automation, NexaCore delivers 
+          enterprise-grade technology solutions across 6 countries — so your 
+          team can focus on what matters.
+        </p>
+        <div class="hero-actions">
+          <a href="#" class="btn-hp">
+            Explore Services <i class="bi bi-arrow-right"></i>
+          </a>
+          <a href="#" class="btn-hg">
+            <i class="bi bi-play-circle-fill"></i> Watch Demo
+          </a>
+        </div>
+        <div class="social-proof">
+          <div class="proof-avatars">
+            <span>JK</span>
+            <span>RP</span>
+            <span>AM</span>
+            <span>SL</span>
+          </div>
+          <div class="proof-divider"></div>
+          <div class="proof-right">
+            <div class="proof-stars">
+              ★★★★★
+              <span class="star-count">4.9/5</span>
+            </div>
+            <div class="proof-text">
+              Trusted by <strong>500+ companies</strong> worldwide
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <div class="hero-stats">
+          <div class="stat-card">
+            <div class="stat-num">500<sup>+</sup></div>
+            <div class="stat-lbl">Global Clients</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">99<sup>.9%</sup></div>
+            <div class="stat-lbl">SLA Uptime</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">6</div>
+            <div class="stat-lbl">Countries</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">12<sup>yr</sup></div>
+            <div class="stat-lbl">In Business</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════ -->
+<!--        SOCIAL PROOF SECTION         -->
+<!-- ════════════════════════════════════ -->
+<section class="sp-section">
+  <div class="container-xl">
+
+    <!-- Top row: pill + heading -->
+    <div class="sp-header">
+      <div class="sp-eyebrow">
+        <span class="sp-dot"></span>
+        Trusted Globally
+      </div>
+      <h2 class="sp-heading">
+        Loved by teams at the world's<br class="d-none d-md-block"/>
+        <em>most ambitious companies</em>
+      </h2>
+      <p class="sp-sub">
+        500+ enterprises across 6 countries rely on NexaCore to power their critical infrastructure.
+      </p>
+    </div>
+
+    <!-- Stats row -->
+    <div class="sp-stats-row">
+      <div class="sp-stat">
+        <div class="sp-stat-num">500<span>+</span></div>
+        <div class="sp-stat-lbl">Companies worldwide</div>
+      </div>
+      <div class="sp-stat-divider"></div>
+      <div class="sp-stat">
+        <div class="sp-stat-num">4.9<span>/5</span></div>
+        <div class="sp-stat-lbl">Average rating</div>
+      </div>
+      <div class="sp-stat-divider"></div>
+      <div class="sp-stat">
+        <div class="sp-stat-num">99.9<span>%</span></div>
+        <div class="sp-stat-lbl">Uptime SLA</div>
+      </div>
+      <div class="sp-stat-divider"></div>
+      <div class="sp-stat">
+        <div class="sp-stat-num">40<span>+</span></div>
+        <div class="sp-stat-lbl">Countries served</div>
+      </div>
+      <div class="sp-stat-divider"></div>
+      <div class="sp-stat">
+        <div class="sp-stat-num">12<span>yr</span></div>
+        <div class="sp-stat-lbl">In business</div>
+      </div>
+    </div>
+
+    <!-- Review cards -->
+    <div class="sp-reviews">
+
+      <div class="sp-review-card">
+        <div class="sp-review-stars">★★★★★</div>
+        <p class="sp-review-text">
+          "NexaCore's cloud migration team reduced our infrastructure costs by 40% in just 3 months. Incredible execution."
+        </p>
+        <div class="sp-reviewer">
+          <div class="sp-reviewer-av" style="background:linear-gradient(135deg,#4f6ef7,#818cf8)">JK</div>
+          <div class="sp-reviewer-info">
+            <strong>James Kim</strong>
+            <span>CTO, Finstack Inc.</span>
+          </div>
+          <div class="sp-reviewer-logo">🏦</div>
+        </div>
+      </div>
+
+      <div class="sp-review-card sp-review-featured">
+        <div class="sp-review-stars">★★★★★</div>
+        <p class="sp-review-text">
+          "Best IT partner we've ever worked with. Their cybersecurity team gave us full SOC 2 compliance in under 60 days — something no one else could promise."
+        </p>
+        <div class="sp-reviewer">
+          <div class="sp-reviewer-av" style="background:linear-gradient(135deg,#8b5cf6,#a78bfa)">RP</div>
+          <div class="sp-reviewer-info">
+            <strong>Riya Patel</strong>
+            <span>VP Engineering, HealthBridge</span>
+          </div>
+          <div class="sp-reviewer-logo">🏥</div>
+        </div>
+      </div>
+
+      <div class="sp-review-card">
+        <div class="sp-review-stars">★★★★★</div>
+        <p class="sp-review-text">
+          "Their AI automation suite saved our team 200+ hours/month. The ROI was visible within the first 6 weeks of going live."
+        </p>
+        <div class="sp-reviewer">
+          <div class="sp-reviewer-av" style="background:linear-gradient(135deg,#06b6d4,#22d3ee)">AM</div>
+          <div class="sp-reviewer-info">
+            <strong>Aisha Malik</strong>
+            <span>Head of Ops, CartZone</span>
+          </div>
+          <div class="sp-reviewer-logo">🛒</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom: avatar cluster + trust badges -->
+    <div class="sp-bottom-row">
+      <div class="sp-cluster">
+        <div class="sp-cluster-avatars">
+          <span style="background:linear-gradient(135deg,#4f6ef7,#818cf8)">JK</span>
+          <span style="background:linear-gradient(135deg,#06b6d4,#22d3ee)">RP</span>
+          <span style="background:linear-gradient(135deg,#8b5cf6,#a78bfa)">AM</span>
+          <span style="background:linear-gradient(135deg,#10b981,#34d399)">SL</span>
+          <span style="background:linear-gradient(135deg,#f59e0b,#fbbf24)">+</span>
+        </div>
+        <div class="sp-cluster-text">
+          <div class="sp-cluster-stars">★★★★★ <span>4.9/5</span></div>
+          <div>Trusted by <strong>500+ companies</strong> worldwide</div>
+        </div>
+      </div>
+
+      <div class="sp-trust-badges">
+        <div class="sp-badge"><i class="bi bi-shield-check-fill"></i> ISO 27001</div>
+        <div class="sp-badge"><i class="bi bi-award-fill"></i> SOC 2 Type II</div>
+        <div class="sp-badge"><i class="bi bi-cloud-check-fill"></i> AWS Premier</div>
+        <div class="sp-badge"><i class="bi bi-patch-check-fill"></i> GDPR Compliant</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════ -->
+<!--            ABOUT US SECTION         -->
+<!-- ════════════════════════════════════ -->
+<section class="about-section">
+  <div class="container-xl">
+    <div class="row align-items-center g-5">
+
+      <!-- Left: visual card stack -->
+      <div class="col-lg-5">
+        <div class="about-visual">
+          <div class="about-card-main">
+            <div class="acm-top">
+              <div class="acm-logo"><i class="bi bi-cpu-fill"></i></div>
+              <div>
+                <div class="acm-title">NexaCore IT Solutions</div>
+                <div class="acm-sub">Founded 2012 · San Francisco, CA</div>
+              </div>
+            </div>
+            <div class="acm-stats">
+              <div class="acm-stat"><span>500+</span>Clients</div>
+              <div class="acm-stat"><span>6</span>Countries</div>
+              <div class="acm-stat"><span>850+</span>Experts</div>
+              <div class="acm-stat"><span>12yr</span>Experience</div>
+            </div>
+          </div>
+          <div class="about-card-float about-card-float--a">
+            <i class="bi bi-trophy-fill"></i>
+            <div>
+              <strong>#1 IT Partner</strong>
+              <span>Gartner 2024</span>
+            </div>
+          </div>
+          <div class="about-card-float about-card-float--b">
+            <i class="bi bi-graph-up-arrow"></i>
+            <div>
+              <strong>$2.4B+</strong>
+              <span>Client revenue enabled</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: copy -->
+      <div class="col-lg-7">
+        <div class="about-eyebrow">
+          <i class="bi bi-building"></i> About NexaCore
+        </div>
+        <h2 class="about-heading">
+          12 years of building<br/>
+          <em>technology that matters</em>
+        </h2>
+        <p class="about-body">
+          NexaCore was founded in 2012 with a single belief — that every business deserves 
+          enterprise-grade technology, regardless of size. Today we serve 500+ companies 
+          across 6 countries, from fast-growing startups to Fortune 500 enterprises.
+        </p>
+        <p class="about-body">
+          Our 850+ engineers, architects, and consultants specialise in cloud infrastructure, 
+          cybersecurity, AI automation, and digital transformation — working as a true extension 
+          of your team.
+        </p>
+
+        <div class="about-pillars">
+          <div class="about-pillar">
+            <div class="ap-icon"><i class="bi bi-eye-fill"></i></div>
+            <div>
+              <strong>Our Vision</strong>
+              <span>To be the most trusted technology partner for the world's boldest companies.</span>
+            </div>
+          </div>
+          <div class="about-pillar">
+            <div class="ap-icon"><i class="bi bi-heart-fill"></i></div>
+            <div>
+              <strong>Our Mission</strong>
+              <span>Deliver scalable, secure, and intelligent solutions that create lasting business value.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-actions">
+          <a href="#" class="btn-hp">Meet Our Team <i class="bi bi-arrow-right"></i></a>
+          <a href="#" class="btn-hg">Our Story</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════ -->
+<!--           SERVICES SECTION          -->
+<!-- ════════════════════════════════════ -->
+<section class="services-section">
+  <div class="container-xl">
+
+    <div class="sec-header">
+      <div class="sec-eyebrow"><i class="bi bi-grid-3x3-gap-fill"></i> What We Do</div>
+      <h2 class="sec-heading">End-to-end IT services<br/><em>built for scale</em></h2>
+      <p class="sec-sub">From strategy to execution — we handle every layer of your technology stack.</p>
+    </div>
+
+    <div class="srv-grid">
+
+      <div class="srv-card">
+        <div class="srv-icon" style="background:#eef1fe;color:#4f6ef7"><i class="bi bi-cloud-arrow-up-fill"></i></div>
+        <h4>Cloud Solutions</h4>
+        <p>Seamless migration to AWS, Azure, or GCP. Optimise costs, improve reliability and scale on demand.</p>
+        <a href="#" class="srv-link">Learn more <i class="bi bi-arrow-right"></i></a>
+      </div>
+
+      <div class="srv-card">
+        <div class="srv-icon" style="background:#fef3c7;color:#d97706"><i class="bi bi-shield-lock-fill"></i></div>
+        <h4>Cybersecurity</h4>
+        <p>SOC monitoring, penetration testing, and full compliance (ISO 27001, SOC 2, GDPR) — 24/7.</p>
+        <a href="#" class="srv-link">Learn more <i class="bi bi-arrow-right"></i></a>
+      </div>
+
+      <div class="srv-card">
+        <div class="srv-icon" style="background:#ede9fe;color:#7c3aed"><i class="bi bi-code-slash"></i></div>
+        <h4>Software Development</h4>
+        <p>Custom web, mobile, and enterprise applications delivered with agile speed and rock-solid quality.</p>
+        <a href="#" class="srv-link">Learn more <i class="bi bi-arrow-right"></i></a>
+      </div>
+
+      <div class="srv-card">
+        <div class="srv-icon" style="background:#d1fae5;color:#059669"><i class="bi bi-graph-up-arrow"></i></div>
+        <h4>Data & Analytics</h4>
+        <p>Turn raw data into decisions. BI dashboards, data pipelines, and lakehouse architectures.</p>
+        <a href="#" class="srv-link">Learn more <i class="bi bi-arrow-right"></i></a>
+      </div>
+
+      <div class="srv-card">
+        <div class="srv-icon" style="background:#e0f9ff;color:#0891b2"><i class="bi bi-robot"></i></div>
+        <h4>AI Automation <span class="srv-new">New</span></h4>
+        <p>LLM-powered agents and intelligent workflows that eliminate repetitive tasks and unlock productivity.</p>
+        <a href="#" class="srv-link">Learn more <i class="bi bi-arrow-right"></i></a>
+      </div>
+
+      <div class="srv-card">
+        <div class="srv-icon" style="background:#fce7f3;color:#db2777"><i class="bi bi-gear-wide-connected"></i></div>
+        <h4>Managed Services</h4>
+        <p>We monitor, manage, and optimise your infrastructure around the clock so you never have to worry.</p>
+        <a href="#" class="srv-link">Learn more <i class="bi bi-arrow-right"></i></a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════ -->
+<!--              CTA SECTION            -->
+<!-- ════════════════════════════════════ -->
+<section class="cta-section">
+  <div class="container-xl">
+    <div class="cta-inner">
+      <div class="cta-glow"></div>
+      <div class="cta-content">
+        <div class="cta-eyebrow">🚀 Ready to scale?</div>
+        <h2 class="cta-heading">Let's build something<br/><em>extraordinary together</em></h2>
+        <p class="cta-sub">Book a free 30-minute strategy call with one of our senior architects. No pressure, no sales pitch — just real advice.</p>
+        <div class="cta-actions">
+          <a href="#" class="cta-btn-primary">Book a Free Call <i class="bi bi-arrow-right"></i></a>
+          <a href="#" class="cta-btn-ghost"><i class="bi bi-chat-dots-fill"></i> Talk to Sales</a>
+        </div>
+        <div class="cta-note"><i class="bi bi-check-circle-fill"></i> No credit card &nbsp;·&nbsp; <i class="bi bi-check-circle-fill"></i> Reply within 24h &nbsp;·&nbsp; <i class="bi bi-check-circle-fill"></i> Free consultation</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════ -->
+<!--              FOOTER                 -->
+<!-- ════════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="container-xl">
+
+    <div class="row g-5 pb-4">
+
+      <!-- Brand -->
+      <div class="col-lg-3 col-md-6">
+        <div class="footer-logo">
+          <div class="fm"><i class="bi bi-cpu-fill"></i></div>
+          Nexa<span>Core</span>
+        </div>
+        <p class="footer-tagline">
+          Empowering enterprises with scalable cloud, cybersecurity, and 
+          AI-driven technology — across 6 global offices.
+        </p>
+        <div class="footer-socials">
+          <a href="#" class="soc-btn" title="X / Twitter"><i class="bi bi-twitter-x"></i></a>
+          <a href="#" class="soc-btn" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+          <a href="#" class="soc-btn" title="GitHub"><i class="bi bi-github"></i></a>
+          <a href="#" class="soc-btn" title="YouTube"><i class="bi bi-youtube"></i></a>
+          <a href="#" class="soc-btn" title="Instagram"><i class="bi bi-instagram"></i></a>
+        </div>
+        <div class="footer-certs">
+          <span class="cert-tag"><i class="bi bi-shield-check-fill"></i> ISO 27001</span>
+          <span class="cert-tag"><i class="bi bi-award-fill"></i> SOC 2 Type II</span>
+          <span class="cert-tag"><i class="bi bi-cloud-check-fill"></i> AWS Premier</span>
+          <span class="cert-tag"><i class="bi bi-patch-check-fill"></i> GDPR</span>
+        </div>
+      </div>
+
+      <!-- Services -->
+      <div class="col-6 col-lg-2 col-md-3">
+        <h6 class="footer-col-title">Services</h6>
+        <ul class="footer-links">
+          <li><a href="#">Cloud Solutions</a></li>
+          <li><a href="#">Cybersecurity</a></li>
+          <li><a href="#">Software Dev</a></li>
+          <li><a href="#">Data & Analytics</a></li>
+          <li><a href="#">AI Automation <span class="fl-badge fl-new">New</span></a></li>
+          <li><a href="#">DevOps & CI/CD</a></li>
+          <li><a href="#">IT Consulting</a></li>
+          <li><a href="#">Managed Services</a></li>
+        </ul>
+      </div>
+
+      <!-- Company -->
+      <div class="col-6 col-lg-2 col-md-3">
+        <h6 class="footer-col-title">Company</h6>
+        <ul class="footer-links">
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Leadership</a></li>
+          <li><a href="#">Careers <span class="fl-badge fl-hot">5 Open</span></a></li>
+          <li><a href="#">Press & Media</a></li>
+          <li><a href="#">Partner Program</a></li>
+          <li><a href="#">Case Studies</a></li>
+          <li><a href="#">Blog & Insights</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Resources -->
+      <div class="col-6 col-lg-2 col-md-3">
+        <h6 class="footer-col-title">Resources</h6>
+        <ul class="footer-links">
+          <li><a href="#">Documentation</a></li>
+          <li><a href="#">API Reference</a></li>
+          <li><a href="#">Whitepapers</a></li>
+          <li><a href="#">Webinars</a></li>
+          <li><a href="#">Security Center</a></li>
+          <li><a href="#">Status Page</a></li>
+          <li><a href="#">Trust & Safety</a></li>
+          <li><a href="#">Sitemap</a></li>
+        </ul>
+      </div>
+
+      <!-- Newsletter + Support -->
+      <div class="col-6 col-lg-3 col-md-3">
+        <h6 class="footer-col-title">Newsletter</h6>
+        <div class="footer-newsletter">
+          <h6>Tech Insights Weekly</h6>
+          <p>12,000+ IT leaders. No spam, ever.</p>
+          <div class="nl-form">
+            <input class="nl-input" type="email" placeholder="you@company.com"/>
+            <button class="nl-btn">Go</button>
+          </div>
+        </div>
+        <h6 class="footer-col-title">Support</h6>
+        <ul class="footer-links">
+          <li>
+            <a href="/cdn-cgi/l/email-protection#7d15181111123d1318051c1e120f18531412">
+              <i class="bi bi-envelope" style="color:#4f6ef7;font-size:.75rem;"></i>
+              <span class="__cf_email__" data-cfemail="b1d9d4dddddef1dfd4c9d0d2dec3d49fd8de">[email&#160;protected]</span>
+            </a>
+          </li>
+          <li>
+            <a href="tel:+18006292673">
+              <i class="bi bi-telephone" style="color:#4f6ef7;font-size:.75rem;"></i>
+              +1 (800) 629-2673
+            </a>
+          </li>
+          <li>
+            <a href="#" style="color:#10b981;">
+              <i class="bi bi-circle-fill" style="font-size:.48rem;"></i>
+              All systems operational
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div><!-- /row -->
+
+    <!-- ── GLOBAL OFFICES ── -->
+    <div class="offices-section">
+      <div class="offices-title">
+        <i class="bi bi-geo-alt-fill"></i>
+        Our Global Offices
+      </div>
+
+      <div class="offices-grid">
+
+        <!-- USA -->
+        <div class="office-card">
+          <span class="office-flag">🇺🇸</span>
+          <div class="office-country">
+            United States
+            <span class="office-hq">HQ</span>
+          </div>
+          <div class="office-city">San Francisco, CA</div>
+          <div class="office-addr">
+            42 Tech Boulevard, Suite 800<br>
+            San Francisco, CA 94107
+          </div>
+          <div class="office-contact">
+            <a href="tel:+18006292673">+1 (800) 629-2673</a><br>
+            <a href="/cdn-cgi/l/email-protection#c1b4b281afa4b9a0a2aeb3a4efa8ae"><span class="__cf_email__" data-cfemail="ff8a8cbf919a879e9c908d9ad19690">[email&#160;protected]</span></a>
+          </div>
+        </div>
+
+        <!-- India -->
+        <div class="office-card">
+          <span class="office-flag">🇮🇳</span>
+          <div class="office-country">India</div>
+          <div class="office-city">Bengaluru, Karnataka</div>
+          <div class="office-addr">
+            Tower B, 12th Floor<br>
+            Cessna Business Park<br>
+            Kadubeesanahalli, 560103
+          </div>
+          <div class="office-contact">
+            <a href="tel:+918041234567">+91 80 4123 4567</a><br>
+            <a href="/cdn-cgi/l/email-protection#c9a0a7ada0a889a7acb1a8aaa6bbace7a0a6"><span class="__cf_email__" data-cfemail="167f78727f775678736e7775796473387f79">[email&#160;protected]</span></a>
+          </div>
+        </div>
+
+        <!-- Canada -->
+        <div class="office-card">
+          <span class="office-flag">🇨🇦</span>
+          <div class="office-country">Canada</div>
+          <div class="office-city">Toronto, Ontario</div>
+          <div class="office-addr">
+            200 Bay Street, Suite 2400<br>
+            Royal Bank Plaza<br>
+            Toronto, ON M5J 2J2
+          </div>
+          <div class="office-contact">
+            <a href="tel:+14168001234">+1 (416) 800-1234</a><br>
+            <a href="/cdn-cgi/l/email-protection#6003010e010401200e051801030f12054e090f"><span class="__cf_email__" data-cfemail="a0c3c1cec1c4c1e0cec5d8c1c3cfd2c58ec9cf">[email&#160;protected]</span></a>
+          </div>
+        </div>
+
+        <!-- UK -->
+        <div class="office-card">
+          <span class="office-flag">🇬🇧</span>
+          <div class="office-country">United Kingdom</div>
+          <div class="office-city">London, England</div>
+          <div class="office-addr">
+            1 Canada Square, Level 29<br>
+            Canary Wharf<br>
+            London, E14 5AB
+          </div>
+          <div class="office-contact">
+            <a href="tel:+442071234567">+44 20 7123 4567</a><br>
+            <a href="/cdn-cgi/l/email-protection#196c7259777c61787a766b7c377076"><span class="__cf_email__" data-cfemail="9de8f6ddf3f8e5fcfef2eff8b3f4f2">[email&#160;protected]</span></a>
+          </div>
+        </div>
+
+        <!-- Dubai -->
+        <div class="office-card">
+          <span class="office-flag">🇦🇪</span>
+          <div class="office-country">UAE — Dubai</div>
+          <div class="office-city">Dubai, DIFC</div>
+          <div class="office-addr">
+            Level 14, The Gate Building<br>
+            Dubai Int'l Financial Centre<br>
+            PO Box 506547, Dubai
+          </div>
+          <div class="office-contact">
+            <a href="tel:+97143456789">+971 4 345 6789</a><br>
+            <a href="/cdn-cgi/l/email-protection#d8bcadbab9b198b6bda0b9bbb7aabdf6b1b7"><span class="__cf_email__" data-cfemail="395d4c5b585079575c41585a564b5c175056">[email&#160;protected]</span></a>
+          </div>
+        </div>
+
+        <!-- Australia -->
+        <div class="office-card">
+          <span class="office-flag">🇦🇺</span>
+          <div class="office-country">Australia</div>
+          <div class="office-city">Sydney, NSW</div>
+          <div class="office-addr">
+            Level 25, 1 Market Street<br>
+            Sydney NSW 2000<br>
+            Australia
+          </div>
+          <div class="office-contact">
+            <a href="tel:+61292345678">+61 2 9234 5678</a><br>
+            <a href="/cdn-cgi/l/email-protection#5d3c281d3338253c3e322f38733432"><span class="__cf_email__" data-cfemail="a4c5d1e4cac1dcc5c7cbd6c18acdcb">[email&#160;protected]</span></a>
+          </div>
+        </div>
+
+      </div><!-- /offices-grid -->
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="footer-bottom">
+      <div class="fb-inner">
+        <p class="fb-copy mb-0">
+          © 2025 <strong>NexaCore IT Solutions Pvt. Ltd.</strong> All rights reserved.
+        </p>
+        <div class="fb-trust">
+          <spa
