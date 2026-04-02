@@ -506,6 +506,58 @@
 .wexp-card-more small { font-size: 0.7rem; font-weight: 700; color: var(--t500); letter-spacing: 0.05em; text-align: center; line-height: 1.4; }
 @media (max-width: 767px) { .wexp-grid { grid-template-columns: repeat(3, 1fr); } .wexp-sub { max-width: 100%; } }
 @media (max-width: 480px) { .wexp-grid { grid-template-columns: repeat(3, 1fr); gap: 0.5rem; } }
+
+/* ── INTEGRATIONS ── */
+    .integrations-section {
+      padding: 100px 0;
+      background: var(--s-bg);
+    }
+
+    .integrations-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    @media(max-width:576px) {
+      .integrations-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .int-card {
+      background: #fff;
+      border: 1px solid var(--s-border);
+      border-radius: 12px;
+      padding: 18px 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      font-size: .78rem;
+      font-weight: 600;
+      color: #374151;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color .25s, transform .25s, box-shadow .25s;
+    }
+
+    .int-card i {
+      font-size: 1.6rem;
+    }
+
+    .int-card:hover {
+      border-color: rgba(91, 94, 244, .35);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px rgba(91, 94, 244, .1);
+    }
+
+    .int-card-featured {
+      border-color: rgba(91, 94, 244, .3);
+      background: #f8f9ff;
+    }
+
+
   </style>
 </head>
 <body>
@@ -1585,6 +1637,39 @@
     </div>
   </div>
 </section>
+
+<section class="integrations-section">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-5">
+            <div class="sec-badge">300+ Integrations</div>
+            <h2 class="sec-title">Connect tools you<br>already love</h2>
+            <p class="sec-sub" style="margin:0">Plug SaasFlow into your existing workflow. Works seamlessly with the
+              apps your team uses every day — from Slack to Tally.</p>
+            <a href="#" class="btn-hero-cta mt-4 d-inline-flex">See All Integrations <i class="bi bi-arrow-right"></i></a>
+          </div>
+          <div class="col-lg-7">
+            <div class="integrations-grid">
+              <div class="int-card"><i class="bi bi-google" style="color:#4285f4"></i><span>Google Workspace</span>
+              </div>
+              <div class="int-card"><i class="bi bi-slack" style="color:#4a154b"></i><span>Slack</span></div>
+              <div class="int-card int-card-featured"><i class="bi bi-lightning-charge-fill" style="color:#5b5ef4"></i><span>Razorpay</span></div>
+              <div class="int-card"><i class="bi bi-whatsapp" style="color:#25d366"></i><span>WhatsApp</span></div>
+              <div class="int-card"><i class="bi bi-microsoft" style="color:#00a4ef"></i><span>Microsoft 365</span>
+              </div>
+              <div class="int-card int-card-featured"><i class="bi bi-currency-rupee" style="color:#10b981"></i><span>Tally ERP</span></div>
+              <div class="int-card"><i class="bi bi-github" style="color:#333"></i><span>GitHub</span></div>
+              <div class="int-card"><i class="bi bi-stripe" style="color:#6772e5"></i><span>Stripe</span></div>
+              <div class="int-card"><i class="bi bi-mailbox" style="color:#e34f26"></i><span>Mailchimp</span></div>
+              <div class="int-card int-card-featured"><i class="bi bi-phone-fill" style="color:#5b5ef4"></i><span>PhonePe API</span></div>
+              <div class="int-card"><i class="bi bi-dropbox" style="color:#0061ff"></i><span>Dropbox</span></div>
+              <div class="int-card"><i class="bi bi-plus-lg" style="color:#9ca3af"></i><span>300+ More</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
 
 <!-- Main footer -->
 <footer class="main-footer">
