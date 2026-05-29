@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CodexAman UI — Hero</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       CodexAman UI — SaaS Hero v3
+       Prefix: .codexaman-ui-*
+       Human comments: real dev talk, not robot docs
+    ============================================================ */
+    :root {
+      --cx-red:       #e8282b;
+      --cx-red-dark:  #c41f22;
+      --cx-red-glow:  rgba(232,40,43,0.18);
+      --cx-ink:       #0d0d0e;
+      --cx-ink2:      #2a2a2d;
+      --cx-body:      #52525b;
+      --cx-muted:     #a1a1aa;
+      --cx-surface:   #ffffff;
+      --cx-bg:        #fafafa;
+      --cx-border:    rgba(0,0,0,0.08);
+
+      --cx-font-d: 'Sora', ui-sans-serif, sans-serif;
+      --cx-font-b: 'Inter', ui-sans-serif, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--cx-font-b); background: var(--cx-bg); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+
+    /* ============================================================
+       TOPBAR — slim red strip, one line, maximum impact
+    ============================================================ */
+    .codexaman-ui-topbar {
+      background: var(--cx-red);
+      text-align: center;
+      padding: 0.42rem 1rem;
+      position: relative; z-index: 200;
+    }
+    .codexaman-ui-topbar p {
+      font-family: var(--cx-font-b);
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.92);
+      margin: 0;
+    }
+    .codexaman-ui-topbar a { color: #fff; font-weight: 700; text-decoration: underline; text-underline-offset: 2px; }
+
+    /* ============================================================
+       HERO WRAPPER
+       Not full-screen — just tall enough to feel premium but
+       the user can see what's below without scrolling too far.
+       75vh is the sweet spot. Video bleeds edge to edge.
+    ============================================================ */
+    .codexaman-ui-hero {
+      position: relative;
+      width: 100%;
+      min-height: 78vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* ============================================================
+       VIDEO — now actually visible.
+       Less desaturation (0.75 instead of 0.35), less overlay opacity.
+       The video is a design element, not hidden wallpaper.
+    ============================================================ */
+    .codexaman-ui-hero__video {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 25%;
+      z-index: 0;
+      filter: saturate(0.6) brightness(0.88);
+    }
+
+    /* ============================================================
+       OVERLAY — lighter than before, directional.
+       Strong white-pink on the left (so text pops),
+       barely-there on the right (video shows through beautifully).
+    ============================================================ */
+    .codexaman-ui-hero__overlay {
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(
+        100deg,
+        rgba(255,250,250,0.94) 0%,
+        rgba(255,245,245,0.78) 40%,
+        rgba(255,235,235,0.30) 70%,
+        rgba(255,230,230,0.08) 100%
+      );
+    }
+
+    /* ============================================================
+       CREATIVE DIAGONAL SLICE
+       A clean diagonal white edge cuts across the hero — this
+       separates "content zone" from "video zone" with style.
+       No old-vibe full overlays. This is the modern SaaS move.
+    ============================================================ */
+    .codexaman-ui-hero__slice {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
+    .codexaman-ui-hero__slice::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 62%;
+      height: 100%;
+      background: rgba(255,250,250,0.55);
+      clip-path: polygon(0 0, 100% 0, 82% 100%, 0 100%);
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
+    }
+
+    /* ============================================================
+       CONTENT — z:3, sits above everything
+    ============================================================ */
+    .codexaman-ui-hero__content {
+      position: relative; z-index: 3;
+      padding: 4.5rem 0 4rem;
+    }
+
+    /* ============================================================
+       EYEBROW — two-part: pill + thin separator + label
+       This is the "new SaaS" pattern. Linear, Vercel, Loom do it.
+    ============================================================ */
+    .codexaman-ui-hero__eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      transform: translateY(12px);
+      animation: cx-rise 0.6s cubic-bezier(0.22,1,0.36,1) 0.1s forwards;
+    }
+    .codexaman-ui-eyebrow-pill {
+      font-family: var(--cx-font-b);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #fff;
+      background: var(--cx-red);
+      padding: 0.25rem 0.65rem;
+      border-radius: 100px;
+    }
+    .codexaman-ui-eyebrow-sep {
+      width: 1px; height: 14px;
+      background: rgba(0,0,0,0.18);
+    }
+    .codexaman-ui-eyebrow-label {
+      font-family: var(--cx-font-b);
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--cx-body);
+    }
+
+    /* ============================================================
+       HEADLINE — Sora 800, tight tracking.
+       Creative choice: the accent word is underlined with a
+       hand-drawn-style SVG squiggle, not a boring background.
+    ============================================================ */
+    .codexaman-ui-hero__heading {
+      font-family: var(--cx-font-d);
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 800;
+      line-height: 1.07;
+      letter-spacing: -0.03em;
+      color: var(--cx-ink);
+      margin-bottom: 0;
+
+      opacity: 0;
+      transform: translateY(20px);
+      animation: cx-rise 0.75s cubic-bezier(0.22,1,0.36,1) 0.22s forwards;
+    }
+    /* the inline red accent — gradient text */
+    .codexaman-ui-hero__heading .cx-red {
+      color: var(--cx-red);
+      position: relative;
+      display: inline-block;
+    }
+    /* squiggle underline under the accent word */
+    .codexaman-ui-hero__heading .cx-red svg {
+      position: absolute;
+      bottom: -6px; left: 0;
+      width: 100%; height: 8px;
+    }
+
+    /* ============================================================
+       SUBHEADING — short and punchy. Max 2 lines.
+    ============================================================ */
+    .codexaman-ui-hero__sub {
+      font-family: var(--cx-font-b);
+      font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+      font-weight: 400;
+      line-height: 1.75;
+      color: var(--cx-body);
+      max-width: 440px;
+      margin-top: 1.4rem;
+
+      opacity: 0;
+      transform: translateY(16px);
+      animation: cx-rise 0.72s cubic-bezier(0.22,1,0.36,1) 0.38s forwards;
+    }
+
+    /* ============================================================
+       SOCIAL PROOF — client count + avatar stack
+    ============================================================ */
+    .codexaman-ui-hero__proof {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-top: 1.2rem;
+      opacity: 0;
+      transform: translateY(10px);
+      animation: cx-rise 0.65s cubic-bezier(0.22,1,0.36,1) 0.5s forwards;
+    }
+    .cx-avatars { display: flex; }
+    .cx-av {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      margin-left: -7px;
+      font-size: 0.58rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-family: var(--cx-font-d);
+    }
+    .cx-av:first-child { margin-left: 0; }
+    .cx-av--a { background: #6366f1; }
+    .cx-av--b { background: #0ea5e9; }
+    .cx-av--c { background: #10b981; }
+    .cx-av--d { background: #f59e0b; }
+    .cx-proof-text {
+      font-size: 0.78rem;
+      color: var(--cx-body);
+      line-height: 1.4;
+    }
+    .cx-proof-text strong { font-weight: 600; color: var(--cx-ink2); }
+
+    /* ============================================================
+       STAR RATING inside proof
+    ============================================================ */
+    .cx-stars { color: #f59e0b; font-size: 0.72rem; letter-spacing: 1px; }
+
+    /* ============================================================
+       BUTTONS
+    ============================================================ */
+    .codexaman-ui-hero__cta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.75rem;
+      margin-top: 2rem;
+      opacity: 0;
+      transform: translateY(12px);
+      animation: cx-rise 0.7s cubic-bezier(0.22,1,0.36,1) 0.6s forwards;
+    }
+
+    /* primary — red, shadow glow */
+    .codexaman-ui-btn-primary {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      font-family: var(--cx-font-b);
+      font-size: 0.88rem; font-weight: 600;
+      color: #fff !important;
+      background: var(--cx-red);
+      border: none; border-radius: 10px;
+      padding: 0.78rem 1.6rem;
+      text-decoration: none; letter-spacing: 0.01em;
+      box-shadow: 0 4px 18px var(--cx-red-glow);
+      transition: background 0.2s, box-shadow 0.2s, transform 0.18s;
+    }
+    .codexaman-ui-btn-primary:hover {
+      background: var(--cx-red-dark);
+      box-shadow: 0 8px 26px rgba(232,40,43,0.32);
+      transform: translateY(-2px);
+      color: #fff !important;
+    }
+
+    /* ghost — minimal, just a border */
+    .codexaman-ui-btn-ghost {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      font-family: var(--cx-font-b);
+      font-size: 0.88rem; font-weight: 500;
+      color: var(--cx-ink) !important;
+      background: rgba(255,255,255,0.65);
+      border: 1.5px solid var(--cx-border);
+      border-radius: 10px;
+      padding: 0.78rem 1.6rem;
+      text-decoration: none;
+      backdrop-filter: blur(8px);
+      transition: border-color 0.2s, color 0.2s, transform 0.18s;
+    }
+    .codexaman-ui-btn-ghost:hover {
+      border-color: var(--cx-red);
+      color: var(--cx-red) !important;
+      transform: translateY(-2px);
+    }
+
+    /* ============================================================
+       FLOATING FEATURE TAGS — right side of the hero
+       These replace the old dashboard card. Three pill-shaped
+       tags that float over the video area — modern, light, creative.
+       Each has an icon + label + a thin accent line.
+    ============================================================ */
+    .codexaman-ui-hero__tags {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      opacity: 0;
+      transform: translateX(20px);
+      animation: cx-slide-left 0.8s cubic-bezier(0.22,1,0.36,1) 0.55s forwards;
+    }
+
+    .codexaman-ui-ftag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: rgba(255,255,255,0.78);
+      border: 1px solid rgba(255,255,255,0.95);
+      border-left: 3px solid var(--cx-red);
+      border-radius: 12px;
+      padding: 0.85rem 1.2rem;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.07), 0 2px 8px rgba(232,40,43,0.05);
+      max-width: 280px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .codexaman-ui-ftag:hover {
+      transform: translateX(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.10);
+    }
+
+    /* icon circle inside each tag */
+    .codexaman-ui-ftag__icon {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      background: rgba(232,40,43,0.08);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      font-size: 1rem;
+    }
+
+    .codexaman-ui-ftag__body { flex: 1; }
+    .codexaman-ui-ftag__title {
+      font-family: var(--cx-font-d);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--cx-ink2);
+      line-height: 1.2;
+      margin-bottom: 0.15rem;
+    }
+    .codexaman-ui-ftag__desc {
+      font-family: var(--cx-font-b);
+      font-size: 0.7rem;
+      font-weight: 400;
+      color: var(--cx-muted);
+      line-height: 1.3;
+    }
+
+    /* ============================================================
+       METRICS ROW — three quick numbers, bottom of hero
+       Numbers speak louder than words in B2B/SaaS.
+    ============================================================ */
+    .codexaman-ui-hero__metrics {
+      position: absolute;
+      bottom: 2rem; left: 0; right: 0;
+      z-index: 3;
+      opacity: 0;
+      animation: cx-fadein 0.8s ease 0.9s forwards;
+    }
+    .codexaman-ui-metric {
+      text-align: center;
+      padding: 0 1.5rem;
+      border-right: 1px solid rgba(0,0,0,0.08);
+    }
+    .codexaman-ui-metric:last-child { border-right: none; }
+    .codexaman-ui-metric__value {
+      font-family: var(--cx-font-d);
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 800;
+      color: var(--cx-red);
+      line-height: 1;
+    }
+    .codexaman-ui-metric__label {
+      font-family: var(--cx-font-b);
+      font-size: 0.72rem;
+      font-weight: 400;
+      color: var(--cx-muted);
+      margin-top: 0.25rem;
+      letter-spacing: 0.04em;
+    }
+
+    /* ============================================================
+       SECTION BELOW THE HERO — demo content
+       So they can see what the full page experience feels like.
+    ============================================================ */
+    .codexaman-ui-section {
+      padding: 5rem 0;
+      background: #fff;
+    }
+
+    .codexaman-ui-section-label {
+      font-family: var(--cx-font-b);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cx-red);
+      margin-bottom: 0.75rem;
+    }
+    .codexaman-ui-section-heading {
+      font-family: var(--cx-font-d);
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+      color: var(--cx-ink);
+      margin-bottom: 1rem;
+    }
+    .codexaman-ui-section-sub {
+      font-family: var(--cx-font-b);
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.72;
+      color: var(--cx-body);
+      max-width: 520px;
+    }
+
+    /* service cards — the what-we-do section */
+    .codexaman-ui-card {
+      background: #fff;
+      border: 1px solid var(--cx-border);
+      border-radius: 16px;
+      padding: 1.75rem 1.5rem;
+      height: 100%;
+      transition: border-color 0.22s, box-shadow 0.22s, transform 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .codexaman-ui-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--cx-red);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s cubic-bezier(0.22,1,0.36,1);
+    }
+    .codexaman-ui-card:hover {
+      border-color: rgba(232,40,43,0.18);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.07);
+      transform: translateY(-4px);
+    }
+    .codexaman-ui-card:hover::before { transform: scaleX(1); }
+
+    .codexaman-ui-card__icon {
+      width: 44px; height: 44px;
+      border-radius: 10px;
+      background: rgba(232,40,43,0.07);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+      margin-bottom: 1.1rem;
+    }
+    .codexaman-ui-card__title {
+      font-family: var(--cx-font-d);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--cx-ink2);
+      margin-bottom: 0.5rem;
+    }
+    .codexaman-ui-card__body-text {
+      font-family: var(--cx-font-b);
+      font-size: 0.85rem;
+      font-weight: 400;
+      line-height: 1.65;
+      color: var(--cx-body);
+      margin: 0;
+    }
+
+    /* CTA section at the bottom */
+    .codexaman-ui-cta-section {
+      background: var(--cx-red);
+      padding: 4rem 0;
+      text-align: center;
+    }
+    .codexaman-ui-cta-section h2 {
+      font-family: var(--cx-font-d);
+      font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.025em;
+      margin-bottom: 0.6rem;
+    }
+    .codexaman-ui-cta-section p {
+      font-family: var(--cx-font-b);
+      font-size: 1rem;
+      color: rgba(255,255,255,0.78);
+      margin-bottom: 2rem;
+    }
+    .codexaman-ui-btn-white {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      font-family: var(--cx-font-b);
+      font-size: 0.9rem; font-weight: 600;
+      color: var(--cx-red) !important;
+      background: #fff;
+      border: none; border-radius: 10px;
+      padding: 0.82rem 2rem;
+      text-decoration: none;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.12);
+      transition: box-shadow 0.2s, transform 0.18s;
+    }
+    .codexaman-ui-btn-white:hover {
+      box-shadow: 0 10px 32px rgba(0,0,0,0.18);
+      transform: translateY(-2px);
+      color: var(--cx-red-dark) !important;
+    }
+
+    /* Divider line between sections */
+    .codexaman-ui-divider {
+      height: 1px;
+      background: var(--cx-border);
+      margin: 0;
+    }
+
+    /* ============================================================
+       ANIMATIONS
+    ============================================================ */
+    @keyframes cx-rise {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes cx-slide-left {
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes cx-fadein {
+      to { opacity: 1; }
+    }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 991.98px) {
+      .codexaman-ui-hero__tags { flex-direction: row; flex-wrap: wrap; margin-top: 2.5rem; }
+      .codexaman-ui-ftag { max-width: 100%; }
+      .codexaman-ui-hero__metrics { position: static; margin-top: 2.5rem; }
+      .codexaman-ui-hero { min-height: auto; padding-bottom: 0; }
+      .codexaman-ui-hero__content { padding: 5rem 0 3rem; }
+    }
+    @media (max-width: 575.98px) {
+      .codexaman-ui-hero__heading { font-size: clamp(2rem, 9.5vw, 2.6rem); }
+      .codexaman-ui-hero__metrics { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- slim red announcement bar -->
+  <div class="codexaman-ui-topbar">
+    <p>🚀 &nbsp;We just shipped our AI Development Suite — <a href="#">Read more →</a></p>
+  </div>
+
+  <!-- ============================================================
+       HERO SECTION — CodexAman UI
+       Standalone Bootstrap 5 component.
+       Swap: video src, headline text, button links.
+  ============================================================ -->
+  <section class="codexaman-ui-hero">
+
+    <!-- the video — deliberately visible this time -->
+    <video
+      class="codexaman-ui-hero__video"
+      src="https://amanprasadum.github.io/test/assets/video/desk.mp4"
+      autoplay loop muted playsinline
+    ></video>
+
+    <!-- soft directional overlay — heavy left, barely-there right -->
+    <div class="codexaman-ui-hero__overlay" aria-hidden="true"></div>
+
+    <!-- creative diagonal slice that separates content from video -->
+    <div class="codexaman-ui-hero__slice" aria-hidden="true"></div>
+
+    <!-- hero content -->
+    <div class="codexaman-ui-hero__content">
+      <div class="container">
+        <div class="row align-items-center g-4">
+
+          <!-- LEFT — headline, sub, CTAs -->
+          <div class="col-lg-6">
+
+            <!-- eyebrow -->
+            <div class="codexaman-ui-hero__eyebrow">
+              <span class="codexaman-ui-eyebrow-pill">New</span>
+              <span class="codexaman-ui-eyebrow-sep"></span>
+              <span class="codexaman-ui-eyebrow-label">Software Development · Enterprise</span>
+            </div>
+
+            <!-- headline with squiggle underline on accent word -->
+            <h1 class="codexaman-ui-hero__heading">
+              We Engineer<br />
+              Software That<br />
+              <span class="cx-red">Grows With You
+                <!-- hand-drawn-style squiggle SVG under the accent -->
+                <svg viewBox="0 0 200 8" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M0,5 Q25,1 50,5 Q75,9 100,5 Q125,1 150,5 Q175,9 200,5"
+                    fill="none" stroke="#e8282b" stroke-width="2.5"
+                    stroke-linecap="round" opacity="0.55"/>
+                </svg>
+              </span>
+            </h1>
+
+            <!-- sub -->
+            <p class="codexaman-ui-hero__sub">
+              From early-stage startups to global enterprises — we design,
+              build, and ship software that's fast, reliable, and built to scale.
+            </p>
+
+            <!-- social proof -->
+            <div class="codexaman-ui-hero__proof">
+              <div class="cx-avatars">
+                <div class="cx-av cx-av--a">AK</div>
+                <div class="cx-av cx-av--b">SR</div>
+                <div class="cx-av cx-av--c">MJ</div>
+                <div class="cx-av cx-av--d">LP</div>
+              </div>
+              <div class="cx-proof-text">
+                <div class="cx-stars">★★★★★</div>
+                <strong>500+ businesses</strong> trust us globally
+              </div>
+            </div>
+
+            <!-- buttons -->
+            <div class="codexaman-ui-hero__cta">
+              <a href="#" class="codexaman-ui-btn-primary">
+                Start a Project &nbsp;→
+              </a>
+              <a href="#" class="codexaman-ui-btn-ghost">
+                ▶ &nbsp;Watch Demo
+              </a>
+            </div>
+
+          </div><!-- end left col -->
+
+          <!-- RIGHT — floating feature tags over the visible video area -->
+          <div class="col-lg-6 d-flex justify-content-end">
+            <div class="codexaman-ui-hero__tags">
+
+              <div class="codexaman-ui-ftag">
+                <div class="codexaman-ui-ftag__icon">⚡</div>
+                <div class="codexaman-ui-ftag__body">
+                  <div class="codexaman-ui-ftag__title">Lightning Fast Delivery</div>
+                  <div class="codexaman-ui-ftag__desc">MVP to production in weeks, not months</div>
+                </div>
+              </div>
+
+              <div class="codexaman-ui-ftag">
+                <div class="codexaman-ui-ftag__icon">🛡️</div>
+                <div class="codexaman-ui-ftag__body">
+                  <div class="codexaman-ui-ftag__title">Enterprise-Grade Security</div>
+                  <div class="codexaman-ui-ftag__desc">SOC2 ready, GDPR compliant by default</div>
+                </div>
+              </div>
+
+              <div class="codexaman-ui-ftag">
+                <div class="codexaman-ui-ftag__icon">📈</div>
+                <div class="codexaman-ui-ftag__body">
+                  <div class="codexaman-ui-ftag__title">Scale Without Limits</div>
+                  <div class="codexaman-ui-ftag__desc">Cloud-native architecture built for growth</div>
+                </div>
+              </div>
+
+            </div>
+          </div><!-- end right col -->
+
+        </div><!-- row -->
+      </div><!-- container -->
+    </div><!-- hero content -->
+
+    <!-- floating metric strip — bottom of the hero -->
+    <div class="codexaman-ui-hero__metrics">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-auto">
+            <div class="d-flex align-items-center">
+              <div class="codexaman-ui-metric">
+                <div class="codexaman-ui-metric__value">500+</div>
+                <div class="codexaman-ui-metric__label">Projects Delivered</div>
+              </div>
+              <div class="codexaman-ui-metric">
+                <div class="codexaman-ui-metric__value">12+</div>
+                <div class="codexaman-ui-metric__label">Years in Business</div>
+              </div>
+              <div class="codexaman-ui-metric">
+                <div class="codexaman-ui-metric__value">98%</div>
+                <div class="codexaman-ui-metric__label">Client Satisfaction</div>
+              </div>
+              <div class="codexaman-ui-metric">
+                <div class="codexaman-ui-metric__value">40+</div>
+                <div class="codexaman-ui-metric__label">Countries Served</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+  <!-- END HERO -->
+
+  <div class="codexaman-ui-divider"></div>
+
+  <!-- ============================================================
+       DEMO: SERVICES SECTION — shows what the page looks like below
+  ============================================================ -->
+  <section class="codexaman-ui-section">
+    <div class="container">
+      <div class="row align-items-end mb-5">
+        <div class="col-lg-6">
+          <div class="codexaman-ui-section-label">What We Build</div>
+          <h2 class="codexaman-ui-section-heading">
+            End-to-End Software<br />Development Services
+          </h2>
+        </div>
+        <div class="col-lg-6">
+          <p class="codexaman-ui-section-sub">
+            We handle the full lifecycle — from initial design and architecture
+            to deployment, monitoring, and ongoing support.
+          </p>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-4">
+          <div class="codexaman-ui-card">
+            <div class="codexaman-ui-card__icon">🌐</div>
+            <div class="codexaman-ui-card__title">Web Development</div>
+            <p class="codexaman-ui-card__body-text">
+              High-performance web apps built with modern frameworks.
+              React, Next.js, Vue — whatever fits your product best.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="codexaman-ui-card">
+            <div class="codexaman-ui-card__icon">📱</div>
+            <div class="codexaman-ui-card__title">Mobile Apps</div>
+            <p class="codexaman-ui-card__body-text">
+              iOS and Android apps that feel native and perform flawlessly.
+              React Native or fully native — your call.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="codexaman-ui-card">
+            <div class="codexaman-ui-card__icon">☁️</div>
+            <div class="codexaman-ui-card__title">Cloud & DevOps</div>
+            <p class="codexaman-ui-card__body-text">
+              AWS, GCP, Azure — we architect, deploy, and manage your
+              cloud infrastructure for maximum reliability.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="codexaman-ui-card">
+            <div class="codexaman-ui-card__icon">🤖</div>
+            <div class="codexaman-ui-card__title">AI Integration</div>
+            <p class="codexaman-ui-card__body-text">
+              Embed intelligent features into your product — NLP, computer vision,
+              predictive analytics, and LLM-powered tools.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="codexaman-ui-card">
+            <div class="codexaman-ui-card__icon">🔗</div>
+            <div class="codexaman-ui-card__title">API & Integrations</div>
+            <p class="codexaman-ui-card__body-text">
+              RESTful and GraphQL APIs that connect your systems cleanly.
+              Third-party integrations done properly — not hacked together.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="codexaman-ui-card">
+            <div class="codexaman-ui-card__icon">🎨</div>
+            <div class="codexaman-ui-card__title">UI/UX Design</div>
+            <p class="codexaman-ui-card__body-text">
+              Interfaces that are beautiful and intuitive. We design with
+              conversion, accessibility, and user joy in mind.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="codexaman-ui-divider"></div>
+
+  <!-- CTA SECTION -->
+  <section class="codexaman-ui-cta-section">
+    <div class="container">
+      <h2>Ready to Build Something Great?</h2>
+      <p>Tell us about your project. We'll get back within 24 hours.</p>
+      <a href="#" class="codexaman-ui-btn-white">
+        Book a Free Call &nbsp;→
+      </a>
+    </div>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
