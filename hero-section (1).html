@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CodexAman UI — Hero Section</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Fonts: Playfair Display for headings, Plus Jakarta Sans for body — matches your site's vibe -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       CodexAman UI — Hero Section
+       Class prefix: .codexaman-ui-*
+       Human-tone comments throughout — written like a teammate
+       explaining things, not a robot documenting them.
+    ============================================================ */
+
+    /* All the design tokens in one place — change here, change everywhere */
+    :root {
+      --cx-red:         #e8282b;        /* your brand red, pulled from the screenshot */
+      --cx-red-dark:    #c41f22;        /* slightly deeper for hover states */
+      --cx-red-soft:    rgba(232, 40, 43, 0.08); /* very light red tint for badges */
+      --cx-dark:        #1a1a1a;        /* near-black for main headings */
+      --cx-body:        #4a4a4a;        /* medium grey for paragraph text */
+      --cx-muted:       #888;           /* lighter grey for small labels */
+      --cx-white:       #ffffff;
+      --cx-bg-overlay:  rgba(253, 240, 240, 0.82); /* pinkish-white film over the video */
+
+      --cx-font-heading: 'Playfair Display', Georgia, serif;
+      --cx-font-body:    'Plus Jakarta Sans', sans-serif;
+    }
+
+    /* Basic reset so nothing bleeds in from browser defaults */
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--cx-font-body);
+      background: #fdf0f0; /* base page colour matches your site */
+      overflow-x: hidden;
+    }
+
+    /* ============================================================
+       HERO WRAPPER
+       Full viewport height. Everything stacks with z-index:
+       video at the bottom, overlay above it, content on top.
+    ============================================================ */
+    .codexaman-ui-hero {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    /* ============================================================
+       VIDEO BACKGROUND
+       Covers the entire hero like wallpaper. object-fit: cover
+       handles all the cropping — no black bars on any screen size.
+    ============================================================ */
+    .codexaman-ui-hero__video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      z-index: 0;
+      /* desaturate slightly so it doesn't fight the pink overlay */
+      filter: saturate(0.5) brightness(1.05);
+    }
+
+    /* ============================================================
+       LIGHT PINKISH OVERLAY
+       This is the key layer — a soft rgba wash that makes the
+       video feel like a watercolour backdrop instead of a video.
+       The gradient fades stronger on the left where text lives.
+    ============================================================ */
+    .codexaman-ui-hero__overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      /* stronger on left for text readability, lighter on right */
+      background: linear-gradient(
+        105deg,
+        rgba(253, 235, 235, 0.92) 0%,
+        rgba(253, 240, 240, 0.80) 50%,
+        rgba(253, 235, 240, 0.65) 100%
+      );
+    }
+
+    /* ============================================================
+       DECORATIVE DOT GRID
+       Those little dot patterns you have top-left and scattered
+       around — pure CSS, no image needed.
+    ============================================================ */
+    .codexaman-ui-hero__dots {
+      position: absolute;
+      z-index: 2;
+      pointer-events: none;
+      width: 110px;
+      height: 90px;
+      background-image: radial-gradient(circle, rgba(232,40,43,0.18) 1.5px, transparent 1.5px);
+      background-size: 14px 14px;
+    }
+    .codexaman-ui-hero__dots--tl { top: 13%; left: 3%; }
+    .codexaman-ui-hero__dots--br { bottom: 15%; right: 5%; width: 80px; height: 70px; }
+
+    /* Small floating dots scattered — just like your design has */
+    .codexaman-ui-hero__floatdot {
+      position: absolute;
+      z-index: 2;
+      border-radius: 50%;
+      pointer-events: none;
+      background: var(--cx-red);
+      opacity: 0.22;
+    }
+    .codexaman-ui-hero__floatdot--a { width: 7px; height: 7px; top: 22%; left: 42%; }
+    .codexaman-ui-hero__floatdot--b { width: 5px; height: 5px; top: 70%; left: 60%; }
+    .codexaman-ui-hero__floatdot--c { width: 9px; height: 9px; top: 35%; right: 8%; }
+    .codexaman-ui-hero__floatdot--d { width: 6px; height: 6px; bottom: 25%; left: 30%; }
+
+    /* ============================================================
+       CONTENT AREA
+       Sits above video + overlay (z-index: 3).
+       Padding gives breathing room from nav and footer.
+    ============================================================ */
+    .codexaman-ui-hero__content {
+      position: relative;
+      z-index: 3;
+      width: 100%;
+      padding: 6rem 0 5rem;
+    }
+
+    /* ============================================================
+       TRUST BADGE / EYEBROW
+       That little pill badge at the top — "Trusted by Businesses"
+       style. Pill shape, light red background, icon + text.
+    ============================================================ */
+    .codexaman-ui-hero__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-family: var(--cx-font-body);
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--cx-red);
+      background: var(--cx-red-soft);
+      border: 1px solid rgba(232, 40, 43, 0.18);
+      padding: 0.38rem 1rem;
+      border-radius: 100px;
+      margin-bottom: 1.6rem;
+
+      /* slides up and fades in — first thing they notice */
+      opacity: 0;
+      transform: translateY(14px);
+      animation: cx-rise 0.65s cubic-bezier(0.22,1,0.36,1) 0.15s forwards;
+    }
+    .codexaman-ui-hero__badge svg {
+      width: 14px; height: 14px;
+      flex-shrink: 0;
+    }
+
+    /* ============================================================
+       HEADLINE
+       Three-line structure just like yours:
+       Line 1-2: dark/black bold serif
+       Line 3+: red accent serif — same Playfair Display, same weight
+    ============================================================ */
+    .codexaman-ui-hero__heading {
+      font-family: var(--cx-font-heading);
+      font-size: clamp(2.5rem, 5.5vw, 4.2rem);
+      font-weight: 800;
+      line-height: 1.12;
+      color: var(--cx-dark);
+      margin-bottom: 0;
+      letter-spacing: -0.01em;
+
+      opacity: 0;
+      transform: translateY(20px);
+      animation: cx-rise 0.75s cubic-bezier(0.22,1,0.36,1) 0.3s forwards;
+    }
+
+    /* the red lines of the heading — just wrap them in this span */
+    .codexaman-ui-hero__heading .cx-red-line {
+      color: var(--cx-red);
+      display: block;
+      /* underline accent below the last red line — matches your design */
+      position: relative;
+    }
+    .codexaman-ui-hero__heading .cx-red-line:last-child::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: var(--cx-red);
+      border-radius: 2px;
+      margin-top: 0.5rem;
+    }
+
+    /* ============================================================
+       SUBHEADING PARAGRAPH
+       Short, readable, same grey as your site.
+    ============================================================ */
+    .codexaman-ui-hero__sub {
+      font-family: var(--cx-font-body);
+      font-size: clamp(0.95rem, 1.6vw, 1.05rem);
+      font-weight: 400;
+      line-height: 1.72;
+      color: var(--cx-body);
+      max-width: 480px;
+      margin-top: 1.6rem;
+      margin-bottom: 2.2rem;
+
+      opacity: 0;
+      transform: translateY(16px);
+      animation: cx-rise 0.75s cubic-bezier(0.22,1,0.36,1) 0.5s forwards;
+    }
+
+    /* ============================================================
+       CTA BUTTONS
+       Primary: solid red fill (your "Get a Free Consultation" style)
+       Ghost: transparent with text link style (your "View Our Work")
+    ============================================================ */
+    .codexaman-ui-hero__cta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1rem;
+
+      opacity: 0;
+      transform: translateY(14px);
+      animation: cx-rise 0.75s cubic-bezier(0.22,1,0.36,1) 0.65s forwards;
+    }
+
+    /* solid red button — your primary CTA */
+    .codexaman-ui-btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--cx-font-body);
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--cx-white) !important;
+      background: var(--cx-red);
+      border: 2px solid var(--cx-red);
+      border-radius: 0.4rem;
+      padding: 0.78rem 1.8rem;
+      text-decoration: none;
+      transition: background 0.22s, border-color 0.22s, box-shadow 0.22s, transform 0.18s;
+    }
+    .codexaman-ui-btn-primary:hover {
+      background: var(--cx-red-dark);
+      border-color: var(--cx-red-dark);
+      box-shadow: 0 6px 22px rgba(232,40,43,0.28);
+      transform: translateY(-2px);
+    }
+    /* the little arrow icon inside the button */
+    .codexaman-ui-btn-primary svg { width: 16px; height: 16px; }
+
+    /* ghost / text-link style — your "View Our Work" button */
+    .codexaman-ui-btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-family: var(--cx-font-body);
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--cx-dark) !important;
+      background: transparent;
+      border: none;
+      padding: 0.78rem 0.5rem;
+      text-decoration: none;
+      transition: color 0.2s, gap 0.2s;
+    }
+    .codexaman-ui-btn-ghost:hover {
+      color: var(--cx-red) !important;
+      gap: 0.7rem; /* the arrow nudges right on hover — nice micro detail */
+    }
+    .codexaman-ui-btn-ghost svg { width: 16px; height: 16px; }
+
+    /* ============================================================
+       SCROLL INDICATOR
+       Subtle bounce at the bottom centre — tells people there's
+       more content below without being annoying about it.
+    ============================================================ */
+    .codexaman-ui-hero__scroll {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.35rem;
+      opacity: 0;
+      animation: cx-fadein 1s ease 1.2s forwards;
+    }
+    .codexaman-ui-hero__scroll span {
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--cx-muted);
+    }
+    .codexaman-ui-hero__scroll-arrow {
+      width: 18px; height: 18px;
+      border-right: 1.5px solid var(--cx-muted);
+      border-bottom: 1.5px solid var(--cx-muted);
+      transform: rotate(45deg);
+      animation: cx-bounce 1.6s ease-in-out infinite;
+    }
+
+    /* ============================================================
+       KEYFRAMES
+       cx-rise: the main entrance animation — slides up + fades in
+       cx-fadein: plain opacity fade
+       cx-bounce: the scrolling arrow bounce
+    ============================================================ */
+    @keyframes cx-rise {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes cx-fadein {
+      to { opacity: 1; }
+    }
+    @keyframes cx-bounce {
+      0%, 100% { transform: rotate(45deg) translateY(0); }
+      50%       { transform: rotate(45deg) translateY(5px); }
+    }
+
+    /* ============================================================
+       RESPONSIVE
+       On phones: tighten padding, make sure text doesn't overflow.
+    ============================================================ */
+    @media (max-width: 767.98px) {
+      .codexaman-ui-hero__content { padding: 5rem 0 4rem; }
+      .codexaman-ui-hero__heading { font-size: clamp(2rem, 9vw, 2.8rem); }
+      .codexaman-ui-hero__sub { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       HERO SECTION — CodexAman UI
+       Standalone component. Works in any Bootstrap 5 project.
+       Just update the video src, heading text, and button links.
+  ============================================================ -->
+  <section class="codexaman-ui-hero">
+
+    <!-- The video that sits at the very bottom of the stack -->
+    <video
+      class="codexaman-ui-hero__video"
+      src="https://amanprasadum.github.io/test/assets/video/desk.mp4"
+      autoplay loop muted playsinline
+    ></video>
+
+    <!-- Soft pinkish-white film over the video — the magic layer -->
+    <div class="codexaman-ui-hero__overlay" aria-hidden="true"></div>
+
+    <!-- Decorative dot grids — top-left and bottom-right, just like your design -->
+    <div class="codexaman-ui-hero__dots codexaman-ui-hero__dots--tl" aria-hidden="true"></div>
+    <div class="codexaman-ui-hero__dots codexaman-ui-hero__dots--br" aria-hidden="true"></div>
+
+    <!-- Scattered floating dots — those small red specks on your page -->
+    <div class="codexaman-ui-hero__floatdot codexaman-ui-hero__floatdot--a" aria-hidden="true"></div>
+    <div class="codexaman-ui-hero__floatdot codexaman-ui-hero__floatdot--b" aria-hidden="true"></div>
+    <div class="codexaman-ui-hero__floatdot codexaman-ui-hero__floatdot--c" aria-hidden="true"></div>
+    <div class="codexaman-ui-hero__floatdot codexaman-ui-hero__floatdot--d" aria-hidden="true"></div>
+
+    <!-- All the actual content the user reads -->
+    <div class="codexaman-ui-hero__content">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-7 col-xl-6">
+
+            <!-- Trust badge — that little pill above the headline -->
+            <div class="codexaman-ui-hero__badge">
+              <!-- shield/award icon — swap for any SVG icon you like -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+              Trusted by Businesses Worldwide
+            </div>
+
+            <!-- Main headline
+                 Lines 1-2 are dark, line 3-4 go red — just like your site.
+                 Swap text to match your actual copy. -->
+            <h1 class="codexaman-ui-hero__heading">
+              Custom &amp; Scalable<br />
+              Website Experts
+              <span class="cx-red-line">Built for Businesses</span>
+              <span class="cx-red-line">Worldwide</span>
+            </h1>
+
+            <!-- Short description paragraph -->
+            <p class="codexaman-ui-hero__sub">
+              A team of expert website designers and developers from India,
+              serving clients worldwide with scalable, results-driven solutions.
+            </p>
+
+            <!-- Two CTAs: solid red + ghost text-link -->
+            <div class="codexaman-ui-hero__cta">
+              <a href="#" class="btn codexaman-ui-btn-primary">
+                Get a Free Consultation
+                <!-- right arrow icon inside the button -->
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+                </svg>
+              </a>
+
+              <a href="#" class="codexaman-ui-btn-ghost">
+                <!-- play/eye icon before the ghost label -->
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/>
+                </svg>
+                View Our Work
+              </a>
+            </div>
+
+          </div>
+          <!-- right column is intentionally empty here — the video peeks through -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll hint — polite little bounce at the bottom -->
+    <div class="codexaman-ui-hero__scroll" aria-label="Scroll down">
+      <span>Scroll</span>
+      <div class="codexaman-ui-hero__scroll-arrow"></div>
+    </div>
+
+  </section>
+  <!-- END: CodexAman UI Hero Section -->
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
