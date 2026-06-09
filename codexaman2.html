@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aman Prasad — Web Developer in Howrah &amp; Kolkata | codexaman.in</title>
+  <meta name="description" content="Aman Prasad is an affordable freelance web developer in Howrah, Kolkata, India. Expert in WordPress, Laravel, PHP &amp; Tailwind CSS. Get a fast, professional website at low cost. Visit codexaman.in."/>
+  <meta name="keywords" content="web developer in Howrah, web developer in Kolkata, freelancer in Howrah, affordable web design Kolkata, WordPress developer Kolkata, WordPress developer Howrah, low price web design India, Aman Prasad web developer, codexaman, codexaman.in, Laravel developer India, PHP developer Kolkata"/>
+  <meta name="author" content="Aman Prasad"/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="canonical" href="https://codexaman.in/"/>
+  <!-- Open Graph -->
+  <meta property="og:title" content="Aman Prasad — Web Developer in Howrah &amp; Kolkata"/>
+  <meta property="og:description" content="Affordable freelance web developer in Howrah &amp; Kolkata, India. WordPress, Laravel, PHP. Fast delivery, clean code. codexaman.in"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://codexaman.in/"/>
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Aman Prasad",
+    "url": "https://codexaman.in",
+    "jobTitle": "Full Stack Web Developer",
+    "worksFor": { "@type": "Organization", "name": "codexaman.in" },
+    "address": { "@type": "PostalAddress", "addressLocality": "Howrah", "addressRegion": "West Bengal", "addressCountry": "IN" },
+    "sameAs": ["https://codexaman.in"]
+  }
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: '#f9f8f6',
+            accent: '#5b5bd6',
+            'accent-dark': '#3d3d9e',
+            'accent-light': '#ededfc',
+            dark: '#18181b',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background: #fff; }
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity .55s ease, transform .55s ease; }
+    .fade-in.visible { opacity: 1; transform: none; }
+    #navbar { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.92); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid transparent; transition: border-color .3s; }
+    #navbar.scrolled { border-color: #f4f4f5; }
+    details summary::-webkit-details-marker { display: none; }
+    details[open] .chevron { transform: rotate(90deg); }
+    .chevron { display: inline-block; transition: transform .25s ease; }
+    .budget-option input:checked + label { background: #18181b; color: #fff; border-color: #18181b; }
+
+    /* Gradient hero text */
+    .gradient-text { background: linear-gradient(135deg, #5b5bd6 0%, #8b8bff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+    /* Mobile menu */
+    #mobile-menu { display: none; }
+    #mobile-menu.open { display: flex; }
+
+    /* Stats number */
+    .stat-num { font-variant-numeric: tabular-nums; }
+
+    /* Border glow hover — replaces card-lift */
+    .card-border {
+      border: 1px solid #e4e4e7;
+      transition: border-color 0.35s ease, box-shadow 0.35s ease;
+    }
+    .card-border:hover {
+      border-color: #5b5bd6;
+      box-shadow: 0 0 0 3px rgba(91,91,214,0.08);
+    }
+
+    /* Typewriter */
+    .typewriter-wrap { display: inline-block; }
+    .typewriter-text { border-right: 2px solid #5b5bd6; padding-right: 2px; white-space: nowrap; overflow: hidden; display: inline-block; animation: blink-cursor 0.75s step-end infinite; }
+    @keyframes blink-cursor { 0%,100% { border-color: #5b5bd6; } 50% { border-color: transparent; } }
+
+    /* Hero video section */
+    .hero-video-wrap { position: relative; overflow: hidden; border-radius: 1.25rem; }
+    .hero-video-wrap video { width: 100%; display: block; object-fit: cover; }
+    .hero-video-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.0) 40%, rgba(255,255,255,0.55) 85%, rgba(255,255,255,1) 100%);
+      pointer-events: none;
+    }
+    /* Animated SVG background in video section */
+    .hero-canvas-bg { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; }
+    .hero-video-inner { position: relative; z-index: 1; }
+
+    /* Tech grid — replaces marquee */
+    .tech-grid-item {
+      display: flex; align-items: center; gap: 8px;
+      border: 1px solid #e4e4e7; border-radius: 10px;
+      padding: 10px 14px; background: #fff; font-size: 0.75rem;
+      font-weight: 500; color: #52525b;
+      transition: border-color 0.3s ease, color 0.3s ease;
+      cursor: default;
+    }
+    .tech-grid-item:hover { border-color: #5b5bd6; color: #3d3d9e; }
+    .tech-grid-item svg { flex-shrink: 0; }
+
+    /* Testimonial — border glow instead of lift */
+    .testimonial-card { border: 1px solid #e4e4e7; transition: border-color 0.35s ease, box-shadow 0.35s ease; }
+    .testimonial-card:hover { border-color: #5b5bd6; box-shadow: 0 0 0 3px rgba(91,91,214,0.08); }
+
+    /* SEO section */
+    .seo-section { background: #fafafa; border-top: 1px solid #f0f0f0; }
+  </style>
+</head>
+<body class="text-dark antialiased">
+
+  <!-- NAVBAR -->
+  <nav id="navbar" class="w-full px-6 md:px-8 py-4">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <a href="#" class="font-semibold text-base tracking-tight">codexaman<span class="text-accent">.in</span></a>
+
+      <!-- Desktop nav -->
+      <div class="hidden md:flex items-center gap-4">
+        <a href="#work" class="text-sm text-zinc-500 hover:text-dark transition-colors">Work</a>
+        <a href="#services" class="text-sm text-zinc-500 hover:text-dark transition-colors">Services</a>
+        <a href="#pricing" class="text-sm text-zinc-500 hover:text-dark transition-colors">Pricing</a>
+        <a href="#contact" class="text-sm bg-accent text-white px-4 py-2 rounded-lg font-medium hover:bg-accent-dark transition-colors">Hire me</a>
+      </div>
+
+      <!-- Mobile hamburger -->
+      <button id="menu-btn" class="md:hidden flex flex-col gap-1.5 p-1" aria-label="Menu">
+        <span class="w-5 h-0.5 bg-dark block transition-all"></span>
+        <span class="w-5 h-0.5 bg-dark block transition-all"></span>
+        <span class="w-5 h-0.5 bg-dark block transition-all"></span>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="md:hidden flex-col gap-1 pt-3 pb-4 border-t border-zinc-100 mt-3 max-w-6xl mx-auto">
+      <a href="#work" class="block text-sm text-zinc-500 py-2 px-2 hover:text-dark transition-colors" onclick="closeMobileMenu()">Work</a>
+      <a href="#services" class="block text-sm text-zinc-500 py-2 px-2 hover:text-dark transition-colors" onclick="closeMobileMenu()">Services</a>
+      <a href="#pricing" class="block text-sm text-zinc-500 py-2 px-2 hover:text-dark transition-colors" onclick="closeMobileMenu()">Pricing</a>
+      <a href="#contact" class="block text-sm bg-accent text-white px-4 py-2.5 rounded-lg font-medium hover:bg-accent-dark transition-colors mt-2 text-center" onclick="closeMobileMenu()">Hire me</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="text-center pt-10 pb-10 px-6">
+    <div class="inline-flex items-center gap-2 border border-zinc-200 rounded-full px-4 py-1.5 text-xs text-zinc-500 mb-7">
+      <span class="w-1.5 h-1.5 rounded-full bg-green-500 inline-block animate-pulse"></span>
+      Available for new projects — Howrah &amp; Kolkata
+    </div>
+    <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-tight max-w-2xl mx-auto mb-5">
+      A web developer<br/>
+      <span class="typewriter-wrap">for <span id="typewriter" class="typewriter-text gradient-text">your next project.</span></span>
+    </h1>
+    <p class="text-zinc-500 text-base md:text-lg max-w-xl mx-auto mb-8">
+      Hi, I'm <strong class="text-dark font-semibold">Aman Prasad</strong> — a freelance web developer based in <strong class="text-dark font-semibold">Howrah, Kolkata</strong>. I build fast, affordable websites and web apps for businesses across India and worldwide.
+    </p>
+    <div class="flex items-center justify-center gap-3 flex-wrap">
+      <a href="#contact" class="inline-block bg-accent text-white px-7 py-3 rounded-lg font-medium text-sm hover:bg-accent-dark transition-colors">
+        Start a project
+      </a>
+      <a href="#book" class="inline-block border border-zinc-200 text-zinc-600 px-7 py-3 rounded-lg font-medium text-sm hover:border-zinc-400 transition-colors">
+        Book a free call
+      </a>
+    </div>
+  </section>
+
+  <!-- HERO VISUAL — Animated canvas background replacing static image -->
+  <section class="max-w-5xl mx-auto px-4 sm:px-6 pb-16">
+    <div class="hero-video-wrap border border-zinc-200 shadow-sm" style="min-height: 340px; background: #0e0e12;">
+      <!-- Animated SVG canvas background -->
+      <canvas id="heroCanvas" class="hero-canvas-bg" style="border-radius:1.25rem;"></canvas>
+      <!-- Browser chrome overlay -->
+      <div class="hero-video-inner">
+        <div class="flex items-center gap-2 px-5 py-3 border-b border-white/10 bg-black/30 backdrop-blur-sm">
+          <div class="w-3 h-3 rounded-full bg-red-400/80"></div>
+          <div class="w-3 h-3 rounded-full bg-yellow-400/80"></div>
+          <div class="w-3 h-3 rounded-full bg-green-400/80"></div>
+          <div class="ml-3 bg-white/10 border border-white/10 rounded-md px-4 py-1 text-xs text-white/50 flex-1 max-w-xs">codexaman.in</div>
+        </div>
+        <!-- Content inside the visual -->
+        <div class="flex flex-col items-center justify-center text-center px-8 py-16 sm:py-24">
+          <p class="text-white/40 text-xs uppercase tracking-widest mb-3 font-medium">Web Developer · Howrah, Kolkata</p>
+          <h2 class="text-white text-2xl sm:text-4xl font-bold tracking-tight mb-4 max-w-lg leading-tight">Clean code.<br/>Delivered on time.</h2>
+          <p class="text-white/50 text-sm max-w-xs mb-8">From landing pages to Laravel apps — built for performance and built to rank.</p>
+          <div class="flex flex-wrap gap-3 justify-center">
+            <span class="text-xs bg-white/10 border border-white/10 text-white/70 px-3 py-1.5 rounded-lg font-medium">WordPress</span>
+            <span class="text-xs bg-white/10 border border-white/10 text-white/70 px-3 py-1.5 rounded-lg font-medium">Laravel</span>
+            <span class="text-xs bg-white/10 border border-white/10 text-white/70 px-3 py-1.5 rounded-lg font-medium">Tailwind CSS</span>
+            <span class="text-xs bg-white/10 border border-white/10 text-white/70 px-3 py-1.5 rounded-lg font-medium">PHP</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-video-overlay" style="background: linear-gradient(to bottom, transparent 0%, transparent 60%, #fff 100%);"></div>
+    </div>
+  </section>
+
+  <!-- TECH STACK GRID — replaces marquee -->
+  <section class="max-w-5xl mx-auto px-4 sm:px-6 pb-16 fade-in">
+    <p class="text-center text-xs text-zinc-400 uppercase tracking-widest mb-6 font-medium">Technologies I work with</p>
+    <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3">
+      <div class="tech-grid-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        WordPress
+      </div>
+      <div class="tech-grid-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        Laravel
+      </div>
+      <div class="tech-grid-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17l6-6-6-6"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+        PHP
+      </div>
+      <div class="tech-grid-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        HTML/CSS
+      </div>
+      <div class="tech-grid-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        Tailwind
+      </div>
+      <div class="tech-grid-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        Bootstrap
+      </div>
+      <div class="tech-grid-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        JavaScript
+      </div>
+      <div class="tech-grid-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+        MySQL
+      </div>
+      <div class="tech-grid-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+        WooCommerce
+      </div>
+      <div class="tech-grid-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>
+        Git
+      </div>
+      <div class="tech-grid-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+        REST APIs
+      </div>
+      <div class="tech-grid-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+        jQuery
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SECTION: 3 CARDS (FIXED RESPONSIVE) ===================== -->
+  <section class="max-w-5xl mx-auto px-4 sm:px-6 pb-20 fade-in">
+    <div class="flex items-center justify-center gap-2 mb-5">
+      <span class="border border-zinc-200 rounded-full px-4 py-1.5 text-xs text-zinc-500 font-medium">What I deliver</span>
+    </div>
+    <h2 class="text-3xl sm:text-4xl font-bold text-center tracking-tight mb-3">
+      Build websites that<br/><span class="gradient-text">actually convert.</span>
+    </h2>
+    <p class="text-zinc-500 text-center text-base max-w-lg mx-auto mb-10">
+      Clean code, pixel-perfect design, and on-time delivery — every single project.
+    </p>
+
+    <!-- THE FIX: stack on mobile, 3-cols on lg -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+      <!-- card 1: dark with CTA -->
+      <div class="rounded-2xl overflow-hidden relative bg-dark min-h-72 flex flex-col justify-end sm:col-span-2 lg:col-span-1" style="border:1px solid #27272a; transition: border-color 0.35s ease, box-shadow 0.35s ease;" onmouseenter="this.style.borderColor='#5b5bd6';this.style.boxShadow='0 0 0 3px rgba(91,91,214,0.12)'" onmouseleave="this.style.borderColor='#27272a';this.style.boxShadow='none'">
+        <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/70 to-dark/40"></div>
+        <!-- subtle pattern overlay -->
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 1px 1px, #fff 1px, transparent 0); background-size: 24px 24px;"></div>
+        <div class="relative p-6 sm:p-8 lg:p-6">
+          <p class="text-white font-bold text-2xl leading-snug mb-2">Build launch-ready pages in days.</p>
+          <p class="text-zinc-400 text-sm mb-5">Fast delivery, clean design, no back-and-forth hassle.</p>
+          <a href="#contact" class="inline-block bg-accent text-white text-sm font-medium px-5 py-2.5 rounded-xl hover:bg-accent-dark transition-colors">Start a project →</a>
+        </div>
+      </div>
+
+      <!-- card 2: light stat -->
+      <div class="card-border rounded-2xl bg-zinc-50 p-7 flex flex-col justify-between">
+        <div>
+          <p class="text-6xl font-bold tracking-tighter text-dark mb-1 stat-num">50+</p>
+          <p class="text-xs text-zinc-400 uppercase tracking-widest font-medium mb-4">Projects delivered</p>
+          <p class="text-zinc-500 text-sm leading-relaxed">Clients across India and worldwide trust my work to grow their business online.</p>
+        </div>
+        <div class="flex flex-wrap gap-1.5 mt-6">
+          <span class="text-xs bg-white border border-zinc-200 text-zinc-500 px-2.5 py-1 rounded-md">Laravel</span>
+          <span class="text-xs bg-white border border-zinc-200 text-zinc-500 px-2.5 py-1 rounded-md">WordPress</span>
+          <span class="text-xs bg-white border border-zinc-200 text-zinc-500 px-2.5 py-1 rounded-md">Tailwind</span>
+          <span class="text-xs bg-white border border-zinc-200 text-zinc-500 px-2.5 py-1 rounded-md">PHP</span>
+        </div>
+      </div>
+
+      <!-- card 3: accent purple -->
+      <div class="rounded-2xl bg-accent p-7 flex flex-col justify-between" style="border:1px solid #5b5bd6; transition: border-color 0.35s ease, box-shadow 0.35s ease;" onmouseenter="this.style.borderColor='#8b8bff';this.style.boxShadow='0 0 0 3px rgba(91,91,214,0.15)'" onmouseleave="this.style.borderColor='#5b5bd6';this.style.boxShadow='none'">
+        <div>
+          <p class="text-white font-semibold text-base mb-5">How I work</p>
+          <ul class="space-y-3.5">
+            <li class="flex items-start gap-2.5 text-white/90 text-sm"><span class="text-white/50 mt-0.5 text-lg leading-none">›</span>Understand your goal first</li>
+            <li class="flex items-start gap-2.5 text-white/90 text-sm"><span class="text-white/50 mt-0.5 text-lg leading-none">›</span>Design before a single line of code</li>
+            <li class="flex items-start gap-2.5 text-white/90 text-sm"><span class="text-white/50 mt-0.5 text-lg leading-none">›</span>Ship fast, iterate from feedback</li>
+            <li class="flex items-start gap-2.5 text-white/90 text-sm"><span class="text-white/50 mt-0.5 text-lg leading-none">›</span>Support after launch</li>
+          </ul>
+        </div>
+        <div class="mt-6 h-px bg-white/20"></div>
+        <p class="text-white/60 text-xs mt-4">Available for new projects</p>
+      </div>
+    </div>
+
+    <div class="flex justify-center mt-10">
+      <a href="#services" class="bg-dark text-white text-sm font-medium px-7 py-3 rounded-xl hover:bg-zinc-800 transition-colors">View all services</a>
+    </div>
+  </section>
+
+  <!-- ===================== STATS BAR ===================== -->
+  <section class="max-w-5xl mx-auto px-4 sm:px-6 pb-20 fade-in">
+    <div class="border border-zinc-200 rounded-2xl bg-white p-8 grid grid-cols-2 sm:grid-cols-4 gap-8 text-center">
+      <div>
+        <p class="text-3xl font-bold tracking-tight text-dark">50+</p>
+        <p class="text-xs text-zinc-400 mt-1">Projects delivered</p>
+      </div>
+      <div>
+        <p class="text-3xl font-bold tracking-tight text-dark">3–7</p>
+        <p class="text-xs text-zinc-400 mt-1">Day avg. delivery</p>
+      </div>
+      <div>
+        <p class="text-3xl font-bold tracking-tight text-dark">100%</p>
+        <p class="text-xs text-zinc-400 mt-1">On-time rate</p>
+      </div>
+      <div>
+        <p class="text-3xl font-bold tracking-tight text-dark">4+ yrs</p>
+        <p class="text-xs text-zinc-400 mt-1">Experience</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SERVICES ===================== -->
+  <section id="services" class="max-w-5xl mx-auto px-4 sm:px-6 pb-10 fade-in">
+    <div class="border border-zinc-200 rounded-2xl p-8 md:p-10 bg-white">
+      <div class="grid md:grid-cols-2 gap-10 items-center">
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight mb-4">
+            Use the <span class="text-accent">right technology</span> for every project.
+          </h2>
+          <p class="text-zinc-500 text-sm leading-relaxed mb-7">
+            I pick the best stack for your needs — no bloat, no overengineering. Whether it's a quick landing page or a full Laravel app.
+          </p>
+          <div class="mb-4">
+            <p class="text-xs text-zinc-400 font-medium mb-2">Frontend</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="border border-dark bg-dark text-white text-xs px-3 py-1.5 rounded-lg font-medium">HTML / CSS</span>
+              <span class="border border-zinc-200 text-zinc-600 text-xs px-3 py-1.5 rounded-lg">Tailwind</span>
+              <span class="border border-zinc-200 text-zinc-600 text-xs px-3 py-1.5 rounded-lg">Bootstrap</span>
+              <span class="border border-zinc-200 text-zinc-600 text-xs px-3 py-1.5 rounded-lg">JavaScript</span>
+              <span class="border border-zinc-200 text-zinc-600 text-xs px-3 py-1.5 rounded-lg">jQuery</span>
+            </div>
+          </div>
+          <div>
+            <p class="text-xs text-zinc-400 font-medium mb-2">Backend & CMS</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="border border-dark bg-dark text-white text-xs px-3 py-1.5 rounded-lg font-medium">Laravel</span>
+              <span class="border border-zinc-200 text-zinc-600 text-xs px-3 py-1.5 rounded-lg">PHP</span>
+              <span class="border border-zinc-200 text-zinc-600 text-xs px-3 py-1.5 rounded-lg">WordPress</span>
+              <span class="border border-zinc-200 text-zinc-600 text-xs px-3 py-1.5 rounded-lg">WooCommerce</span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <img src="https://placehold.co/540x380/f4f3ff/a5b4fc?text=Services+Preview" alt="Services" class="w-full rounded-xl border border-zinc-100"/>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== WORDPRESS / LANDING PAGES ===================== -->
+  <section class="max-w-5xl mx-auto px-4 sm:px-6 py-10 fade-in">
+    <div class="border border-zinc-200 rounded-2xl p-8 md:p-10 bg-white">
+      <div class="grid md:grid-cols-2 gap-10 items-center">
+        <div class="order-2 md:order-1">
+          <img src="https://placehold.co/540x380/faf9ff/c4b5fd?text=WordPress+%26+Landing+Pages" alt="WordPress" class="w-full rounded-xl border border-zinc-100"/>
+        </div>
+        <div class="order-1 md:order-2">
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight mb-4">
+            Store and manage your <span class="text-accent">content easily.</span>
+          </h2>
+          <p class="text-zinc-500 text-sm leading-relaxed mb-6">
+            WordPress websites with full CMS control — you update content yourself without touching any code. WooCommerce stores included.
+          </p>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3 text-sm text-zinc-600">
+              <span class="w-1.5 h-1.5 rounded-full bg-accent mt-1.5 flex-shrink-0"></span>
+              Custom WordPress theme development
+            </li>
+            <li class="flex items-start gap-3 text-sm text-zinc-600">
+              <span class="w-1.5 h-1.5 rounded-full bg-accent mt-1.5 flex-shrink-0"></span>
+              WooCommerce store with payment integration
+            </li>
+            <li class="flex items-start gap-3 text-sm text-zinc-600">
+              <span class="w-1.5 h-1.5 rounded-full bg-accent mt-1.5 flex-shrink-0"></span>
+              SEO-ready structure from day one
+            </li>
+            <li class="flex items-start gap-3 text-sm text-zinc-600">
+              <span class="w-1.5 h-1.5 rounded-full bg-accent mt-1.5 flex-shrink-0"></span>
+              Mobile-first, cross-browser compatible
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== WHAT'S INCLUDED ACCORDION ===================== -->
+  <section class="max-w-5xl mx-auto px-4 sm:px-6 py-10 fade-in">
+    <div class="grid md:grid-cols-2 gap-10 items-start">
+      <div>
+        <img src="https://placehold.co/540x460/f0eeff/c4b5fd?text=Project+Examples" alt="Projects" class="w-full rounded-2xl border border-zinc-100"/>
+      </div>
+      <div class="pt-2">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight mb-8">Everything you need,<br/>in every project.</h2>
+        <div class="space-y-0 divide-y divide-zinc-100 border border-zinc-200 rounded-2xl overflow-hidden">
+          <details class="group bg-white" open>
+            <summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none">
+              <span class="text-sm font-semibold text-dark">Clean, semantic code</span>
+              <span class="chevron text-zinc-400 text-lg leading-none">›</span>
+            </summary>
+            <div class="px-5 pb-4 text-sm text-zinc-500 leading-relaxed">
+              Every project is written with clean, well-structured code — easy to maintain, extend, and hand off to any developer.
+            </div>
+          </details>
+          <details class="group bg-white">
+            <summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none">
+              <span class="text-sm font-semibold text-dark">Mobile responsive design</span>
+              <span class="chevron text-zinc-400 text-lg leading-none">›</span>
+            </summary>
+            <div class="px-5 pb-4 text-sm text-zinc-500 leading-relaxed">
+              Looks perfect on every device — phone, tablet, and desktop. Built mobile-first from the start.
+            </div>
+          </details>
+          <details class="group bg-white">
+            <summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none">
+              <span class="text-sm font-semibold text-dark">SEO & performance optimized</span>
+              <span class="chevron text-zinc-400 text-lg leading-none">›</span>
+            </summary>
+            <div class="px-5 pb-4 text-sm text-zinc-500 leading-relaxed">
+              Fast load times, proper meta tags, semantic HTML — everything Google needs to rank your site.
+            </div>
+          </details>
+          <details class="group bg-white">
+            <summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none">
+              <span class="text-sm font-semibold text-dark">Post-launch support</span>
+              <span class="chevron text-zinc-400 text-lg leading-none">›</span>
+            </summary>
+            <div class="px-5 pb-4 text-sm text-zinc-500 leading-relaxed">
+              I don't disappear after launch. Bug fixes, small updates, and questions — I'm here.
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== NEW: HOW IT WORKS ===================== -->
+  <section id="work" class="max-w-5xl mx-auto px-4 sm:px-6 py-20 fade-in">
+    <div class="text-center mb-14">
+      <span class="border border-zinc-200 rounded-full px-4 py-1.5 text-xs text-zinc-500 font-medium">The process</span>
+      <h2 class="text-3xl sm:text-4xl font-bold tracking-tight mt-4 mb-3">From idea to live site,<br/>in a few simple steps.</h2>
+      <p class="text-zinc-500 text-sm max-w-md mx-auto">No ambiguity. No wasted time. A clear process from day one.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="card-border rounded-2xl p-6 bg-white relative">
+        <div class="w-9 h-9 rounded-xl bg-accent/10 text-accent font-bold text-sm flex items-center justify-center mb-4">01</div>
+        <h3 class="font-semibold text-dark text-sm mb-2">Discovery call</h3>
+        <p class="text-zinc-400 text-xs leading-relaxed">We talk through your goals, audience, and what success looks like for your project.</p>
+      </div>
+      <div class="card-border rounded-2xl p-6 bg-white relative">
+        <div class="w-9 h-9 rounded-xl bg-accent/10 text-accent font-bold text-sm flex items-center justify-center mb-4">02</div>
+        <h3 class="font-semibold text-dark text-sm mb-2">Design first</h3>
+        <p class="text-zinc-400 text-xs leading-relaxed">I wireframe and design before writing a single line of code. You approve before we build.</p>
+      </div>
+      <div class="card-border rounded-2xl p-6 bg-white relative">
+        <div class="w-9 h-9 rounded-xl bg-accent/10 text-accent font-bold text-sm flex items-center justify-center mb-4">03</div>
+        <h3 class="font-semibold text-dark text-sm mb-2">Build &amp; review</h3>
+        <p class="text-zinc-400 text-xs leading-relaxed">Development with regular check-ins. A staging link so you can review before it goes live.</p>
+      </div>
+      <div class="card-border rounded-2xl p-6 bg-white relative">
+        <div class="w-9 h-9 rounded-xl bg-accent/10 text-accent font-bold text-sm flex items-center justify-center mb-4">04</div>
+        <h3 class="font-semibold text-dark text-sm mb-2">Launch &amp; support</h3>
+        <p class="text-zinc-400 text-xs leading-relaxed">We go live. I stay around for questions, tweaks, and bugs — not a ghost after handoff.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== NEW: TESTIMONIALS ===================== -->
+  <section class="max-w-5xl mx-auto px-4 sm:px-6 pb-20 fade-in">
+    <div class="text-center mb-10">
+      <h2 class="text-3xl sm:text-4xl font-bold tracking-tight mb-3">What clients say.</h2>
+      <p class="text-zinc-500 text-sm">Real feedback from real projects.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="testimonial-card rounded-2xl p-6 bg-white flex flex-col gap-4">
+        <div class="flex gap-0.5">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="#facc15" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="#facc15" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="#facc15" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="#facc15" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="#facc15" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="text-zinc-600 text-sm leading-relaxed flex-1">"Aman delivered our landing page in just 3 days. The quality was beyond what I expected for the price. Will definitely hire again."</p>
+        <div class="flex items-center gap-3 pt-2 border-t border-zinc-100">
+          <div class="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center text-accent font-semibold text-xs">RS</div>
+          <div>
+            <p class="text-xs font-semibold text-dark">Rohan S.</p>
+            <p class="text-xs text-zinc-400">Startup founder, Mumbai</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card rounded-2xl p-6 bg-white flex flex-col gap-4">
+        <div class="flex gap-0.5">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="#facc15" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="#facc15" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="#facc15" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="#facc15" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="#facc15" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="text-zinc-600 text-sm leading-relaxed flex-1">"Built our entire WooCommerce store from scratch. Super responsive, easy to manage, and looks great on mobile. Highly recommended."</p>
+        <div class="flex items-center gap-3 pt-2 border-t border-zinc-100">
+          <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center text-green-700 font-semibold text-xs">PK</div>
+          <div>
+            <p class="text-xs font-semibold text-dark">Priya K.</p>
+            <p class="text-xs text-zinc-400">E-commerce owner, Delhi</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card rounded-2xl p-6 bg-white flex flex-col gap-4 sm:col-span-2 lg:col-span-1">
+        <div class="flex gap-0.5">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="#facc15" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="#facc15" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="#facc15" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="#facc15" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="#facc15" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="text-zinc-600 text-sm leading-relaxed flex-1">"Professional, on time, and communicates clearly throughout. The Laravel app he built handles thousands of users daily without issues."</p>
+        <div class="flex items-center gap-3 pt-2 border-t border-zinc-100">
+          <div class="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center text-orange-700 font-semibold text-xs">AM</div>
+          <div>
+            <p class="text-xs font-semibold text-dark">Arjun M.</p>
+            <p class="text-xs text-zinc-400">CTO, SaaS company</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PRICING ===================== -->
+  <section id="pricing" class="max-w-5xl mx-auto px-4 sm:px-6 py-20 fade-in">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl sm:text-4xl font-bold tracking-tight mb-3">
+        <span class="text-accent">Choose</span> the plan that fits you
+      </h2>
+      <p class="text-zinc-500 text-base">Transparent pricing. No hidden fees. Pay once, own it forever.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
+      <!-- Plan 1 -->
+      <div class="card-border rounded-2xl p-8 bg-white">
+        <p class="text-sm font-semibold text-zinc-500 mb-1">Starter</p>
+        <p class="text-xs text-zinc-400 mb-4">Landing pages & small sites</p>
+        <p class="text-4xl font-bold tracking-tight text-dark mb-1">₹4,999</p>
+        <p class="text-xs text-zinc-400 mb-7">one-time · one year access</p>
+        <ul class="space-y-2.5 mb-8 text-sm text-zinc-600">
+          <li class="flex items-center gap-2.5"><span class="w-4 h-4 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-xs flex-shrink-0">✓</span>Landing page (up to 5 sections)</li>
+          <li class="flex items-center gap-2.5"><span class="w-4 h-4 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-xs flex-shrink-0">✓</span>Mobile responsive</li>
+          <li class="flex items-center gap-2.5"><span class="w-4 h-4 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-xs flex-shrink-0">✓</span>Contact form</li>
+          <li class="flex items-center gap-2.5"><span class="w-4 h-4 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-xs flex-shrink-0">✓</span>3-day delivery</li>
+          <li class="flex items-center gap-2.5"><span class="w-4 h-4 rounded-full bg-zinc-100 text-zinc-400 flex items-center justify-center text-xs flex-shrink-0">✕</span><span class="text-zinc-400">CMS / Admin panel</span></li>
+        </ul>
+        <a href="#contact" class="block w-full text-center bg-accent text-white py-3 rounded-xl text-sm font-medium hover:bg-accent-dark transition-colors">Hire me</a>
+      </div>
+
+      <!-- Plan 2 -->
+      <div class="border border-dark rounded-2xl p-8 bg-dark text-white relative overflow-hidden" style="transition: border-color 0.35s ease, box-shadow 0.35s ease;" onmouseenter="this.style.borderColor='#8b8bff';this.style.boxShadow='0 0 0 3px rgba(91,91,214,0.15)'" onmouseleave="this.style.borderColor='#18181b';this.style.boxShadow='none'">
+        <div class="absolute top-4 right-4 bg-accent text-white text-xs font-semibold px-2.5 py-1 rounded-full">Popular</div>
+        <p class="text-sm font-semibold text-zinc-400 mb-1">Professional</p>
+        <p class="text-xs text-zinc-500 mb-4">Full websites & web apps</p>
+        <p class="text-4xl font-bold tracking-tight mb-1">₹12,999</p>
+        <p class="text-xs text-zinc-500 mb-7">one-time · one year access</p>
+        <ul class="space-y-2.5 mb-8 text-sm text-zinc-300">
+          <li class="flex items-center gap-2.5"><span class="w-4 h-4 rounded-full bg-green-900/60 text-green-400 flex items-center justify-center text-xs flex-shrink-0">✓</span>Full business website (5+ pages)</li>
+          <li class="flex items-center gap-2.5"><span class="w-4 h-4 rounded-full bg-green-900/60 text-green-400 flex items-center justify-center text-xs flex-shrink-0">✓</span>WordPress CMS or Laravel</li>
+          <li class="flex items-center gap-2.5"><span class="w-4 h-4 rounded-full bg-green-900/60 text-green-400 flex items-center justify-center text-xs flex-shrink-0">✓</span>SEO optimized</li>
+          <li class="flex items-center gap-2.5"><span class="w-4 h-4 rounded-full bg-green-900/60 text-green-400 flex items-center justify-center text-xs flex-shrink-0">✓</span>7-day delivery</li>
+          <li class="flex items-center gap-2.5"><span class="w-4 h-4 rounded-full bg-green-900/60 text-green-400 flex items-center justify-center text-xs flex-shrink-0">✓</span>1 month free support</li>
+        </ul>
+        <a href="#contact" class="block w-full text-center bg-white text-dark py-3 rounded-xl text-sm font-medium hover:bg-zinc-100 transition-colors">Hire me</a>
+      </div>
+    </div>
+    <p class="text-center text-xs text-zinc-400 mt-6">Need something custom? <a href="#contact" class="text-accent underline">Let's talk</a></p>
+  </section>
+
+  <!-- ===================== BOOK A CALL ===================== -->
+  <section id="book" class="max-w-5xl mx-auto px-4 sm:px-6 pb-10 fade-in">
+    <div class="border border-zinc-200 rounded-2xl overflow-hidden bg-white">
+      <div class="grid md:grid-cols-2">
+        <!-- Left: info -->
+        <div class="p-8 md:p-10 border-b md:border-b-0 md:border-r border-zinc-100">
+          <span class="inline-block border border-zinc-200 rounded-full px-3 py-1 text-xs text-zinc-500 mb-6">Free 30-min call</span>
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight mb-3">Let's talk before<br/>you commit.</h2>
+          <p class="text-zinc-500 text-sm leading-relaxed mb-8">No pressure. We discuss your project, I share my approach, and you decide if we're a good fit — zero obligation.</p>
+          <div class="space-y-5">
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-lg border border-zinc-100 bg-zinc-50 flex items-center justify-center flex-shrink-0">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5b5bd6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <div>
+                <p class="text-sm font-semibold text-dark">30 minutes</p>
+                <p class="text-xs text-zinc-400">Quick and focused — no fluff</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-lg border border-zinc-100 bg-zinc-50 flex items-center justify-center flex-shrink-0">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5b5bd6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              </div>
+              <div>
+                <p class="text-sm font-semibold text-dark">Understand your goal</p>
+                <p class="text-xs text-zinc-400">I'll ask the right questions to scope your project</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-lg border border-zinc-100 bg-zinc-50 flex items-center justify-center flex-shrink-0">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5b5bd6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              </div>
+              <div>
+                <p class="text-sm font-semibold text-dark">Get a rough estimate</p>
+                <p class="text-xs text-zinc-400">Timeline and budget — no surprises later</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Right: Calendly -->
+        <div class="p-6 bg-zinc-50 flex flex-col items-center justify-center min-h-80">
+          <div class="w-full h-full flex flex-col items-center justify-center text-center px-4 py-8">
+            <div class="w-14 h-14 rounded-2xl bg-white border border-zinc-200 flex items-center justify-center mb-4 shadow-sm">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5b5bd6" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <p class="font-semibold text-dark mb-1">Book your slot</p>
+            <p class="text-xs text-zinc-400 mb-6 max-w-xs">Pick a time that works for you. Calendar invite sent instantly.</p>
+            <a href="https://calendly.com/YOUR_CALENDLY_USERNAME" target="_blank"
+               class="inline-block bg-dark text-white text-sm font-medium px-6 py-3 rounded-xl hover:bg-zinc-800 transition-colors">
+              Open booking calendar
+            </a>
+            <p class="text-xs text-zinc-400 mt-4">Replace <code class="text-accent text-xs">YOUR_CALENDLY_USERNAME</code><br/>in the source with your link</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACT ===================== -->
+  <section id="contact" class="max-w-5xl mx-auto px-4 sm:px-6 pb-24 fade-in">
+    <div class="border border-zinc-200 rounded-2xl overflow-hidden bg-white">
+      <div class="grid md:grid-cols-5">
+        <!-- Left sidebar -->
+        <div class="md:col-span-2 bg-zinc-50 border-b md:border-b-0 md:border-r border-zinc-100 p-8 flex flex-col justify-between">
+          <div>
+            <h2 class="text-2xl font-bold tracking-tight mb-2">Send me a message.</h2>
+            <p class="text-zinc-500 text-sm leading-relaxed mb-8">Tell me what you're building. I read every message personally and reply within 24 hours — usually faster.</p>
+            <div class="space-y-5">
+              <div>
+                <p class="text-xs font-semibold text-zinc-400 uppercase tracking-wide mb-1">Email</p>
+                <a href="mailto:hello@codexaman.in" class="text-sm text-dark font-medium hover:text-accent transition-colors">hello@codexaman.in</a>
+              </div>
+              <div>
+                <p class="text-xs font-semibold text-zinc-400 uppercase tracking-wide mb-1">WhatsApp</p>
+                <a href="https://wa.me/91XXXXXXXXXX" target="_blank" class="text-sm text-dark font-medium hover:text-accent transition-colors">+91 XXXXX XXXXX</a>
+              </div>
+              <div>
+                <p class="text-xs font-semibold text-zinc-400 uppercase tracking-wide mb-1">Based in</p>
+                <p class="text-sm text-dark font-medium">India · Works worldwide</p>
+              </div>
+            </div>
+          </div>
+          <div class="mt-10 pt-6 border-t border-zinc-200">
+            <p class="text-xs text-zinc-400 mb-3">Also find me on</p>
+            <div class="flex flex-wrap gap-3">
+              <a href="#" class="text-xs border border-zinc-200 bg-white text-zinc-600 px-3 py-1.5 rounded-lg hover:border-zinc-400 transition-colors font-medium">LinkedIn</a>
+              <a href="#" class="text-xs border border-zinc-200 bg-white text-zinc-600 px-3 py-1.5 rounded-lg hover:border-zinc-400 transition-colors font-medium">GitHub</a>
+              <a href="#" class="text-xs border border-zinc-200 bg-white text-zinc-600 px-3 py-1.5 rounded-lg hover:border-zinc-400 transition-colors font-medium">Twitter</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: form -->
+        <div class="md:col-span-3 p-6 sm:p-8">
+          <div class="space-y-5">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="text-xs text-zinc-500 font-medium block mb-1.5">Your name</label>
+                <input type="text" placeholder="Rahul Sharma" class="w-full border border-zinc-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-all"/>
+              </div>
+              <div>
+                <label class="text-xs text-zinc-500 font-medium block mb-1.5">Email address</label>
+                <input type="email" placeholder="rahul@company.com" class="w-full border border-zinc-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-all"/>
+              </div>
+            </div>
+
+            <div>
+              <label class="text-xs text-zinc-500 font-medium block mb-1.5">What do you need?</label>
+              <select class="w-full border border-zinc-200 rounded-xl px-4 py-2.5 text-sm text-zinc-600 focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-all bg-white">
+                <option value="" disabled selected>Pick a service...</option>
+                <option>Landing Page</option>
+                <option>WordPress Website</option>
+                <option>E-Commerce / WooCommerce Store</option>
+                <option>Laravel Web Application</option>
+                <option>Single Page Website</option>
+                <option>Something else</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="text-xs text-zinc-500 font-medium block mb-2">Approx. budget</label>
+              <div class="flex flex-wrap gap-2">
+                <div class="budget-option"><input type="radio" name="budget" id="b1" class="sr-only"/><label for="b1" class="cursor-pointer border border-zinc-200 text-zinc-600 text-xs px-3 py-1.5 rounded-lg block select-none hover:border-zinc-400 transition-colors">Under ₹5k</label></div>
+                <div class="budget-option"><input type="radio" name="budget" id="b2" class="sr-only"/><label for="b2" class="cursor-pointer border border-zinc-200 text-zinc-600 text-xs px-3 py-1.5 rounded-lg block select-none hover:border-zinc-400 transition-colors">₹5k – ₹15k</label></div>
+                <div class="budget-option"><input type="radio" name="budget" id="b3" class="sr-only"/><label for="b3" class="cursor-pointer border border-zinc-200 text-zinc-600 text-xs px-3 py-1.5 rounded-lg block select-none hover:border-zinc-400 transition-colors">₹15k – ₹50k</label></div>
+                <div class="budget-option"><input type="radio" name="budget" id="b4" class="sr-only"/><label for="b4" class="cursor-pointer border border-zinc-200 text-zinc-600 text-xs px-3 py-1.5 rounded-lg block select-none hover:border-zinc-400 transition-colors">₹50k+</label></div>
+              </div>
+            </div>
+
+            <div>
+              <label class="text-xs text-zinc-500 font-medium block mb-1.5">Project details</label>
+              <textarea placeholder="Describe your project — what it does, who it's for, when you need it live. The more detail, the better my reply." rows="4" class="w-full border border-zinc-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-all resize-none"></textarea>
+            </div>
+
+            <div class="flex items-center gap-3 flex-wrap sm:flex-nowrap">
+              <button class="flex-1 bg-dark text-white py-3 rounded-xl text-sm font-medium hover:bg-zinc-800 transition-colors min-w-0">
+                Send message
+              </button>
+              <a href="https://wa.me/91XXXXXXXXXX" target="_blank"
+                 class="flex items-center justify-center gap-2 border border-zinc-200 text-zinc-600 px-4 py-3 rounded-xl text-sm font-medium hover:border-zinc-400 transition-colors whitespace-nowrap w-full sm:w-auto">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="#25D366" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+                WhatsApp
+              </a>
+            </div>
+            <p class="text-xs text-zinc-400 text-center">I'll reply within 24 hours · No spam, ever</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SEO CONTENT SECTION — hidden visually, crawlable ===================== -->
+  <section style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;" aria-hidden="true">
+    <div class="max-w-5xl mx-auto">
+      <div class="grid md:grid-cols-3 gap-10">
+        <div class="md:col-span-2">
+          <h2 class="text-xl font-bold text-dark mb-4">Web Developer in Howrah &amp; Kolkata, India</h2>
+          <p class="text-zinc-500 text-sm leading-relaxed mb-4">
+            I'm <strong class="text-dark">Aman Prasad</strong>, a freelance web developer based in <strong class="text-dark">Howrah, West Bengal</strong>. I specialise in building affordable, high-performance websites for small businesses, startups, and entrepreneurs across <strong class="text-dark">Kolkata, Howrah, and India</strong>. Whether you need a professional landing page, a WordPress site, or a custom Laravel web application — I deliver clean, fast, and SEO-optimised work at a price that makes sense.
+          </p>
+          <p class="text-zinc-500 text-sm leading-relaxed mb-4">
+            As a <strong class="text-dark">WordPress developer in Kolkata</strong>, I've built everything from simple blogs to fully custom WooCommerce stores. My work is mobile-first, cross-browser compatible, and structured for Google from day one. Clients searching for a <strong class="text-dark">low-cost web designer in Howrah</strong> or an <strong class="text-dark">affordable freelancer in Kolkata</strong> will find that my packages offer genuine value — transparent pricing, fast turnaround, and no hidden fees.
+          </p>
+          <p class="text-zinc-500 text-sm leading-relaxed">
+            My domain is <strong class="text-dark">codexaman.in</strong> — a portfolio and studio built around one principle: your website should work as hard as you do. If you're a business owner in <strong class="text-dark">Howrah or Kolkata</strong> looking for a reliable web developer, let's build something together.
+          </p>
+        </div>
+        <div>
+          <h3 class="text-sm font-semibold text-dark mb-4">Services I offer</h3>
+          <ul class="space-y-2.5 text-sm text-zinc-500">
+            <li class="flex items-start gap-2.5"><span class="w-1 h-1 rounded-full bg-accent mt-2 flex-shrink-0"></span>Custom WordPress website development in Kolkata</li>
+            <li class="flex items-start gap-2.5"><span class="w-1 h-1 rounded-full bg-accent mt-2 flex-shrink-0"></span>WooCommerce store setup &amp; development</li>
+            <li class="flex items-start gap-2.5"><span class="w-1 h-1 rounded-full bg-accent mt-2 flex-shrink-0"></span>Laravel web application development</li>
+            <li class="flex items-start gap-2.5"><span class="w-1 h-1 rounded-full bg-accent mt-2 flex-shrink-0"></span>Affordable landing pages for Howrah businesses</li>
+            <li class="flex items-start gap-2.5"><span class="w-1 h-1 rounded-full bg-accent mt-2 flex-shrink-0"></span>SEO-ready website design India</li>
+            <li class="flex items-start gap-2.5"><span class="w-1 h-1 rounded-full bg-accent mt-2 flex-shrink-0"></span>Freelance web design at low cost</li>
+            <li class="flex items-start gap-2.5"><span class="w-1 h-1 rounded-full bg-accent mt-2 flex-shrink-0"></span>Mobile responsive design for all devices</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-zinc-100 py-8 px-6">
+    <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-sm font-medium">codexaman<span class="text-accent">.in</span></p>
+      <div class="flex gap-6">
+        <a href="#services" class="text-xs text-zinc-400 hover:text-dark transition-colors">Services</a>
+        <a href="#pricing" class="text-xs text-zinc-400 hover:text-dark transition-colors">Pricing</a>
+        <a href="#contact" class="text-xs text-zinc-400 hover:text-dark transition-colors">Contact</a>
+      </div>
+      <p class="text-xs text-zinc-400">© 2025 Aman Prasad</p>
+    </div>
+  </footer>
+
+  <script>
+    // ── Scroll fade-in ──
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+    // ── Navbar scroll border ──
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 10);
+    });
+
+    // ── Mobile menu ──
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuBtn.addEventListener('click', () => { mobileMenu.classList.toggle('open'); });
+    function closeMobileMenu() { mobileMenu.classList.remove('open'); }
+
+    // ── Details chevron ──
+    document.querySelectorAll('details').forEach(d => {
+      d.addEventListener('toggle', () => {
+        const c = d.querySelector('.chevron');
+        if (c) c.style.transform = d.open ? 'rotate(90deg)' : '';
+      });
+    });
+
+    // ── Typewriter animation ──
+    const phrases = [
+      'your next project.',
+      'businesses in Howrah.',
+      'startups in Kolkata.',
+      'WordPress sites.',
+      'Laravel apps.',
+      'affordable websites.',
+    ];
+    const el = document.getElementById('typewriter');
+    let pi = 0, ci = 0, deleting = false;
+    function type() {
+      const phrase = phrases[pi];
+      if (!deleting) {
+        el.textContent = phrase.slice(0, ++ci);
+        if (ci === phrase.length) { deleting = true; return setTimeout(type, 1800); }
+      } else {
+        el.textContent = phrase.slice(0, --ci);
+        if (ci === 0) { deleting = false; pi = (pi + 1) % phrases.length; return setTimeout(type, 300); }
+      }
+      setTimeout(type, deleting ? 40 : 65);
+    }
+    setTimeout(type, 1200);
+
+    // ── Hero canvas — animated floating nodes + edges ──
+    (function() {
+      const canvas = document.getElementById('heroCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let W, H, nodes = [];
+
+      function resize() {
+        W = canvas.width = canvas.offsetWidth;
+        H = canvas.height = canvas.offsetHeight;
+      }
+      resize();
+      window.addEventListener('resize', () => { resize(); initNodes(); });
+
+      function initNodes() {
+        nodes = [];
+        const count = Math.max(18, Math.floor(W * H / 14000));
+        for (let i = 0; i < count; i++) {
+          nodes.push({
+            x: Math.random() * W,
+            y: Math.random() * H,
+            vx: (Math.random() - 0.5) * 0.35,
+            vy: (Math.random() - 0.5) * 0.35,
+            r: Math.random() * 1.8 + 0.8,
+            alpha: Math.random() * 0.5 + 0.2
+          });
+        }
+      }
+      initNodes();
+
+      function draw() {
+        ctx.clearRect(0, 0, W, H);
+
+        // draw edges
+        for (let i = 0; i < nodes.length; i++) {
+          for (let j = i + 1; j < nodes.length; j++) {
+            const dx = nodes[i].x - nodes[j].x;
+            const dy = nodes[i].y - nodes[j].y;
+            const dist = Math.sqrt(dx*dx + dy*dy);
+            const maxDist = 120;
+            if (dist < maxDist) {
+              const opacity = (1 - dist / maxDist) * 0.18;
+              ctx.beginPath();
+              ctx.strokeStyle = `rgba(91,91,214,${opacity})`;
+              ctx.lineWidth = 0.8;
+              ctx.moveTo(nodes[i].x, nodes[i].y);
+              ctx.lineTo(nodes[j].x, nodes[j].y);
+              ctx.stroke();
+            }
+          }
+        }
+
+        // draw nodes
+        nodes.forEach(n => {
+          ctx.beginPath();
+          ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(139,139,255,${n.alpha})`;
+          ctx.fill();
+
+          n.x += n.vx;
+          n.y += n.vy;
+          if (n.x < 0 || n.x > W) n.vx *= -1;
+          if (n.y < 0 || n.y > H) n.vy *= -1;
+        });
+
+        requestAnimationFrame(draw);
+      }
+      draw();
+    })();
+  </script>
+</body>
+</html>
