@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>codexaman — Freelance Web Developer in Kolkata, India</title>
+  <meta name="description" content="codexaman is Aman Prasad, a freelance web developer based in Kolkata, India. I build fast, modern websites and web apps for small businesses worldwide — WordPress, Laravel, React, Shopify, MERN, Firebase, WooCommerce."/>
+  <meta name="keywords" content="freelance web developer India, web developer Kolkata, hire web developer Kolkata, WordPress developer India, Laravel developer Kolkata, React developer India, MERN stack developer, Firebase developer, affordable website India, codexaman, codexaman.in, small business website India"/>
+  <meta name="author" content="codexaman"/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="canonical" href="https://codexaman.in/"/>
+  <meta property="og:title" content="codexaman — Freelance Web Developer in Kolkata, India"/>
+  <meta property="og:description" content="Aman Prasad — a freelance web developer from Kolkata, India. I build modern, affordable websites and web apps for small businesses worldwide."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://codexaman.in/"/>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Aman Prasad",
+    "alternateName": "codexaman",
+    "url": "https://codexaman.in",
+    "description": "Freelance web developer based in Kolkata, India. Building modern, affordable websites and web apps for small businesses globally.",
+    "address": { "@type": "PostalAddress", "addressLocality": "Kolkata", "addressRegion": "West Bengal", "addressCountry": "IN" },
+    "knowsAbout": ["Web Development", "WordPress", "Elementor", "Laravel", "PHP", "Tailwind CSS", "WooCommerce", "Shopify", "React", "Flutter", "MERN", "MEAN", "Firebase", "Supabase"]
+  }
+  </script>
+  <!-- Calendly -->
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet"/>
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: '#f9f8f6',
+            accent: '#6c63ff',
+            'accent-dark': '#5148cc',
+            'accent-light': '#ededfc',
+            dark: '#18181b',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root {
+      --accent: #6c63ff;
+      --accent-dark: #5148cc;
+      --accent-rgb: 108, 99, 255;
+    }
+    body { background: #fff; }
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity .55s ease, transform .55s ease; }
+    .fade-in.visible { opacity: 1; transform: none; }
+
+    /* NAVBAR — fixed, no bounce */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 50;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s, box-shadow 0.3s;
+      will-change: transform;
+    }
+    #navbar.scrolled { border-color: #f4f4f5; box-shadow: 0 1px 20px rgba(0,0,0,0.06); }
+    .nav-offset { height: 60px; }
+
+    .nav-link { position: relative; }
+    .nav-link::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1.5px; background: var(--accent); transition: width 0.3s ease; border-radius: 2px; }
+    .nav-link:hover::after { width: 100%; }
+    .nav-cta {
+      position: relative; overflow: hidden;
+      background: var(--accent); color: #fff;
+      border-radius: 8px; padding: 8px 18px;
+      font-size: 0.875rem; font-weight: 500;
+      transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+    }
+    .nav-cta:hover { background: var(--accent-dark); transform: translateY(-1px); box-shadow: 0 4px 20px rgba(108,99,255,0.35); }
+    .nav-cta::before { content:''; position:absolute; top:0; left:-100%; width:60%; height:100%; background:linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent); transition:left 0.45s ease; }
+    .nav-cta:hover::before { left:160%; }
+
+    details summary::-webkit-details-marker { display: none; }
+    .gradient-text { background: linear-gradient(135deg, #6c63ff 0%, #a78bfa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    #mobile-menu { display: none; }
+    #mobile-menu.open { display: flex; }
+
+    /* GLOW BORDER CARDS */
+    @keyframes glow-rotate { 0% { --glow-angle: 0deg; } 100% { --glow-angle: 360deg; } }
+    @property --glow-angle { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
+    .glow-card {
+      position: relative; border-radius: 14px; background: #fff; isolation: isolate;
+    }
+    .glow-card::before {
+      content: ''; position: absolute; inset: -1.5px; border-radius: 15px;
+      background: conic-gradient(from var(--glow-angle), transparent 60%, rgba(108,99,255,0.7) 80%, rgba(167,139,250,0.9) 88%, rgba(108,99,255,0.7) 96%, transparent 100%);
+      animation: glow-rotate 3s linear infinite; z-index: -1;
+    }
+    .glow-card::after { content: ''; position: absolute; inset: 1px; border-radius: 13px; background: #fff; z-index: -1; }
+    .glow-card-dark { position: relative; border-radius: 14px; background: #18181b; isolation: isolate; }
+    .glow-card-dark::before {
+      content: ''; position: absolute; inset: -1.5px; border-radius: 15px;
+      background: conic-gradient(from var(--glow-angle), transparent 60%, rgba(108,99,255,0.8) 80%, rgba(167,139,250,1) 88%, rgba(108,99,255,0.8) 96%, transparent 100%);
+      animation: glow-rotate 3s linear infinite; z-index: -1;
+    }
+    .glow-card-dark::after { content: ''; position: absolute; inset: 1px; border-radius: 13px; background: #18181b; z-index: -1; }
+    .glow-card:nth-child(2)::before, .glow-card-dark:nth-child(2)::before { animation-delay: -1s; }
+    .glow-card:nth-child(3)::before, .glow-card-dark:nth-child(3)::before { animation-delay: -2s; }
+    .glow-card:nth-child(4)::before { animation-delay: -0.5s; }
+    .card-static { border: 1px solid #e4e4e7; border-radius: 14px; }
+
+    /* BUTTONS */
+    .btn-primary {
+      position: relative; overflow: hidden;
+      background: var(--accent); color: #fff;
+      border-radius: 10px; padding: 12px 28px;
+      font-size: 0.875rem; font-weight: 500;
+      display: inline-block; text-decoration: none;
+      transition: background 0.25s, transform 0.2s, box-shadow 0.25s; border: none;
+    }
+    .btn-primary:hover { background: var(--accent-dark); transform: translateY(-2px); box-shadow: 0 6px 24px rgba(108,99,255,0.38); }
+    .btn-primary::before { content:''; position:absolute; top:0; left:-100%; width:60%; height:100%; background:linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent); transition:left 0.45s ease; }
+    .btn-primary:hover::before { left:160%; }
+    .btn-secondary {
+      position: relative; border: 1.5px solid #e4e4e7; color: #52525b;
+      border-radius: 10px; padding: 11px 28px;
+      font-size: 0.875rem; font-weight: 500;
+      display: inline-block; text-decoration: none;
+      transition: border-color 0.3s, color 0.3s, transform 0.2s, box-shadow 0.25s; background: transparent;
+    }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); box-shadow: 0 4px 16px rgba(108,99,255,0.1); }
+    .btn-dark {
+      position: relative; overflow: hidden;
+      background: #18181b; color: #fff;
+      border-radius: 10px; padding: 12px 28px;
+      font-size: 0.875rem; font-weight: 500;
+      display: inline-block; text-decoration: none;
+      transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+    }
+    .btn-dark:hover { background: #27272a; transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,0.2); }
+    .btn-dark::before { content:''; position:absolute; top:0; left:-100%; width:60%; height:100%; background:linear-gradient(90deg,transparent,rgba(255,255,255,0.08),transparent); transition:left 0.45s ease; }
+    .btn-dark:hover::before { left:160%; }
+
+    /* HERO BADGE */
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 10px;
+      border-radius: 12px; padding: 10px 18px; background: #fff;
+      position: relative; isolation: isolate;
+      font-size: 0.8rem; color: #52525b; font-weight: 500; margin-bottom: 28px;
+    }
+    .hero-badge::before {
+      content: ''; position: absolute; inset: -1.5px; border-radius: 13px;
+      background: conic-gradient(from var(--glow-angle), transparent 55%, rgba(108,99,255,0.6) 75%, rgba(167,139,250,0.9) 85%, rgba(108,99,255,0.6) 95%, transparent 100%);
+      animation: glow-rotate 4s linear infinite; z-index: -1;
+    }
+    .hero-badge::after { content: ''; position: absolute; inset: 1px; border-radius: 12px; background: #fff; z-index: -1; }
+    .badge-dot { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 0 3px rgba(34,197,94,0.2); animation: badge-pulse 2s ease-in-out infinite; flex-shrink: 0; }
+    @keyframes badge-pulse { 0%,100% { box-shadow: 0 0 0 3px rgba(34,197,94,0.2); } 50% { box-shadow: 0 0 0 6px rgba(34,197,94,0.08); } }
+    .badge-divider { width: 1px; height: 14px; background: #e4e4e7; }
+    .badge-stack { display: flex; align-items: center; gap: 5px; }
+    .badge-tech { font-size: 0.7rem; font-weight: 600; color: var(--accent); background: rgba(108,99,255,0.08); padding: 2px 7px; border-radius: 5px; }
+
+    /* TYPEWRITER */
+    .typewriter-text { border-right: 2px solid var(--accent); padding-right: 2px; white-space: nowrap; overflow: hidden; display: inline-block; animation: blink-cursor 0.75s step-end infinite; }
+    @keyframes blink-cursor { 0%,100% { border-color: var(--accent); } 50% { border-color: transparent; } }
+
+    /* HERO CANVAS */
+    .hero-video-wrap { position: relative; overflow: hidden; border-radius: 14px; }
+    .hero-canvas-bg { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; }
+    .hero-video-inner { position: relative; z-index: 1; }
+
+    /* TECH GRID */
+    .tech-grid-item {
+      display: flex; align-items: center; gap: 8px;
+      border: 1px solid #e4e4e7; border-radius: 8px;
+      padding: 10px 14px; background: #fff; font-size: 0.75rem;
+      font-weight: 500; color: #52525b;
+      transition: border-color 0.3s ease, color 0.3s ease, transform 0.25s ease; cursor: default;
+    }
+    .tech-grid-item:hover { border-color: var(--accent); color: var(--accent-dark); transform: translateY(-2px); }
+
+    /* BENTO CARDS */
+    .bento-card { border-radius: 14px; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .bento-card-border { border: 1px solid #e4e4e7; }
+    .bento-card-dark { border: 1px solid #27272a; }
+    .bento-card:hover { transform: translateY(-2px); box-shadow: 0 10px 36px rgba(108,99,255,0.1); }
+
+    /* ACCORDION */
+    .accord-item { border-bottom: 1px solid #f0f0f0; }
+    .accord-item:last-child { border-bottom: none; }
+    .accord-summary { display: flex; align-items: center; justify-content: space-between; padding: 18px 22px; cursor: pointer; list-style: none; transition: background 0.2s; user-select: none; }
+    .accord-summary:hover { background: #fafafa; }
+    .accord-icon { width: 28px; height: 28px; border-radius: 8px; border: 1px solid #e4e4e7; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 0.25s, border-color 0.25s, transform 0.3s; }
+    details[open] .accord-icon { background: var(--accent); border-color: var(--accent); transform: rotate(45deg); }
+    details[open] .accord-icon svg { stroke: #fff; }
+    .accord-body { padding: 0 22px 18px; }
+    .accord-num { width: 26px; height: 26px; border-radius: 7px; background: rgba(108,99,255,0.08); color: var(--accent); font-size: 0.7rem; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+
+    /* PROCESS CARDS */
+    .process-card { border-radius: 14px; border: 1px solid #e4e4e7; background: #fff; padding: 24px; transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s; }
+    .process-card:hover { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(108,99,255,0.07), 0 8px 28px rgba(108,99,255,0.08); transform: translateY(-2px); }
+    .process-icon { width: 42px; height: 42px; border-radius: 12px; background: rgba(108,99,255,0.08); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+
+    /* PORTFOLIO SLIDER */
+    .portfolio-wrap {
+      background: #0e0e12; border-radius: 14px; overflow: hidden;
+      border: 1px solid #27272a;
+    }
+    .portfolio-slider-track { display: flex; transition: transform 0.5s cubic-bezier(0.4,0,0.2,1); }
+    .portfolio-slide { min-width: 100%; position: relative; }
+    .portfolio-video { width: 100%; height: 420px; object-fit: cover; display: block; opacity: 0.85; }
+    .portfolio-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(14,14,18,0.95) 0%, rgba(14,14,18,0.3) 60%, transparent 100%);
+      pointer-events: none;
+    }
+    .portfolio-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 24px 28px; }
+    .portfolio-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.3); cursor: pointer; transition: background 0.3s, transform 0.3s; }
+    .portfolio-dot.active { background: #fff; transform: scale(1.3); }
+    .slider-btn {
+      width: 38px; height: 38px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.08); color: #fff; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s, border-color 0.2s;
+      backdrop-filter: blur(8px);
+    }
+    .slider-btn:hover { background: rgba(108,99,255,0.4); border-color: rgba(108,99,255,0.6); }
+
+    /* PRICING */
+    .pricing-dark { transition: border-color 0.35s, box-shadow 0.35s, transform 0.35s; }
+    .pricing-dark:hover { border-color: #8b8bff !important; box-shadow: 0 0 0 3px rgba(108,99,255,0.15), 0 12px 40px rgba(108,99,255,0.15); transform: translateY(-2px); }
+    .accent-card { transition: border-color 0.35s, box-shadow 0.35s, transform 0.35s; }
+    .accent-card:hover { border-color: #a78bfa !important; box-shadow: 0 0 0 3px rgba(108,99,255,0.15); transform: translateY(-2px); }
+    .feature-dark { transition: border-color 0.35s, box-shadow 0.35s; }
+    .feature-dark:hover { border-color: var(--accent) !important; box-shadow: 0 0 0 3px rgba(108,99,255,0.12); }
+    .stat-bar { border: 1px solid #e4e4e7; border-radius: 14px; transition: border-color 0.4s; }
+    .stat-bar:hover { border-color: rgba(108,99,255,0.2); }
+    .budget-option input:checked + label { background: #18181b; color: #fff; border-color: #18181b; }
+
+    /* PRICING CARDS */
+    .plan-card {
+      position: relative; border-radius: 14px; border: 1px solid #e4e4e7;
+      background: #fff; padding: 28px 24px;
+      transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+    }
+    .plan-card:hover { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(108,99,255,0.07), 0 12px 36px rgba(108,99,255,0.1); transform: translateY(-3px); }
+    .plan-card.popular { background: #18181b; border-color: #3a3a45; color: #fff; }
+    .plan-card.popular:hover { border-color: #8b8bff; }
+    .plan-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--accent); color: #fff; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 12px; border-radius: 20px; white-space: nowrap; }
+
+    /* CALENDLY COMPACT */
+    .calendly-inline-widget { min-width: 280px; height: 500px; }
+
+    /* FOOTER GLOW BRAND */
+    @keyframes footer-glow-rotate { 0% { --fg-angle: 0deg; } 100% { --fg-angle: 360deg; } }
+    @property --fg-angle { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
+    .footer-brand-wrap {
+      width: 100%; display: flex; align-items: flex-end; justify-content: center;
+      overflow: hidden; padding-bottom: 0; margin-bottom: -0.05em;
+      position: relative;
+    }
+    .footer-brand-glow {
+      position: relative; display: inline-block;
+      font-size: clamp(5rem, 15vw, 12rem);
+      font-weight: 900; letter-spacing: -0.04em; line-height: 0.85;
+      user-select: none; isolation: isolate;
+      -webkit-text-fill-color: transparent;
+      background: linear-gradient(135deg, #6c63ff 0%, #a78bfa 50%, #5148cc 100%);
+      -webkit-background-clip: text; background-clip: text;
+    }
+    /* SVG-based always-on glow outline in footer */
+    .footer-brand-svg-wrap {
+      position: relative; width: 100%; display: flex; justify-content: center;
+      overflow: hidden; padding-bottom: 0; margin-bottom: -0.05em;
+    }
+    .footer-brand-text {
+      font-size: clamp(5rem, 15vw, 11.5rem);
+      font-weight: 900; letter-spacing: -0.04em; line-height: 0.85;
+      user-select: none;
+      fill: none;
+      stroke: url(#footerGlow);
+      stroke-width: 1;
+      paint-order: stroke fill;
+    }
+    .footer-brand-fill {
+      fill: url(#footerGradFill);
+      opacity: 0.13;
+    }
+
+    /* Always-on animated glow for footer text via box approach */
+    .footer-brand-container {
+      position: relative;
+      display: inline-block;
+      padding: 0 8px;
+    }
+    .footer-glow-border {
+      position: absolute;
+      inset: -2px;
+      border-radius: 4px;
+      background: transparent;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .footer-glow-border::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: 6px;
+      background: conic-gradient(from var(--fg-angle),
+        transparent 0%,
+        rgba(108,99,255,0) 30%,
+        rgba(108,99,255,0.9) 45%,
+        rgba(167,139,250,1) 50%,
+        rgba(108,99,255,0.9) 55%,
+        rgba(108,99,255,0) 70%,
+        transparent 100%
+      );
+      animation: footer-glow-rotate 3s linear infinite;
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      padding: 2px;
+    }
+    .footer-brand-inner {
+      position: relative; z-index: 1;
+      font-size: clamp(5rem, 15vw, 12rem);
+      font-weight: 900; letter-spacing: -0.04em; line-height: 0.85;
+      user-select: none;
+      background: linear-gradient(135deg, #6c63ff 0%, #a78bfa 50%, #5148cc 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      opacity: 0.18;
+      transition: opacity 0.4s;
+    }
+    .footer-brand-container:hover .footer-brand-inner { opacity: 0.28; }
+  </style>
+</head>
+<body class="text-dark antialiased">
+
+  <div class="nav-offset"></div>
+
+  <!-- NAVBAR -->
+  <nav id="navbar" class="w-full px-6 md:px-8 py-3.5">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2 group">
+        <div class="w-7 h-7 rounded-lg bg-accent flex items-center justify-center transition-transform group-hover:scale-105">
+          <span class="text-white font-black text-xs leading-none">cx</span>
+        </div>
+        <span class="font-semibold text-base tracking-tight">codexaman<span class="text-accent">.in</span></span>
+      </a>
+      <div class="hidden md:flex items-center gap-1">
+        <a href="#portfolio" class="nav-link text-sm text-zinc-500 hover:text-dark transition-colors px-3 py-2 rounded-lg hover:bg-zinc-50">Work</a>
+        <a href="#services" class="nav-link text-sm text-zinc-500 hover:text-dark transition-colors px-3 py-2 rounded-lg hover:bg-zinc-50">Services</a>
+        <a href="#stack" class="nav-link text-sm text-zinc-500 hover:text-dark transition-colors px-3 py-2 rounded-lg hover:bg-zinc-50">Stack</a>
+        <a href="#pricing" class="nav-link text-sm text-zinc-500 hover:text-dark transition-colors px-3 py-2 rounded-lg hover:bg-zinc-50">Pricing</a>
+        <div class="w-px h-4 bg-zinc-200 mx-2"></div>
+        <a href="#book" class="text-sm text-zinc-500 hover:text-dark transition-colors px-3 py-2 rounded-lg hover:bg-zinc-50">Book a call</a>
+        <a href="#contact" class="nav-cta ml-1">Hire me</a>
+      </div>
+      <button id="menu-btn" class="md:hidden flex flex-col gap-1.5 p-1" aria-label="Menu">
+        <span class="w-5 h-0.5 bg-dark block transition-all"></span>
+        <span class="w-5 h-0.5 bg-dark block transition-all"></span>
+        <span class="w-5 h-0.5 bg-dark block transition-all"></span>
+      </button>
+    </div>
+    <div id="mobile-menu" class="md:hidden flex-col gap-1 pt-3 pb-4 border-t border-zinc-100 mt-3 max-w-6xl mx-auto">
+      <a href="#portfolio" class="block text-sm text-zinc-500 py-2 px-3 rounded-lg hover:bg-zinc-50 hover:text-dark transition-colors" onclick="closeMobileMenu()">Work</a>
+      <a href="#services" class="block text-sm text-zinc-500 py-2 px-3 rounded-lg hover:bg-zinc-50 hover:text-dark transition-colors" onclick="closeMobileMenu()">Services</a>
+      <a href="#stack" class="block text-sm text-zinc-500 py-2 px-3 rounded-lg hover:bg-zinc-50 hover:text-dark transition-colors" onclick="closeMobileMenu()">Stack</a>
+      <a href="#pricing" class="block text-sm text-zinc-500 py-2 px-3 rounded-lg hover:bg-zinc-50 hover:text-dark transition-colors" onclick="closeMobileMenu()">Pricing</a>
+      <a href="#book" class="block text-sm text-zinc-500 py-2 px-3 rounded-lg hover:bg-zinc-50 hover:text-dark transition-colors" onclick="closeMobileMenu()">Book a call</a>
+      <a href="#contact" class="block text-sm bg-accent text-white px-4 py-2.5 rounded-xl font-medium hover:bg-accent-dark transition-colors mt-2 text-center" onclick="closeMobileMenu()">Hire me</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="text-center pt-12 pb-10 px-6">
+    <div class="inline-block hero-badge">
+      <span class="badge-dot"></span>
+      <span>Open for web projects</span>
+      <span class="badge-divider"></span>
+      <div class="badge-stack">
+        <span class="badge-tech">React</span>
+        <span class="badge-tech">WordPress</span>
+        <span class="badge-tech">Laravel</span>
+      </div>
+    </div>
+    <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-tight max-w-2xl mx-auto mb-5">
+      A web developer who builds<br/>
+      <span class="typewriter-wrap">for <span id="typewriter" class="typewriter-text gradient-text">your business.</span></span>
+    </h1>
+    <p class="text-zinc-500 text-base md:text-lg max-w-xl mx-auto mb-8">
+      <strong class="text-dark font-semibold">codexaman</strong> is Aman Prasad — a freelance web developer based in <strong class="text-dark font-semibold">Kolkata, India</strong>, building fast, modern websites and web apps for small businesses <strong class="text-dark font-semibold">across the globe.</strong>
+    </p>
+    <div class="flex items-center justify-center gap-3 flex-wrap">
+      <a href="#contact" class="btn-primary">Start a project</a>
+      <a href="#book" class="btn-secondary">Book a free call</a>
+    </div>
+  </section>
+
+  <!-- HERO VISUAL -->
+  <section class="max-w-5xl mx-auto px-4 sm:px-6 pb-16">
+    <div class="hero-video-wrap border border-zinc-200 shadow-sm" style="min-height: 340px; background: #0e0e12;">
+      <canvas id="heroCanvas" class="hero-canvas-bg" style="border-radius:14px;"></canvas>
+      <div class="hero-video-inner">
+        <div class="flex items-center gap-2 px-5 py-3 border-b border-white/10 bg-black/30 backdrop-blur-sm">
+          <div class="w-3 h-3 rounded-full bg-red-400/80"></div>
+          <div class="w-3 h-3 rounded-full bg-yellow-400/80"></div>
+          <div class="w-3 h-3 rounded-full bg-green-400/80"></div>
+          <div class="ml-3 bg-white/10 border border-white/10 rounded-md px-4 py-1 text-xs text-white/50 flex-1 max-w-xs">codexaman.in</div>
+        </div>
+        <div class="flex flex-col items-center justify-center text-center px-8 py-16 sm:py-24">
+          <p class="text-white/40 text-xs uppercase tracking-widest mb-3 font-medium">Web Development · Kolkata, India</p>
+          <h2 class="text-white text-2xl sm:text-4xl font-bold tracking-tight mb-4 max-w-lg leading-tight">I build websites.<br/>You grow your business.</h2>
+          <p class="text-white/50 text-sm max-w-sm mb-8">From simple landing pages to full business websites — designed, developed, and shipped by someone who cares about your goals.</p>
+          <div class="flex flex-wrap gap-3 justify-center">
+            <span class="text-xs bg-white/10 border border-white/10 text-white/70 px-3 py-1.5 rounded-lg font-medium">WordPress</span>
+            <span class="text-xs bg-white/10 border border-white/10 text-white/70 px-3 py-1.5 rounded-lg font-medium">React</span>
+            <span class="text-xs bg-white/10 border border-white/10 text-white/70 px-3 py-1.5 rounded-lg font-medium">Laravel</span>
+            <span class="text-xs bg-white/10 border border-white/10 text-white/70 px-3 py-1.5 rounded-lg font-medium">Shopify</span>
+            <span class="text-xs bg-white/10 border border-white/10 text-white/70 px-3 py-1.5 rounded-lg font-medium">MERN</span>
+            <span class="text-xs bg-white/10 border border-white/10 text-white/70 px-3 py-1.5 rounded-lg font-medium">Firebase</span>
+          </div>
+        </div>
+      </div>
+      <div style="background: linear-gradient(to bottom, transparent 0%, transparent 60%, #fff 100%); position:absolute; inset:0; pointer-events:none; border-radius:14px;"></div>
+    </div>
+  </section>
+
+  <!-- TECH STACK GRID -->
+  <section class="max-w-5xl mx-auto px-4 sm:px-6 pb-16 fade-in">
+    <p class="text-center text-xs text-zinc-400 uppercase tracking-widest mb-6 font-medium">Technologies I work with</p>
+    <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3">
+      <div class="tech-grid-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>WordPress</div>
+      <div class="tech-grid-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>React</div>
+      <div class="tech-grid-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>Flutter</div>
+      <div class="tech-grid-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>Laravel</div>
+      <div class="tech-grid-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg>Node.js</div>
+      <div class="tech-grid-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17l6-6-6-6"/><line x1="12" y1="19" x2="20" y2="19"/></svg>PHP</div>
+      <div class="tech-grid-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>Tailwind</div>
+      <div class="tech-grid-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>JavaScript</div>
+      <div class="tech-grid-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>MongoDB</div>
+      <div class="tech-grid-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>MySQL</div>
+      <div class="tech-grid-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>Firebase</div>
+      <div class="tech-grid-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>Supabase</div>
+      <div class="tech-grid-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>WooCommerce</div>
+      <div class="tech-grid-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>React Native</div>
+      <div class="tech-grid-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>Git</div>
+      <div class="tech-grid-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>REST APIs</div>
+      <div class="tech-grid-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>Shopify</div>
+      <div class="tech-grid-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>Elementor</div>
+    </div>
+  </section>
+
+  <!-- 3 FEATURE CARDS -->
+  <section class="max-w-5xl mx-auto px-4 sm:px-6 pb-20 fade-in">
+    <div class="flex items-center justify-center gap-2 mb-5">
+      <span class="border border-zinc-200 rounded-full px-4 py-1.5 text-xs text-zinc-500 font-medium">What I deliver</span>
+    </div>
+    <h2 class="text-3xl sm:text-4xl font-bold text-center tracking-tight mb-3">
+      Websites that work as hard<br/><span class="gradient-text">as your business does.</span>
+    </h2>
+    <p class="text-zinc-500 text-center text-base max-w-lg mx-auto mb-10">
+      Clean code, pixel-perfect design, on-time delivery — every single project, for clients across India and worldwide.
+    </p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="feature-dark rounded-2xl overflow-hidden relative bg-dark min-h-72 flex flex-col justify-end sm:col-span-2 lg:col-span-1" style="border:1px solid #27272a; border-radius:14px;">
+        <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/70 to-dark/40"></div>
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 1px 1px, #fff 1px, transparent 0); background-size: 24px 24px;"></div>
+        <div class="relative p-6 sm:p-8 lg:p-6">
+          <p class="text-white font-bold text-2xl leading-snug mb-2">Launch-ready in days, not weeks.</p>
+          <p class="text-zinc-400 text-sm mb-5">I move fast. No lengthy briefing cycles — just results, shipped clean.</p>
+          <a href="#contact" class="btn-primary inline-block text-sm">Start a project →</a>
+        </div>
+      </div>
+      <div class="glow-card p-7 flex flex-col justify-between">
+        <div>
+          <p class="text-6xl font-bold tracking-tighter text-dark mb-1">50+</p>
+          <p class="text-xs text-zinc-400 uppercase tracking-widest font-medium mb-4">Projects delivered</p>
+          <p class="text-zinc-500 text-sm leading-relaxed">Clients across India, UK, US, UAE, and Southeast Asia — delivered on time and on budget.</p>
+        </div>
+        <div class="flex flex-wrap gap-1.5 mt-6">
+          <span class="text-xs bg-white border border-zinc-200 text-zinc-500 px-2.5 py-1 rounded-md">Web Apps</span>
+          <span class="text-xs bg-white border border-zinc-200 text-zinc-500 px-2.5 py-1 rounded-md">E-commerce</span>
+          <span class="text-xs bg-white border border-zinc-200 text-zinc-500 px-2.5 py-1 rounded-md">Landing Pages</span>
+          <span class="text-xs bg-white border border-zinc-200 text-zinc-500 px-2.5 py-1 rounded-md">Dashboards</span>
+        </div>
+      </div>
+      <div class="accent-card rounded-2xl p-7 flex flex-col justify-between" style="background: var(--accent); border:1px solid var(--accent); border-radius:14px;">
+        <div>
+          <p class="text-white font-semibold text-base mb-5">How I work</p>
+          <ul class="space-y-3.5">
+            <li class="flex items-start gap-2.5 text-white/90 text-sm"><span class="text-white/50 mt-0.5 text-lg leading-none">›</span>Understand your business goal first</li>
+            <li class="flex items-start gap-2.5 text-white/90 text-sm"><span class="text-white/50 mt-0.5 text-lg leading-none">›</span>Design before a single line of code</li>
+            <li class="flex items-start gap-2.5 text-white/90 text-sm"><span class="text-white/50 mt-0.5 text-lg leading-none">›</span>Ship fast, iterate from your feedback</li>
+            <li class="flex items-start gap-2.5 text-white/90 text-sm"><span class="text-white/50 mt-0.5 text-lg leading-none">›</span>Dedicated support after launch</li>
+          </ul>
+        </div>
+        <div class="mt-6 h-px bg-white/20"></div>
+        <p class="text-white/60 text-xs mt-4">Available for global web projects</p>
+      </div>
+    </div>
+    <div class="flex justify-center mt-10">
+      <a href="#services" class="btn-dark">View all services</a>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <section class="max-w-5xl mx-auto px-4 sm:px-6 pb-20 fade-in">
+    <div class="stat-bar bg-white p-8 grid grid-cols-2 sm:grid-cols-4 gap-8 text-center">
+      <div><p class="text-3xl font-bold tracking-tight text-dark">50+</p><p class="text-xs text-zinc-400 mt-1">Projects delivered</p></div>
+      <div><p class="text-3xl font-bold tracking-tight text-dark">3–7</p><p class="text-xs text-zinc-400 mt-1">Day avg. delivery</p></div>
+      <div><p class="text-3xl font-bold tracking-tight text-dark">100%</p><p class="text-xs text-zinc-400 mt-1">On-time rate</p></div>
+      <div><p class="text-3xl font-bold tracking-tight text-dark">Global</p><p class="text-xs text-zinc-400 mt-1">Client base</p></div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO SLIDER -->
+  <section id="portfolio" class="max-w-5xl mx-auto px-4 sm:px-6 pb-20 fade-in">
+    <div class="text-center mb-10">
+      <span class="border border-zinc-200 rounded-full px-4 py-1.5 text-xs text-zinc-500 font-medium">My work</span>
+      <h2 class="text-3xl sm:text-4xl font-bold tracking-tight mt-4 mb-3">
+        Built by me.<br/><span class="gradient-text">Loved by clients.</span>
+      </h2>
+      <p class="text-zinc-500 text-sm max-w-md mx-auto">A glimpse into what I build — web apps, stores, dashboards, and everything in between.</p>
+    </div>
+    <div class="portfolio-wrap">
+      <div class="flex items-center gap-2 px-5 py-3 border-b border-white/10 bg-black/40 backdrop-blur-sm">
+        <div class="w-3 h-3 rounded-full bg-red-400/80"></div>
+        <div class="w-3 h-3 rounded-full bg-yellow-400/80"></div>
+        <div class="w-3 h-3 rounded-full bg-green-400/80"></div>
+        <div class="ml-auto flex items-center gap-2">
+          <button class="slider-btn" id="prevBtn" aria-label="Previous"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
+          <button class="slider-btn" id="nextBtn" aria-label="Next"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
+        </div>
+      </div>
+      <div style="overflow:hidden; position:relative;">
+        <div class="portfolio-slider-track" id="sliderTrack">
+          <div class="portfolio-slide">
+            <video class="portfolio-video" autoplay muted loop playsinline><source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4"/></video>
+            <div class="portfolio-overlay"></div>
+            <div class="portfolio-info">
+              <div class="flex items-end justify-between gap-4">
+                <div>
+                  <div class="flex gap-2 mb-2"><span class="text-xs bg-white/15 border border-white/20 text-white/80 px-2.5 py-1 rounded-md">Laravel</span><span class="text-xs bg-white/15 border border-white/20 text-white/80 px-2.5 py-1 rounded-md">React</span><span class="text-xs bg-white/15 border border-white/20 text-white/80 px-2.5 py-1 rounded-md">MySQL</span></div>
+                  <h3 class="text-white font-bold text-xl mb-1">Business Management Platform</h3>
+                  <p class="text-white/60 text-sm">A full-scale CRM & ERP web application for a logistics company in the UK.</p>
+                </div>
+                <a href="#contact" class="btn-primary text-sm whitespace-nowrap flex-shrink-0" style="padding:10px 20px;">Build this →</a>
+              </div>
+            </div>
+          </div>
+          <div class="portfolio-slide">
+            <video class="portfolio-video" muted loop playsinline><source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4" type="video/mp4"/></video>
+            <div class="portfolio-overlay"></div>
+            <div class="portfolio-info">
+              <div class="flex items-end justify-between gap-4">
+                <div>
+                  <div class="flex gap-2 mb-2"><span class="text-xs bg-white/15 border border-white/20 text-white/80 px-2.5 py-1 rounded-md">Flutter</span><span class="text-xs bg-white/15 border border-white/20 text-white/80 px-2.5 py-1 rounded-md">Firebase</span><span class="text-xs bg-white/15 border border-white/20 text-white/80 px-2.5 py-1 rounded-md">Android · iOS</span></div>
+                  <h3 class="text-white font-bold text-xl mb-1">Cross-Platform Mobile App</h3>
+                  <p class="text-white/60 text-sm">Flutter app with real-time Firebase sync, deployed on Android & iOS.</p>
+                </div>
+                <a href="#contact" class="btn-primary text-sm whitespace-nowrap flex-shrink-0" style="padding:10px 20px;">Build this →</a>
+              </div>
+            </div>
+          </div>
+          <div class="portfolio-slide">
+            <video class="portfolio-video" muted loop playsinline><source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4"/></video>
+            <div class="portfolio-overlay"></div>
+            <div class="portfolio-info">
+              <div class="flex items-end justify-between gap-4">
+                <div>
+                  <div class="flex gap-2 mb-2"><span class="text-xs bg-white/15 border border-white/20 text-white/80 px-2.5 py-1 rounded-md">WordPress</span><span class="text-xs bg-white/15 border border-white/20 text-white/80 px-2.5 py-1 rounded-md">WooCommerce</span><span class="text-xs bg-white/15 border border-white/20 text-white/80 px-2.5 py-1 rounded-md">Razorpay</span></div>
+                  <h3 class="text-white font-bold text-xl mb-1">E-Commerce Store</h3>
+                  <p class="text-white/60 text-sm">WooCommerce store with Razorpay, custom theme, and full product management — live in 5 days.</p>
+                </div>
+                <a href="#contact" class="btn-primary text-sm whitespace-nowrap flex-shrink-0" style="padding:10px 20px;">Build this →</a>
+              </div>
+            </div>
+          </div>
+          <div class="portfolio-slide">
+            <video class="portfolio-video" muted loop playsinline><source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4" type="video/mp4"/></video>
+            <div class="portfolio-overlay"></div>
+            <div class="portfolio-info">
+              <div class="flex items-end justify-between gap-4">
+                <div>
+                  <div class="flex gap-2 mb-2"><span class="text-xs bg-white/15 border border-white/20 text-white/80 px-2.5 py-1 rounded-md">MERN Stack</span><span class="text-xs bg-white/15 border border-white/20 text-white/80 px-2.5 py-1 rounded-md">Supabase</span></div>
+                  <h3 class="text-white font-bold text-xl mb-1">SaaS Web Application</h3>
+                  <p class="text-white/60 text-sm">Full-stack MERN app with auth, dashboard, and real-time data for a SaaS startup.</p>
+                </div>
+                <a href="#contact" class="btn-primary text-sm whitespace-nowrap flex-shrink-0" style="padding:10px 20px;">Build this →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center justify-center gap-2 py-4 bg-black/30">
+        <button class="portfolio-dot active" data-index="0"></button>
+        <button class="portfolio-dot" data-index="1"></button>
+        <button class="portfolio-dot" data-index="2"></button>
+        <button class="portfolio-dot" data-index="3"></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="max-w-5xl mx-auto px-4 sm:px-6 pb-10 fade-in">
+    <div class="card-static p-8 md:p-10 bg-white">
+      <div class="grid md:grid-cols-2 gap-10 items-center">
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight mb-4">
+            The <span class="text-accent">right technology</span> for every project.
+          </h2>
+          <p class="text-zinc-500 text-sm leading-relaxed mb-7">
+            I pick the best stack for your goals — no bloat, no overengineering. Whether it's a landing page or a full-scale platform, I've shipped it before.
+          </p>
+          <div class="mb-4">
+            <p class="text-xs text-zinc-400 font-medium mb-2">Frontend & Web</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="border border-dark bg-dark text-white text-xs px-3 py-1.5 rounded-lg font-medium">React / React Native</span>
+              <span class="border border-zinc-200 text-zinc-600 text-xs px-3 py-1.5 rounded-lg hover:border-accent/40 transition-colors cursor-default">Flutter</span>
+              <span class="border border-zinc-200 text-zinc-600 text-xs px-3 py-1.5 rounded-lg hover:border-accent/40 transition-colors cursor-default">Tailwind CSS</span>
+              <span class="border border-zinc-200 text-zinc-600 text-xs px-3 py-1.5 rounded-lg hover:border-accent/40 transition-colors cursor-default">JavaScript</span>
+              <span class="border border-zinc-200 text-zinc-600 text-xs px-3 py-1.5 rounded-lg hover:border-accent/40 transition-colors cursor-default">HTML / CSS</span>
+            </div>
+          </div>
+          <div class="mb-4">
+            <p class="text-xs text-zinc-400 font-medium mb-2">Backend & CMS</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="border border-dark bg-dark text-white text-xs px-3 py-1.5 rounded-lg font-medium">Laravel</span>
+              <span class="border border-zinc-200 text-zinc-600 text-xs px-3 py-1.5 rounded-lg hover:border-accent/40 transition-colors cursor-default">Node.js</span>
+              <span class="border border-zinc-200 text-zinc-600 text-xs px-3 py-1.5 rounded-lg hover:border-accent/40 transition-colors cursor-default">MERN / MEAN</span>
+              <span class="border border-zinc-200 text-zinc-600 text-xs px-3 py-1.5 rounded-lg hover:border-accent/40 transition-colors cursor-default">WordPress</span>
+              <span class="border border-zinc-200 text-zinc-600 text-xs px-3 py-1.5 rounded-lg hover:border-accent/40 transition-colors cursor-default">WooCommerce</span>
+              <span class="border border-zinc-200 text-zinc-600 text-xs px-3 py-1.5 rounded-lg hover:border-accent/40 transition-colors cursor-default">Shopify</span>
+            </div>
+          </div>
+          <div>
+            <p class="text-xs text-zinc-400 font-medium mb-2">Cloud & Hosting</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="border border-dark bg-dark text-white text-xs px-3 py-1.5 rounded-lg font-medium">Firebase</span>
+              <span class="border border-zinc-200 text-zinc-600 text-xs px-3 py-1.5 rounded-lg hover:border-accent/40 transition-colors cursor-default">Supabase</span>
+              <span class="border border-zinc-200 text-zinc-600 text-xs px-3 py-1.5 rounded-lg hover:border-accent/40 transition-colors cursor-default">REST APIs</span>
+              <span class="border border-zinc-200 text-zinc-600 text-xs px-3 py-1.5 rounded-lg hover:border-accent/40 transition-colors cursor-default">Git / GitHub</span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <img src="https://placehold.co/540x400/f4f3ff/a5b4fc?text=Services+Preview" alt="Web development services by codexaman" class="w-full rounded-xl border border-zinc-100"/>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WEB / MOBILE / LANDING PAGES -->
+  <section class="max-w-5xl mx-auto px-4 sm:px-6 py-10 fade-in">
+    <div class="card-static p-8 md:p-10 bg-white">
+      <div class="grid md:grid-cols-2 gap-10 items-center">
+        <div class="order-2 md:order-1">
+          <img src="https://placehold.co/540x380/faf9ff/c4b5fd?text=Web+%26+Mobile+Apps" alt="Web and app development Kolkata India" class="w-full rounded-xl border border-zinc-100"/>
+        </div>
+        <div class="order-1 md:order-2">
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight mb-4">
+            Web, mobile, or both —<br/><span class="text-accent">I've got you covered.</span>
+          </h2>
+          <p class="text-zinc-500 text-sm leading-relaxed mb-6">
+            From WordPress sites your team can manage, to Flutter apps on Android and iOS, to full-stack MERN platforms — one developer for your entire digital product.
+          </p>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3 text-sm text-zinc-600"><span class="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0" style="background:var(--accent)"></span>WordPress, Elementor & WooCommerce builds</li>
+            <li class="flex items-start gap-3 text-sm text-zinc-600"><span class="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0" style="background:var(--accent)"></span>Flutter & React Native cross-platform apps</li>
+            <li class="flex items-start gap-3 text-sm text-zinc-600"><span class="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0" style="background:var(--accent)"></span>MERN / MEAN full-stack web applications</li>
+            <li class="flex items-start gap-3 text-sm text-zinc-600"><span class="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0" style="background:var(--accent)"></span>CRM, ERP & custom admin dashboards</li>
+            <li class="flex items-start gap-3 text-sm text-zinc-600"><span class="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0" style="background:var(--accent)"></span>Landing pages designed to convert</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACCORDION -->
+  <section class="max-w-5xl mx-auto px-4 sm:px-6 py-10 fade-in">
+    <div class="grid md:grid-cols-2 gap-10 items-start">
+      <div>
+        <img src="https://placehold.co/540x460/f0eeff/c4b5fd?text=Project+Examples" alt="Project examples by codexaman" class="w-full rounded-2xl border border-zinc-100"/>
+      </div>
+      <div class="pt-2">
+        <span class="border border-zinc-200 rounded-full px-4 py-1.5 text-xs text-zinc-500 font-medium inline-block mb-5">What's included</span>
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight mb-8">Every project comes<br/>fully equipped.</h2>
+        <div class="border border-zinc-200 rounded-2xl overflow-hidden divide-y divide-zinc-100">
+          <details class="group" open>
+            <summary class="accord-summary">
+              <div class="flex items-center gap-3"><div class="accord-num">01</div><span class="text-sm font-semibold text-dark">Clean, semantic code</span></div>
+              <div class="accord-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#71717a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+            </summary>
+            <div class="accord-body"><p class="text-sm text-zinc-500 leading-relaxed pl-11">Every project ships with well-structured, maintainable code. Easy to scale, easy to hand off — any developer can pick it up and continue.</p></div>
+          </details>
+          <details class="group">
+            <summary class="accord-summary">
+              <div class="flex items-center gap-3"><div class="accord-num">02</div><span class="text-sm font-semibold text-dark">Mobile responsive design</span></div>
+              <div class="accord-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#71717a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+            </summary>
+            <div class="accord-body"><p class="text-sm text-zinc-500 leading-relaxed pl-11">Pixel-perfect on every device — phone, tablet, desktop. Built mobile-first from the very first component.</p></div>
+          </details>
+          <details class="group">
+            <summary class="accord-summary">
+              <div class="flex items-center gap-3"><div class="accord-num">03</div><span class="text-sm font-semibold text-dark">Performance optimized</span></div>
+              <div class="accord-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#71717a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+            </summary>
+            <div class="accord-body"><p class="text-sm text-zinc-500 leading-relaxed pl-11">Fast load times, optimised assets, and lean code — your website won't keep visitors waiting.</p></div>
+          </details>
+          <details class="group">
+            <summary class="accord-summary">
+              <div class="flex items-center gap-3"><div class="accord-num">04</div><span class="text-sm font-semibold text-dark">Post-launch support</span></div>
+              <div class="accord-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#71717a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+            </summary>
+            <div class="accord-body"><p class="text-sm text-zinc-500 leading-relaxed pl-11">I don't vanish after go-live. Bug fixes, updates, new features — your long-term web partner, not a one-off freelancer.</p></div>
+          </details>
+          <details class="group">
+            <summary class="accord-summary">
+              <div class="flex items-center gap-3"><div class="accord-num">05</div><span class="text-sm font-semibold text-dark">Global-ready delivery</span></div>
+              <div class="accord-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#71717a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+            </summary>
+            <div class="accord-body"><p class="text-sm text-zinc-500 leading-relaxed pl-11">Async collaboration across time zones, international payment gateways, multi-currency ready. Clients in the UK, US, UAE, and Southeast Asia trust me.</p></div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="work" class="max-w-5xl mx-auto px-4 sm:px-6 py-20 fade-in">
+    <div class="text-center mb-14">
+      <span class="border border-zinc-200 rounded-full px-4 py-1.5 text-xs text-zinc-500 font-medium">The process</span>
+      <h2 class="text-3xl sm:text-4xl font-bold tracking-tight mt-4 mb-3">From brief to live product,<br/>in a few clean steps.</h2>
+      <p class="text-zinc-500 text-sm max-w-md mx-auto">No ambiguity. No wasted time. A transparent process from day one.</p>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div class="process-card">
+        <div class="process-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></div>
+        <h3 class="font-semibold text-dark text-sm mb-2">Discovery call</h3>
+        <p class="text-zinc-400 text-xs leading-relaxed">We talk through your goals, audience, and what success looks like — no fluff, just clarity.</p>
+      </div>
+      <div class="process-card">
+        <div class="process-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+        <h3 class="font-semibold text-dark text-sm mb-2">Design first</h3>
+        <p class="text-zinc-400 text-xs leading-relaxed">Wireframe and design before writing code. You approve the look before I build.</p>
+      </div>
+      <div class="process-card">
+        <div class="process-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+        <h3 class="font-semibold text-dark text-sm mb-2">Build & review</h3>
+        <p class="text-zinc-400 text-xs leading-relaxed">Development with regular check-ins. A staging link so you can review before it goes live.</p>
+      </div>
+      <div class="process-card">
+        <div class="process-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></div>
+        <h3 class="font-semibold text-dark text-sm mb-2">Launch & support</h3>
+        <p class="text-zinc-400 text-xs leading-relaxed">Go live, stay around for questions and tweaks — a long-term partner, not a ghost.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECH STACK BENTO -->
+  <section id="stack" class="max-w-5xl mx-auto px-4 sm:px-6 pb-20 fade-in">
+    <div class="text-center mb-12">
+      <span class="border border-zinc-200 rounded-full px-4 py-1.5 text-xs text-zinc-500 font-medium">The stack</span>
+      <h2 class="text-3xl sm:text-4xl font-bold tracking-tight mt-4 mb-3">Tools I use to build<br/><span class="gradient-text">modern web products.</span></h2>
+      <p class="text-zinc-500 text-sm max-w-md mx-auto">Every tool chosen for a reason. No bloat. Just what gets the job done beautifully.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+      <div class="bento-card bento-card-dark bg-dark md:col-span-1 p-7 flex flex-col justify-between min-h-56">
+        <div>
+          <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center mb-4"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+          <p class="text-white font-bold text-xl mb-2">Laravel & MERN / MEAN</p>
+          <p class="text-zinc-400 text-xs leading-relaxed">Robust, scalable web applications. From REST APIs to full-stack platforms — production-ready from day one.</p>
+        </div>
+        <div class="flex gap-2 mt-5 flex-wrap">
+          <span class="text-xs bg-white/10 text-white/60 border border-white/10 px-2.5 py-1 rounded-md">PHP 8+</span>
+          <span class="text-xs bg-white/10 text-white/60 border border-white/10 px-2.5 py-1 rounded-md">Node.js</span>
+          <span class="text-xs bg-white/10 text-white/60 border border-white/10 px-2.5 py-1 rounded-md">MongoDB</span>
+          <span class="text-xs bg-white/10 text-white/60 border border-white/10 px-2.5 py-1 rounded-md">REST APIs</span>
+        </div>
+      </div>
+      <div class="bento-card bento-card-border bg-white p-7 flex flex-col justify-between">
+        <div>
+          <div class="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center mb-4"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+          <p class="font-bold text-dark text-lg mb-1.5">Flutter & React Native</p>
+          <p class="text-zinc-500 text-xs leading-relaxed">One codebase, two platforms. Ship on Android and iOS simultaneously with native-level performance.</p>
+        </div>
+        <div class="mt-4 pt-4 border-t border-zinc-100">
+          <p class="text-xs text-zinc-400">Android · iOS · Expo · Firebase</p>
+        </div>
+      </div>
+      <div class="bento-card bento-card-border bg-zinc-50 p-7 flex flex-col justify-between">
+        <div>
+          <div class="w-10 h-10 rounded-xl bg-purple-50 flex items-center justify-center mb-4"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div>
+          <p class="font-bold text-dark text-lg mb-1.5">WordPress & WooCommerce</p>
+          <p class="text-zinc-500 text-xs leading-relaxed">Your team manages content themselves — zero developer dependency after handoff. Full e-commerce with global payment gateways.</p>
+        </div>
+        <div class="mt-4 pt-4 border-t border-zinc-200">
+          <p class="text-xs text-zinc-400">Razorpay · Stripe · PayPal</p>
+        </div>
+      </div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+      <div class="bento-card bento-card-border bg-white p-7 flex flex-col justify-between">
+        <div>
+          <div class="w-10 h-10 rounded-xl bg-orange-50 flex items-center justify-center mb-4"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
+          <p class="font-bold text-dark text-lg mb-1.5">Firebase & Supabase</p>
+          <p class="text-zinc-500 text-xs leading-relaxed">Real-time databases, authentication, cloud functions, and storage. Backend without the headache.</p>
+        </div>
+        <div class="mt-4 pt-4 border-t border-zinc-100">
+          <p class="text-xs text-zinc-400">Real-time · Auth · Storage · Serverless</p>
+        </div>
+      </div>
+      <div class="bento-card md:col-span-2 p-7 flex flex-col justify-between" style="background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%); border: 1px solid var(--accent); border-radius:14px;">
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></div>
+            <span class="text-white/60 text-xs font-medium uppercase tracking-widest">Pixel-perfect</span>
+          </div>
+          <p class="text-white font-bold text-2xl mb-3 leading-snug">Fast, Clean, Responsive Web Design</p>
+          <p class="text-white/70 text-sm leading-relaxed max-w-md">I design before I code. Every website is built mobile-first, visually polished, and fast — so your first impression is always your best one.</p>
+        </div>
+        <div class="flex gap-2 mt-6 flex-wrap">
+          <span class="text-xs bg-white/15 text-white/80 border border-white/20 px-3 py-1.5 rounded-lg">Mobile-first</span>
+          <span class="text-xs bg-white/15 text-white/80 border border-white/20 px-3 py-1.5 rounded-lg">Figma Design</span>
+          <span class="text-xs bg-white/15 text-white/80 border border-white/20 px-3 py-1.5 rounded-lg">Tailwind CSS</span>
+          <span class="text-xs bg-white/15 text-white/80 border border-white/20 px-3 py-1.5 rounded-lg">Fast Load Times</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING — 4 plans -->
+  <section id="pricing" class="max-w-5xl mx-auto px-4 sm:px-6 py-20 fade-in">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl sm:text-4xl font-bold tracking-tight mb-3">
+        <span class="text-accent">Transparent</span> pricing, zero surprises
+      </h2>
+      <p class="text-zinc-500 text-base max-w-lg mx-auto">No hidden fees. Pay once, own it forever. Every plan includes a free basic logo, 6 months of free minor changes, no revision fees, and lifetime query support.</p>
+    </div>
+
+    <!-- Included in all badge -->
+    <div class="flex flex-wrap justify-center gap-3 mb-10">
+      <span class="inline-flex items-center gap-1.5 text-xs border border-green-200 bg-green-50 text-green-700 px-3 py-1.5 rounded-full font-medium"><span>✓</span> Free basic logo</span>
+      <span class="inline-flex items-center gap-1.5 text-xs border border-green-200 bg-green-50 text-green-700 px-3 py-1.5 rounded-full font-medium"><span>✓</span> 6 months free minor changes</span>
+      <span class="inline-flex items-center gap-1.5 text-xs border border-green-200 bg-green-50 text-green-700 px-3 py-1.5 rounded-full font-medium"><span>✓</span> No revision fees</span>
+      <span class="inline-flex items-center gap-1.5 text-xs border border-green-200 bg-green-50 text-green-700 px-3 py-1.5 rounded-full font-medium"><span>✓</span> Lifetime query support</span>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+
+      <!-- Plan 1: Portfolio -->
+      <div class="plan-card">
+        <p class="text-xs text-zinc-400 font-semibold uppercase tracking-wider mb-1">Starter</p>
+        <p class="text-sm text-zinc-500 mb-4">Portfolio & landing pages</p>
+        <p class="text-3xl font-bold tracking-tight text-dark mb-0.5">₹4,999</p>
+        <p class="text-xs text-zinc-400 mb-6">one-time</p>
+        <ul class="space-y-2.5 mb-8 text-sm text-zinc-600">
+          <li class="flex items-start gap-2"><span class="w-4 h-4 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-xs flex-shrink-0 mt-0.5">✓</span>Portfolio or landing page</li>
+          <li class="flex items-start gap-2"><span class="w-4 h-4 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-xs flex-shrink-0 mt-0.5">✓</span>Up to 5 sections</li>
+          <li class="flex items-start gap-2"><span class="w-4 h-4 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-xs flex-shrink-0 mt-0.5">✓</span>Mobile responsive</li>
+          <li class="flex items-start gap-2"><span class="w-4 h-4 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-xs flex-shrink-0 mt-0.5">✓</span>Contact form</li>
+          <li class="flex items-start gap-2"><span class="w-4 h-4 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-xs flex-shrink-0 mt-0.5">✓</span>3-day delivery</li>
+          <li class="flex items-start gap-2"><span class="w-4 h-4 rounded-full bg-zinc-100 text-zinc-400 flex items-center justify-center text-xs flex-shrink-0 mt-0.5">✕</span><span class="text-zinc-400">CMS panel</span></li>
+        </ul>
+        <a href="#contact" class="btn-primary block text-center w-full">Get started</a>
+      </div>
+
+      <!-- Plan 2: Business (10 pages) -->
+      <div class="plan-card" style="border-color: rgba(108,99,255,0.3);">
+        <p class="text-xs text-zinc-400 font-semibold uppercase tracking-wider mb-1">Business</p>
+        <p class="text-sm text-zinc-500 mb-4">Full website, up to 10 pages</p>
+        <p class="text-3xl font-bold tracking-tight text-dark mb-0.5">₹8,999</p>
+        <p class="text-xs text-zinc-400 mb-6">one-time</p>
+        <ul class="space-y-2.5 mb-8 text-sm text-zinc-600">
+          <li class="flex items-start gap-2"><span class="w-4 h-4 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-xs flex-shrink-0 mt-0.5">✓</span>Up to 10 pages</li>
+          <li class="flex items-start gap-2"><span class="w-4 h-4 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-xs flex-shrink-0 mt-0.5">✓</span>WordPress + Elementor</li>
+          <li class="flex items-start gap-2"><span class="w-4 h-4 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-xs flex-shrink-0 mt-0.5">✓</span>Mobile responsive</li>
+          <li class="flex items-start gap-2"><span class="w-4 h-4 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-xs flex-shrink-0 mt-0.5">✓</span>5-day delivery</li>
+          <li class="flex items-start gap-2"><span class="w-4 h-4 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-xs flex-shrink-0 mt-0.5">✓</span>Basic CMS access</li>
+          <li class="flex items-start gap-2"><span class="w-4 h-4 rounded-full bg-zinc-100 text-zinc-400 flex items-center justify-center text-xs flex-shrink-0 mt-0.5">✕</span><span class="text-zinc-400">E-commerce</span></li>
+        </ul>
+        <a href="#contact" class="btn-secondary block text-center w-full">Get started</a>
+      </div>
+
+      <!-- Plan 3: Pro (20+ pages) — POPULAR -->
+      <div class="plan-card popular" style="border-color:#3a3a45;">
+        <div class="plan-badge">Most Popular</div>
+        <p class="text-xs text-zinc-400 font-semibold uppercase tracking-wider mb-1">Pro</p>
+        <p class="text-sm text-zinc-500 mb-4">Large site, 20+ pages</p>
+        <p class="text-3xl font-bold tracking-tight text-white mb-0.5">₹11,999</p>
+        <p class="text-xs text-zinc-500 mb-6">one-time</p>
+        <ul class="space-y-2.5 mb-8 text-sm text-zinc-300">
+          <li class="flex items-start gap-2"><span class="w-4 h-4 rounded-full bg-green-900/60 text-green-400 flex items-center justify-center text-xs flex-shrink-0 mt-0.5">✓</span>20+ pages</li>
+          <li class="flex items-start gap-2"><span class="w-4 h-4 rounded-full bg-green-900/60 text-green-400 flex items-center justify-center text-xs flex-shrink-0 mt-0.5">✓</span>WordPress / Laravel</li>
+          <li class="flex items-start gap-2"><span class="w-4 h-4 rounded-full bg-green-900/60 text-green-400 flex items-center justify-center text-xs flex-shrink-0 mt-0.5">✓</span>Full CMS control</li>
+          <li class="flex items-start gap-2"><span class="w-4 h-4 rounded-full bg-green-900/60 text-green-400 flex items-center justify-center text-xs flex-shrink-0 mt-0.5">✓</span>7-day delivery</li>
+          <li class="flex items-start gap-2"><span class="w-4 h-4 rounded-full bg-green-900/60 text-green-400 flex items-center justify-center text-xs flex-shrink-0 mt-0.5">✓</span>Blog / portfolio section</li>
+          <li class="flex items-start gap-2"><span class="w-4 h-4 rounded-full bg-green-900/60 text-green-400 flex items-center justify-center text-xs flex-shrink-0 mt-0.5">✓</span>1 month priority support</li>
+        </ul>
+        <a href="#contact" class="btn-secondary block text-center w-full !border-white/20 !text-white hover:!border-white hover:!text-white">Get started</a>
+      </div>
+
+      <!-- Plan 4: Custom -->
+      <div class="plan-card" style="border-color: rgba(108,99,255,0.25); background: linear-gradient(135deg, #faf9ff 0%, #f4f3ff 100%);">
+        <p class="text-xs font-semibold uppercase tracking-wider mb-1" style="color:var(--accent)">Custom</p>
+        <p class="text-sm text-zinc-500 mb-4">E-commerce, web apps & more</p>
+        <p class="text-3xl font-bold tracking-tight text-dark mb-0.5">Let's talk</p>
+        <p class="text-xs text-zinc-400 mb-6">affordable · custom quote</p>
+        <ul class="space-y-2.5 mb-8 text-sm text-zinc-600">
+          <li class="flex items-start gap-2"><span class="w-4 h-4 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-xs flex-shrink-0 mt-0.5">✓</span>WooCommerce / Shopify store</li>
+          <li class="flex items-start gap-2"><span class="w-4 h-4 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-xs flex-shrink-0 mt-0.5">✓</span>MERN / Laravel web apps</li>
+          <li class="flex items-start gap-2"><span class="w-4 h-4 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-xs flex-shrink-0 mt-0.5">✓</span>Full CMS control</li>
+          <li class="flex items-start gap-2"><span class="w-4 h-4 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-xs flex-shrink-0 mt-0.5">✓</span>Custom integrations</li>
+          <li class="flex items-start gap-2"><span class="w-4 h-4 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-xs flex-shrink-0 mt-0.5">✓</span>Timeline as per scope</li>
+          <li class="flex items-start gap-2"><span class="w-4 h-4 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-xs flex-shrink-0 mt-0.5">✓</span>Dedicated support</li>
+        </ul>
+        <a href="#contact" class="btn-primary block text-center w-full">Get a quote</a>
+      </div>
+
+    </div>
+    <p class="text-center text-xs text-zinc-400 mt-6">Need something different? <a href="#contact" class="underline hover:text-accent-dark transition-colors" style="color:var(--accent)">Let's talk</a> — I price for small businesses, not big agencies.</p>
+  </section>
+
+  <!-- BOOK A CALL — compact -->
+  <section id="book" class="max-w-5xl mx-auto px-4 sm:px-6 pb-10 fade-in">
+    <div class="card-static overflow-hidden bg-white">
+      <div class="grid md:grid-cols-2">
+        <div class="p-8 md:p-10 border-b md:border-b-0 md:border-r border-zinc-100 flex flex-col justify-center">
+          <span class="inline-block border border-zinc-200 rounded-full px-3 py-1 text-xs text-zinc-500 mb-5">Free 30-min call</span>
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight mb-3">Let's talk before<br/>you commit.</h2>
+          <p class="text-zinc-500 text-sm leading-relaxed mb-6">No pressure. I'll discuss your project, share my approach, and you decide if we're the right fit — zero obligation.</p>
+          <div class="space-y-4">
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-lg border border-zinc-100 bg-zinc-50 flex items-center justify-center flex-shrink-0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+              <div><p class="text-sm font-semibold text-dark">30 minutes</p><p class="text-xs text-zinc-400">Quick and focused — no fluff</p></div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-lg border border-zinc-100 bg-zinc-50 flex items-center justify-center flex-shrink-0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+              <div><p class="text-sm font-semibold text-dark">Get a rough estimate</p><p class="text-xs text-zinc-400">Timeline and budget — no surprises later</p></div>
+            </div>
+          </div>
+          <div class="mt-6 pt-5 border-t border-zinc-100">
+            <p class="text-xs text-zinc-400 mb-3">Or reach me directly on</p>
+            <div class="flex gap-3">
+              <a href="https://wa.me/918420966418" target="_blank" class="flex items-center gap-1.5 text-xs border border-zinc-200 bg-white text-zinc-600 px-3 py-1.5 rounded-lg hover:border-green-400 hover:text-green-600 transition-colors font-medium">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+                WhatsApp
+              </a>
+              <a href="mailto:icodexaman@gmail.com" class="text-xs border border-zinc-200 bg-white text-zinc-600 px-3 py-1.5 rounded-lg hover:border-accent/40 hover:text-accent transition-colors font-medium">Email</a>
+            </div>
+          </div>
+        </div>
+        <div class="p-4 bg-zinc-50">
+          <div class="calendly-inline-widget" data-url="https://calendly.com/amanprasad-um/30min?hide_gdpr_banner=1&primary_color=6c63ff" style="min-width:280px; height:500px; border-radius:12px; overflow:hidden;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="max-w-5xl mx-auto px-4 sm:px-6 pb-24 fade-in">
+    <div class="card-static overflow-hidden bg-white">
+      <div class="grid md:grid-cols-5">
+        <div class="md:col-span-2 bg-zinc-50 border-b md:border-b-0 md:border-r border-zinc-100 p-8 flex flex-col justify-between">
+          <div>
+            <h2 class="text-2xl font-bold tracking-tight mb-2">Tell me about your project.</h2>
+            <p class="text-zinc-500 text-sm leading-relaxed mb-8">I read every message personally and reply within 24 hours. You talk directly to the person building your product — no middlemen.</p>
+            <div class="space-y-5">
+              <div>
+                <p class="text-xs font-semibold text-zinc-400 uppercase tracking-wide mb-1">Email</p>
+                <a href="mailto:icodexaman@gmail.com" class="text-sm text-dark font-medium hover:text-accent transition-colors">icodexaman@gmail.com</a>
+              </div>
+              <div>
+                <p class="text-xs font-semibold text-zinc-400 uppercase tracking-wide mb-1">WhatsApp</p>
+                <a href="https://wa.me/918420966418" target="_blank" class="text-sm text-dark font-medium hover:text-accent transition-colors">+91 84209 66418</a>
+              </div>
+              <div>
+                <p class="text-xs font-semibold text-zinc-400 uppercase tracking-wide mb-1">Instagram</p>
+                <a href="https://instagram.com/codexaman.in" target="_blank" class="text-sm text-dark font-medium hover:text-accent transition-colors">@codexaman.in</a>
+              </div>
+              <div>
+                <p class="text-xs font-semibold text-zinc-400 uppercase tracking-wide mb-1">Based in</p>
+                <p class="text-sm text-dark font-medium">Kolkata, India · Works worldwide</p>
+              </div>
+            </div>
+          </div>
+          <div class="mt-10 pt-6 border-t border-zinc-200">
+            <p class="text-xs text-zinc-400 mb-3">Also find me on</p>
+            <div class="flex flex-wrap gap-3">
+              <a href="https://instagram.com/codexaman.in" target="_blank" class="text-xs border border-zinc-200 bg-white text-zinc-600 px-3 py-1.5 rounded-lg hover:border-accent/40 hover:text-accent transition-colors font-medium">Instagram</a>
+              <a href="#" class="text-xs border border-zinc-200 bg-white text-zinc-600 px-3 py-1.5 rounded-lg hover:border-accent/40 hover:text-accent transition-colors font-medium">LinkedIn</a>
+              <a href="#" class="text-xs border border-zinc-200 bg-white text-zinc-600 px-3 py-1.5 rounded-lg hover:border-accent/40 hover:text-accent transition-colors font-medium">GitHub</a>
+            </div>
+          </div>
+        </div>
+        <div class="md:col-span-3 p-6 sm:p-8">
+          <div class="space-y-5">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="text-xs text-zinc-500 font-medium block mb-1.5">Your name</label>
+                <input type="text" placeholder="Rahul Sharma" class="w-full border border-zinc-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:border-accent transition-all hover:border-zinc-300"/>
+              </div>
+              <div>
+                <label class="text-xs text-zinc-500 font-medium block mb-1.5">Email address</label>
+                <input type="email" placeholder="rahul@company.com" class="w-full border border-zinc-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:border-accent transition-all hover:border-zinc-300"/>
+              </div>
+            </div>
+            <div>
+              <label class="text-xs text-zinc-500 font-medium block mb-1.5">What do you need?</label>
+              <select class="w-full border border-zinc-200 rounded-xl px-4 py-2.5 text-sm text-zinc-600 focus:outline-none focus:ring-2 focus:border-accent transition-all bg-white hover:border-zinc-300">
+                <option value="" disabled selected>Pick a service...</option>
+                <option>Landing Page / Portfolio Site</option>
+                <option>Business Website (10 pages)</option>
+                <option>Large Website (20+ pages)</option>
+                <option>WordPress + Elementor Website</option>
+                <option>E-Commerce / WooCommerce Store</option>
+                <option>Laravel Web Application</option>
+                <option>Flutter / React Native Mobile App</option>
+                <option>MERN / MEAN Full-Stack App</option>
+                <option>CRM / ERP System</option>
+                <option>Something else</option>
+              </select>
+            </div>
+            <div>
+              <label class="text-xs text-zinc-500 font-medium block mb-2">Approx. budget</label>
+              <div class="flex flex-wrap gap-2">
+                <div class="budget-option"><input type="radio" name="budget" id="b1" class="sr-only"/><label for="b1" class="cursor-pointer border border-zinc-200 text-zinc-600 text-xs px-3 py-1.5 rounded-lg block select-none hover:border-zinc-400 transition-colors">Under ₹5k</label></div>
+                <div class="budget-option"><input type="radio" name="budget" id="b2" class="sr-only"/><label for="b2" class="cursor-pointer border border-zinc-200 text-zinc-600 text-xs px-3 py-1.5 rounded-lg block select-none hover:border-zinc-400 transition-colors">₹5k – ₹12k</label></div>
+                <div class="budget-option"><input type="radio" name="budget" id="b3" class="sr-only"/><label for="b3" class="cursor-pointer border border-zinc-200 text-zinc-600 text-xs px-3 py-1.5 rounded-lg block select-none hover:border-zinc-400 transition-colors">₹12k – ₹30k</label></div>
+                <div class="budget-option"><input type="radio" name="budget" id="b4" class="sr-only"/><label for="b4" class="cursor-pointer border border-zinc-200 text-zinc-600 text-xs px-3 py-1.5 rounded-lg block select-none hover:border-zinc-400 transition-colors">₹30k+</label></div>
+              </div>
+            </div>
+            <div>
+              <label class="text-xs text-zinc-500 font-medium block mb-1.5">Project details</label>
+              <textarea placeholder="Describe your project — what it does, who it's for, when you need it live. The more detail, the faster I can scope it." rows="4" class="w-full border border-zinc-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:border-accent transition-all resize-none hover:border-zinc-300"></textarea>
+            </div>
+            <div class="flex items-center gap-3 flex-wrap sm:flex-nowrap">
+              <button class="btn-dark flex-1 min-w-0 text-center">Send message</button>
+              <a href="https://wa.me/918420966418" target="_blank" class="flex items-center justify-center gap-2 btn-secondary whitespace-nowrap w-full sm:w-auto">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="#25D366" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+                WhatsApp
+              </a>
+            </div>
+            <p class="text-xs text-zinc-400 text-center">I reply within 24 hours · No spam, ever</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-zinc-100 pt-8 overflow-hidden">
+    <div class="max-w-5xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 pb-8">
+      <a href="#" class="flex items-center gap-2 group">
+        <div class="w-6 h-6 rounded-md flex items-center justify-center" style="background:var(--accent)">
+          <span class="text-white font-black text-xs leading-none">cx</span>
+        </div>
+        <span class="text-sm font-medium">codexaman<span style="color:var(--accent)">.in</span></span>
+      </a>
+      <div class="flex gap-6">
+        <a href="#services" class="text-xs text-zinc-400 hover:text-dark transition-colors">Services</a>
+        <a href="#stack" class="text-xs text-zinc-400 hover:text-dark transition-colors">Stack</a>
+        <a href="#pricing" class="text-xs text-zinc-400 hover:text-dark transition-colors">Pricing</a>
+        <a href="#contact" class="text-xs text-zinc-400 hover:text-dark transition-colors">Contact</a>
+      </div>
+      <p class="text-xs text-zinc-400">© 2025 codexaman</p>
+    </div>
+
+    <!-- Animated glowing outline footer brand -->
+    <div class="w-full flex items-end justify-center overflow-hidden" style="margin-bottom: -0.05em;">
+      <div class="footer-brand-container">
+        <div class="footer-glow-border"></div>
+        <span class="footer-brand-inner">codexaman</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll fade-in
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+    // Navbar — no bounce, pure fixed
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 10);
+    }, { passive: true });
+
+    // Mobile menu
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+    function closeMobileMenu() { mobileMenu.classList.remove('open'); }
+
+    // Typewriter
+    const phrases = [
+      'your business.', 'startups in Kolkata.', 'global clients.',
+      'web platforms.', 'e-commerce stores.', 'MERN stack apps.',
+      'Flutter apps.', 'WordPress sites.', 'landing pages.',
+    ];
+    const el = document.getElementById('typewriter');
+    let pi = 0, ci = 0, deleting = false;
+    function type() {
+      const phrase = phrases[pi];
+      if (!deleting) {
+        el.textContent = phrase.slice(0, ++ci);
+        if (ci === phrase.length) { deleting = true; return setTimeout(type, 1800); }
+      } else {
+        el.textContent = phrase.slice(0, --ci);
+        if (ci === 0) { deleting = false; pi = (pi + 1) % phrases.length; return setTimeout(type, 300); }
+      }
+      setTimeout(type, deleting ? 40 : 65);
+    }
+    setTimeout(type, 1200);
+
+    // Hero canvas
+    (function() {
+      const canvas = document.getElementById('heroCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let W, H, nodes = [];
+      function resize() { W = canvas.width = canvas.offsetWidth; H = canvas.height = canvas.offsetHeight; }
+      resize();
+      window.addEventListener('resize', () => { resize(); initNodes(); });
+      function initNodes() {
+        nodes = [];
+        const count = Math.max(18, Math.floor(W * H / 14000));
+        for (let i = 0; i < count; i++) {
+          nodes.push({ x: Math.random()*W, y: Math.random()*H, vx:(Math.random()-0.5)*0.35, vy:(Math.random()-0.5)*0.35, r:Math.random()*1.8+0.8, alpha:Math.random()*0.5+0.2 });
+        }
+      }
+      initNodes();
+      function draw() {
+        ctx.clearRect(0,0,W,H);
+        for (let i=0;i<nodes.length;i++) {
+          for (let j=i+1;j<nodes.length;j++) {
+            const dx=nodes[i].x-nodes[j].x, dy=nodes[i].y-nodes[j].y;
+            const dist=Math.sqrt(dx*dx+dy*dy);
+            if (dist<120) {
+              ctx.beginPath(); ctx.strokeStyle=`rgba(108,99,255,${(1-dist/120)*0.18})`; ctx.lineWidth=0.8;
+              ctx.moveTo(nodes[i].x,nodes[i].y); ctx.lineTo(nodes[j].x,nodes[j].y); ctx.stroke();
+            }
+          }
+        }
+        nodes.forEach(n => {
+          ctx.beginPath(); ctx.arc(n.x,n.y,n.r,0,Math.PI*2);
+          ctx.fillStyle=`rgba(108,99,255,${n.alpha})`; ctx.fill();
+          n.x+=n.vx; n.y+=n.vy;
+          if(n.x<0||n.x>W) n.vx*=-1;
+          if(n.y<0||n.y>H) n.vy*=-1;
+        });
+        requestAnimationFrame(draw);
+      }
+      draw();
+    })();
+
+    // Portfolio Slider
+    (function() {
+      const track = document.getElementById('sliderTrack');
+      const slides = track ? track.querySelectorAll('.portfolio-slide') : [];
+      const dots = document.querySelectorAll('.portfolio-dot');
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      let current = 0;
+      const total = slides.length;
+      let autoTimer;
+      function goTo(idx) {
+        slides.forEach(s => { const v = s.querySelector('video'); if(v) v.pause(); });
+        current = (idx + total) % total;
+        track.style.transform = `translateX(-${current * 100}%)`;
+        dots.forEach((d, i) => d.classList.toggle('active', i === current));
+        const cv = slides[current].querySelector('video');
+        if (cv) cv.play();
+      }
+      function startAuto() { autoTimer = setInterval(() => goTo(current + 1), 5000); }
+      function stopAuto() { clearInterval(autoTimer); }
+      if (prevBtn) prevBtn.addEventListener('click', () => { stopAuto(); goTo(current - 1); startAuto(); });
+      if (nextBtn) nextBtn.addEventListener('click', () => { stopAuto(); goTo(current + 1); startAuto(); });
+      dots.forEach(d => d.addEventListener('click', () => { stopAuto(); goTo(parseInt(d.dataset.index)); startAuto(); }));
+      goTo(0); startAuto();
+    })();
+
+    // Calendly
+    window.addEventListener('load', function() {
+      if (window.Calendly) {
+        Calendly.initInlineWidget({
+          url: 'https://calendly.com/amanprasad-um/30min?hide_gdpr_banner=1&primary_color=6c63ff',
+          parentElement: document.querySelector('.calendly-inline-widget'),
+        });
+      }
+    });
+  </script>
+</body>
+</html>
