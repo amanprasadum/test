@@ -26,9 +26,7 @@
   }
   </script>
 
-  <!-- Bootstrap 5 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
-  <!-- Calendly -->
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet"/>
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 
@@ -44,7 +42,6 @@
     * { box-sizing: border-box; }
     body { background: #fff; color: var(--dark); font-family: system-ui, -apple-system, sans-serif; -webkit-font-smoothing: antialiased; }
 
-    /* FADE IN */
     .fade-in { opacity: 0; transform: translateY(24px); transition: opacity .55s ease, transform .55s ease; }
     .fade-in.visible { opacity: 1; transform: none; }
 
@@ -84,11 +81,9 @@
     .nav-cta::before { content:''; position:absolute; top:0; left:-100%; width:60%; height:100%; background:linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent); transition:left 0.45s ease; }
     .nav-cta:hover::before { left:160%; }
 
-    /* ============ GLOW ANIMATIONS ============ */
     @property --glow-angle { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
     @keyframes glow-rotate { 0% { --glow-angle: 0deg; } 100% { --glow-angle: 360deg; } }
 
-    /* ============ HERO BADGE ============ */
     .hero-badge {
       display: inline-flex; align-items: center; gap: 10px;
       border-radius: 12px; padding: 10px 18px; background: #fff;
@@ -106,15 +101,12 @@
     .badge-divider { width: 1px; height: 14px; background: #e4e4e7; }
     .badge-tech { font-size: 0.7rem; font-weight: 600; color: var(--accent); background: rgba(108,99,255,0.08); padding: 2px 7px; border-radius: 5px; }
 
-    /* ============ GRADIENT TEXT ============ */
     .gradient-text { background: linear-gradient(135deg, #6c63ff 0%, #a78bfa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 
-    /* ============ TYPEWRITER ============ */
     .typewriter-line { display: inline-block; min-height: 1.2em; line-height: 1.2; }
     .typewriter-text { border-right: 2px solid var(--accent); padding-right: 2px; white-space: nowrap; overflow: hidden; display: inline-block; animation: blink-cursor 0.75s step-end infinite; }
     @keyframes blink-cursor { 0%,100% { border-color: var(--accent); } 50% { border-color: transparent; } }
 
-    /* ============ HERO CANVAS ============ */
     .hero-wrap { position: relative; overflow: hidden; border-radius: 14px; background: #0e0e12; min-height: 340px; border: 1px solid #e4e4e7; }
     #heroCanvas { position: absolute; inset: 0; width: 100%; height: 100%; border-radius: 14px; }
     .hero-inner { position: relative; z-index: 1; }
@@ -124,7 +116,6 @@
     .hero-fade-out { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 0%, transparent 60%, #fff 100%); pointer-events: none; border-radius: 14px; }
     .tech-pill { font-size: 0.75rem; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.7); padding: 6px 12px; border-radius: 8px; font-weight: 500; }
 
-    /* ============ TECH GRID ============ */
     .tech-grid-item {
       display: flex; align-items: center; gap: 8px;
       border: 1px solid #e4e4e7; border-radius: 8px;
@@ -134,7 +125,6 @@
     }
     .tech-grid-item:hover { border-color: var(--accent); color: var(--accent-dark); transform: translateY(-2px); }
 
-    /* ============ GLOW CARDS ============ */
     .glow-card { position: relative; border-radius: 14px; background: #fff; isolation: isolate; }
     .glow-card::before {
       content: ''; position: absolute; inset: -1.5px; border-radius: 15px;
@@ -147,7 +137,6 @@
 
     .card-static { border: 1px solid #e4e4e7; border-radius: 14px; }
 
-    /* ============ BUTTONS ============ */
     .btn-primary-cx {
       position: relative; overflow: hidden;
       background: var(--accent); color: #fff;
@@ -181,7 +170,6 @@
     .btn-dark-cx::before { content:''; position:absolute; top:0; left:-100%; width:60%; height:100%; background:linear-gradient(90deg,transparent,rgba(255,255,255,0.08),transparent); transition:left 0.45s ease; }
     .btn-dark-cx:hover::before { left:160%; }
 
-    /* ============ FEATURE CARDS ============ */
     .feature-dark-card {
       border-radius: 14px; overflow: hidden; position: relative;
       background: var(--dark); min-height: 288px;
@@ -199,11 +187,9 @@
     }
     .accent-card-cx:hover { border-color: #a78bfa; box-shadow: 0 0 0 3px rgba(108,99,255,0.15); transform: translateY(-2px); }
 
-    /* ============ STAT BAR ============ */
     .stat-bar { border: 1px solid #e4e4e7; border-radius: 14px; transition: border-color 0.4s; }
     .stat-bar:hover { border-color: rgba(108,99,255,0.2); }
 
-    /* ============ PORTFOLIO SLIDER ============ */
     .portfolio-wrap { background: #0e0e12; border-radius: 14px; overflow: hidden; border: 1px solid #27272a; }
     .portfolio-slider-track { display: flex; transition: transform 0.5s cubic-bezier(0.4,0,0.2,1); }
     .portfolio-slide { min-width: 100%; position: relative; }
@@ -221,12 +207,10 @@
     }
     .slider-btn:hover { background: rgba(108,99,255,0.4); border-color: rgba(108,99,255,0.6); }
 
-    /* ============ PROCESS CARDS ============ */
     .process-card { border-radius: 14px; border: 1px solid #e4e4e7; background: #fff; padding: 24px; transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s; }
     .process-card:hover { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(108,99,255,0.07), 0 8px 28px rgba(108,99,255,0.08); transform: translateY(-2px); }
     .process-icon { width: 42px; height: 42px; border-radius: 12px; background: rgba(108,99,255,0.08); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
 
-    /* ============ BENTO CARDS ============ */
     .bento-card { border-radius: 14px; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; }
     .bento-card:hover { transform: translateY(-2px); box-shadow: 0 10px 36px rgba(108,99,255,0.1); }
     .bento-dark { background: var(--dark); border: 1px solid #27272a; }
@@ -234,19 +218,32 @@
     .bento-gray { background: #f9f9f9; border: 1px solid #e4e4e7; }
     .bento-accent-grad { background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%); border: 1px solid var(--accent); }
 
-    /* ============ FAQ ACCORDION ============ */
+    /* ============ FAQ ACCORDION — FIXED ============ */
+    .accord-wrap { border: 1px solid #e4e4e7; border-radius: 14px; overflow: hidden; }
     .accord-item { border-bottom: 1px solid #f0f0f0; }
     .accord-item:last-child { border-bottom: none; }
-    .accord-summary { display: flex; align-items: center; justify-content: space-between; padding: 18px 22px; cursor: pointer; list-style: none; transition: background 0.2s; user-select: none; }
+    .accord-summary {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 22px; cursor: pointer; list-style: none;
+      transition: background 0.2s; user-select: none;
+    }
     .accord-summary:hover { background: #fafafa; }
     details summary::-webkit-details-marker { display: none; }
-    .accord-icon { width: 28px; height: 28px; border-radius: 8px; border: 1px solid #e4e4e7; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 0.25s, border-color 0.25s, transform 0.3s; }
+    .accord-icon {
+      width: 28px; height: 28px; border-radius: 8px; border: 1px solid #e4e4e7;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      transition: background 0.25s, border-color 0.25s, transform 0.3s;
+    }
     details[open] .accord-icon { background: var(--accent); border-color: var(--accent); transform: rotate(45deg); }
     details[open] .accord-icon svg { stroke: #fff; }
     .accord-body { padding: 0 22px 18px; }
-    .accord-num { width: 26px; height: 26px; border-radius: 7px; background: rgba(108,99,255,0.08); color: var(--accent); font-size: 0.7rem; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .accord-num {
+      width: 26px; height: 26px; border-radius: 7px;
+      background: rgba(108,99,255,0.08); color: var(--accent);
+      font-size: 0.7rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
 
-    /* ============ PRICING ============ */
     .plan-card { position: relative; border-radius: 14px; border: 1px solid #e4e4e7; background: #fff; padding: 28px 24px; transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s; }
     .plan-card:hover { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(108,99,255,0.07), 0 12px 36px rgba(108,99,255,0.1); transform: translateY(-3px); }
     .plan-card.popular { background: var(--dark); border-color: #3a3a45; color: #fff; }
@@ -257,36 +254,48 @@
     .custom-plan-card { border: 1px solid rgba(108,99,255,0.25); background: linear-gradient(135deg,#faf9ff 0%,#f4f3ff 100%); border-radius: 14px; padding: 28px 24px; transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s; }
     .custom-plan-card:hover { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(108,99,255,0.07), 0 12px 36px rgba(108,99,255,0.1); transform: translateY(-3px); }
 
-    /* ============ CALENDLY ============ */
     .calendly-container { overflow: hidden; height: 580px; background: #f9fafb; }
     .calendly-inline-widget { width: 100% !important; height: 580px !important; min-width: unset !important; border: none; display: block; }
 
-    /* ============ BUDGET OPTIONS ============ */
     .budget-option input:checked + label { background: var(--dark); color: #fff; border-color: var(--dark); }
     .budget-label { cursor: pointer; border: 1px solid #e4e4e7; color: #52525b; font-size: 0.75rem; padding: 6px 12px; border-radius: 8px; display: block; user-select: none; transition: border-color 0.2s, color 0.2s, background 0.2s; }
     .budget-label:hover { border-color: #a1a1aa; }
 
-    /* ============ FOOTER VIDEO MASK ============ */
+    /* ============ FOOTER VIDEO MASK — FIXED ============ */
     .footer-video-mask-wrap {
       width: 100%; display: flex; align-items: flex-end;
       justify-content: center; overflow: hidden; position: relative;
       margin-bottom: -0.05em;
     }
     .footer-brand-video-container {
-      position: relative; display: inline-block;
-      overflow: hidden; line-height: 0.85; border-radius: 4px;
-      background: #fff; /* REQUIRED for multiply blend */
+      position: relative;
+      display: inline-block;
+      overflow: hidden;
+      line-height: 0.85;
+      border-radius: 4px;
+      background: #fff;
+      isolation: isolate;
     }
     .footer-brand-video {
-      position: absolute; inset: 0; width: 100%; height: 100%;
-      object-fit: cover; z-index: 1; pointer-events: none;
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      pointer-events: none;
     }
     .footer-brand-mask-text {
       font-size: clamp(5rem, 15vw, 12rem);
-      font-weight: 900; letter-spacing: -0.04em;
-      line-height: 0.85; user-select: none;
-      color: #000; position: relative; z-index: 2;
-      mix-blend-mode: multiply; display: block;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 0.85;
+      user-select: none;
+      color: #000;
+      position: relative;
+      z-index: 1;
+      mix-blend-mode: multiply;
+      display: block;
       padding: 0 12px;
     }
 
@@ -306,7 +315,6 @@
       padding: 3px;
     }
 
-    /* ============ MISC HELPERS ============ */
     .section-tag { border: 1px solid #e4e4e7; border-radius: 100px; padding: 5px 16px; font-size: 0.75rem; color: #71717a; display: inline-block; }
     .text-accent { color: var(--accent) !important; }
     .bg-dark-cx { background: var(--dark) !important; }
@@ -314,10 +322,8 @@
     .border-dark-cx { border: 1px solid #27272a; }
     .include-pill { display: inline-flex; align-items: center; gap: 6px; font-size: 0.75rem; border: 1px solid #bbf7d0; background: #f0fdf4; color: #15803d; padding: 6px 12px; border-radius: 100px; font-weight: 500; }
 
-    /* Mobile portfolio video height */
     @media (max-width: 576px) { .portfolio-video { height: 280px; } }
 
-    /* Input focus ring */
     .cx-input:focus { outline: none; border-color: var(--accent) !important; box-shadow: 0 0 0 3px rgba(108,99,255,0.12); }
     .cx-input { border: 1px solid #e4e4e7; border-radius: 12px; padding: 10px 16px; font-size: 0.875rem; width: 100%; transition: border-color 0.2s, box-shadow 0.2s; }
 
@@ -326,6 +332,79 @@
 
     .wa-pill { display: inline-flex; align-items: center; gap: 6px; font-size: 0.75rem; border: 1px solid #e4e4e7; background: #fff; color: #52525b; padding: 6px 12px; border-radius: 8px; text-decoration: none; font-weight: 500; transition: border-color 0.2s, color 0.2s; }
     .wa-pill:hover { border-color: #4ade80; color: #15803d; }
+
+    /* ============ CHATBOT ============ */
+    #cx-chat-btn {
+      position: fixed; bottom: 28px; right: 28px; z-index: 9999;
+      width: 52px; height: 52px; border-radius: 50%;
+      background: var(--accent); color: #fff; border: none;
+      box-shadow: 0 4px 20px rgba(108,99,255,0.45);
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    #cx-chat-btn:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(108,99,255,0.55); }
+
+    #cx-chat-box {
+      position: fixed; bottom: 92px; right: 28px; z-index: 9998;
+      width: 320px; background: #fff;
+      border: 1px solid #e4e4e7; border-radius: 16px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.12);
+      display: none; flex-direction: column; overflow: hidden;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+    #cx-chat-box.open { display: flex; }
+
+    .cx-chat-header {
+      background: var(--accent); color: #fff;
+      padding: 14px 18px; display: flex; align-items: center; gap: 10px;
+    }
+    .cx-chat-avatar {
+      width: 34px; height: 34px; border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 0.8rem; flex-shrink: 0;
+    }
+    .cx-chat-status { width: 8px; height: 8px; border-radius: 50%; background: #4ade80; display: inline-block; margin-left: 4px; }
+
+    .cx-chat-messages {
+      flex: 1; overflow-y: auto; padding: 16px;
+      display: flex; flex-direction: column; gap: 10px;
+      max-height: 300px; min-height: 200px;
+    }
+    .cx-msg {
+      max-width: 85%; padding: 9px 13px;
+      border-radius: 12px; font-size: 0.8rem; line-height: 1.5;
+    }
+    .cx-msg.bot { background: #f4f4f5; color: #18181b; align-self: flex-start; border-bottom-left-radius: 4px; }
+    .cx-msg.user { background: var(--accent); color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; }
+
+    .cx-chat-quick {
+      padding: 8px 12px 0; display: flex; flex-wrap: wrap; gap: 6px;
+    }
+    .cx-quick-btn {
+      font-size: 0.72rem; padding: 5px 10px; border-radius: 20px;
+      border: 1px solid #e4e4e7; background: #fff; color: #52525b;
+      cursor: pointer; transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+    .cx-quick-btn:hover { border-color: var(--accent); color: var(--accent); background: rgba(108,99,255,0.05); }
+
+    .cx-chat-input-row {
+      display: flex; align-items: center; gap: 8px;
+      padding: 10px 12px 12px; border-top: 1px solid #f0f0f0; margin-top: 8px;
+    }
+    #cx-chat-input {
+      flex: 1; border: 1px solid #e4e4e7; border-radius: 20px;
+      padding: 7px 14px; font-size: 0.8rem; outline: none;
+      transition: border-color 0.2s;
+    }
+    #cx-chat-input:focus { border-color: var(--accent); }
+    #cx-chat-send {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: var(--accent); color: #fff; border: none;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; transition: background 0.2s;
+    }
+    #cx-chat-send:hover { background: var(--accent-dark); }
   </style>
 </head>
 <body>
@@ -336,15 +415,12 @@
   <nav id="navbar" class="w-100">
     <div class="container" style="max-width:1100px;">
       <div class="d-flex align-items-center justify-content-between">
-        <!-- Brand -->
         <a href="#" class="d-flex align-items-center gap-2 text-decoration-none">
           <div class="d-flex align-items-center justify-content-center rounded-2" style="width:28px;height:28px;background:var(--accent);">
             <span class="text-white fw-black" style="font-size:0.7rem;font-weight:900;">cx</span>
           </div>
           <span class="fw-semibold" style="font-size:0.95rem;letter-spacing:-0.02em;">codexaman<span class="text-accent">.in</span></span>
         </a>
-
-        <!-- Desktop Nav -->
         <div class="d-none d-md-flex align-items-center gap-1">
           <a href="#portfolio" class="nav-link-custom">Work</a>
           <a href="#services" class="nav-link-custom">Services</a>
@@ -354,16 +430,12 @@
           <a href="#book" class="nav-link-custom">Book a call</a>
           <a href="#contact" class="nav-cta ms-1">Hire me</a>
         </div>
-
-        <!-- Mobile Toggle -->
         <button class="d-md-none border-0 bg-transparent p-1" id="mobileToggle" aria-label="Menu">
           <span style="display:block;width:20px;height:2px;background:var(--dark);margin:4px 0;border-radius:2px;"></span>
           <span style="display:block;width:20px;height:2px;background:var(--dark);margin:4px 0;border-radius:2px;"></span>
           <span style="display:block;width:20px;height:2px;background:var(--dark);margin:4px 0;border-radius:2px;"></span>
         </button>
       </div>
-
-      <!-- Mobile Menu -->
       <div id="mobileMenu" style="display:none;" class="pt-3 pb-3 border-top border-zinc-100 mt-2">
         <a href="#portfolio" class="d-block text-decoration-none nav-link-custom py-2" onclick="closeMobileMenu()">Work</a>
         <a href="#services" class="d-block text-decoration-none nav-link-custom py-2" onclick="closeMobileMenu()">Services</a>
@@ -461,9 +533,7 @@
     </div>
     <h2 class="text-center fw-bold mb-2" style="font-size:clamp(1.6rem,4vw,2.4rem);letter-spacing:-0.03em;">Websites that work as hard<br/><span class="gradient-text">as your business does.</span></h2>
     <p class="text-center text-secondary mb-5 mx-auto" style="max-width:500px;">Clean code, pixel-perfect design, on-time delivery — every single project, for clients across India and worldwide.</p>
-
     <div class="row g-4">
-      <!-- Dark feature card -->
       <div class="col-12 col-lg-4">
         <div class="feature-dark-card h-100 d-flex flex-column justify-content-end">
           <div class="feature-dark-overlay"></div>
@@ -475,8 +545,6 @@
           </div>
         </div>
       </div>
-
-      <!-- Glow card: 50+ projects -->
       <div class="col-12 col-sm-6 col-lg-4">
         <div class="glow-card h-100 p-4 d-flex flex-column justify-content-between">
           <div>
@@ -492,8 +560,6 @@
           </div>
         </div>
       </div>
-
-      <!-- Accent card: How I work -->
       <div class="col-12 col-sm-6 col-lg-4">
         <div class="accent-card-cx h-100 d-flex flex-column justify-content-between">
           <div>
@@ -512,7 +578,6 @@
         </div>
       </div>
     </div>
-
     <div class="text-center mt-5">
       <a href="#services" class="btn-dark-cx">View all services</a>
     </div>
@@ -549,7 +614,6 @@
       </div>
       <div style="overflow:hidden;position:relative;">
         <div class="portfolio-slider-track" id="sliderTrack">
-          <!-- Slide 1 -->
           <div class="portfolio-slide">
             <video class="portfolio-video" autoplay muted loop playsinline><source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4"/></video>
             <div class="portfolio-overlay"></div>
@@ -564,7 +628,6 @@
               </div>
             </div>
           </div>
-          <!-- Slide 2 -->
           <div class="portfolio-slide">
             <video class="portfolio-video" muted loop playsinline><source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4" type="video/mp4"/></video>
             <div class="portfolio-overlay"></div>
@@ -579,7 +642,6 @@
               </div>
             </div>
           </div>
-          <!-- Slide 3 -->
           <div class="portfolio-slide">
             <video class="portfolio-video" muted loop playsinline><source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4"/></video>
             <div class="portfolio-overlay"></div>
@@ -594,7 +656,6 @@
               </div>
             </div>
           </div>
-          <!-- Slide 4 -->
           <div class="portfolio-slide">
             <video class="portfolio-video" muted loop playsinline><source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4" type="video/mp4"/></video>
             <div class="portfolio-overlay"></div>
@@ -687,16 +748,16 @@
     </div>
   </section>
 
-  <!-- ========== ACCORDION / FAQ ========== -->
+  <!-- ========== FAQ / WHAT'S INCLUDED — FIXED ALIGNMENT ========== -->
   <section class="container py-4 fade-in" style="max-width:1100px;">
     <div class="row g-5 align-items-start">
-      <div class="col-12 col-md-6">
-        <img src="https://placehold.co/540x460/f0eeff/c4b5fd?text=Project+Examples" alt="Project examples by codexaman" class="w-100 rounded-4" style="border:1px solid #ede9fe;"/>
+      <div class="col-12 col-md-6 d-flex flex-column">
+        <img src="https://placehold.co/540x460/f0eeff/c4b5fd?text=Project+Examples" alt="Project examples by codexaman" class="w-100 rounded-4" style="border:1px solid #ede9fe; object-fit:cover; flex:1; min-height:400px;"/>
       </div>
-      <div class="col-12 col-md-6 pt-2">
+      <div class="col-12 col-md-6">
         <span class="section-tag mb-4 d-inline-block">What's included</span>
         <h2 class="fw-bold mb-5" style="font-size:clamp(1.4rem,3vw,2rem);letter-spacing:-0.03em;">Every project comes<br/>fully equipped.</h2>
-        <div style="border:1px solid #e4e4e7;border-radius:14px;overflow:hidden;">
+        <div class="accord-wrap">
           <details open>
             <summary class="accord-summary">
               <div class="d-flex align-items-center gap-3"><div class="accord-num">01</div><span class="fw-semibold text-dark" style="font-size:0.875rem;">Clean, semantic code</span></div>
@@ -792,7 +853,6 @@
       <p class="text-secondary mx-auto" style="font-size:0.875rem;max-width:400px;">Every tool chosen for a reason. No bloat. Just what gets the job done beautifully.</p>
     </div>
     <div class="row g-3 mb-3">
-      <!-- Dark: Laravel & MERN -->
       <div class="col-12 col-md-4">
         <div class="bento-card bento-dark p-4 d-flex flex-column justify-content-between" style="min-height:224px;">
           <div>
@@ -808,7 +868,6 @@
           </div>
         </div>
       </div>
-      <!-- Flutter & React Native -->
       <div class="col-12 col-md-4">
         <div class="bento-card bento-light p-4 d-flex flex-column justify-content-between" style="min-height:224px;">
           <div>
@@ -819,7 +878,6 @@
           <div style="border-top:1px solid #f0f0f0;margin-top:16px;padding-top:12px;"><p style="font-size:0.7rem;color:#a1a1aa;">Android · iOS · Expo · Firebase</p></div>
         </div>
       </div>
-      <!-- WordPress & WooCommerce -->
       <div class="col-12 col-md-4">
         <div class="bento-card bento-gray p-4 d-flex flex-column justify-content-between" style="min-height:224px;">
           <div>
@@ -832,7 +890,6 @@
       </div>
     </div>
     <div class="row g-3">
-      <!-- Firebase & Supabase -->
       <div class="col-12 col-md-4">
         <div class="bento-card bento-light p-4 d-flex flex-column justify-content-between" style="min-height:200px;">
           <div>
@@ -843,7 +900,6 @@
           <div style="border-top:1px solid #f0f0f0;margin-top:16px;padding-top:12px;"><p style="font-size:0.7rem;color:#a1a1aa;">Real-time · Auth · Storage · Serverless</p></div>
         </div>
       </div>
-      <!-- Design — accent gradient, spans 2 cols -->
       <div class="col-12 col-md-8">
         <div class="bento-card bento-accent-grad p-4 d-flex flex-column justify-content-between" style="min-height:200px;">
           <div>
@@ -871,7 +927,6 @@
       <h2 class="fw-bold mb-2" style="font-size:clamp(1.6rem,4vw,2.4rem);letter-spacing:-0.03em;"><span class="text-accent">Transparent</span> pricing, zero surprises</h2>
       <p class="text-secondary mx-auto" style="max-width:580px;">No hidden fees. Pay once, own it forever. Every plan includes a free basic logo, 6 months of free minor changes, no revision fees, and lifetime query support.</p>
     </div>
-    <!-- Included pills -->
     <div class="d-flex flex-wrap justify-content-center gap-2 mb-5">
       <span class="include-pill"><span>✓</span> Free basic logo</span>
       <span class="include-pill"><span>✓</span> 6 months free minor changes</span>
@@ -879,7 +934,6 @@
       <span class="include-pill"><span>✓</span> Lifetime query support</span>
     </div>
     <div class="row g-4 justify-content-center">
-      <!-- Starter -->
       <div class="col-12 col-sm-6 col-lg-4">
         <div class="plan-card h-100 d-flex flex-column">
           <p class="text-uppercase fw-bold mb-1" style="font-size:0.7rem;letter-spacing:0.08em;color:#a1a1aa;">Starter</p>
@@ -897,7 +951,6 @@
           <a href="#contact" class="btn-primary-cx d-block text-center w-100">Get started</a>
         </div>
       </div>
-      <!-- Business (Popular) -->
       <div class="col-12 col-sm-6 col-lg-4">
         <div class="plan-card popular h-100 d-flex flex-column position-relative">
           <div class="plan-badge">Most Popular</div>
@@ -916,7 +969,6 @@
           <a href="#contact" class="btn-secondary-cx d-block text-center w-100" style="border-color:rgba(255,255,255,0.2);color:#fff;">Get started</a>
         </div>
       </div>
-      <!-- Custom -->
       <div class="col-12 col-sm-6 col-lg-4">
         <div class="custom-plan-card h-100 d-flex flex-column">
           <p class="fw-bold text-uppercase mb-1" style="font-size:0.7rem;letter-spacing:0.08em;color:var(--accent);">Custom</p>
@@ -949,7 +1001,6 @@
   <section id="book" class="container pb-4 fade-in" style="max-width:1100px;">
     <div class="card-static overflow-hidden bg-white">
       <div class="row g-0">
-        <!-- Left -->
         <div class="col-12 col-md-6 p-4 p-md-5 d-flex flex-column justify-content-center" style="border-right:1px solid #f0f0f0;">
           <span class="section-tag d-inline-block mb-4">Free 30-min call</span>
           <h2 class="fw-bold mb-2" style="font-size:clamp(1.3rem,3vw,1.8rem);letter-spacing:-0.03em;">Let's talk before<br/>you commit.</h2>
@@ -972,7 +1023,6 @@
             </div>
           </div>
         </div>
-        <!-- Right: Calendly -->
         <div class="col-12 col-md-6 calendly-container">
           <div class="calendly-inline-widget" data-url="https://calendly.com/amanprasad-um/30min?hide_gdpr_banner=1&primary_color=6c63ff&hide_event_type_details=1&hide_landing_page_details=1" style="width:100%;height:580px;min-width:unset;"></div>
         </div>
@@ -984,7 +1034,6 @@
   <section id="contact" class="container pb-5 fade-in" style="max-width:1100px;">
     <div class="card-static overflow-hidden bg-white">
       <div class="row g-0">
-        <!-- Left sidebar -->
         <div class="col-12 col-md-5 col-lg-4 p-4 p-md-5 d-flex flex-column justify-content-between" style="background:#f9f9f9;border-right:1px solid #f0f0f0;">
           <div>
             <h2 class="fw-bold mb-2" style="font-size:1.4rem;letter-spacing:-0.03em;">Tell me about your project.</h2>
@@ -1005,7 +1054,6 @@
             </div>
           </div>
         </div>
-        <!-- Contact Form -->
         <div class="col-12 col-md-7 col-lg-8 p-4 p-md-5">
           <div class="row g-3 mb-3">
             <div class="col-12 col-sm-6">
@@ -1068,15 +1116,14 @@
         <span class="fw-medium" style="font-size:0.875rem;">codexaman<span class="text-accent">.in</span></span>
       </a>
       <div class="d-flex gap-4">
-        <a href="#services" style="font-size:0.75rem;color:#a1a1aa;text-decoration:none;" class="footer-link">Services</a>
-        <a href="#stack" style="font-size:0.75rem;color:#a1a1aa;text-decoration:none;" class="footer-link">Stack</a>
-        <a href="#pricing" style="font-size:0.75rem;color:#a1a1aa;text-decoration:none;" class="footer-link">Pricing</a>
-        <a href="#contact" style="font-size:0.75rem;color:#a1a1aa;text-decoration:none;" class="footer-link">Contact</a>
+        <a href="#services" style="font-size:0.75rem;color:#a1a1aa;text-decoration:none;">Services</a>
+        <a href="#stack" style="font-size:0.75rem;color:#a1a1aa;text-decoration:none;">Stack</a>
+        <a href="#pricing" style="font-size:0.75rem;color:#a1a1aa;text-decoration:none;">Pricing</a>
+        <a href="#contact" style="font-size:0.75rem;color:#a1a1aa;text-decoration:none;">Contact</a>
       </div>
       <p style="font-size:0.75rem;color:#a1a1aa;margin:0;">© 2025 codexaman</p>
     </div>
-
-    <!-- VIDEO MASK FOOTER BRAND -->
+    <!-- VIDEO MASK FOOTER BRAND — FIXED -->
     <div class="footer-video-mask-wrap">
       <div class="footer-brand-video-container">
         <video class="footer-brand-video" autoplay muted loop playsinline>
@@ -1088,9 +1135,40 @@
     </div>
   </footer>
 
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- ========== CHATBOT ========== -->
+  <button id="cx-chat-btn" aria-label="Open chat">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+  </button>
 
+  <div id="cx-chat-box">
+    <div class="cx-chat-header">
+      <div class="cx-chat-avatar">cx</div>
+      <div>
+        <div style="font-weight:600;font-size:0.875rem;">codexaman <span class="cx-chat-status"></span></div>
+        <div style="font-size:0.7rem;opacity:0.8;">Typically replies in minutes</div>
+      </div>
+      <button onclick="toggleChat()" style="margin-left:auto;background:none;border:none;color:#fff;cursor:pointer;padding:4px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="cx-chat-messages" id="cx-messages">
+      <div class="cx-msg bot">👋 Hi! I'm Aman. Looking to build a website or app? I'd love to help. What can I do for you?</div>
+    </div>
+    <div class="cx-chat-quick" id="cx-quick-btns">
+      <button class="cx-quick-btn" onclick="quickReply('What services do you offer?')">Services</button>
+      <button class="cx-quick-btn" onclick="quickReply('What is your pricing?')">Pricing</button>
+      <button class="cx-quick-btn" onclick="quickReply('How long does a project take?')">Timeline</button>
+      <button class="cx-quick-btn" onclick="quickReply('How do I contact you?')">Contact</button>
+    </div>
+    <div class="cx-chat-input-row">
+      <input type="text" id="cx-chat-input" placeholder="Type a message..." onkeydown="if(event.key==='Enter') sendChat()"/>
+      <button id="cx-chat-send" onclick="sendChat()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     // ===== SCROLL FADE IN =====
     const obs = new IntersectionObserver(entries => {
@@ -1122,23 +1200,18 @@
     ];
     const el = document.getElementById('typewriter');
     const typewriterLine = el.closest('.typewriter-line');
-
     function lockTypewriterWidth() {
       const temp = document.createElement('span');
       temp.style.cssText = 'position:absolute;visibility:hidden;white-space:nowrap;font-size:inherit;font-weight:inherit;font-family:inherit;';
       document.body.appendChild(temp);
       let maxW = 0;
-      phrases.forEach(p => {
-        temp.textContent = 'for ' + p;
-        maxW = Math.max(maxW, temp.offsetWidth);
-      });
+      phrases.forEach(p => { temp.textContent = 'for ' + p; maxW = Math.max(maxW, temp.offsetWidth); });
       document.body.removeChild(temp);
       typewriterLine.style.minWidth = maxW + 'px';
       typewriterLine.style.display = 'inline-block';
     }
     lockTypewriterWidth();
     window.addEventListener('resize', lockTypewriterWidth);
-
     let pi = 0, ci = 0, deleting = false;
     function type() {
       const phrase = phrases[pi];
@@ -1176,10 +1249,7 @@
           for (let j=i+1;j<nodes.length;j++) {
             const dx=nodes[i].x-nodes[j].x, dy=nodes[i].y-nodes[j].y;
             const dist=Math.sqrt(dx*dx+dy*dy);
-            if (dist<120) {
-              ctx.beginPath(); ctx.strokeStyle=`rgba(108,99,255,${(1-dist/120)*0.18})`; ctx.lineWidth=0.8;
-              ctx.moveTo(nodes[i].x,nodes[i].y); ctx.lineTo(nodes[j].x,nodes[j].y); ctx.stroke();
-            }
+            if (dist<120) { ctx.beginPath(); ctx.strokeStyle=`rgba(108,99,255,${(1-dist/120)*0.18})`; ctx.lineWidth=0.8; ctx.moveTo(nodes[i].x,nodes[i].y); ctx.lineTo(nodes[j].x,nodes[j].y); ctx.stroke(); }
           }
         }
         nodes.forEach(n => {
@@ -1230,13 +1300,75 @@
       }
       setTimeout(() => {
         const iframe = document.querySelector('.calendly-inline-widget iframe');
-        if (iframe) {
-          iframe.style.height = '580px';
-          iframe.style.overflow = 'hidden';
-          iframe.scrolling = 'no';
-        }
+        if (iframe) { iframe.style.height = '580px'; iframe.style.overflow = 'hidden'; iframe.scrolling = 'no'; }
       }, 3000);
     });
+
+    // ===== CHATBOT =====
+    const chatResponses = {
+      'what services do you offer': 'I build websites, web apps, mobile apps, and e-commerce stores! Services include WordPress, React, Laravel, MERN stack, Flutter, Shopify, WooCommerce, Firebase, and more. 🚀',
+      'what is your pricing': 'Starter plan starts at ₹5,999 (landing page, 5 pages, 3-day delivery). Business plan is ₹8,999 (full website, 10 pages, WordPress). For apps, SaaS, or custom work — let\'s talk for a custom quote! 💰',
+      'how long does a project take': 'Landing pages: 3 days. Business websites: 5–7 days. Web apps & mobile apps: depends on scope, usually 2–6 weeks. I always give a clear timeline before starting. ⏱️',
+      'how do i contact you': 'You can reach me on WhatsApp at +91 84209 66418, email at icodexaman@gmail.com, or just fill the contact form on this page. I reply within 24 hours! 📩',
+      'whatsapp': 'My WhatsApp is +91 84209 66418 — feel free to message directly! I\'m usually quick to respond. 💬',
+      'email': 'You can email me at icodexaman@gmail.com. I reply within 24 hours, no exceptions! 📧',
+      'wordpress': 'Yes! I build WordPress sites with Elementor, WooCommerce, custom themes, and payment gateway integrations. Starting at ₹8,999. 🌐',
+      'react': 'Absolutely! React, Next.js, MERN stack — I\'ve built dashboards, SaaS platforms, and landing pages with React. Let\'s discuss your project! ⚛️',
+      'flutter': 'Yes, Flutter is one of my specialties! One codebase for both Android and iOS. Great for startups wanting to launch fast on both platforms. 📱',
+      'ecommerce': 'I build e-commerce stores with WooCommerce, Shopify, or custom MERN solutions. Payment gateways like Razorpay, Stripe, PayPal — all included. 🛒',
+      'laravel': 'Laravel is my go-to for backend! REST APIs, admin panels, CRM/ERP systems — I\'ve shipped many Laravel projects for clients globally. 🔧',
+      'location': 'I\'m based in Kolkata, India but work with clients worldwide — UK, US, UAE, Southeast Asia. Fully async, any timezone! 🌍',
+      'kolkata': 'Yes, I\'m based in Kolkata! But I work with clients globally. No need to be local — everything happens online. 🌐',
+    };
+
+    function getBotReply(msg) {
+      const lower = msg.toLowerCase();
+      for (const key in chatResponses) {
+        if (lower.includes(key)) return chatResponses[key];
+      }
+      if (lower.includes('hi') || lower.includes('hello') || lower.includes('hey')) {
+        return 'Hey! 👋 Great to hear from you. Ask me about services, pricing, timeline, or just say what you want to build — I\'ll help!';
+      }
+      if (lower.includes('thanks') || lower.includes('thank you')) {
+        return 'You\'re welcome! 😊 Feel free to ask anything else, or reach out directly on WhatsApp: +91 84209 66418.';
+      }
+      return 'Great question! For detailed answers, reach me on WhatsApp at +91 84209 66418 or email icodexaman@gmail.com. I reply fast! 🚀';
+    }
+
+    function toggleChat() {
+      const box = document.getElementById('cx-chat-box');
+      box.classList.toggle('open');
+      if (box.classList.contains('open')) {
+        setTimeout(() => document.getElementById('cx-chat-input').focus(), 100);
+      }
+    }
+
+    document.getElementById('cx-chat-btn').addEventListener('click', toggleChat);
+
+    function addMsg(text, type) {
+      const msgs = document.getElementById('cx-messages');
+      const div = document.createElement('div');
+      div.className = 'cx-msg ' + type;
+      div.textContent = text;
+      msgs.appendChild(div);
+      msgs.scrollTop = msgs.scrollHeight;
+    }
+
+    function sendChat() {
+      const input = document.getElementById('cx-chat-input');
+      const text = input.value.trim();
+      if (!text) return;
+      addMsg(text, 'user');
+      input.value = '';
+      document.getElementById('cx-quick-btns').style.display = 'none';
+      setTimeout(() => addMsg(getBotReply(text), 'bot'), 600);
+    }
+
+    function quickReply(text) {
+      addMsg(text, 'user');
+      document.getElementById('cx-quick-btns').style.display = 'none';
+      setTimeout(() => addMsg(getBotReply(text), 'bot'), 600);
+    }
   </script>
 </body>
 </html>
