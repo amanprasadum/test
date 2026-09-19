@@ -1,0 +1,1270 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>codexaman — Mega Menu Navbar & SaaS Footer (Component)</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <style>
+    /* =====================================================================
+       ROOT VARIABLES — START
+       Brand tokens shared by navbar + footer. Match these to your site.
+    ===================================================================== */
+    :root {
+      --accent: #6c63ff;
+      --accent-dark: #5148cc;
+      --accent-light: #ededfc;
+      --dark: #18181b;
+      --gray-50: #fafafa;
+      --gray-100: #f4f4f5;
+      --gray-200: #e4e4e7;
+      --gray-400: #a1a1aa;
+      --gray-500: #71717a;
+      --gray-600: #52525b;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #fff;
+      color: var(--dark);
+      font-family: system-ui, -apple-system, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      margin: 0;
+    }
+    /* =====================================================================
+       ROOT VARIABLES — END
+    ===================================================================== */
+
+
+    /* =====================================================================
+       MEGA MENU NAVBAR — START
+    ===================================================================== */
+    #cxNav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1050;
+      padding: 16px 16px 0;
+    }
+
+    .cx-nav-pill {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(228, 228, 231, 0.8);
+      border-radius: 100px;
+      padding: 7px 8px 7px 18px;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05);
+      transition: box-shadow 0.3s, border-color 0.3s, background 0.3s;
+    }
+
+    #cxNav.scrolled .cx-nav-pill {
+      box-shadow: 0 10px 34px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(108, 99, 255, 0.12), 0 0 26px rgba(108, 99, 255, 0.3);
+      border-color: rgba(108, 99, 255, 0.35);
+      background: rgba(255, 255, 255, 0.97);
+    }
+
+    .cx-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .cx-logo-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .cx-logo-mark img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .cx-logo-text {
+      font-weight: 600;
+      font-size: 0.92rem;
+      letter-spacing: -0.02em;
+      color: var(--dark);
+      white-space: nowrap;
+    }
+
+    .cx-logo-text span {
+      color: var(--accent);
+    }
+
+    /* ---- desktop link row ---- */
+    .cx-links {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      background: var(--gray-100);
+      border-radius: 100px;
+      padding: 4px;
+    }
+
+    .cx-link {
+      position: relative;
+      font-size: 0.84rem;
+      font-weight: 500;
+      color: var(--gray-600);
+      padding: 9px 16px;
+      border-radius: 100px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      transition: color 0.2s, background 0.2s;
+      font-family: inherit;
+    }
+
+    .cx-link:hover,
+    .cx-link.open {
+      color: var(--dark);
+      background: #fff;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    }
+
+    .cx-link svg.chev {
+      transition: transform 0.25s ease;
+    }
+
+    .cx-link.open svg.chev {
+      transform: rotate(180deg);
+      color: var(--accent);
+    }
+
+    .cx-cta {
+      position: relative;
+      overflow: hidden;
+      background: var(--dark);
+      color: #fff;
+      border: none;
+      border-radius: 100px;
+      padding: 10px 20px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .cx-cta:hover {
+      background: var(--accent);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(108, 99, 255, 0.35);
+      color: #fff;
+    }
+
+    .cx-burger {
+      display: none;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid var(--gray-200);
+      background: #fff;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+
+    .cx-burger span {
+      display: block;
+      width: 16px;
+      height: 1.5px;
+      background: var(--dark);
+      margin: 2.5px 0;
+      border-radius: 2px;
+      transition: transform 0.25s, opacity 0.25s;
+    }
+
+    /* ---- mega dropdown panel ---- */
+    .cx-mega-wrap {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      pointer-events: none;
+    }
+
+    .cx-mega {
+      pointer-events: none;
+      opacity: 0;
+      transform: translateY(-14px);
+      transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      margin-top: 10px;
+      width: 100%;
+      max-width: 900px;
+      background: #fff;
+      border: 1px solid var(--gray-200);
+      border-radius: 20px;
+      box-shadow: 0 24px 60px rgba(24, 24, 27, 0.14);
+      overflow: hidden;
+      display: none;
+    }
+
+    .cx-mega.active {
+      display: block;
+      pointer-events: all;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .cx-mega-col {
+      padding: 26px 22px;
+      border-left: none;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+
+    .cx-mega.active .cx-mega-col {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .cx-mega.active .cx-mega-col:nth-child(1) { transition-delay: 0.02s; }
+    .cx-mega.active .cx-mega-col:nth-child(2) { transition-delay: 0.06s; }
+    .cx-mega.active .cx-mega-col:nth-child(3) { transition-delay: 0.1s; }
+    .cx-mega.active .cx-mega-col:nth-child(4) { transition-delay: 0.14s; }
+
+    .cx-mega-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1.1fr 1.1fr 1fr;
+    }
+
+    .cx-mega-col + .cx-mega-col {
+      border-left: 1px solid var(--gray-100);
+    }
+
+    .cx-mega-eyebrow {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--gray-400);
+      margin-bottom: 14px;
+    }
+
+    .cx-mega-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 9px 8px;
+      margin: 0 -8px;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: background 0.18s;
+    }
+
+    .cx-mega-item:hover {
+      background: var(--gray-50);
+    }
+
+    .cx-mega-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: rgba(108, 99, 255, 0.08);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .cx-mega-item-title {
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 2px;
+    }
+
+    .cx-mega-item-desc {
+      font-size: 0.74rem;
+      color: var(--gray-500);
+      line-height: 1.4;
+    }
+
+    .cx-mega-promo {
+      background: linear-gradient(160deg, #faf9ff 0%, #f4f3ff 100%);
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .cx-mega-promo img {
+      width: 100%;
+      height: 110px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 14px;
+      display: block;
+      border: 1px solid rgba(108, 99, 255, 0.15);
+    }
+
+    .cx-mega-promo h4 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 6px;
+      letter-spacing: -0.01em;
+    }
+
+    .cx-mega-promo p {
+      font-size: 0.76rem;
+      color: var(--gray-600);
+      line-height: 1.5;
+      margin-bottom: 14px;
+      flex-grow: 1;
+    }
+
+    .cx-mega-promo a {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .cx-mega-promo a:hover {
+      color: var(--accent-dark);
+    }
+
+    .cx-nav-offset {
+      height: 78px;
+    }
+
+    /* ---- mobile slide-in menu ---- */
+    .cx-mobile-panel {
+      position: fixed;
+      inset: 0;
+      z-index: 1100;
+      background: #fff;
+      display: none;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+
+    .cx-mobile-panel.open {
+      display: flex;
+    }
+
+    .cx-mobile-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--gray-100);
+    }
+
+    .cx-mobile-body {
+      padding: 8px 16px 28px;
+    }
+
+    .cx-mobile-acc {
+      border-bottom: 1px solid var(--gray-100);
+    }
+
+    .cx-mobile-acc summary {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 6px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--dark);
+      cursor: pointer;
+    }
+
+    .cx-mobile-acc summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .cx-mobile-acc[open] summary svg {
+      transform: rotate(180deg);
+    }
+
+    .cx-mobile-acc summary svg {
+      transition: transform 0.25s;
+      flex-shrink: 0;
+    }
+
+    .cx-mobile-sub {
+      padding: 0 6px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .cx-mobile-sub a {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+    }
+
+    .cx-mobile-sub .t {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--dark);
+    }
+
+    .cx-mobile-sub .d {
+      font-size: 0.75rem;
+      color: var(--gray-500);
+    }
+
+    .cx-mobile-link {
+      display: block;
+      padding: 16px 6px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--dark);
+      text-decoration: none;
+      border-bottom: 1px solid var(--gray-100);
+    }
+
+    @media (min-width: 992px) {
+      .cx-mobile-panel {
+        display: none !important;
+      }
+    }
+
+    @media (max-width: 991.98px) {
+      .cx-links,
+      .cx-mega-wrap {
+        display: none;
+      }
+
+      .cx-burger {
+        display: flex;
+      }
+    }
+    /* =====================================================================
+       MEGA MENU NAVBAR — END
+    ===================================================================== */
+
+
+    /* =====================================================================
+       DEMO PAGE FILLER (remove this block — placeholder only) — START
+    ===================================================================== */
+    .demo-hero {
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(160deg, #faf9ff 0%, #fff 60%);
+      padding: 40px 20px;
+    }
+
+    .demo-hero h1 {
+      font-size: clamp(1.6rem, 4vw, 2.6rem);
+      letter-spacing: -0.03em;
+      max-width: 640px;
+      margin: 0 auto 12px;
+    }
+
+    .demo-hero p {
+      color: var(--gray-500);
+      max-width: 480px;
+      margin: 0 auto;
+      font-size: 0.9rem;
+    }
+    /* =====================================================================
+       DEMO PAGE FILLER — END
+    ===================================================================== */
+
+
+    /* =====================================================================
+       SAAS FOOTER — START
+    ===================================================================== */
+    #cxFooter {
+      background: var(--dark);
+      color: rgba(255, 255, 255, 0.7);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cx-footer-dots {
+      position: absolute;
+      inset: 0;
+      opacity: 0.06;
+      background-image: radial-gradient(circle at 1px 1px, #fff 1px, transparent 0);
+      background-size: 24px 24px;
+      pointer-events: none;
+    }
+
+    /* ---- top CTA banner ---- */
+    .cx-footer-cta {
+      position: relative;
+      z-index: 1;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .cx-footer-cta-card {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+      border-radius: 22px;
+      padding: 42px 32px;
+      text-align: center;
+    }
+
+    .cx-footer-cta-card h2 {
+      color: #fff;
+      font-size: clamp(1.4rem, 3.2vw, 2rem);
+      letter-spacing: -0.03em;
+      margin-bottom: 10px;
+    }
+
+    .cx-footer-cta-card p {
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 0.9rem;
+      max-width: 480px;
+      margin: 0 auto 22px;
+    }
+
+    .cx-footer-cta-btn {
+      background: #fff;
+      color: var(--accent-dark);
+      border: none;
+      border-radius: 100px;
+      padding: 12px 28px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .cx-footer-cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    /* ---- main grid ---- */
+    .cx-footer-main {
+      position: relative;
+      z-index: 1;
+      padding: 56px 0 32px;
+    }
+
+    .cx-footer-brand-col p {
+      font-size: 0.82rem;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.5);
+      max-width: 280px;
+    }
+
+    .cx-footer-social {
+      display: flex;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .cx-footer-social a {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
+    }
+
+    .cx-footer-social a:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    .cx-footer-heading {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(255, 255, 255, 0.4);
+      margin-bottom: 18px;
+    }
+
+    .cx-footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .cx-footer-links a {
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.62);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .cx-footer-links a:hover {
+      color: #fff;
+    }
+
+    .cx-footer-contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.82rem;
+      color: rgba(255, 255, 255, 0.62);
+      margin-bottom: 12px;
+    }
+
+    .cx-footer-contact-item svg {
+      flex-shrink: 0;
+      margin-top: 2px;
+      color: var(--accent);
+    }
+
+    /* ---- contact form card ---- */
+    .cx-footer-form-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 18px;
+      padding: 26px 24px;
+    }
+
+    .cx-footer-form-card h3 {
+      color: #fff;
+      font-size: 1.05rem;
+      letter-spacing: -0.02em;
+      margin-bottom: 4px;
+    }
+
+    .cx-footer-form-card > p {
+      font-size: 0.78rem;
+      color: rgba(255, 255, 255, 0.45);
+      margin-bottom: 18px;
+    }
+
+    .cx-footer-input {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-size: 0.85rem;
+      color: #fff;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .cx-footer-input::placeholder {
+      color: rgba(255, 255, 255, 0.35);
+    }
+
+    .cx-footer-input:focus {
+      outline: none;
+      border-color: var(--accent);
+      background: rgba(255, 255, 255, 0.09);
+    }
+
+    .cx-footer-submit {
+      width: 100%;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 11px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .cx-footer-submit:hover {
+      background: var(--accent-dark);
+      transform: translateY(-1px);
+    }
+
+    /* ---- newsletter strip ---- */
+    .cx-footer-newsletter {
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 22px 0;
+    }
+
+    .cx-newsletter-form {
+      display: flex;
+      gap: 8px;
+      max-width: 360px;
+    }
+
+    @media (max-width: 767.98px) {
+      .cx-newsletter-form {
+        max-width: 100%;
+        margin-top: 14px;
+      }
+    }
+
+    /* ---- bottom bar ---- */
+    .cx-footer-bottom {
+      position: relative;
+      z-index: 1;
+      padding: 20px 0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    .cx-footer-bottom a {
+      color: rgba(255, 255, 255, 0.4);
+      text-decoration: none;
+      margin-left: 18px;
+    }
+
+    .cx-footer-bottom a:hover {
+      color: #fff;
+    }
+    /* =====================================================================
+       SAAS FOOTER — END
+    ===================================================================== */
+  </style>
+</head>
+
+<body>
+
+  <div class="cx-nav-offset"></div>
+
+  <!-- =====================================================================
+       MEGA MENU NAVBAR — START
+  ===================================================================== -->
+  <nav id="cxNav">
+    <div class="cx-nav-pill" style="position:relative;">
+      <a href="#" class="cx-logo">
+        <div class="cx-logo-mark">
+          <img src="logo.png" alt="codexaman logo"
+            onerror="this.style.display='none';this.parentElement.innerHTML='&lt;span style=&quot;color:#fff;font-weight:900;font-size:0.72rem;&quot;&gt;cx&lt;/span&gt;';" />
+        </div>
+        <span class="cx-logo-text">codexaman<span>.in</span></span>
+      </a>
+
+      <div class="cx-links" id="cxDesktopLinks">
+        <button type="button" class="cx-link" data-mega="services">
+          Services
+          <svg class="chev" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <button type="button" class="cx-link" data-mega="solutions">
+          Solutions
+          <svg class="chev" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <a href="#pricing" class="cx-link">Pricing</a>
+        <a href="#faq" class="cx-link">FAQ</a>
+      </div>
+
+      <button type="button" class="cx-cta" id="cxCtaBtn">
+        Get Free Quote
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </button>
+
+      <button type="button" class="cx-burger" id="cxBurger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <!-- ===== Mega dropdown: Services ===== -->
+      <div class="cx-mega-wrap">
+        <div class="cx-mega" data-mega-panel="services">
+          <div class="cx-mega-grid">
+            <div class="cx-mega-col">
+              <p class="cx-mega-eyebrow">Development</p>
+              <a href="#" class="cx-mega-item">
+                <span class="cx-mega-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></span>
+                <span>
+                  <span class="cx-mega-item-title d-block">Website Development</span>
+                  <span class="cx-mega-item-desc d-block">WordPress, React & custom builds</span>
+                </span>
+              </a>
+              <a href="#" class="cx-mega-item">
+                <span class="cx-mega-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></span>
+                <span>
+                  <span class="cx-mega-item-title d-block">Software Development</span>
+                  <span class="cx-mega-item-desc d-block">MERN / MEAN & Laravel platforms</span>
+                </span>
+              </a>
+              <a href="#" class="cx-mega-item">
+                <span class="cx-mega-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span>
+                <span>
+                  <span class="cx-mega-item-title d-block">E-commerce Stores</span>
+                  <span class="cx-mega-item-desc d-block">Shopify & WooCommerce setups</span>
+                </span>
+              </a>
+            </div>
+            <div class="cx-mega-col">
+              <p class="cx-mega-eyebrow">Growth & Marketing</p>
+              <a href="#" class="cx-mega-item">
+                <span class="cx-mega-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
+                <span>
+                  <span class="cx-mega-item-title d-block">Local SEO</span>
+                  <span class="cx-mega-item-desc d-block">Rank for nearby customer searches</span>
+                </span>
+              </a>
+              <a href="#" class="cx-mega-item">
+                <span class="cx-mega-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+                <span>
+                  <span class="cx-mega-item-title d-block">Google My Business & Maps</span>
+                  <span class="cx-mega-item-desc d-block">Profile setup + map integration</span>
+                </span>
+              </a>
+              <a href="#" class="cx-mega-item">
+                <span class="cx-mega-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/></svg></span>
+                <span>
+                  <span class="cx-mega-item-title d-block">Social Media Handling</span>
+                  <span class="cx-mega-item-desc d-block">Instagram, Facebook & LinkedIn</span>
+                </span>
+              </a>
+            </div>
+            <div class="cx-mega-col">
+              <p class="cx-mega-eyebrow">Branding</p>
+              <a href="#" class="cx-mega-item">
+                <span class="cx-mega-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.5 6.5L21 9l-5 4.5L17.5 21 12 17l-5.5 4L8 13.5 3 9l6.5-.5z"/></svg></span>
+                <span>
+                  <span class="cx-mega-item-title d-block">Logo & Brand Design</span>
+                  <span class="cx-mega-item-desc d-block">Free with every website plan</span>
+                </span>
+              </a>
+              <a href="#" class="cx-mega-item">
+                <span class="cx-mega-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></span>
+                <span>
+                  <span class="cx-mega-item-title d-block">HTML / CSS / Bootstrap</span>
+                  <span class="cx-mega-item-desc d-block">Lightweight static site builds</span>
+                </span>
+              </a>
+              <a href="#" class="cx-mega-item">
+                <span class="cx-mega-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></span>
+                <span>
+                  <span class="cx-mega-item-title d-block">Firebase & Supabase</span>
+                  <span class="cx-mega-item-desc d-block">Auth, storage & real-time data</span>
+                </span>
+              </a>
+            </div>
+            <div class="cx-mega-col" style="padding:0;">
+              <div class="cx-mega-promo">
+                <img src="https://picsum.photos/seed/codexaman-team/400/220" alt="codexaman team at work" loading="lazy" />
+                <h4>Free quotation in 24 hours</h4>
+                <p>Tell us what you're building — our team replies with a clear scope and price, no obligation.</p>
+                <a href="#" id="cxMegaPromoBtn">Get started
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== Mega dropdown: Solutions (by industry) ===== -->
+        <div class="cx-mega" data-mega-panel="solutions">
+          <div class="cx-mega-grid" style="grid-template-columns:1fr 1fr 1fr 1fr;">
+            <div class="cx-mega-col">
+              <p class="cx-mega-eyebrow">By industry</p>
+              <a href="#" class="cx-mega-item">
+                <span class="cx-mega-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg></span>
+                <span>
+                  <span class="cx-mega-item-title d-block">Retail & E-commerce</span>
+                  <span class="cx-mega-item-desc d-block">Storefronts that convert</span>
+                </span>
+              </a>
+            </div>
+            <div class="cx-mega-col">
+              <p class="cx-mega-eyebrow">&nbsp;</p>
+              <a href="#" class="cx-mega-item">
+                <span class="cx-mega-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span>
+                <span>
+                  <span class="cx-mega-item-title d-block">Clinics & Healthcare</span>
+                  <span class="cx-mega-item-desc d-block">Booking-ready & SEO-friendly</span>
+                </span>
+              </a>
+            </div>
+            <div class="cx-mega-col">
+              <p class="cx-mega-eyebrow">&nbsp;</p>
+              <a href="#" class="cx-mega-item">
+                <span class="cx-mega-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2h18l-2 8H5z"/><path d="M5 10v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V10"/></svg></span>
+                <span>
+                  <span class="cx-mega-item-title d-block">Restaurants & Cafes</span>
+                  <span class="cx-mega-item-desc d-block">Menus, ordering & Maps setup</span>
+                </span>
+              </a>
+            </div>
+            <div class="cx-mega-col" style="padding:0;">
+              <div class="cx-mega-promo">
+                <img src="https://picsum.photos/seed/codexaman-startup/400/220" alt="startup dashboard preview" loading="lazy" />
+                <h4>Startups & SaaS</h4>
+                <p>MERN dashboards, landing pages and product sites built to scale with you.</p>
+                <a href="#">See case studies
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- ===== end mega dropdowns ===== -->
+    </div>
+  </nav>
+
+  <!-- ===== Mobile slide-in menu ===== -->
+  <div class="cx-mobile-panel" id="cxMobilePanel">
+    <div class="cx-mobile-header">
+      <a href="#" class="cx-logo">
+        <div class="cx-logo-mark">
+          <img src="logo.png" alt="codexaman logo"
+            onerror="this.style.display='none';this.parentElement.innerHTML='&lt;span style=&quot;color:#fff;font-weight:900;font-size:0.72rem;&quot;&gt;cx&lt;/span&gt;';" />
+        </div>
+        <span class="cx-logo-text">codexaman<span>.in</span></span>
+      </a>
+      <button type="button" class="cx-burger" id="cxMobileClose" aria-label="Close">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#18181b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="cx-mobile-body">
+      <details class="cx-mobile-acc">
+        <summary>Services
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#71717a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="cx-mobile-sub">
+          <a href="#"><span class="t">Website Development</span><span class="d">WordPress, React & custom builds</span></a>
+          <a href="#"><span class="t">Software Development</span><span class="d">MERN / MEAN & Laravel platforms</span></a>
+          <a href="#"><span class="t">E-commerce Stores</span><span class="d">Shopify & WooCommerce</span></a>
+          <a href="#"><span class="t">Local SEO & Google My Business</span><span class="d">Get found nearby</span></a>
+          <a href="#"><span class="t">Social Media Handling</span><span class="d">Instagram, Facebook & LinkedIn</span></a>
+          <a href="#"><span class="t">Logo & Brand Design</span><span class="d">Free with every plan</span></a>
+        </div>
+      </details>
+      <details class="cx-mobile-acc">
+        <summary>Solutions
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#71717a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="cx-mobile-sub">
+          <a href="#"><span class="t">Retail & E-commerce</span></a>
+          <a href="#"><span class="t">Clinics & Healthcare</span></a>
+          <a href="#"><span class="t">Restaurants & Cafes</span></a>
+          <a href="#"><span class="t">Startups & SaaS</span></a>
+        </div>
+      </details>
+      <a href="#pricing" class="cx-mobile-link">Pricing</a>
+      <a href="#faq" class="cx-mobile-link">FAQ</a>
+      <button type="button" class="cx-cta w-100 justify-content-center mt-4" id="cxMobileCtaBtn" style="padding:14px;">Get Free Quote</button>
+    </div>
+  </div>
+  <!-- =====================================================================
+       MEGA MENU NAVBAR — END
+  ===================================================================== -->
+
+
+  <!-- =====================================================================
+       DEMO PAGE FILLER (delete when embedding) — START
+  ===================================================================== -->
+  <section class="demo-hero">
+    <div>
+      <h1>Mega menu + SaaS footer component</h1>
+      <p>This section is just placeholder page content so you can see the navbar and footer in context. Delete it
+        when you drop this code into your real site.</p>
+    </div>
+  </section>
+  <!-- =====================================================================
+       DEMO PAGE FILLER — END
+  ===================================================================== -->
+
+
+  <!-- =====================================================================
+       SAAS FOOTER — START
+  ===================================================================== -->
+  <footer id="cxFooter">
+    <div class="cx-footer-dots"></div>
+
+    <!-- ===== top CTA banner ===== -->
+    <div class="cx-footer-cta">
+      <div class="container py-5" style="max-width:1100px;">
+        <div class="cx-footer-cta-card">
+          <h2>Ready to grow your business online?</h2>
+          <p>Get a free, no-obligation quotation from our team — reply guaranteed within 24 hours.</p>
+          <button type="button" class="cx-footer-cta-btn" id="cxFooterCtaBtn">Get your free quote</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== main grid ===== -->
+    <div class="container cx-footer-main" style="max-width:1100px;">
+      <div class="row g-4">
+        <div class="col-12 col-lg-3 col-sm-6 cx-footer-brand-col">
+          <a href="#" class="cx-logo mb-3 d-inline-flex">
+            <div class="cx-logo-mark">
+              <img src="logo.png" alt="codexaman logo"
+                onerror="this.style.display='none';this.parentElement.innerHTML='&lt;span style=&quot;color:#fff;font-weight:900;font-size:0.72rem;&quot;&gt;cx&lt;/span&gt;';" />
+            </div>
+            <span class="cx-logo-text" style="color:#fff;">codexaman<span>.in</span></span>
+          </a>
+          <p>A software development, website development and digital marketing team based in Kolkata, India —
+            helping small businesses worldwide get online and get found.</p>
+          <div class="cx-footer-social">
+            <a href="https://www.instagram.com/codexaman" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/company/codexaman" target="_blank" rel="noopener" aria-label="LinkedIn">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="https://www.facebook.com/codexaman" target="_blank" rel="noopener" aria-label="Facebook">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="https://twitter.com/codexaman" target="_blank" rel="noopener" aria-label="Twitter / X">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C4 15.7 2.6 11.2 4 7c1.8 2.1 4.5 3.4 7.5 3.6-.7-3.2 2.5-6.6 6-5.1C19 5.7 20.3 5 20.3 5s-.4 1.7-2 2.5c1.1-.1 2.2-.4 3.7-1.5z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-6 col-lg-2">
+          <p class="cx-footer-heading">Company</p>
+          <ul class="cx-footer-links">
+            <li><a href="#">About us</a></li>
+            <li><a href="#">How it works</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-lg-2">
+          <p class="cx-footer-heading">Services</p>
+          <ul class="cx-footer-links">
+            <li><a href="#">Website Development</a></li>
+            <li><a href="#">Software Development</a></li>
+            <li><a href="#">Digital Marketing</a></li>
+            <li><a href="#">Local SEO & GMB</a></li>
+            <li><a href="#">Logo Design</a></li>
+          </ul>
+        </div>
+
+        <div class="col-12 col-lg-2 col-sm-6">
+          <p class="cx-footer-heading">Get in touch</p>
+          <div class="cx-footer-contact-item">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Kolkata, West Bengal, India</span>
+          </div>
+          <div class="cx-footer-contact-item">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/></svg>
+            <span>+91 00000 00000</span>
+          </div>
+          <div class="cx-footer-contact-item">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span>hello@codexaman.in</span>
+          </div>
+        </div>
+
+        <!-- ===== contact form card ===== -->
+        <div class="col-12 col-lg-3">
+          <div class="cx-footer-form-card">
+            <h3>Quick enquiry</h3>
+            <p>Drop a message, we'll reply within 24 hours.</p>
+            <form id="cxFooterForm" class="d-flex flex-column gap-2">
+              <input type="text" name="name" placeholder="Your name" class="cx-footer-input" required />
+              <input type="email" name="email" placeholder="Email address" class="cx-footer-input" required />
+              <textarea name="message" rows="3" placeholder="Your message" class="cx-footer-input" style="resize:none;" required></textarea>
+              <!-- NOTE: replace the fetch endpoint / access key in the JS below with your own form backend -->
+              <button type="submit" class="cx-footer-submit">Send message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== newsletter strip ===== -->
+    <div class="cx-footer-newsletter">
+      <div class="container d-flex flex-column flex-md-row align-items-md-center justify-content-between" style="max-width:1100px;">
+        <div>
+          <p class="mb-0" style="color:#fff;font-weight:600;font-size:0.9rem;">Subscribe to our newsletter</p>
+          <p class="mb-0" style="font-size:0.78rem;color:rgba(255,255,255,0.45);">Tips on web, SEO & growth — no spam.</p>
+        </div>
+        <form class="cx-newsletter-form" id="cxNewsletterForm">
+          <input type="email" required placeholder="you@company.com" class="cx-footer-input" />
+          <button type="submit" class="cx-footer-submit" style="white-space:nowrap;padding:10px 18px;">Subscribe</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- ===== bottom bar ===== -->
+    <div class="container cx-footer-bottom" style="max-width:1100px;">
+      <p class="mb-0">© 2025 codexaman. All rights reserved.</p>
+      <div>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+  <!-- =====================================================================
+       SAAS FOOTER — END
+  ===================================================================== -->
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    /* =====================================================================
+       MEGA MENU + FOOTER JS — START
+    ===================================================================== */
+
+    // ---- navbar scroll shadow/glow ----
+    const cxNav = document.getElementById('cxNav');
+    window.addEventListener('scroll', () => {
+      cxNav.classList.toggle('scrolled', window.scrollY > 10);
+    }, { passive: true });
+
+    // ---- desktop mega menu: hover to open (with close-delay so moving the
+    //      cursor from the button down into the panel doesn't flicker-close it) ----
+    const megaTriggers = document.querySelectorAll('[data-mega]');
+    const megaPanels = document.querySelectorAll('[data-mega-panel]');
+    const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    let megaCloseTimer = null;
+
+    function closeAllMega() {
+      megaTriggers.forEach(t => t.classList.remove('open'));
+      megaPanels.forEach(p => p.classList.remove('active'));
+    }
+
+    function openMega(key) {
+      clearTimeout(megaCloseTimer);
+      const panel = document.querySelector(`[data-mega-panel="${key}"]`);
+      const trigger = document.querySelector(`[data-mega="${key}"]`);
+      if (!panel || !trigger) return;
+      closeAllMega();
+      trigger.classList.add('open');
+      panel.classList.add('active');
+    }
+
+    function scheduleMegaClose() {
+      clearTimeout(megaCloseTimer);
+      megaCloseTimer = setTimeout(closeAllMega, 260);
+    }
+
+    megaTriggers.forEach(trigger => {
+      if (canHover) {
+        trigger.addEventListener('mouseenter', () => openMega(trigger.dataset.mega));
+        trigger.addEventListener('mouseleave', scheduleMegaClose);
+      }
+      // click still works everywhere — keyboard + touch users rely on this
+      trigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const key = trigger.dataset.mega;
+        const panel = document.querySelector(`[data-mega-panel="${key}"]`);
+        const isOpen = panel.classList.contains('active');
+        closeAllMega();
+        if (!isOpen) openMega(key);
+      });
+    });
+
+    megaPanels.forEach(panel => {
+      if (canHover) {
+        panel.addEventListener('mouseenter', () => clearTimeout(megaCloseTimer));
+        panel.addEventListener('mouseleave', scheduleMegaClose);
+      }
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.cx-nav-pill')) closeAllMega();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeAllMega();
+    });
+
+    // ---- mobile slide-in menu ----
+    const cxBurger = document.getElementById('cxBurger');
+    const cxMobilePanel = document.getElementById('cxMobilePanel');
+    const cxMobileClose = document.getElementById('cxMobileClose');
+    cxBurger.addEventListener('click', () => cxMobilePanel.classList.add('open'));
+    cxMobileClose.addEventListener('click', () => cxMobilePanel.classList.remove('open'));
+
+    // ---- CTA buttons: wire these to your own quote modal / section ----
+    function handleQuoteClick(e) {
+      e.preventDefault();
+      // TODO: open your "Get Free Quote" modal here, e.g. openQuoteModal();
+      alert('Wire this button to your Get Free Quote modal / form.');
+    }
+    document.getElementById('cxCtaBtn').addEventListener('click', handleQuoteClick);
+    document.getElementById('cxMobileCtaBtn').addEventListener('click', handleQuoteClick);
+    document.getElementById('cxFooterCtaBtn').addEventListener('click', handleQuoteClick);
+    document.getElementById('cxMegaPromoBtn').addEventListener('click', handleQuoteClick);
+
+    // ---- footer contact form submit (Web3Forms — replace access_key with your own) ----
+    const cxFooterForm = document.getElementById('cxFooterForm');
+    cxFooterForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = cxFooterForm.querySelector('button[type="submit"]');
+      const original = btn.textContent;
+      const formData = new FormData(cxFooterForm);
+      formData.append('access_key', 'YOUR_WEB3FORMS_ACCESS_KEY'); // <-- replace with your own key
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData });
+        const data = await res.json();
+        if (res.ok) {
+          alert("Thanks! We'll reply within 24 hours.");
+          cxFooterForm.reset();
+        } else {
+          alert('Error: ' + data.message);
+        }
+      } catch (err) {
+        alert('Something went wrong. Please try again.');
+      } finally {
+        btn.textContent = original;
+        btn.disabled = false;
+      }
+    });
+
+    // ---- newsletter form (demo only — wire to your mailing list provider) ----
+    document.getElementById('cxNewsletterForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Wire this to your newsletter / mailing list provider.');
+      e.target.reset();
+    });
+    /* =====================================================================
+       MEGA MENU + FOOTER JS — END
+    ===================================================================== */
+  </script>
+</body>
+</html>
