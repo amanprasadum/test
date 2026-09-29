@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Work Showcase</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+
+  <style>
+    :root {
+      --bs-body-font-family: 'Plus Jakarta Sans', sans-serif;
+      --ink: #0f0f14; --indigo: #6366f1; --muted: #6f6f82; --bg: #f7f7fb;
+      --ease: cubic-bezier(.2,.7,.2,1);
+      --slide-ms: 3500ms;
+    }
+    body { font-family: var(--bs-body-font-family); color: var(--ink); background: var(--bg); }
+
+    /* Section + dotted grid background (fades out at the edges) */
+    .work { position: relative; overflow: hidden; padding: clamp(4rem, 9vw, 8rem) 0; }
+    .work::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background-image: radial-gradient(rgba(99,102,241,.22) 1px, transparent 1.4px);
+      background-size: 26px 26px;
+      -webkit-mask-image: radial-gradient(ellipse 70% 60% at 30% 40%, #000, transparent);
+              mask-image: radial-gradient(ellipse 70% 60% at 30% 40%, #000, transparent);
+    }
+    .work .container { position: relative; }
+
+    /* ---------- Reveal on load / scroll ---------- */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s var(--ease), transform .8s var(--ease); transition-delay: var(--d, 0s); }
+    .reveal.in { opacity: 1; transform: none; }
+    .reveal-x { transform: translateX(80px); }
+    .w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .08em; }
+    .w > span { display: inline-block; transform: translateY(110%); transition: transform .9s var(--ease); transition-delay: var(--d, 0s); }
+    .in .w > span { transform: none; }
+
+    /* ---------- Left ---------- */
+    .label { font-size: .75rem; font-weight: 600; color: var(--muted); display: flex; align-items: center; gap: .6rem; }
+    .label i { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; position: relative; }
+    .label i::after { content: ''; position: absolute; inset: 0; border-radius: 50%; background: #22c55e; animation: ping 1.8s ease-out infinite; }
+    @keyframes ping { to { transform: scale(3.2); opacity: 0; } }
+    .title { font-weight: 800; font-size: clamp(2.4rem, 5.2vw, 4.4rem); line-height: .98; letter-spacing: -.045em; }
+    .title em { font-style: normal; color: var(--indigo); }
+    .lead-sm { font-size: .9rem; line-height: 1.8; color: var(--muted); max-width: 340px; }
+
+    .ctrl { width: 52px; height: 52px; padding: 0; font-size: 1.25rem; line-height: 1; border: 1.5px solid var(--ink); color: var(--ink); background: transparent; transition: all .25s; }
+    .ctrl:hover { background: var(--ink); color: #fff; }
+    .ctrl:active { transform: scale(.92); }
+
+    /* Odometer counter */
+    .count { display: flex; align-items: center; font-weight: 800; font-size: 1.5rem; letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
+    .odo { height: 1.2em; line-height: 1.2em; overflow: hidden; display: inline-block; }
+    .odo-in { transition: transform .7s var(--ease); }
+    .odo-in span { display: block; height: 1.2em; }
+    .count small { font-size: .8rem; font-weight: 600; color: var(--muted); margin-left: .4rem; }
+
+    /* Timer progress: har slide par 0 -> 100% (autoplay ke saath sync) */
+    .progress-line { height: 3px; background: rgba(15,15,20,.1); border-radius: 3px; overflow: hidden; width: 100%; max-width: 200px; }
+    .progress-line span { display: block; height: 100%; width: 0; background: var(--indigo); border-radius: 3px; }
+    .progress-line span.run { animation: fill var(--slide-ms) linear forwards; }
+    .progress-line span.paused { animation-play-state: paused; }
+    @keyframes fill { to { width: 100%; } }
+
+    /* ---------- Right: carousel (right edge se bleed) ---------- */
+    .bleed { clip-path: inset(-20px -100vw -20px 0); }
+    .owl-stage-outer { overflow: visible !important; }
+    .owl-stage { display: flex; }
+    .owl-item { display: flex; }
+    .owl-item .p-card { transition: opacity .6s var(--ease), transform .6s var(--ease), filter .6s; }
+    .owl-item:not(.active) .p-card { opacity: .45; transform: scale(.93); filter: saturate(.6); }
+
+    .p-card { position: relative; width: 100%; height: 500px; border-radius: 26px; overflow: hidden; background: var(--ink); cursor: none; }
+    .p-card img { position: absolute; inset: -4%; width: 108%; height: 108%; max-width: none; object-fit: cover; transform: scale(1.02) translate(var(--tx, 0), var(--ty, 0)); transition: transform .9s var(--ease); }
+    .p-card:hover img { transform: scale(1.1) translate(var(--tx, 0), var(--ty, 0)); }
+    .p-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(15,15,20,.25), transparent 30%, transparent 55%, rgba(15,15,20,.35)); pointer-events: none; }
+
+    .p-tag { position: absolute; top: 16px; left: 16px; z-index: 2; font-size: .68rem; font-weight: 700; padding: .45rem .8rem; background: #fff !important; color: var(--ink) !important; }
+    .p-idx { position: absolute; top: 14px; right: 20px; z-index: 2; font-weight: 800; font-size: 1.1rem; color: #fff; }
+
+    .p-panel { position: absolute; left: 12px; right: 12px; bottom: 12px; z-index: 2; background: rgba(255,255,255,.94); backdrop-filter: blur(14px); border-radius: 18px; padding: 1.15rem 1.2rem; display: flex; gap: 1rem; align-items: flex-end; justify-content: space-between; }
+    .p-panel h5 { font-weight: 800; font-size: 1.1rem; letter-spacing: -.02em; margin: 0; }
+    .p-panel p { font-size: .76rem; line-height: 1.7; color: var(--muted); margin: 0; max-height: 0; opacity: 0; overflow: hidden; transition: max-height .45s ease, opacity .35s ease, margin .35s ease; }
+    .p-card:hover .p-panel p { max-height: 90px; opacity: 1; margin-top: .55rem; }
+    .p-go { flex-shrink: 0; width: 44px; height: 44px; border-radius: 50%; background: var(--indigo); color: #fff; display: inline-flex; align-items: center; justify-content: center; text-decoration: none; font-size: 1.1rem; transition: transform .3s, background .3s; }
+    .p-card:hover .p-go { transform: rotate(-45deg); background: var(--ink); }
+
+    /* ---------- Custom cursor ---------- */
+    .cursor { position: fixed; left: 0; top: 0; z-index: 999; width: 84px; height: 84px; margin: -42px 0 0 -42px; border-radius: 50%; background: var(--indigo); color: #fff; font-size: .72rem; font-weight: 700; letter-spacing: .04em; display: flex; align-items: center; justify-content: center; pointer-events: none; transform: translate3d(-200px,-200px,0) scale(0); transition: scale .35s var(--ease); scale: 0; }
+    .cursor.on { scale: 1; }
+
+    @media (hover: none) { .p-card { cursor: auto; } .cursor { display: none; } .p-panel p { max-height: 90px; opacity: 1; margin-top: .55rem; } }
+    @media (max-width: 767px) { .p-card { height: 440px; } }
+    @media (prefers-reduced-motion: reduce) { .reveal, .w > span { transition: none; opacity: 1; transform: none; } .label i::after { animation: none; } }
+  </style>
+</head>
+<body>
+
+<section class="work" id="work">
+  <div class="container">
+    <div class="row g-5 align-items-center">
+
+      <!-- LEFT -->
+      <div class="col-lg-4">
+        <div class="label mb-4 reveal">
+          <i></i>Open for new projects
+        </div>
+        <h2 class="title mb-4 reveal" style="--d:.05s">
+          <span class="w"><span style="--d:.1s">Selected</span></span>
+          <span class="w"><span style="--d:.18s">work,</span></span>
+          <span class="w"><span style="--d:.26s">built</span></span>
+          <span class="w"><span style="--d:.34s">to</span></span>
+          <span class="w"><span style="--d:.42s"><em>convert.</em></span></span>
+        </h2>
+        <p class="lead-sm mb-5 reveal" style="--d:.35s">Real projects for real businesses — storefronts, portfolios and web apps, each crafted to perform from day one.</p>
+
+        <div class="d-flex align-items-center gap-2 mb-4 reveal" style="--d:.45s">
+          <button class="btn rounded-circle ctrl" id="wPrev" aria-label="Previous">&#8592;</button>
+          <button class="btn rounded-circle ctrl" id="wNext" aria-label="Next">&#8594;</button>
+        </div>
+        <div class="d-flex align-items-center gap-4 mb-5 reveal" style="--d:.55s">
+          <div class="count"><div class="odo"><div class="odo-in" id="wOdo"><span>01</span><span>02</span><span>03</span><span>04</span><span>05</span></div></div><small>/ 05</small></div>
+          <div class="progress-line"><span id="wBar"></span></div>
+        </div>
+        <a href="#" class="btn btn-dark rounded-pill px-4 py-2 fw-semibold reveal" style="--d:.65s">Get free quote &rarr;</a>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="col-lg-8 bleed">
+        <div class="reveal reveal-x" style="--d:.25s">
+          <div class="owl-carousel" id="workCarousel">
+
+            <div class="p-card">
+              <img src="https://picsum.photos/seed/room101/700/900" alt="Luxe Home Interiors" />
+              <span class="badge rounded-pill p-tag">WordPress</span><span class="p-idx">01</span>
+              <div class="p-panel">
+                <div><h5>Luxe Home Interiors</h5><p>Custom theme, portfolio gallery, online booking and a mood board generator for a premium interior studio.</p></div>
+                <a href="#" class="p-go" aria-label="Open case study">&rarr;</a>
+              </div>
+            </div>
+
+            <div class="p-card">
+              <img src="https://picsum.photos/seed/cloth202/700/900" alt="Velvet Thread Co." />
+              <span class="badge rounded-pill p-tag">Shopify</span><span class="p-idx">02</span>
+              <div class="p-panel">
+                <div><h5>Velvet Thread Co.</h5><p>A boutique fashion brand's first store — lookbook, size guide configurator and WhatsApp checkout.</p></div>
+                <a href="#" class="p-go" aria-label="Open case study">&rarr;</a>
+              </div>
+            </div>
+
+            <div class="p-card">
+              <img src="https://picsum.photos/seed/data303/700/900" alt="FinFlow Analytics" />
+              <span class="badge rounded-pill p-tag">Custom UI</span><span class="p-idx">03</span>
+              <div class="p-panel">
+                <div><h5>FinFlow Analytics</h5><p>A data-heavy fintech portal with real-time charts, role-based access and exportable reports.</p></div>
+                <a href="#" class="p-go" aria-label="Open case study">&rarr;</a>
+              </div>
+            </div>
+
+            <div class="p-card">
+              <img src="https://picsum.photos/seed/skin404/700/900" alt="PureNest Organics" />
+              <span class="badge rounded-pill p-tag">eCommerce</span><span class="p-idx">04</span>
+              <div class="p-panel">
+                <div><h5>PureNest Organics</h5><p>From basic template to a fully branded store — ingredient glossary, skin-type quiz and subscriptions.</p></div>
+                <a href="#" class="p-go" aria-label="Open case study">&rarr;</a>
+              </div>
+            </div>
+
+            <div class="p-card">
+              <img src="https://picsum.photos/seed/build505/700/900" alt="Arc Studio Design" />
+              <span class="badge rounded-pill p-tag">Web Design</span><span class="p-idx">05</span>
+              <div class="p-panel">
+                <div><h5>Arc Studio Design</h5><p>An immersive architecture portfolio with full-screen layout, parallax showcases and scroll transitions.</p></div>
+                <a href="#" class="p-go" aria-label="Open case study">&rarr;</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="cursor" id="cur">View</div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script>
+  $(function () {
+    var DELAY = 3500;
+    var $owl = $('#workCarousel'), $bar = $('#wBar');
+
+    /* --- Timer progress bar (autoplay ke saath sync) --- */
+    function restartBar() {
+      $bar.removeClass('run paused');
+      void $bar[0].offsetWidth;          // reflow: animation restart
+      $bar.addClass('run');
+    }
+
+    /* --- Real slide index (loop clones ignore) -> odometer --- */
+    $owl.on('initialized.owl.carousel changed.owl.carousel', function (e) {
+      var real = e.relatedTarget.relative(e.item.index);
+      $('#wOdo').css('transform', 'translateY(' + (-real * 1.2) + 'em)');
+      restartBar();
+    });
+
+    $owl.owlCarousel({
+      loop: true, margin: 20, nav: false, dots: false,
+      autoplay: true, autoplayTimeout: DELAY, autoplayHoverPause: true,
+      smartSpeed: 800,
+      responsive: { 0: { items: 1, stagePadding: 36 }, 768: { items: 2 } }
+    });
+
+    /* --- Hover: bar bhi pause, leave par fresh timer --- */
+    $owl.on('mouseenter', function () { $bar.addClass('paused'); })
+        .on('mouseleave', restartBar);
+
+    /* --- Arrows --- */
+    function go(dir) { $owl.trigger(dir + '.owl.carousel'); $owl.trigger('play.owl.autoplay', [DELAY]); }
+    $('#wPrev').on('click', function () { go('prev'); });
+    $('#wNext').on('click', function () { go('next'); });
+
+    /* --- Image parallax on mouse move --- */
+    $owl.on('mousemove', '.p-card', function (e) {
+      var r = this.getBoundingClientRect();
+      var x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+      $(this).find('img').css({ '--tx': (-x * 18) + 'px', '--ty': (-y * 18) + 'px' });
+    }).on('mouseleave', '.p-card', function () {
+      $(this).find('img').css({ '--tx': '0px', '--ty': '0px' });
+    });
+
+    /* --- Custom cursor (smooth follow) --- */
+    var cur = document.getElementById('cur'), mx = 0, my = 0, cx = 0, cy = 0;
+    $(document).on('mousemove', function (e) { mx = e.clientX; my = e.clientY; });
+    (function loop() {
+      cx += (mx - cx) * .18; cy += (my - cy) * .18;
+      cur.style.transform = 'translate3d(' + cx + 'px,' + cy + 'px,0)';
+      requestAnimationFrame(loop);
+    })();
+    $owl.on('mouseenter', '.p-card', function () { $(cur).addClass('on'); })
+        .on('mouseleave', '.p-card', function () { $(cur).removeClass('on'); })
+        .on('mouseenter', '.p-go', function () { $(cur).removeClass('on'); })
+        .on('mouseleave', '.p-go', function () { $(cur).addClass('on'); });
+
+    /* --- Reveal when section enters viewport --- */
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { $('#work .reveal').addClass('in'); io.disconnect(); } });
+    }, { threshold: .15 });
+    io.observe(document.getElementById('work'));
+  });
+</script>
+</body>
+</html>
